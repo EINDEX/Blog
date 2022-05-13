@@ -34,7 +34,7 @@ jobs:
     - name: Fetch npm packages
       run: npm ci
     - name: build site
-      run: hugo --minify -b --config config.toml
+      run: hugo --minify --enableGitInfo --config config.toml
 
     - name: Publish
       uses: peaceiris/actions-gh-pages@v3
