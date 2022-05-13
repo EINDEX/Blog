@@ -1,0 +1,123 @@
+
+languageCode = 'cn'
+title = "EINDEX's Blog"
+theme = "qingzhuo"
+
+baseURL = "https://blog.xllb.cc:8443"
+
+paginate = 10 # default page size
+
+hasCJKLanguage = true # CJK support
+summaryLength = 100 # default summary length
+
+disableKinds = ['taxonomy', 'term']
+
+[taxonomies]
+  category = 'categories'
+  series = 'series'
+  tag = 'tags'
+
+## RSS support default open
+[outputs]
+home = [ "RSS", "HTML"]
+
+[outputFormats]
+[outputFormats.RSS]
+mediatype = "application/rss"
+baseName = "feed"
+
+## menus in navbar
+[menu]
+[[menu.navbar]]
+identifier = "about"
+name = "关于"
+url = "/about/"
+weight = -1
+
+[[menu.navbar]]
+name = "友链"
+url = "/links/"
+weight = -2
+
+[[menu.navbar]]
+name = "归档"
+url = "/archive/"
+weight = -3
+
+
+[params]
+# Time to start show outdate warning, 0 to close.
+outdateingWarningDays = 30
+
+## Baidu Analytics
+baiduAnalytics = ''
+
+## Microsoft clarify
+microsoftClarity = ''
+
+## Google Analytics
+googleAnalytics = ''
+
+## ICP infomation China mainland only
+ICPNumbers = '鄂ICP备15018232号-1'
+
+## BuSuanZi Visit Counter
+BuSuanZi = false
+
+
+## support type list: github, weibo, twitter, telegram, qq, wechat, website
+## support link or value
+[[params.socialaccount]]
+link = 'https://github.com/eindex'
+type = 'github'
+[[params.socialaccount]]
+link = 'https://twitter.com/eindex_li'
+type = 'twitter'
+[[params.socialaccount]]
+link = 'https://t.me/eindex'
+type = 'telegram'
+[[params.socialaccount]]
+link = 'mailto:eindex.me@outlook.com'
+type = 'email'
+
+## Giscus
+[params.giscus]
+repo = "EINDEX/blog"
+repoId = "R_kgDOGWb6Yg"
+categoryId = "DIC_kwDOGWb6Ys4CAKn-"
+
+
+## Markup Configurations
+[markup]
+
+### Code Highlighting
+[markup.highlight]
+style = 'monokai'
+tabWidth = 4
+
+[markup.goldmark]
+[markup.goldmark.renderer]
+unsafe = true
+
+## hugo related logic
+## https://gohugo.io/content-management/related/
+
+[related]
+  includeNewer = false
+  threshold = 0
+  toLower = false
+[[related.indices]]
+  name = 'tags'
+  weight = 100
+[[related.indices]]
+  name = 'categories'
+  weight = 100
+[[related.indices]]
+  name = 'keywords'
+  weight = 100
+[[related.indices]]
+  name = 'date'
+  weight = 10
+
+[build]
+  writeStats = true

@@ -1,0 +1,63 @@
+kind: pipeline
+type: kubernetes
+name: Preview
+steps:
+- name: build
+  image: peaceiris/hugo:latest-full
+  commands: 
+    - npm install 
+    - hugo -D -b "https://blog.xllb.cc:8443" --minify --enableGitInfo --config config-preview.toml
+
+- name: deploy
+  image: drillster/drone-rsync
+  settings:
+    hosts: 
+      - 10.0.5.3
+    source: ./public
+    target: ~/packages
+    args: -p 1022
+    key:
+    user: eindex
+
+
+trigger:
+  event: 
+    - push
+  target:
+    - preview
+
+---
+kind: pipeline
+type: kubernetes
+name: Release
+steps:
+- name: build
+  image: peaceiris/hugo:latest-full
+  commands: 
+    - npm install 
+    - hugo -b "https://eindex.me" --minify --enableGitInfo --config config.toml
+
+trigger:
+  event: 
+    - promote
+  target:
+    - prod
+
+
+
+# ---
+# kind: pipeline
+# type: kubernetes
+# name: build image
+# steps:
+# - name: build
+#   image: peaceiris/hugo:latest-full
+#   commands: 
+#     - npm install 
+#     - hugo -b "ipfs://ipfs.eindex.me" --minify --enableGitInfo --config config-ipfs.toml
+
+# trigger:
+#   event: 
+#     - promote
+#   target:
+#     - ipfs

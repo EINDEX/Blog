@@ -1,0 +1,30 @@
+{
+  "comments": {
+    "dependencies": {
+      "heti": "qingzhuo"
+    },
+    "devDependencies": {
+      "@tailwindcss/typography": "qingzhuo",
+      "autoprefixer": "qingzhuo",
+      "concurrently": "qingzhuo",
+      "postcss": "qingzhuo",
+      "postcss-cli": "qingzhuo",
+      "postcss-import": "qingzhuo",
+      "tailwindcss": "qingzhuo"
+    }
+  },
+  "dependencies": {
+    "heti": "^0.9.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.1",
+    "autoprefixer": "^10.4.7",
+    "concurrently": "^7.0.0",
+    "postcss": "^8.4.13",
+    "postcss-cli": "^9.1.0",
+    "postcss-import": "^14.0.2",
+    "tailwindcss": "^3.0.24"
+  },
+  "name": "blog-hugo",
+  "version": "0.1.0"
+}
