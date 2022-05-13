@@ -1,4 +1,4 @@
-name: Build Demo on Github Pages
+name: Build Blog on Github Pages
 
 on:
   push:
@@ -34,7 +34,7 @@ jobs:
     - name: Fetch npm packages
       run: npm ci
     - name: build site
-      run: hugo -D --minify -b "https://eindex.github.io/qingzhuo/"
+      run: hugo --minify -b --config config.toml
 
     - name: Publish
       uses: peaceiris/actions-gh-pages@v3
