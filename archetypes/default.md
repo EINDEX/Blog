@@ -3,7 +3,7 @@ title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
 draft: true
 latex: false
-categoies:
+categories:
 series:
 tags: [] 
 ---

@@ -1,9 +1,9 @@
 ---
-title: "My Homelab"
+title: "My HomeLab"
 date: 2022-05-15T23:39:46+08:00
 draft: false
 latex: false
-categoies: HomeLab
+categories: "HomeLab"
 tags: [K3S, Proxmox VE, Self-Hosted, Docker]
 ---
 
@@ -19,7 +19,7 @@ tags: [K3S, Proxmox VE, Self-Hosted, Docker]
 
 机缘巧合之下，Synology 出现在我的面前。一拍脑袋，搞了一个 Sinology 218+。
 
-单纯的我当时只是想同步一下文件，给 MacBook 加上 Time Machine，并没想道这是我和 Homelab 缘分的开始。
+单纯的我当时只是想同步一下文件，给 MacBook 加上 Time Machine，并没想道这是我和 HomeLab 缘分的开始。
 
 ## 时间线
 
@@ -27,20 +27,19 @@ tags: [K3S, Proxmox VE, Self-Hosted, Docker]
 
 主要是使用一些 Synology 原生功能，如 Moments，Video，Drive，Note 等，然后在 Docker 里跑了一两个简单的服务。单纯就用来备份照片，数据，剪裁网页啥的。
 
-维护成本也很低。直到某一天我发现 [Synology Community](https://synocommunity.com/)，这里面有很多奇奇怪怪的 package，稍微研究了一下，我开始研究多媒体自动化。
+维护成本也很低。直到某一天我发现 [Synology Community](https://synocommunity.com/)，这里面有很多奇奇怪怪的 package，稍微研究了一下，就打开了新世界的大门。
 
-### 媒体自动化
+这里面有各种各样的 Self-hosted 服务，多媒体自动化，下载的，书籍管理，文件同步，RSS 和一些 DSM 并不自带的系统命令。
 
-所谓多媒体自动化，其实就是自动下载电视剧，电影等资源。当时用的 Jackett，Sonarr，Radarr，Emby 一套，用来看视频，看电影。但是还没有媒体墙，字幕等功能。
-
-此时开始使用 docker-compose 来管理服务，升级。
+迫于追剧的需求，我当在群晖里增加了多媒体自动化没，当时用的 Jackett，Sonarr，Radarr，Emby 一套，用来自动下载，刮削，看视频，看电影。同时将服务管理到 docker-compose 里。
 
 ### 更多需求
 
-后来换了一个工作环境，工作相对于之前进入不饱和阶段。于是开始用更多的时间去折腾 HomeLab。心一痒加上对群晖的熟悉就又买了个 Synology 920+。
-在服务上增加了 Traefik 做为 Ingress 开始使用域名和统一的高位端口号登录。
+由于换到新公司，工作压力没有之前那么大。有更多的时间去折腾 HomeLab，先是用了个电脑搭建了 OMV，直到某天 U 盘系统崩了，于是心一横买了稳定且性能更强的 Synology 920+。
 
-Organizr 当作 application dashboard，Home Assistant 作为家庭自动化中枢，Bitwarden 作为密码管理器，qBittorrent 用来下载，Bazarr 用来寻找字幕，Miniflux 作为 RSS 阅读器。
+这个阶段开始使用 Traefik 做为 Ingress，所有服务有一个中心化的入口，再也不用背各种端口号了。
+
+还引入了一些新服务，Organizr 当作 application dashboard，Home Assistant 作为家庭自动化中枢，Bitwarden 作为密码管理器，qBittorrent 用来下载，Bazarr 用来寻找字幕，Miniflux 作为 RSS 阅读器。
 
 ### 虚拟化 与 K3S
 
@@ -101,6 +100,6 @@ HomeLab 的存在首先是解决了我数据存储方面的问题，现在可用
 
 ## 结语
 
-这个东西真的很好玩，如果对 Self-Hosted 服务或者家庭实验室有兴趣，非常推荐整一个玩玩，当然最好是迭代着来，也许可以从树莓派开始？
+这个东西真的很有趣，如果对 Self-Hosted 服务或者家庭实验室有兴趣，非常推荐整一个玩玩，当然最好是迭代着来，也许可以从树莓派开始？
 
 如果有对本文内容相关问题，欢迎在评论区与我探讨。

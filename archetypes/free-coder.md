@@ -3,7 +3,7 @@ title: "No.{{ replace .Name "free-coder-" ""}}"
 date: {{ .Date }}
 draft: true
 latex: false
-categoies: newslatter
+categories: newslatter
 series: Free Coder
 tags: [] 
 ---
