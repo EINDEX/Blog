@@ -1,7 +1,7 @@
 ---
 title: "My Homelab"
-date: 2022-05-11T14:49:46+08:00
-draft: true
+date: 2022-05-15T23:39:46+08:00
+draft: false
 latex: false
 categoies: HomeLab
 tags: [K3S, Proxmox VE, Self-Hosted, Docker]
