@@ -73,12 +73,11 @@ tags: [K3S, Proxmox VE, Self-Hosted, Docker]
 
 ### 未来
 
-想采购一个更加正规的设备如 HPE MicroServer Gen10 Plus 或其他小型的服务器，来提供更多的性能，满足我对安静且占地小的需求。
+设备方面，想采购一个更加正规的设备如 HPE MicroServer Gen10 Plus 或其他小型的服务器，来提供更多的性能，满足我对安静且占地小的需求。增加一些 AP，提高上网体验。
 
 服务方面，现在正在研究如何合理的托管 Beancount 的 webui Fava，如果不知道啥事 Beancount 可以看这篇[《复式记账工具 Beancount》]({{< ref  "/posts/beancount-introduce" >}})。
 考虑增加一个 8n8,来做服务建的桥梁，减少自己写代码实现的工作量。还期望弄个 code-server，可以随时随地有个可用的开发环境。
-
-增加一个 Clash 服务在 HomeLab 中，能快速的调整上网的规则。
+增加一个 Clash 服务在 HomeLab 中，能快速的调整整个局域网中的上网规则。
 
 ## HomeLab 对我的价值
 
