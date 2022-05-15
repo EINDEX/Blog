@@ -60,10 +60,10 @@ microsoftClarity = 'ao1gr1m9ku'
 googleAnalytics = 'UA-80131414-1'
 
 ## ICP infomation China mainland only
-ICPNumbers = '鄂ICP备15018232号-1'
+ICPNumbers = ''
 
 ## BuSuanZi Visit Counter
-BuSuanZi = true
+BuSuanZi = false
 
 
 ## support type list: github, weibo, twitter, telegram, qq, wechat, website

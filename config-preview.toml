@@ -3,6 +3,7 @@ languageCode = 'cn'
 title = "EINDEX's Blog"
 theme = "qingzhuo"
 
+
 baseURL = "https://blog.xllb.cc:8443"
 
 paginate = 10 # default page size
