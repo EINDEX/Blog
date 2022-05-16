@@ -40,9 +40,6 @@ steps:
 trigger:
   event: 
     - push
-    - promote
-  target:
-    - prod
 
 
 ---
@@ -70,6 +67,3 @@ steps:
 trigger:
   event: 
     - push
-    - promote
-  target:
-    - ipfs
