@@ -23,7 +23,7 @@ steps:
     target: /volume5/k3s-storage/configs/blog-preview
     delete: true
     port: 1022
-    user: eindex
+    user: eindex-admin
     key: 
       from_secret: "EINDEX_SSH_PRIVATE_KEY"
 
@@ -63,7 +63,7 @@ steps:
     target: /volume5/k3s-storage/configs/blog
     delete: true
     port: 1022
-    user: eindex
+    user: eindex-admin
     key:
       from_secret: "EINDEX_SSH_PRIVATE_KEY"
 
