@@ -14,7 +14,7 @@ steps:
   commands: 
     - npm install 
     - hugo -D -b "https://blog.xllb.cc:8443" --enableGitInfo --config config-preview.toml
-    
+
 ---
 kind: pipeline
 type: kubernetes
@@ -31,9 +31,15 @@ steps:
   commands: 
     - npm install 
     - hugo -b "https://eindex.me" --minify --enableGitInfo --config config.toml
+  when:
+    event:
+    - promote
+    target:
+    - prod
 
 trigger:
   event: 
+    - push
     - promote
   target:
     - prod
@@ -55,9 +61,15 @@ steps:
   commands: 
     - npm install 
     - hugo --minify --enableGitInfo --config config-ipfs.toml
+  when:
+    event:
+    - promote
+    target:
+    - ipfs
 
 trigger:
   event: 
+    - push
     - promote
   target:
     - ipfs
