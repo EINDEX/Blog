@@ -1,6 +1,7 @@
+---
 kind: pipeline
 type: kubernetes
-name: Preview
+name: preview
 steps:
 
 - name: submodules
@@ -32,7 +33,7 @@ trigger:
 ---
 kind: pipeline
 type: kubernetes
-name: Release
+name: release
 steps:
 
 - name: submodules
@@ -56,7 +57,7 @@ trigger:
 ---
 kind: pipeline
 type: kubernetes
-name: build image
+name: ipfs-release
 steps:
 
 - name: submodules
