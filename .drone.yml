@@ -14,22 +14,7 @@ steps:
   commands: 
     - npm install 
     - hugo -D -b "https://blog.xllb.cc:8443" --enableGitInfo --config config-preview.toml
-
-- name: deploy
-  image: drillster/drone-rsync
-  settings:
-    hosts: 
-      - 10.0.5.3
-    source: ./public
-    target: ~/packages
-    args: -p 1022
-    key:
-    user: eindex
-
-trigger:
-  target:
-    - preview
-
+    
 ---
 kind: pipeline
 type: kubernetes
