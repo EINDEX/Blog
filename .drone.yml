@@ -15,12 +15,35 @@ steps:
     - npm install 
     - hugo -D -b "https://blog.xllb.cc:8443" --enableGitInfo --config config-preview.toml
 
+- name: deploy
+  image: drillster/drone-rsync
+  settings:
+    hosts: [ "10.0.5.3" ]
+    source: ./public
+    target: /volume5/k3s-storage/configs/blog-preview
+    delete: true
+    port: 1022
+    user: eindex
+    key: 
+      from_secret: "EINDEX_SSH_PRIVATE_KEY"
+
+trigger:
+  event: 
+    - push
+
 ---
 kind: pipeline
 type: kubernetes
 name: release
-steps:
 
+depends_on:
+  - preview
+  
+trigger:
+  event: 
+    - promote
+
+steps:
 - name: submodules
   image: alpine/git
   commands:
@@ -30,40 +53,22 @@ steps:
   image: peaceiris/hugo:latest-full
   commands: 
     - npm install 
-    - hugo -b "https://eindex.me" --minify --enableGitInfo --config config.toml
+    - hugo --minify --enableGitInfo --config config.toml
+
+- name: deploy
+  image: drillster/drone-rsync
+  settings:
+    hosts: [ "10.0.5.3" ]
+    source: ./public
+    target: /volume5/k3s-storage/configs/blog
+    delete: true
+    port: 1022
+    user: eindex
+    key:
+      from_secret: "EINDEX_SSH_PRIVATE_KEY"
+
   when:
     event:
     - promote
     target:
-    - prod
-
-trigger:
-  event: 
-    - push
-
-
----
-kind: pipeline
-type: kubernetes
-name: ipfs-release
-steps:
-
-- name: submodules
-  image: alpine/git
-  commands:
-  - git submodule update --init --recursive
-
-- name: build
-  image: peaceiris/hugo:latest-full
-  commands: 
-    - npm install 
-    - hugo --minify --enableGitInfo --config config-ipfs.toml
-  when:
-    event:
-    - promote
-    target:
-    - ipfs
-
-trigger:
-  event: 
-    - push
+    - release
