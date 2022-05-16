@@ -2,11 +2,17 @@ kind: pipeline
 type: kubernetes
 name: Preview
 steps:
+
+- name: submodules
+  image: alpine/git
+  commands:
+  - git submodule update --init --recursive
+
 - name: build
   image: peaceiris/hugo:latest-full
   commands: 
     - npm install 
-    - hugo -D -b "https://blog.xllb.cc:8443" --minify --enableGitInfo --config config-preview.toml
+    - hugo -D -b "https://blog.xllb.cc:8443" --enableGitInfo --config config-preview.toml
 
 - name: deploy
   image: drillster/drone-rsync
@@ -19,7 +25,6 @@ steps:
     key:
     user: eindex
 
-
 trigger:
   event: 
     - push
@@ -31,6 +36,12 @@ kind: pipeline
 type: kubernetes
 name: Release
 steps:
+
+- name: submodules
+  image: alpine/git
+  commands:
+  - git submodule update --init --recursive
+
 - name: build
   image: peaceiris/hugo:latest-full
   commands: 
@@ -44,20 +55,25 @@ trigger:
     - prod
 
 
+---
+kind: pipeline
+type: kubernetes
+name: build image
+steps:
 
-# ---
-# kind: pipeline
-# type: kubernetes
-# name: build image
-# steps:
-# - name: build
-#   image: peaceiris/hugo:latest-full
-#   commands: 
-#     - npm install 
-#     - hugo -b "ipfs://ipfs.eindex.me" --minify --enableGitInfo --config config-ipfs.toml
+- name: submodules
+  image: alpine/git
+  commands:
+  - git submodule update --init --recursive
 
-# trigger:
-#   event: 
-#     - promote
-#   target:
-#     - ipfs
+- name: build
+  image: peaceiris/hugo:latest-full
+  commands: 
+    - npm install 
+    - hugo --minify --enableGitInfo --config config-ipfs.toml
+
+trigger:
+  event: 
+    - promote
+  target:
+    - ipfs
