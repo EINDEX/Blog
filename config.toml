@@ -63,7 +63,7 @@ googleAnalytics = 'UA-80131414-1'
 ICPNumbers = '鄂ICP备15018232号-1'
 
 ## BuSuanZi Visit Counter
-BuSuanZi = true
+BuSuanZi = false
 
 
 ## support type list: github, weibo, twitter, telegram, qq, wechat, website

@@ -74,6 +74,3 @@ draft: false
 本站是由静态博客生成器 hugo 驱动和我自己基于 tailwindcss 开发的 qingzhuo 主题实现的。
 
 本站托管于腾讯云，使用了腾讯云CDN。
-
-### 访问数据
-本站总访问量 <span id="busuanzi_value_site_pv"></span> 次，总访客数 <span id="busuanzi_value_site_uv"></span> 人。
