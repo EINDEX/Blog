@@ -65,20 +65,23 @@ ICPNumbers = ''
 BuSuanZi = false
 
 
-## support type list: github, weibo, twitter, telegram, qq, wechat, website
-## support link or value
+## support font awesome
 [[params.socialaccount]]
 link = 'https://github.com/eindex'
-type = 'github'
+icon = 'fab fa-github'
+label = 'Github'
 [[params.socialaccount]]
 link = 'https://twitter.com/eindex_li'
-type = 'twitter'
+icon = 'fab fa-twitter'
+label = 'Twitter'
 [[params.socialaccount]]
 link = 'https://t.me/eindex'
-type = 'telegram'
+icon = 'fab fa-telegram'
+label = 'Telegram'
 [[params.socialaccount]]
 link = 'mailto:eindex.me@outlook.com'
-type = 'email'
+icon = 'fas fa-envelope'
+label = 'Email'
 
 ## Giscus
 [params.giscus]
