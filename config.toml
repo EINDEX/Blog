@@ -1,5 +1,6 @@
 
-languageCode = 'cn'
+languageCode = 'zh-cn'
+DefaultContentLanguage = 'zh-cn'
 title = "EINDEX's Blog"
 theme = "qingzhuo"
 
@@ -8,9 +9,7 @@ baseURL = "https://eindex.me"
 paginate = 10 # default page size
 
 hasCJKLanguage = true # CJK support
-summaryLength = 100 # default summary length
-
-disableKinds = ['taxonomy', 'term']
+summaryLength = 70 # default summary length
 
 [taxonomies]
   category = 'categories'
@@ -35,11 +34,13 @@ url = "/about/"
 weight = -1
 
 [[menu.navbar]]
+identifier = "links"
 name = "友链"
 url = "/links/"
 weight = -2
 
 [[menu.navbar]]
+identifier = "archive"
 name = "归档"
 url = "/archive/"
 weight = -3

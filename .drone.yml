@@ -15,18 +15,6 @@ steps:
     - npm install 
     - hugo -D -b "https://blog.xllb.cc:8443" --enableGitInfo --config config-preview.toml
 
-- name: deploy
-  image: drillster/drone-rsync
-  settings:
-    hosts: [ "10.0.5.3" ]
-    source: ./public
-    target: /volume5/k3s-storage/configs/blog-preview
-    delete: true
-    port: 1022
-    user: eindex-admin
-    key: 
-      from_secret: "EINDEX_SSH_PRIVATE_KEY"
-
 trigger:
   event: 
     - push
@@ -55,17 +43,6 @@ steps:
     - npm install 
     - hugo --minify --enableGitInfo --config config.toml
 
-- name: deploy
-  image: drillster/drone-rsync
-  settings:
-    hosts: [ "10.0.5.3" ]
-    source: ./public
-    target: /volume5/k3s-storage/configs/blog
-    delete: true
-    port: 1022
-    user: eindex-admin
-    key:
-      from_secret: "EINDEX_SSH_PRIVATE_KEY"
 
   when:
     event:
