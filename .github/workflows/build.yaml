@@ -1,4 +1,4 @@
-name: Build Blog on Github Pages
+name: Build Blog
 
 on:
   push:
@@ -7,6 +7,53 @@ on:
 jobs:
   build:
     runs-on: ubuntu-20.04
+    environment: preview
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: true
+
+    - name: Setup Hugo
+      uses: peaceiris/actions-hugo@v2
+      with:
+        hugo-version: 'latest'
+        extended: true
+
+    - name: Setup Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+
+    - name: Cache dependencies
+      uses: actions/cache@v2
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+
+    - name: Fetch npm packages
+      run: npm ci
+
+    - name: build site
+      run: hugo --minify --enableGitInfo --config config.toml
+
+    - name: Publish
+      uses: peaceiris/actions-gh-pages@v3
+      if: github.ref == 'refs/heads/main'
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./public
+        user_name: 'github-actions[bot]'
+        user_email: 'github-actions[bot]@users.noreply.github.com'
+        publish_branch: preview
+
+  release:
+    runs-on: ubuntu-20.04
+    environment: prod
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
 
