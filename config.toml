@@ -11,6 +11,9 @@ paginate = 10 # default page size
 hasCJKLanguage = true # CJK support
 summaryLength = 70 # default summary length
 
+## Google Analytics
+GoogleAnalytics = 'G-SR36ZS0R52'
+
 [taxonomies]
   category = 'categories'
   series = 'series'
@@ -56,8 +59,7 @@ baiduAnalytics = ''
 ## Microsoft clarify
 microsoftClarity = 'ao1gr1m9ku'
 
-## Google Analytics
-googleAnalytics = 'UA-80131414-1'
+
 
 ## ICP infomation China mainland only
 ICPNumbers = '鄂ICP备15018232号-1'
