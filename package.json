@@ -1,0 +1,27 @@
+{
+  "scripts": {
+    "clean": "rimraf public && rimraf static/css",
+    "initcss": "node initcss.js",
+    "start": "TAILWIND_MODE=watch NODE_ENV=development npm-run-all clean initcss --parallel dev:*",
+    "dev:postcss": "postcss styles.scss -o ./static/css/index.css --config ./postcss.config.js -w",
+    "dev:serve": "zola serve --drafts",
+    "build": "NODE_ENV=production npm-run-all clean prod:postcss prod:build",
+    "prod:postcss": "postcss styles.scss -o ./static/css/index.css --config ./postcss.config.js",
+    "prod:build": "zola build"
+  },
+  "dependencies": {
+    "@tailwindcss/typography": "^0.5.4",
+    "autoprefixer": "^10.4.7",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.14",
+    "postcss-cli": "^10.0.0",
+    "postcss-import": "^14.1.0",
+    "postcss-scss": "^4.0.4",
+    "rimraf": "^3.0.2",
+    "tailwindcss": "^3.1.6"
+  },
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^6.1.1",
+    "postcss-nesting": "^10.1.10"
+  }
+}

@@ -1,0 +1,18 @@
+{% extends "_default/base.html" %}
+
+{% block content %}
+
+  <ul class="posts">
+    <article>
+        <section class="header">
+            <section class="title-area">
+                <h1 class="title">{{ term.name }}</h1>
+            </section>
+        </section>
+    </article>
+    {% for page in term.pages %}
+    {% include "posts/supports/li.html" %}
+    {% endfor %}
+  </ul>
+  
+{% endblock %}

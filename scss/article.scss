@@ -1,0 +1,109 @@
+
+.title-area {
+    @apply flex flex-col justify-center items-center mb-2 pt-2;
+
+    .title {
+        @apply text-4xl font-medium pt-1;
+    }
+
+    .series {
+        @apply text-base m-0 italic;
+    }
+
+}
+
+.meta-area {
+    @apply flex flex-row text-sm justify-center items-center gap-2;
+}
+
+
+
+code {
+    font-family: monospace, 'PingFang SC', 'WenQuanYi Micro Hei', 'Microsoft Yahei', 'Arial', 'San Francisco';
+}
+
+article  {
+    @apply flex flex-col gap-4 w-full p-4 rounded-lg shadow-md bg-white divide-y divide-dashed;
+
+    .comments {
+        @apply pt-4;
+    }
+
+    .main {
+        @apply text-gray-800 prose prose-gray max-w-full w-full min-w-full py-2;
+        .warning {
+            @apply border-yellow-400 border-l-4 px-4 py-2 bg-yellow-200 font-medium italic text-yellow-900;
+        }    
+
+        a {
+            @apply italic mx-1 min-w-fit;
+        }
+        
+        * code:where(:not(pre)) {
+            font-family: 'Jetbrains Mono';
+            @apply rounded-sm px-1 bg-gray-100;
+        }
+
+        pre code {
+            @apply bg-transparent
+        }
+
+        code::before {
+            content: ' ';
+        }
+
+        code::after {
+            content: ' ';
+        }
+
+    }
+    .taxonomy-list {
+        @apply prose pt-2 pb-0 w-full min-w-full;
+        .title{
+            @apply mb-2;
+        }
+        a {
+            @apply no-underline;
+        }
+        .more {
+            @apply italic text-sm;
+        }
+    }
+
+    .post-list {
+        @apply prose prose-gray;
+
+    }
+
+    .post-footer {
+        @apply flex w-full max-w-full prose prose-gray flex-col pt-2 gap-2;
+        .tags {
+            @apply self-center leading-4 justify-center justify-self-center items-center text-base;
+        }
+        .tag {
+            @apply text-sm m-0 prose-gray self-center italic;
+            a {
+                @apply no-underline;
+            }
+        }   
+        .tag::before {
+            content: "#";
+        }
+        
+        .prev-next {
+            @apply flex flex-row self-center justify-between w-6/12 items-center;
+            .prev {
+                @apply text-sm;
+            }
+            .next {
+                @apply text-sm;
+            }
+            a {
+                @apply no-underline;
+            }
+        }
+    }
+    
+  
+    
+}

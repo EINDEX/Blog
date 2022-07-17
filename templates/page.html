@@ -1,0 +1,21 @@
+{% extends "_default/base.html" %}
+
+{% block content %}
+  <article data-clarity-region="article">
+    {% include "posts/supports/post-header.html" %}
+    <section class="main">
+        {% include "partials/plugins/expire-warning.html" %}
+        {{ page.content | safe }}
+    </section>
+    <section class="post-footer">
+        {# {{- partial "prev-next-page.html" . -}} #}
+        {% include "partials/plugins/tag-list.html" %}
+    </section>
+    {% if config.extra.giscus %}
+    <section class="comments">
+        {% include "partials/plugins/giscus.html" %}
+    </section>
+    {% endif %}
+</article>
+
+{% endblock content %}

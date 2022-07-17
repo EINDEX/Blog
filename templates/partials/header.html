@@ -1,0 +1,21 @@
+<nav class="navbar">
+    <ul class="items">
+      <li>
+        <a class="site-link" href="{{ config.base_url }}"><img
+            class="avatar"
+            src="/images/avatar.png"
+            alt="Workflow"
+        /><span class="site-name">{{ config.title }}</span></a>
+      </li>
+      <li class="delimiter"></li>
+      {% for menu in config.extra.menu.navbar %}
+      <li class="button">
+        <a
+          href="{{ get_url(path="@/" ~ menu.url ~ ".md") }}"
+          >{{ menu.name }}</a
+        >
+      </li>
+      {% endfor %}
+    </ul>
+</nav>
+

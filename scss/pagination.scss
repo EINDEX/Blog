@@ -1,0 +1,30 @@
+.pagination {
+    @apply flex w-3/4 flex-row self-center justify-between max-w-6xl my-4;
+
+    .item {
+        @apply flex flex-row content-center min-w-fit;
+
+
+        .button {
+            min-width: 4rem;
+            @apply text-gray-700 hover:bg-gray-700 hover:text-white px-2 py-2 rounded-md text-sm font-medium text-center;
+        }
+
+        .disabled {
+            @apply hidden;
+        }
+
+        .hide {
+            @apply sm:hidden;
+        }
+
+
+    }
+
+    .item--current  {
+        .button {
+            @apply bg-gray-700 text-white;
+        }
+    }
+
+}

@@ -1,0 +1,92 @@
+# The URL the site will be built for
+base_url = "https://eindex.me"
+
+title = "EINDEX's Blog"
+description = ""
+default_language = "cn"
+
+taxonomies = [
+    {name = "series", feed = true},
+    {name = "tags"},
+    {name = "categories"},
+]
+minify_html = true
+generate_feed = true
+feed_filename = "feed.xml"
+
+# Configuration of the link checker.
+[link_checker]
+# Skip link checking for external URLs that start with these prefixes
+skip_prefixes = [
+    "@/posts",
+]
+
+[slugify]
+paths = "on"
+taxonomies = "on"
+anchors = "off"
+
+[markdown]
+# Whether to do syntax highlighting
+# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
+highlight_code = true
+# The theme to use for code highlighting.
+highlight_theme = "monokai"
+
+# When set to "true", emoji aliases translated to their corresponding
+# Unicode emoji equivalent in the rendered Markdown files. (e.g.: :smile: => 😄)
+render_emoji = true
+[extra]
+# Put all your custom variables here
+
+avatar = "feed"
+## ICP infomation China mainland only
+icpNumber = "鄂ICP备15018232号-1"
+googleTagManager = "GTM-PHCB5V2"
+googleAnalytics = 'G-SR36ZS0R52'
+
+outdateingWarningDays = 60
+
+[extra.giscus]
+repo = "EINDEX/blog"
+repoId = "R_kgDOGWb6Yg"
+categoryId = "DIC_kwDOGWb6Ys4CAKn-"
+
+
+## extra.menus in navbar
+[extra.menu]
+[[extra.menu.navbar]]
+identifier = "archive"
+name = "归档"
+url = "archive"
+[[extra.menu.navbar]]
+identifier = "links"
+name = "友链"
+url = "links"
+[[extra.menu.navbar]]
+identifier = "about"
+name = "关于"
+url = "about"
+
+
+
+
+
+[[extra.socialaccount]]
+link = 'https://github.com/eindex'
+icon = 'fab fa-github'
+label = 'Github'
+[[extra.socialaccount]]
+link = 'https://twitter.com/eindex_li'
+icon = 'fab fa-twitter'
+label = 'Twitter'
+[[extra.socialaccount]]
+link = 'https://t.me/eindex'
+icon = 'fab fa-telegram'
+label = 'Telegram'
+[[extra.socialaccount]]
+link = 'mailto:eindex.me@outlook.com'
+icon = 'fas fa-envelope'
+label = 'Email'
+
+

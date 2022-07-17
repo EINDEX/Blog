@@ -1,0 +1,116 @@
+
+body::-webkit-scrollbar {
+    @apply w-1 bg-gray-100;
+}
+
+body::-webkit-scrollbar-thumb {
+    @apply w-1 bg-gray-400 rounded-sm shadow
+}
+
+body {
+    font-family: 'PingFang SC', 'WenQuanYi Micro Hei', 'Microsoft Yahei', 'Arial', 'San Francisco';
+    @apply flex flex-col overscroll-y-none relative items-center justify-around min-w-min bg-gray-100 gap-8;
+
+
+    .content {
+        @apply max-w-6xl flex flex-row sm:flex-col gap-4 sm:px-2 px-4 w-full;
+
+        main {
+            @apply flex flex-col w-9/12 sm:w-full;
+
+            .posts {
+                @apply flex flex-col gap-4;
+            }
+        }
+    
+        aside {
+            @apply flex flex-col w-3/12 sm:w-full gap-4;
+
+            section {
+                @apply  rounded-lg shadow-md bg-white p-4 prose prose-gray prose-a:no-underline ;
+            }
+
+            .affix {
+                @apply flex flex-col top-4 gap-4 sticky sm:static;
+            }
+            .toc {
+                @apply sm:hidden;
+            }
+        
+            h3 {
+                @apply text-lg font-medium;
+            }
+            ul {
+                @apply leading-5 list-outside pl-4;
+            }
+        }
+        
+    }
+    
+    .navbar {
+        @apply flex top-0 z-50 max-h-fit w-full justify-center place-items-center bg-white py-3 shadow-lg px-4;
+    
+        .items {
+            @apply flex flex-row items-center max-w-6xl w-full justify-between space-x-4 max-h-fit;
+            li {
+                .site-link {
+                @apply flex flex-row items-center gap-4 justify-center;
+                }
+
+                .site-name {
+                    @apply text-lg;
+                }
+            }
+            
+
+            .delimiter {
+                @apply grow;
+            }
+    
+            .avatar {
+                @apply h-10 w-10 rounded-lg;
+            }
+            .button  {
+                @apply text-gray-700 hover:bg-gray-700 hover:text-white px-2 py-2 rounded-md text-sm font-medium text-center;
+            }
+        }
+    }
+
+    .footer {
+        @apply flex flex-col w-full space-y-2 justify-center items-center pb-4 px-4;
+    
+        .content {
+            @apply pb-2 flex flex-row sm:flex-col sm:w-full sm:h-full sm:space-x-4 max-w-6xl w-full justify-between sm:items-center space-x-4;
+
+            .item {
+                @apply flex sm:h-full flex-row space-x-4 justify-center items-center;
+    
+                .avatar {
+                    @apply flex-auto rounded-xl h-32 w-32;
+                }
+    
+                .links {
+                    @apply flex flex-col h-full leading-4 text-sm justify-evenly space-y-4;
+                }
+            }
+        }
+    
+        .powered-by {
+            @apply text-sm text-gray-700;
+        }
+        .rss {
+            @apply text-sm text-gray-700;
+        }
+    
+        .icp {
+            @apply flex flex-row h-4 items-center space-x-4 text-sm text-gray-600;
+
+            img {
+                @apply h-4 w-4;
+            }
+        }
+        .webring {
+            @apply text-sm text-gray-700 items-center;
+        }
+    }
+}
