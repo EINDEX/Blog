@@ -16,7 +16,7 @@ jobs:
       with:
         submodules: true
 
-    - run: snap install zola --edge
+    - run: sudo snap install zola --edge
 
     - name: Setup Node
       uses: actions/setup-node@v3
@@ -58,7 +58,7 @@ jobs:
       with:
         submodules: true
 
-    - run: snap install zola --edge
+    - run: sudo snap install zola --edge
 
     - name: Setup Node
       uses: actions/setup-node@v3
