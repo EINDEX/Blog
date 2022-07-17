@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-20.04
     environment: preview
     concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
+      group: ${{ github.workflow }}-${{ github.ref }}-build
 
     steps:
     - uses: actions/checkout@v3
@@ -50,7 +50,7 @@ jobs:
     runs-on: ubuntu-20.04
     environment: prod
     concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
+      group: ${{ github.workflow }}-${{ github.ref }}-release
 
     steps:
     - uses: actions/checkout@v3
