@@ -35,7 +35,11 @@ jobs:
       run: npm ci
 
     - name: build site
-      run: npm run build
+      env:
+        PREVIEW_SITE: ${{ secrets.PREVIEW_SITE }}
+      run: |
+        npm run prod:postcss
+        zola build -u $PREVIEW_SITE --drafts
 
     - name: Publish
       uses: peaceiris/actions-gh-pages@v3
@@ -78,13 +82,8 @@ jobs:
       run: npm ci
 
     - name: build site
-      env:
-        PREVIEW_SITE: ${{ secrets.PREVIEW_SITE }}
-      run: |
-        npm run prod:postcss
-        zola build -u $PREVIEW_SITE --drafts
+      run: npm run build
         
-
     - name: Publish
       uses: peaceiris/actions-gh-pages@v3
       with:
