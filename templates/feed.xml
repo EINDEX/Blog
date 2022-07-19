@@ -11,7 +11,8 @@
   <item>
     <title>{{post.title}}</title>
     <link>{{ post.permalink }}</link>
-    <pubDate></pubDate>
+    <pubDate>{{ post.date | date(format="%a, %d %b %Y %H:00:00 %z", timezone="Asia/Shanghai") }}</pubDate>
+    <guid>{{ post.permalink }}</guid>
     <description>{{ post.summary }}</description>
   </item>
   {% endfor %}
