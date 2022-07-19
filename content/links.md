@@ -8,7 +8,7 @@ template: "posts/page.html"
 
 ## 友链
 
-- [未央](https://dao1314.com/) 在 TW 遇到的爱好一致的朋友。
+- [未央](https://www.dao1314.com/) 在 TW 遇到的爱好一致的朋友。
 - [EINDEX's Blog](https://eindex.me) 向往自由的软件行业从业者，爱摄影，懂安全，知 DevSecOps。
 
 ## 推荐
@@ -17,7 +17,6 @@ template: "posts/page.html"
 - [CoolShell](https://coolshell.cn/) 耗子叔的博客给我的计算机生涯提供了太多的帮助。
 - [面向信仰编程](https://draveness.me/) 有深度的博客，尤其是为什么这么设计系列带你由浅入深，非常受用。
 - [GeekPlux](https://geekplux.com/) 记录了他的各种观点，有些还是很有趣的。
-- [EINDEX's Blog](https://eindex.me) 我自己的博客，希望可以和大家多多沟通交流。
 
 # 如何提交友链
 

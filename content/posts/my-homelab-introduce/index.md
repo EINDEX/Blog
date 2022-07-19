@@ -18,7 +18,7 @@ taxonomies:
 
 在 2017 年末，我遇到一个艰难的问题，我有很多设备，小米手机，iPad，MacBook Pro，之前用的 Resilio Sync(原 BTSync)，也需要翻墙才能同步文件。 Google Photos 在墙内的使用体验也日渐下降。
 
-机缘巧合之下，Synology 出现在我的面前。一拍脑袋，搞了一个 Sinology 218+。
+机缘巧合之下，Synology 出现在我的面前。一拍脑袋，搞了一个 Synology 218+。
 
 单纯的我当时只是想同步一下文件，给 MacBook 加上 Time Machine，并没想道这是我和 HomeLab 缘分的开始。
 
