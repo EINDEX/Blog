@@ -42,8 +42,8 @@ render_emoji = true
 avatar = "feed"
 ## ICP infomation China mainland only
 icpNumber = "鄂ICP备15018232号-1"
-googleTagManager = "GTM-PHCB5V2"
-googleAnalytics = 'G-SR36ZS0R52'
+# googleTagManager = "GTM-PHCB5V2"
+# googleAnalytics = 'G-SR36ZS0R52'
 
 outdateingWarningDays = 60
 
