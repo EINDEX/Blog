@@ -39,7 +39,7 @@ jobs:
         PREVIEW_SITE: ${{ secrets.PREVIEW_SITE }}
       run: |
         npm run prod:postcss
-        zola build -u $PREVIEW_SITE --drafts
+        zola -c config.preview.toml build -u $PREVIEW_SITE --drafts 
 
     - name: Publish
       uses: peaceiris/actions-gh-pages@v3
