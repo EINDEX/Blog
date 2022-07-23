@@ -24,7 +24,7 @@ skip_prefixes = [
 [slugify]
 paths = "on"
 taxonomies = "on"
-anchors = "off"
+anchors = "on"
 
 [markdown]
 # Whether to do syntax highlighting

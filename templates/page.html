@@ -16,6 +16,7 @@
         {% include "partials/plugins/giscus.html" %}
     </section>
     {% endif %}
+    {{ macro::backlink(pages=page.backlinks) }}
 </article>
 
 {% endblock content %}
