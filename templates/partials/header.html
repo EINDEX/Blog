@@ -1,9 +1,10 @@
 <nav class="navbar">
     <ul class="items">
       <li>
+        {% set avatar = resize_image( path="/images/avatar.png", op="scale", width=80, height=80 ) %}
         <a class="site-link" href="{{ config.base_url }}"><img
             class="avatar"
-            src="/images/avatar.png"
+            src="{{ avatar.url }}"
             alt="Workflow"
         /><span class="site-name">{{ config.title }}</span></a>
       </li>

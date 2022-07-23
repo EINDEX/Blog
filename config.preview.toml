@@ -10,7 +10,7 @@ taxonomies = [
     {name = "tags"},
     {name = "categories"},
 ]
-minify_html = true
+minify_html = false
 generate_feed = true
 feed_filename = "feed.xml"
 

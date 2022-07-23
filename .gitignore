@@ -1,2 +1,6 @@
 public/
 node_modules
+images
+static/processed_images
+static/css
+.DS_Store
