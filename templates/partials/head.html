@@ -5,8 +5,11 @@
 {% set zolaVer = '0.13.0' %}
 
 <head>
-  <meta name="generator" content="Zola v.{{ zolaVer }} - getzola.org" />
-
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ get_url(path="feed.xml") }}">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <meta name="author" itemprop="author" content="EINDEX">
   {% block title %}
   <title>{% if section.title %}{{ section.title }} &bull; {% endif %}{% if page.title %}{{ page.title }} &bull; {% endif %}{{ config.title }}</title>
   <meta property="og:title" content="{% if section.title %}{{ section.title }} &bull; {% endif %}{% if page.title %}{{ page.title }} &bull; {% endif %}{{ config.title }}" />
@@ -14,7 +17,7 @@
 
   <!-- Required meta tags -->
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
   <!-- **** BEGINNING, favicons **** -->
 
@@ -45,6 +48,8 @@
   <link rel="icon" type="image/png" sizes="{{size}}x{{size}}" href="/favicon-{{size}}.png">
   {% endfor %}
   <link rel="manifest" href="/manifest.json">
+
+  {% include "partials/plugins/seo-head.html" %}
 
   {% include "partials/plugins/google-tag-manager/head.html" %}
   {% include "partials/plugins/google-analytics.html" %}

@@ -13,7 +13,7 @@
     <link>{{ post.permalink }}</link>
     <pubDate>{{ post.date | date(format="%a, %d %b %Y %H:00:00 %z", timezone="Asia/Shanghai") }}</pubDate>
     <guid>{{ post.permalink }}</guid>
-    <description>{{ post.summary }}</description>
+    <description>{{ post.summary }}<br/><a href="{{ post.permalink }}#continue-reading">Continue Reading</a></description>
   </item>
   {% endfor %}
 </channel>
