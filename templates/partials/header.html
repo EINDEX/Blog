@@ -2,7 +2,7 @@
     <ul class="items">
       <li>
         {% set avatar = resize_image( path="/images/avatar.png", op="scale", width=80, height=80 ) %}
-        <a class="site-link" href="{{ config.base_url }}"><img
+        <a class="site-link" href="{{ get_url(path="@/_index.md", lang=lang) }}"><img
             class="avatar"
             src="{{ avatar.url }}"
             alt="Workflow"
@@ -10,12 +10,15 @@
       </li>
       <li class="delimiter"></li>
       {% for menu in config.extra.menu.navbar %}
+      {% if menu.cn_only and lang != 'cn' %}
+      {% else %}
       <li class="button">
         <a
-          href="{{ get_url(path="@/" ~ menu.url ~ ".md") }}"
-          >{{ menu.name }}</a
+          href="{{ get_url(path="@/" ~ menu.label ~ ".md", lang=lang) }}"
+          >{{ trans(key="label_" ~ menu.label, lang=lang) }}</a
         >
       </li>
+      {% endif %}
       {% endfor %}
     </ul>
 </nav>

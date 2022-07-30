@@ -14,3 +14,9 @@
   </section>
 {% endif %}
 {% endmacro backlink %}
+
+
+{% macro set_current_lang() %}
+{% set_global current_lang = lang %}
+
+{% endmacro %}

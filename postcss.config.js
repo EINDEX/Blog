@@ -1,7 +1,9 @@
 const themeDir = __dirname;
 
 module.exports = {    
+    syntax: "postcss-scss",
     plugins: [   
+        // require("stylelint-scss"),
         require('postcss-import')({
             path: [themeDir]
             }), 

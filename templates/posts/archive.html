@@ -1,7 +1,7 @@
 {% extends "_default/base.html" %}
 
 {% block content %}
-{% set posts_section = get_section(path="posts/_index.md") %}
+{% set posts_section = get_section(path="posts/_index" ~ current_lang_suffix ~ ".md") %}
 
 
 <article>

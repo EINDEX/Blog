@@ -1,5 +1,5 @@
 ---
-title: "归档"
+title: "Archive"
 draft: false
 template: "posts/archive.html"
 ---
