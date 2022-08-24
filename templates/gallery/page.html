@@ -1,0 +1,26 @@
+{% extends "_default/base.html" %}
+
+{% block content %}
+  <article data-clarity-region="article">
+    {% include "posts/supports/post-header.html" %}
+    <section class="main">
+        {% include "partials/plugins/expire-warning.html" %}
+        {{ page.content | safe }}
+
+        {% for asset in page.assets %}
+            <img src="{{ asset }}" loading="lazy">
+        {% endfor %}
+    </section>
+    <section class="post-footer">
+        {# {{- partial "prev-next-page.html" . -}} #}
+        {% include "partials/plugins/tag-list.html" %}
+    </section>
+    {% if config.extra.giscus %}
+    <section class="comments">
+        {% include "partials/plugins/giscus.html" %}
+    </section>
+    {% endif %}
+    {{ macro::backlink(pages=page.backlinks) }}
+</article>
+
+{% endblock content %}

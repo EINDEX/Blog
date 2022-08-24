@@ -1,0 +1,16 @@
+{% extends "_default/base.html" %}
+
+
+{% block content %}
+
+<main>
+
+</main>
+
+{{ section.content | safe }}
+
+{% for asset in section.assets %}
+{{ asset }}
+{% endfor %}
+ 
+{% endblock %}

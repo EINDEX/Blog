@@ -1,16 +1,11 @@
 # The URL the site will be built for
 base_url = "https://eindex.me"
 
-title = "EINDEX's Blog"
+
 description = ""
 default_language = "cn"
 
-taxonomies = [
-    {name = "series", feed = true},
-    {name = "tags"},
-    {name = "categories"},
-]
-minify_html = true
+minify_html = false
 generate_feed = true
 feed_filename = "feed.xml"
 
@@ -36,14 +31,45 @@ highlight_theme = "monokai"
 # When set to "true", emoji aliases translated to their corresponding
 # Unicode emoji equivalent in the rendered Markdown files. (e.g.: :smile: => 😄)
 render_emoji = true
+
+
+[languages]
+
+[languages.cn]
+title = "EINDEX's Blog"
+taxonomies = [
+    {name = "series", feed = true},
+    {name = "tags"},
+    {name = "categories"},
+]
+[languages.cn.translations]
+
+
+label_archive = "归档"
+label_links = "友链"
+label_about = "关于"
+
+[languages.en]
+title = "EINDEX's Blog"
+taxonomies = [
+    {name = "series", feed = true},
+    {name = "tags"},
+    {name = "categories"},
+]
+
+
+[languages.en.translations]
+label_archive = "Archive"
+label_links = "Links"
+label_about = "About"
+
 [extra]
 # Put all your custom variables here
-
 ## ICP infomation China mainland only
 # icpNumber = "鄂ICP备15018232号-1"
 # googleTagManager = "GTM-PHCB5V2"
 # googleAnalytics = 'G-SR36ZS0R52'
-clarity = 'ao1gr1m9ku'
+# clarity = 'ao1gr1m9ku'
 
 outdateingWarningDays = 60
 twitter_user = '@eindex_li'
@@ -57,17 +83,15 @@ categoryId = "DIC_kwDOGWb6Ys4CAKn-"
 ## extra.menus in navbar
 [extra.menu]
 [[extra.menu.navbar]]
-identifier = "archive"
+label = "archive"
 name = "归档"
-url = "archive"
 [[extra.menu.navbar]]
-identifier = "links"
+label = "links"
 name = "友链"
-url = "links"
+cn_only = true
 [[extra.menu.navbar]]
-identifier = "about"
+label = "about"
 name = "关于"
-url = "about"
 
 
 

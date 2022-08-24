@@ -1,0 +1,17 @@
+{% extends "_default/base.html" %}
+
+{% block content %}
+
+{% if paginator  %}
+{{ paginator | json_encode }}
+{% endif %}
+
+{% set posts_section = get_section(path="books/_index" ~ current_lang_suffix ~ ".md") %}
+
+  <ul class="posts">
+    {% for page in posts_section.pages %}
+    {% include "books/supports/li.html" %}
+    {% endfor %}
+  </ul>
+
+{% endblock content %}
