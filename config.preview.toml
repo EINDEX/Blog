@@ -89,24 +89,19 @@ categoryId = "DIC_kwDOGWb6Ys4CAKn-"
 [[extra.menu.navbar]]
 label = "books"
 url = "books/_index"
-name = "书"
 [[extra.menu.navbar]]
 label = "gallery"
 url = "gallery/_index"
-name = "相册"
 [[extra.menu.navbar]]
 label = "archive"
 url = "archive"
-name = "归档"
 [[extra.menu.navbar]]
 label = "links"
 url = "links"
-name = "友链"
 cn_only = true
 [[extra.menu.navbar]]
 label = "about"
 url = "about"
-name = "关于"
 
 
 

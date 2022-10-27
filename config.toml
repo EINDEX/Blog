@@ -48,6 +48,8 @@ taxonomies = [
 label_archive = "归档"
 label_links = "友链"
 label_about = "关于"
+label_books = "书"
+label_gallery = "相册"
 
 [languages.en]
 title = "EINDEX's Blog"
@@ -62,6 +64,8 @@ taxonomies = [
 label_archive = "Archive"
 label_links = "Links"
 label_about = "About"
+label_books = "Books"
+label_gallery = "Gallery"
 
 [extra]
 # Put all your custom variables here
@@ -82,14 +86,14 @@ categoryId = "DIC_kwDOGWb6Ys4CAKn-"
 [extra.menu]
 [[extra.menu.navbar]]
 label = "archive"
-name = "归档"
+url = "archive"
 [[extra.menu.navbar]]
 label = "links"
-name = "友链"
+url = "links"
 cn_only = true
 [[extra.menu.navbar]]
 label = "about"
-name = "关于"
+url = "about"
 
 
 
