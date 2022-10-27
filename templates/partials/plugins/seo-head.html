@@ -21,32 +21,33 @@
 <meta name="twitter:image" content="{% if page.image %}{{ page.image }}{% else %}{{get_url(path="/images/avatar.png")}}{% endif %}">
 
 <script type="application/ld+json">
-    {
-      "@context": "https://schema.org/",
-      "@type": "BlogPosting",
-      {%if page.title%}"headline": "{{ page.title }}",{%endif %}
-      "image": "{% if page.image %}{{ page.image }}{% else%}{{get_url(path="/images/avatar.png")}}{% endif %}",
-      {% if page.permalink %}
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "{{ page.permalink | safe }}"
-      },
-      {% endif %}
-      {% if page.date %}"datePublished": "{{ page.date | date(timezone="Asia/Shanghai") }}",{% endif %}
-      {% if page.updated %}"dateModified": "{{ page.updated | date(timezone="Asia/Shanghai") }}",{% endif %}
-      {% if page.description %}"description": "{{ page.description }}",{% endif %}
-      "author": {
-        "@type": "Person",
-        "name": "EINDEX",
-        "url": "{{get_url(path="about")}}"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "{{config.title | safe}}",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "{{get_url(path="/images/avatar.png")}}"
-      },
-      "keywords": {{ keywords | json_encode | safe}}
-    }
+{
+  "@context": "https://schema.org/",
+  "@type": "BlogPosting",
+  {%if page.title%}"headline": "{{ page.title }}",{%endif %}
+  "image": "{% if page.image %}{{ page.image }}{% else%}{{get_url(path="/images/avatar.png")}}{% endif %}",
+  {% if page.permalink %}
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ page.permalink | safe }}"
+  },
+  {% endif %}
+  {% if page.date %}"datePublished": "{{ page.date | date(timezone="Asia/Shanghai") }}",{% endif %}
+  {% if page.updated %}"dateModified": "{{ page.updated | date(timezone="Asia/Shanghai") }}",{% endif %}
+  {% if page.description %}"description": "{{ page.description }}",{% endif %}
+  "author": {
+    "@type": "Person",
+    "name": "EINDEX",
+    "url": "{{get_url(path="about")}}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{config.title | safe}}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{get_url(path="/images/avatar.png")}}"
+    },
+    "keywords": {{ keywords | json_encode | safe}}
+  }
+}
 </script>
