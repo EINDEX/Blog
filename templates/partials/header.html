@@ -14,7 +14,7 @@
       {% else %}
       <li class="button">
         <a
-          href="{{ get_url(path="@/" ~ menu.label ~ ".md", lang=lang) }}"
+          href="{{ get_url(path="@/" ~ menu.url ~ ".md", lang=lang) }}"
           >{{ trans(key="label_" ~ menu.label, lang=lang) }}</a
         >
       </li>

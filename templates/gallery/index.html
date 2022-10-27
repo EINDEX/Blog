@@ -10,7 +10,7 @@
 {{ section.content | safe }}
 
 {% for asset in section.assets %}
-{{ asset }}
+{{ asset | json_encode | safe }}
 {% endfor %}
  
 {% endblock %}

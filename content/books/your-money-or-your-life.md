@@ -4,14 +4,11 @@ date: 2022-07-18
 author: 
     - Vicki Robin
     - Joe Dominguez
-
-template: books/page.html
 taxonomies:
     tags:
     - financial-independence
     - financial
     - financial-management
-latex: true
 extra:
     doubian-id: 35611477
 ---

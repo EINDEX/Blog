@@ -1,1 +1,43 @@
 <img src="{{ url | safe }}" {% if alt %} alt="{{alt | safe}}" {% endif %} loading="lazy">
+{% if exif %}
+    {% set exif_url = url ~ ".exif.json" | safe %}
+    {% set exif_data = load_data(url=exif_url, format="json") %}
+    {% set img_info = exif_data['image'] %}
+    {% set img_exif = exif_data['exif'] %}
+    {% set img_gps = exif_data['gps'] %}
+    {# {{ exif_data | json_encode() | safe }} #}
+
+    {# exposure time cal #}
+    {% set exposureTime = img_exif["ExposureTime"] | float %}
+    {% if exposureTime < 1 %}
+    {% set t = 1/exposureTime | int  %}
+    {% set exposureSpan = "1/"~ t ~ " s" %}
+    {% else %}
+    {% set t = exposureTime *10 | int / 10 %}
+    {% set exposureSpan = t ~ " s" %}
+    {% endif %}
+
+    <span><em>{{img_info["Make"]}} {{img_info["Model"]}}</em></span>
+    <span><em>{{img_exif["LensModel"]}}</em></span>
+    <span>ISO <em>{{img_exif["ISO"]}}</em></span>
+    <span><em>f{{img_exif["FNumber"]}}</em></span>
+    <span><em>{{img_exif["FocalLengthIn35mmFormat"]}} mm</em> <em>{{img_exif["FocalLength"]}} mm</em></span>
+    <span><em>{{exposureSpan}}</em></span>
+    <span><em>{{img_exif["DateTimeOriginal"]}}</em> </span>
+
+    {% if img_gps %}
+        {% set lat = img_gps["GPSLatitude"][0] + img_gps["GPSLatitude"][1] /60 + img_gps["GPSLatitude"][2] /3600 %}
+        {% set long = img_gps["GPSLongitude"][0] + img_gps["GPSLongitude"][1] /60 + img_gps["GPSLongitude"][2] /3600 %}
+        <iframe
+            width="450"
+            height="250"
+            frameborder="0" style="border:0"
+            src="https://www.google.com/maps/embed/v1/view?key=AIzaSyAVVYMtIYTHX6SoX1Co00KQwnuGaWjACh0&center={{ lat }},{{ long }}&zoom=17&maptype=satellite"
+            allowfullscreen>
+        </iframe>
+    {% endif %}
+{% endif %}
+
+
+
+
