@@ -3,13 +3,67 @@
 
 {% block content %}
 
+{# {% set pic_list_url = "https://img.eindex.me/pic/pic_list.json" | safe %} #}
+{# {% set pic_list = load_data(url=pic_list_url, format="json") %} #}
+
 <main>
     <article>
         <section class="main">
             <h1 class="huge">{{section.title}}</h1>
-            {{ section.content | safe }}
+                {# {% for pic in pic_list %}
+                    <a href="#/pic/{{pic.filename}}"><img class="thumbnail" src="https://img.eindex.me/pic/{{ pic.thumbnail }}" loading="lazy" /></a>
+                {% endfor %} #}
+            <div class="gallery" id="gallery">Loading...
+                    ${ image }$
+                    <img class="thumbnail" v-for="image in images" :src="image" loading="lazy"/>
+            </div>
         </section>
     </article>
+    <div>
+
+    </div>
 </main>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+
+
+<script>
+    const basePath = "https://img.eindex.me/pic/"
+    const imgList = "pic_list.json"
+  const { createApp } = Vue
+  createApp({
+    
+    data() {
+      return {
+        images: [
+            basePath+ "ac78a631962e39017fbb0d0ff1b2c352.thumbnail.jpg",
+            basePath+ "ac78a631962e39017fbb0d0ff1b2c352.thumbnail.jpg",
+            basePath+ "ac78a631962e39017fbb0d0ff1b2c352.thumbnail.jpg",
+            basePath+ "ac78a631962e39017fbb0d0ff1b2c352.thumbnail.jpg",
+            basePath+ "ac78a631962e39017fbb0d0ff1b2c352.thumbnail.jpg",
+            basePath+ "ac78a631962e39017fbb0d0ff1b2c352.thumbnail.jpg",
+            basePath+ "ac78a631962e39017fbb0d0ff1b2c352.thumbnail.jpg",
+            basePath+ "ac78a631962e39017fbb0d0ff1b2c352.thumbnail.jpg",
+            basePath+ "ac78a631962e39017fbb0d0ff1b2c352.thumbnail.jpg",
+            basePath+ "ac78a631962e39017fbb0d0ff1b2c352.thumbnail.jpg",
+            basePath+ "ac78a631962e39017fbb0d0ff1b2c352.thumbnail.jpg",
+            basePath+ "ac78a631962e39017fbb0d0ff1b2c352.thumbnail.jpg",
+        ]
+      }
+    },
+    async mounted() {
+        const res = await fetch(basePath+imgList, {
+            mode: "no-cors"
+        })
+        console.log(res)
+
+    }
+    , compilerOptions: {
+        delimiters: ["${", "}$"]
+      }
+  }, 
+  ).mount('#gallery')
+
+</script>
 
 {% endblock %}

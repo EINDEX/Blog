@@ -122,6 +122,14 @@ article  {
 
         
     }
+
+    .gallery {
+        @apply flex flex-row flex-wrap gap-4;
+
+        .thumbnail {
+            @apply h-fit max-h-64 w-fit shadow-lg rounded-lg my-0;
+        }
+    }
     
   
     
