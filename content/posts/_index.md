@@ -1,4 +1,4 @@
 ---
 title: "Posts"
-sort_by: "date"
+sort_by: "update_date"
 ---

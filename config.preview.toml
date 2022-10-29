@@ -36,6 +36,7 @@ render_emoji = true
 [languages]
 
 [languages.cn]
+generate_feed = true
 title = "EINDEX's Blog"
 taxonomies = [
     {name = "series", feed = true},
@@ -43,15 +44,15 @@ taxonomies = [
     {name = "categories"},
 ]
 [languages.cn.translations]
-
-
 label_archive = "归档"
 label_links = "友链"
 label_about = "关于"
 label_books = "书"
 label_gallery = "相册"
+label_wiki = "Wiki"
 
 [languages.en]
+generate_feed = true
 title = "EINDEX's Blog"
 taxonomies = [
     {name = "series", feed = true},
@@ -66,6 +67,7 @@ label_links = "Links"
 label_about = "About"
 label_books = "Books"
 label_gallery = "Gallery"
+label_wiki = "Wiki"
 
 [extra]
 # Put all your custom variables here
@@ -74,8 +76,6 @@ label_gallery = "Gallery"
 # googleAnalytics = 'G-SR36ZS0R52'
 # clarity = 'ao1gr1m9ku'
 # adsense = "ca-pub-1265138627025369"
-
-outdateingWarningDays = 60
 twitter_user = '@eindex_li'
 
 [extra.giscus]
@@ -87,25 +87,15 @@ categoryId = "DIC_kwDOGWb6Ys4CAKn-"
 ## extra.menus in navbar
 [extra.menu]
 [[extra.menu.navbar]]
-label = "books"
-url = "books/_index"
+label = "wiki"
+url = "https://wiki.eindex.me"
+external = true
 [[extra.menu.navbar]]
 label = "gallery"
 url = "gallery/_index"
 [[extra.menu.navbar]]
 label = "archive"
 url = "archive"
-[[extra.menu.navbar]]
-label = "links"
-url = "links"
-cn_only = true
-[[extra.menu.navbar]]
-label = "about"
-url = "about"
-
-
-
-
 
 [[extra.socialaccount]]
 link = 'https://github.com/eindex'

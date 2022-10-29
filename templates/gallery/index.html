@@ -4,13 +4,12 @@
 {% block content %}
 
 <main>
-
+    <article>
+        <section class="main">
+            <h1 class="huge">{{section.title}}</h1>
+            {{ section.content | safe }}
+        </section>
+    </article>
 </main>
 
-{{ section.content | safe }}
-
-{% for asset in section.assets %}
-{{ asset | json_encode | safe }}
-{% endfor %}
- 
 {% endblock %}

@@ -2,14 +2,19 @@
 
 {% set_global current_lang = lang %}
 {% set_global current_lang_suffix = "" %}
-{% if current_lang != config.default_language %}
-  {% set_global current_lang_suffix = "." ~ current_lang  %}
+{% if current_lang != "cn" %}
+  {% set_global another_lang_suffix = ""   %}
+  {% set_global current_lang_suffix = ".en"  %}
+{% else %}
+  {% set_global another_lang_suffix = ".en"   %}
+  {% set_global current_lang_suffix = ""  %}
 {% endif %}
 
 <!DOCTYPE html>
 <html lang="en" charset="utf-8">
   {% include "partials/head.html" %}
   <body>
+    <div class="all">
     {% include "partials/header.html" %}
     <div class="content">
         <main>
@@ -20,6 +25,7 @@
         </aside>
     </div>
     {% include "partials/footer.html" %}
+  </div>
   </body>
   {% include "partials/scripts.html" %}
 </html>

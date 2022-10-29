@@ -72,8 +72,6 @@ label_gallery = "Gallery"
 ## ICP infomation China mainland only
 clarity = 'ao1gr1m9ku'
 adsense = "ca-pub-1265138627025369"
-
-outdateingWarningDays = 60
 twitter_user = '@eindex_li'
 
 [extra.giscus]

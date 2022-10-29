@@ -4,7 +4,6 @@
   <article data-clarity-region="article">
     {% include "posts/supports/post-header.html" %}
     <section class="main">
-        {% include "partials/plugins/expire-warning.html" %}
         {{ page.content | safe }}
 
         {% for asset in page.assets %}
@@ -12,7 +11,6 @@
         {% endfor %}
     </section>
     <section class="post-footer">
-        {# {{- partial "prev-next-page.html" . -}} #}
         {% include "partials/plugins/tag-list.html" %}
     </section>
     {% if config.extra.giscus %}

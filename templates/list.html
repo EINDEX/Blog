@@ -2,10 +2,6 @@
 
 {% block content %}
 
-{% if paginator  %}
-{{ paginator | json_encode }}
-{% endif %}
-
 {% set posts_section = get_section(path="posts/_index" ~ current_lang_suffix ~ ".md") %}
 
   <ul class="posts">

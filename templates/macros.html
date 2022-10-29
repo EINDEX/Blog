@@ -20,3 +20,11 @@
 {% set_global current_lang = lang %}
 
 {% endmacro %}
+
+{% macro date_format(datetime, lang) %}
+{% if lang == "cn"%}
+  {{ datetime | date(format="%F") }}
+{% else %}
+  {{ datetime | date(format="%e %h, %Y") }}
+{% endif %}
+{% endmacro date_format %}

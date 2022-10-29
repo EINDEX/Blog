@@ -1,25 +1,30 @@
-<nav class="navbar">
-    <ul class="items">
-      <li>
-        {% set avatar = resize_image( path="/images/avatar.png", op="scale", width=80, height=80 ) %}
-        <a class="site-link" href="{{ get_url(path="@/_index.md", lang=lang) }}"><img
-            class="avatar"
-            src="{{ avatar.url }}"
-            alt="Workflow"
-        /><span class="site-name">{{ config.title }}</span></a>
-      </li>
-      <li class="delimiter"></li>
-      {% for menu in config.extra.menu.navbar %}
-      {% if menu.cn_only and lang != 'cn' %}
-      {% else %}
-      <li class="button">
-        <a
-          href="{{ get_url(path="@/" ~ menu.url ~ ".md", lang=lang) }}"
-          >{{ trans(key="label_" ~ menu.label, lang=lang) }}</a
-        >
-      </li>
-      {% endif %}
-      {% endfor %}
-    </ul>
-</nav>
+<header>
+  <nav class="navbar">
+    <div class="avatar">
+      {% set avatar = resize_image( path="/images/avatar.png", op="scale", width=40, height=40 ) %}
+      <a class="site-link" href="{{ get_url(path="@/_index.md", lang=lang) }}"><img
+        class="avatar"
+        src="{{ avatar.url }}"
+        alt="Workflow"
+    /></a>
+  </div>
+  <div class="menus">
+    {% for menu in config.extra.menu.navbar %}
+    {% if menu.cn_only and lang != 'cn' %}
+    {% else %}
+      <a
+        href="{% if menu.external %}{{ menu.url }}{% else %}{{ get_url(path="@/" ~ menu.url ~ ".md", lang=lang) }}{% endif %}"
+        >{{ trans(key="label_" ~ menu.label, lang=lang) }}</a
+      >
+    {% endif %}
+    {% endfor %}
+  </div>
+    
+    <div class="switcher">
+      {# <a class="search"><iconify-icon icon="bx:search"></iconify-icon></a> #}
+      <a class="language switch"href = "{{ get_url(path="@/_index"~ another_lang_suffix ~ ".md") }}">{% if lang == "cn" %}<iconify-icon icon="ri:english-input">{% else %}</iconify-icon><iconify-icon icon="uil:letter-chinese-a">{% endif %}</iconify-icon></a>
+      {# <a class="drak-mode"><iconify-icon icon="bx:moon"></iconify-icon><iconify-icon icon="bx:sun"></iconify-icon></a> #}
+    </div>
+  </nav>
+</header>
 

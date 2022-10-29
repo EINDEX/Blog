@@ -1,0 +1,39 @@
+.photo-container{
+
+    @apply grid grid-cols-2 flex-col gap-1 py-4 items-center rounded-lg;
+    grid-template-rows: min-content;
+
+    .photo {
+        @apply flex justify-center items-center col-span-2 overflow-hidden bg-gray-500 rounded-lg shadow-lg;
+        max-height: 48rem;
+        img {
+            @apply object-cover w-fit h-fit;
+            max-height: 48rem;
+        }
+    }
+
+    .message {
+        @apply h-full justify-self-center col-span-2 text-gray-700;
+    }
+
+        
+    .info {
+        @apply flex flex-col justify-start text-sm text-gray-500 gap-2;
+        span {
+            @apply flex items-center gap-1;
+        }
+        .exif {
+            @apply flex flex-row min-w-max content-between gap-1 flex-nowrap;
+        }
+        
+    }
+    .map-container {
+        @apply h-full w-full rounded-xl;
+        .map {
+            @apply h-full w-full rounded-xl;
+        }
+    }
+    
+    
+}
+
