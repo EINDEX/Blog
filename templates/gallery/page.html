@@ -5,19 +5,11 @@
     {% include "posts/supports/post-header.html" %}
     <section class="main">
         {{ page.content | safe }}
-
-        {% for asset in page.assets %}
-            <img src="{{ asset }}" loading="lazy">
-        {% endfor %}
     </section>
     <section class="post-footer">
         {% include "partials/plugins/tag-list.html" %}
     </section>
-    {% if config.extra.giscus %}
-    <section class="comments">
-        {% include "partials/plugins/giscus.html" %}
-    </section>
-    {% endif %}
+    {% include "partials/plugins/giscus.html" %}
     {{ macro::backlink(pages=page.backlinks) }}
 </article>
 

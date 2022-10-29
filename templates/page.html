@@ -10,11 +10,7 @@
         {# {{- partial "prev-next-page.html" . -}} #}
         {% include "partials/plugins/tag-list.html" %}
     </section>
-    {% if config.extra.giscus %}
-    <section class="comments">
-        {% include "partials/plugins/giscus.html" %}
-    </section>
-    {% endif %}
+    {% include "partials/plugins/giscus.html" %}
     {{ macro::backlink(pages=page.backlinks) }}
 </article>
 
