@@ -1,6 +1,5 @@
 {% if page.taxonomies.tags %}
 <div class="tags">
-    <i class="fa-solid fa-tags"></i>
     {% for tag in page.taxonomies.tags %}
         <span class="tag"><a href="{% set categories_url = get_taxonomy_url(kind="tags", name=tag) %}">{{ tag }}</a></span>
     {% endfor %}

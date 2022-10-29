@@ -97,21 +97,3 @@ url = "gallery/_index"
 label = "archive"
 url = "archive"
 
-[[extra.socialaccount]]
-link = 'https://github.com/eindex'
-icon = 'fab fa-github'
-label = 'Github'
-[[extra.socialaccount]]
-link = 'https://twitter.com/eindex_li'
-icon = 'fab fa-twitter'
-label = 'Twitter'
-[[extra.socialaccount]]
-link = 'https://t.me/eindex'
-icon = 'fab fa-telegram'
-label = 'Telegram'
-[[extra.socialaccount]]
-link = 'mailto:eindex.me@outlook.com'
-icon = 'fas fa-envelope'
-label = 'Email'
-
-

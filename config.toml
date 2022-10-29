@@ -5,7 +5,7 @@ base_url = "https://eindex.me"
 description = ""
 default_language = "cn"
 
-minify_html = false
+minify_html = true
 generate_feed = true
 feed_filename = "feed.xml"
 
@@ -36,6 +36,7 @@ render_emoji = true
 [languages]
 
 [languages.cn]
+generate_feed = true
 title = "EINDEX's Blog"
 taxonomies = [
     {name = "series", feed = true},
@@ -43,15 +44,15 @@ taxonomies = [
     {name = "categories"},
 ]
 [languages.cn.translations]
-
-
 label_archive = "归档"
 label_links = "友链"
 label_about = "关于"
 label_books = "书"
 label_gallery = "相册"
+label_wiki = "Wiki"
 
 [languages.en]
+generate_feed = true
 title = "EINDEX's Blog"
 taxonomies = [
     {name = "series", feed = true},
@@ -66,6 +67,7 @@ label_links = "Links"
 label_about = "About"
 label_books = "Books"
 label_gallery = "Gallery"
+label_wiki = "Wiki"
 
 [extra]
 # Put all your custom variables here
@@ -92,26 +94,3 @@ cn_only = true
 [[extra.menu.navbar]]
 label = "about"
 url = "about"
-
-
-
-
-
-[[extra.socialaccount]]
-link = 'https://github.com/eindex'
-icon = 'fab fa-github'
-label = 'Github'
-[[extra.socialaccount]]
-link = 'https://twitter.com/eindex_li'
-icon = 'fab fa-twitter'
-label = 'Twitter'
-[[extra.socialaccount]]
-link = 'https://t.me/eindex'
-icon = 'fab fa-telegram'
-label = 'Telegram'
-[[extra.socialaccount]]
-link = 'mailto:eindex.me@outlook.com'
-icon = 'fas fa-envelope'
-label = 'Email'
-
-
