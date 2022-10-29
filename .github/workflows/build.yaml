@@ -2,7 +2,7 @@ name: Build Blog
 
 on:
   push:
-    branches: [ main, zola ]
+    branches: [ main ]
 
 jobs:
   build:
