@@ -14,7 +14,7 @@ Welcome connect me via those method:
 [<iconify-icon icon="bxl:twitter"></iconify-icon>](https://twitter.com/eindex_li)
 [<iconify-icon icon="bxl:github"></iconify-icon>](https://github.com/eindex)
 [<iconify-icon icon="bxl:telegram"></iconify-icon>](https://t.me/eindex)
-[<iconify-icon icon="bx:at"></iconify-icon>](eindex.me@outlook.com)
+[<iconify-icon icon="bx:at"></iconify-icon>](mailto:eindex.me@outlook.com)
 [<iconify-icon icon="cib:keybase"></iconify-icon>](https://keybase.io/eindexli)
 
 ---
