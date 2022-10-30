@@ -18,17 +18,17 @@
   </head>
   <body>
     <div class="all">
-    {% include "partials/header.html" %}
-    <div class="content">
-        <main>
-            {% block content %}{% endblock %}
-        </main>
-        <aside>
-            {% block aside %}{% endblock %}
-        </aside>
+      {% include "partials/header.html" %}
+      <div class="content">
+          <main>
+              {% block content %}{% endblock %}
+          </main>
+          <aside>
+              {% block aside %}{% endblock %}
+          </aside>
+      </div>
+      {% include "partials/footer.html" %}
     </div>
-    {% include "partials/footer.html" %}
-  </div>
   </body>
   {% include "partials/scripts.html" %}
   {% block script %}{% endblock %}

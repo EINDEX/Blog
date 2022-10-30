@@ -573,7 +573,9 @@ body .all {
   width: 100%;
   margin-left: 1rem;
   margin-right: 1rem;
+  display: flex;
   max-width: 72rem;
+  flex-direction: column;
   place-self: center;
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));

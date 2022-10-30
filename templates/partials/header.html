@@ -21,9 +21,7 @@
   </div>
     
     <div class="switcher">
-      {# <a class="search"><iconify-icon icon="bx:search"></iconify-icon></a> #}
-      <a class="language switch"href = "{{ get_url(path="@/_index"~ another_lang_suffix ~ ".md") }}">{% if lang == "cn" %}<iconify-icon icon="ri:english-input">{% else %}</iconify-icon><iconify-icon icon="uil:letter-chinese-a">{% endif %}</iconify-icon></a>
-      {# <a class="drak-mode"><iconify-icon icon="bx:moon"></iconify-icon><iconify-icon icon="bx:sun"></iconify-icon></a> #}
+      <a class="language switch"href = "{{ get_url(path="@/_index"~ another_lang_suffix ~ ".md") }}">{% if lang == "cn" %}<iconify-icon icon="ri:english-input"></iconify-icon>{% else %}<iconify-icon icon="uil:letter-chinese-a"></iconify-icon>{% endif %}</a>
     </div>
   </nav>
 </header>

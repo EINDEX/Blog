@@ -1,5 +1,5 @@
 ---
-title: "关于"
+title: "EINDEX's Blog"
 ---
 
 Hello, welcome to my blog, I'm EINDEX.

@@ -1,6 +1,6 @@
 
-<section class="header">
-<section class="title-area">
+<section class="header">  
+  <section class="title-area">
     {% if page.taxonomies.series %}
       {% set series_name = page.taxonomies.series[0] %}
       {% set series_url = get_taxonomy_url(kind="series", name=series_name) %}
@@ -17,7 +17,7 @@
   {% if page.taxonomies.categories %}
     {% set categories_name = page.taxonomies.categories[0] %}
     {% set categories_url = get_taxonomy_url(kind="categories", name=categories_name) %}
-    <span><iconify-icon icon="fluent:mail-inbox-16-regular"></iconify-icon><a class="categories"  href="{{ categories_url }}"></i>{{ categories_name }}</a></span>
+    <span><iconify-icon icon="fluent:mail-inbox-16-regular"></iconify-icon><a class="categories"  href="{{ categories_url }}">{{ categories_name }}</a></span>
   {% endif %}
     <span><iconify-icon icon="bx:time-five"></iconify-icon> {{ page.reading_time }} mins</span>
   </section>

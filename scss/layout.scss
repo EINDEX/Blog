@@ -11,7 +11,7 @@ body {
     @apply flex flex-col container mx-auto overscroll-y-none relative bg-gray-100;
 
     .all {
-        @apply container mx-4 px-8 sm:px-2 max-w-6xl shadow-md place-self-center bg-white;
+        @apply flex flex-col container mx-4 px-8 sm:px-2 max-w-6xl shadow-md place-self-center bg-white;
 
         header {
             @apply flex container py-4 px-4;
