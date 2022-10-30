@@ -12,7 +12,10 @@
 
 <!DOCTYPE html>
 <html lang="en" charset="utf-8">
-  {% include "partials/head.html" %}
+  <head>
+    {% include "partials/head.html" %}
+    {% block head %}{% endblock %}
+  </head>
   <body>
     <div class="all">
     {% include "partials/header.html" %}
@@ -28,4 +31,5 @@
   </div>
   </body>
   {% include "partials/scripts.html" %}
+  {% block script %}{% endblock %}
 </html>

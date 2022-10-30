@@ -1,19 +1,17 @@
 {% extends "_default/base.html" %}
 
+{% block head %}
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+{% endblock %}
+
 
 {% block content %}
 
-{# {% set pic_list_url = "https://img.eindex.me/pic/pic_list.json" | safe %} #}
-{# {% set pic_list = load_data(url=pic_list_url, format="json") %} #}
-<script src="https://img.eindex.me/pic/pic_list.jsonp" type="application/octet-stream"></script>
 
-<main>
+
     <article>
         <section class="main">
             <h1 class="huge">{{section.title}}</h1>
-                {# {% for pic in pic_list %}
-                    <a href="#/pic/{{pic.filename}}"><img class="thumbnail" src="https://img.eindex.me/pic/{{ pic.thumbnail }}" loading="lazy" /></a>
-                {% endfor %} #}
             <div class="gallery" id="gallery">
                 <h1 v-if="dataReady">Loading...</h1>
                 <a v-for="(image, index) in images" @click="openFullView(index)" :href="hash_url(image.filename)"><img class="thumbnail" :src="full_url(image.thumbnail)" loading="lazy"/></a>
@@ -26,7 +24,6 @@
                       <button @click="go_next"><iconify-icon icon="carbon:next-filled"></iconify-icon></button>
                   </div>
                   <div class="meta">
-                    
                     <div class="info">
                         <span><iconify-icon icon="ant-design:camera-twotone"></iconify-icon> <em>${fullViewImage.camera}$</em></span>
                         <span><iconify-icon icon="ri:camera-lens-line"></iconify-icon> <em>${fullViewImage.lens}$</em></span>
@@ -57,12 +54,10 @@
             
         </section>
     </article>
-    <div>
 
-    </div>
+{% endblock %}
 
-</main>
-<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+{% block script %}
 <script>
   const { createApp } = Vue
   const app = createApp({
@@ -73,6 +68,7 @@
         choosePicIndex: 0,
         fullView: false,
         fullViewSrc: "",
+        fullViewStyle: "",
         thisPic: null,
         lang: "{{lang}}",
       }
@@ -90,7 +86,6 @@
         this.fullViewImage = this.images[index]
         this.fullViewSrc = full_url
         this.fullView = true
-        console.log(full_url)
       },
       google_map_url(image){
         return `https://www.google.com/maps/embed/v1/view?key=AIzaSyAVVYMtIYTHX6SoX1Co00KQwnuGaWjACh0&center=${image.gps_latitude},${image.gps_longitude}&zoom=17&maptype=satellite`
