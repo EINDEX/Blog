@@ -1,38 +1,46 @@
 .photo-container{
 
-    @apply grid grid-cols-2 flex-col gap-1 py-4 items-center rounded-lg;
-    grid-template-rows: min-content;
+    @apply absolute top-0 left-0 h-screen flex sm:flex-col w-full gap-4 bg-gray-200 pr-4 sm:pr-0;
+
+    .exit-button {
+        @apply absolute top-4 right-4 text-4xl text-gray-600
+    }
+
+    
 
     .photo {
-        @apply flex justify-center items-center col-span-2 overflow-hidden bg-gray-500 rounded-lg shadow-lg;
-        max-height: 48rem;
+        @apply flex grow self-center items-center sm:w-full justify-between h-full max-h-screen w-4/5 bg-gray-300 shadow-lg px-4 sm:px-0;
         img {
-            @apply object-cover w-fit h-fit;
-            max-height: 48rem;
+            @apply max-h-screen h-fit;
+            max-width: 90%;
+        }
+        button {
+            @apply text-4xl text-gray-600
         }
     }
+    .meta {
+        @apply flex flex-col w-1/5 items-center justify-center gap-4 py-4;
 
-    .message {
-        @apply h-full justify-self-center col-span-2 text-gray-700;
-    }
+        .info {
+            @apply flex flex-col justify-center text-sm text-gray-700 gap-2;
+            span {
+                @apply flex items-center gap-1;
+            }
+            .exif {
+                @apply flex flex-row min-w-max content-between gap-1 flex-nowrap;
+            }
+            
+        }
+        .map-container {
+            @apply rounded-xl;
+            .map {
+                @apply h-full w-full rounded-xl;
+            }
+        }
 
-        
-    .info {
-        @apply flex flex-col justify-start text-sm text-gray-500 gap-2;
-        span {
-            @apply flex items-center gap-1;
-        }
-        .exif {
-            @apply flex flex-row min-w-max content-between gap-1 flex-nowrap;
-        }
-        
     }
-    .map-container {
-        @apply h-full w-full rounded-xl;
-        .map {
-            @apply h-full w-full rounded-xl;
-        }
-    }
+        
+    
     
     
 }

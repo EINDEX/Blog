@@ -85,12 +85,12 @@ categoryId = "DIC_kwDOGWb6Ys4CAKn-"
 ## extra.menus in navbar
 [extra.menu]
 [[extra.menu.navbar]]
+label = "wiki"
+url = "https://wiki.eindex.me"
+external = true
+[[extra.menu.navbar]]
+label = "gallery"
+url = "gallery/_index"
+[[extra.menu.navbar]]
 label = "archive"
 url = "archive"
-[[extra.menu.navbar]]
-label = "links"
-url = "links"
-cn_only = true
-[[extra.menu.navbar]]
-label = "about"
-url = "about"

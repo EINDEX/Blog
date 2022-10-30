@@ -5,6 +5,7 @@
 
 {# {% set pic_list_url = "https://img.eindex.me/pic/pic_list.json" | safe %} #}
 {# {% set pic_list = load_data(url=pic_list_url, format="json") %} #}
+<script src="https://img.eindex.me/pic/pic_list.jsonp" type="application/octet-stream"></script>
 
 <main>
     <article>
@@ -13,57 +14,122 @@
                 {# {% for pic in pic_list %}
                     <a href="#/pic/{{pic.filename}}"><img class="thumbnail" src="https://img.eindex.me/pic/{{ pic.thumbnail }}" loading="lazy" /></a>
                 {% endfor %} #}
-            <div class="gallery" id="gallery">Loading...
-                    ${ image }$
-                    <img class="thumbnail" v-for="image in images" :src="image" loading="lazy"/>
+            <div class="gallery" id="gallery">
+                <h1 v-if="dataReady">Loading...</h1>
+                <a v-for="(image, index) in images" @click="openFullView(index)" :href="hash_url(image.filename)"><img class="thumbnail" :src="full_url(image.thumbnail)" loading="lazy"/></a>
+                
+                <div class="photo-container" v-if="fullView === true">
+                  <button class="exit-button" @click="exit_full_screen"><iconify-icon icon="ci:off-close"></iconify-icon></button>
+                  <div class="photo">
+                      <button @click="go_prev"><iconify-icon icon="carbon:previous-filled"></iconify-icon></button>
+                      <img :src="fullViewSrc" loading="lazy">
+                      <button @click="go_next"><iconify-icon icon="carbon:next-filled"></iconify-icon></button>
+                  </div>
+                  <div class="meta">
+                    
+                    <div class="info">
+                        <span><iconify-icon icon="ant-design:camera-twotone"></iconify-icon> <em>${fullViewImage.camera}$</em></span>
+                        <span><iconify-icon icon="ri:camera-lens-line"></iconify-icon> <em>${fullViewImage.lens}$</em></span>
+                        <div class="exif">
+                            <span><iconify-icon icon="carbon:iso-filled"></iconify-icon> <em>${fullViewImage.iso}$</em></span>
+                            <span><em>f${fullViewImage.f_number}$</em></span>
+                            <span><em>${fullViewImage.focal_length_in_35}$</em>mm</span>
+                            <span><em>${exposure_time_span(fullViewImage.exposure_time)}$</em></span>
+                        </div>
+                        <span><iconify-icon icon="fluent-mdl2:date-time"></iconify-icon> <em>${date_span(fullViewImage.create_at)}$</em> </span>
+                        
+                    </div>
+                    <div class="map-container">
+                        <iframe
+                            class=map
+                            v-if="fullViewImage.gps_map_datum"
+                            frameborder="0" style="border:0"
+                            :src="google_map_url(fullViewImage)"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                  </div>
+                  
+              </div>
+              
+              
             </div>
+            
         </section>
     </article>
     <div>
 
     </div>
+
 </main>
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-
-
-
 <script>
-    const basePath = "https://img.eindex.me/pic/"
-    const imgList = "pic_list.json"
   const { createApp } = Vue
-  createApp({
-    
+  const app = createApp({
     data() {
       return {
-        images: [
-            basePath+ "ac78a631962e39017fbb0d0ff1b2c352.thumbnail.jpg",
-            basePath+ "ac78a631962e39017fbb0d0ff1b2c352.thumbnail.jpg",
-            basePath+ "ac78a631962e39017fbb0d0ff1b2c352.thumbnail.jpg",
-            basePath+ "ac78a631962e39017fbb0d0ff1b2c352.thumbnail.jpg",
-            basePath+ "ac78a631962e39017fbb0d0ff1b2c352.thumbnail.jpg",
-            basePath+ "ac78a631962e39017fbb0d0ff1b2c352.thumbnail.jpg",
-            basePath+ "ac78a631962e39017fbb0d0ff1b2c352.thumbnail.jpg",
-            basePath+ "ac78a631962e39017fbb0d0ff1b2c352.thumbnail.jpg",
-            basePath+ "ac78a631962e39017fbb0d0ff1b2c352.thumbnail.jpg",
-            basePath+ "ac78a631962e39017fbb0d0ff1b2c352.thumbnail.jpg",
-            basePath+ "ac78a631962e39017fbb0d0ff1b2c352.thumbnail.jpg",
-            basePath+ "ac78a631962e39017fbb0d0ff1b2c352.thumbnail.jpg",
-        ]
+        dataRedly: false,
+        images: [],
+        choosePicIndex: 0,
+        fullView: false,
+        fullViewSrc: "",
+        thisPic: null,
+        lang: "{{lang}}",
       }
     },
-    async mounted() {
-        const res = await fetch(basePath+imgList, {
-            mode: "no-cors"
-        })
-        console.log(res)
-
-    }
-    , compilerOptions: {
-        delimiters: ["${", "}$"]
+    methods: {
+      full_url(url) {
+        return 'https://img.eindex.me/pic/'+ url
+      },
+      hash_url(url) {
+        return '#/' + url
+      },
+      openFullView(index){
+        const full_url = this.full_url(this.images[index].filename)
+        this.choosePicIndex = index
+        this.fullViewImage = this.images[index]
+        this.fullViewSrc = full_url
+        this.fullView = true
+        console.log(full_url)
+      },
+      google_map_url(image){
+        return `https://www.google.com/maps/embed/v1/view?key=AIzaSyAVVYMtIYTHX6SoX1Co00KQwnuGaWjACh0&center=${image.gps_latitude},${image.gps_longitude}&zoom=17&maptype=satellite`
+      },
+      exposure_time_span(exposure_time){
+        if (exposure_time < 1)
+          return `1/${Math.round(1/exposure_time)}s`
+        else 
+        return `${Math.round(exposure_time*10)/10}s`
+      },
+      date_span(date) {
+        if (this.lang == "cn")
+        return new Date(date).toLocaleString("zh-CN")
+        else 
+        return new Date(date).toLocaleString("en-US")
+      },
+      exit_full_screen(){
+        this.fullView = false;
+      },
+      go_next(){
+        if(this.choosePicIndex >= this.images.length - 1) {
+          return}
+        this.openFullView(this.choosePicIndex+1)
+      },
+      go_prev(){
+        if(this.choosePicIndex == 0) {
+        return}
+        this.openFullView(this.choosePicIndex-1)
       }
-  }, 
-  ).mount('#gallery')
+    },
+    compilerOptions: {
+      delimiters: ["${", "}$"]
+    }
+  }).mount('#gallery')
 
+  function putImages(data) {
+    app.images = data;
+    app.dataRedly = true;
+  }
 </script>
-
+<script src="https://img.eindex.me/pic/pic_list.js"></script>
 {% endblock %}
