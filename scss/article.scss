@@ -65,10 +65,10 @@ article  {
             @apply flex flex-row gap-2;
 
             .thought {
-                @apply flex flex-col w-fit bg-gray-200 rounded-md shadow-sm px-4 pb-2;
+                @apply flex flex-col w-fit justify-around bg-gray-200 rounded-md shadow-sm px-4 pb-2;
 
                 .thought-date {
-                    @apply text-sm text-gray-700 justify-self-end self-start;
+                    @apply text-sm text-gray-600 self-start;
                 }
             }
         }
