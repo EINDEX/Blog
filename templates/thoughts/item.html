@@ -1,6 +1,6 @@
 <div class="thought">
     <div>
-    {{ thought.content | safe }} 
+    {{ macro::render_html(content=thought.content) }} 
     </div>
     <span class="thought-date">at {{ macro::date_format(datetime=thought.date, lang=lang) }}</span>
 </div>

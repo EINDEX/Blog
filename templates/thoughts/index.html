@@ -4,7 +4,7 @@
 <article>
     <section class="main">
         <h1 class="huge">{{section.title}}</h1>
-        {{ section.content | safe }}
+        {{ macro::render_html(content=section.content) }}
         <div class="thought-list">
           {% for thought in section.pages %}
           {% include "thoughts/item.html" %}

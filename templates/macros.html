@@ -28,3 +28,7 @@
   {{ datetime | date(format="%e %h, %Y") }}
 {% endif %}
 {% endmacro date_format %}
+
+{% macro render_html(content) %}
+  {{ content | replace(from='<a ', to='<a class="h-card" ') | safe }}
+{% endmacro %}

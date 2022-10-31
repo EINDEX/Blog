@@ -4,7 +4,7 @@
   <article data-clarity-region="article">
     {% include "posts/supports/post-header.html" %}
     <section class="main">
-        {{ page.content | safe }}
+        {{ macro::render_html(content=page.content) }}
     </section>
     <section class="post-footer">
         {# {{- partial "prev-next-page.html" . -}} #}
