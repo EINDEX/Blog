@@ -124,7 +124,7 @@ article  {
     }
 
     .gallery {
-        @apply flex flex-row flex-wrap gap-4;
+        @apply flex flex-row flex-wrap gap-4 justify-between;
 
         .thumbnail {
             @apply h-fit max-h-64 sm:max-h-full sm:h-full w-fit sm:w-full shadow-lg rounded-lg my-0;

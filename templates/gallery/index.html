@@ -31,7 +31,6 @@
                             <span><em>${exposure_time_span(fullViewImage.exposure_time)}$</em></span>
                         </div>
                         <span><iconify-icon icon="fluent-mdl2:date-time"></iconify-icon> <em>${date_span(fullViewImage.create_at)}$</em> </span>
-                        
                     </div>
                     <div class="map-container">
                         <iframe
@@ -68,6 +67,7 @@
         fullViewStyle: "",
         thisPic: null,
         lang: "{{lang}}",
+        beforeScrollY: 0
       }
     },
     methods: {
@@ -83,6 +83,10 @@
         this.fullViewImage = this.images[index]
         this.fullViewSrc = full_url
         this.fullView = true
+        if (window.scrollY != 0)
+          this.beforeScrollY = window.scrollY
+        window.scrollTo(0, 0);
+        document.documentElement.style.overflow = 'hidden';
       },
       google_map_url(image){
         return `https://www.google.com/maps/embed/v1/view?key=AIzaSyAVVYMtIYTHX6SoX1Co00KQwnuGaWjACh0&center=${image.gps_latitude},${image.gps_longitude}&zoom=17&maptype=satellite`
@@ -100,7 +104,9 @@
         return new Date(date).toLocaleString("en-US")
       },
       exit_full_screen(){
+        document.documentElement.style.overflow = 'auto';
         this.fullView = false;
+        window.scrollTo(0, this.beforeScrollY)
       },
       go_next(){
         if(this.choosePicIndex >= this.images.length - 1) {

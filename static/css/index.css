@@ -519,6 +519,9 @@ video {
 .block {
   display: block;
 }
+.hidden {
+  display: none;
+}
 .h-auto {
   height: auto;
 }
@@ -2991,6 +2994,7 @@ article .gallery {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-between;
   gap: 1rem;
 }
 article .gallery .thumbnail {
