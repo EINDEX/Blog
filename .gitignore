@@ -3,6 +3,7 @@ node_modules
 images
 static/processed_images
 static/css
+resource/_gen/*
 .DS_Store
 .hugo_build.lock
 .envrc

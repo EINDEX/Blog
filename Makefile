@@ -1,5 +1,5 @@
 thought:
-	./support.sh cn
+	./tools/thought.sh cn
 
 thought-en:
-	./support.sh en
+	./tools/thought.sh en
