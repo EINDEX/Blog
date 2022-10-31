@@ -1,7 +1,7 @@
 {% extends "_default/base.html" %}
 
 {% block content %}
-  <article data-clarity-region="article h-entry">
+  <article class="h-entry" data-clarity-region="article">
     {% include "posts/supports/post-header.html" %}
     <section class="main e-content">
         {{ macro::render_html(content=page.content) }}
@@ -10,8 +10,8 @@
         {# {{- partial "prev-next-page.html" . -}} #}
         {% include "partials/plugins/tag-list.html" %}
     </section>
-    {% include "partials/plugins/giscus.html" %}
     {{ macro::backlink(pages=page.backlinks) }}
+    {% include "partials/plugins/giscus.html" %}
 </article>
 
 {% endblock content %}

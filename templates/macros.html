@@ -1,14 +1,9 @@
 {% macro backlink(pages) %}
 {% if pages and pages | length >0 %}
   <section class="backlinks">
-    <h3>Backlinks</h3>
-    {# <h3>{{ trans(key="label_backlinks",lang=lang) }} ({{ pages | length }})<a href="#backlinks" id="backlinks" class="zola-anchor">🔗</a> #}
-    </h3>
-    <ul class="">
+    <h3>{{ trans(key="label_backlinks",lang=lang) }} ({{ pages | length }})</h3>
       {% for page in pages %}
-        <li>
-          <a href="{{ page.permalink }}">{{ page.title }}</a>
-        </li>
+      <p><a href="{{ page.permalink }}">{{ page.title }}</a></p>
       {% endfor %}
     </ul>
   </section>

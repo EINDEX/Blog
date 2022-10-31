@@ -44,7 +44,7 @@ body {
 
 
         .content {
-            @apply w-full flex flex-row sm:flex-col gap-4 sm:px-2 px-4 py-6;
+            @apply w-full flex flex-col justify-center sm:flex-col gap-4 sm:px-2 px-4 py-6;
     
             main {
                 @apply flex flex-col w-full;
