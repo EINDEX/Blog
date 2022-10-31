@@ -1,0 +1,25 @@
+
+<section class="header">  
+    <section class="title-area">
+      {% if page.taxonomies.series %}
+        {% set series_name = page.taxonomies.series[0] %}
+        {% set series_url = get_taxonomy_url(kind="series", name=series_name) %}
+        <a class="series" href="{{ series_url }}">{{ series_name }}</a>
+      {% endif %}
+      <h1 class="title p-name">
+      <a class="u-url" href="{{ page.permalink }}">{{ trans(key="label_thought", lang=lang) }}</a>
+      </h1>
+    </section>
+    <section class="meta-area">
+      <p class="p-summary" style="display: none;">{%if page.summary%}{{page.summary}}{%else%}{%if page.description%}{{page.description}}{%endif%}{%endif%}</p>
+    {% if page.date %}
+      <span><iconify-icon icon="ant-design:calendar-outlined"></iconify-icon> <time class="dt-published">{{ page.date | date }}</time></span>
+    {% endif %}
+    {% if page.taxonomies.categories %}
+      {% set categories_name = page.taxonomies.categories[0] %}
+      {% set categories_url = get_taxonomy_url(kind="categories", name=categories_name) %}
+      <span><iconify-icon icon="fluent:mail-inbox-16-regular"></iconify-icon><a class="categories"  href="{{ categories_url }}">{{ categories_name }}</a></span>
+    {% endif %}
+    </section>
+  </section>
+  

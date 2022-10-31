@@ -1,6 +1,7 @@
-<div class="thought">
-    <div>
+<div class="thought-contrainer h-entry">
+    {% include "partials/plugins/invisable-h-card.html" %}
+    <div class="thought e-content p-summary">
     {{ macro::render_html(content=thought.content) }} 
     </div>
-    <span class="thought-date">at {{ macro::date_format(datetime=thought.date, lang=lang) }}</span>
+    <span class="thought-date">at <time class="dt-published">{{ macro::date_format(datetime=thought.date, lang=lang) }}</time></span>
 </div>

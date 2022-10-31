@@ -28,8 +28,9 @@ code {
 
 
 
+
 article  {
-    @apply flex flex-col w-full rounded-lg divide-y divide-dashed;
+    @apply flex flex-col w-full rounded-lg gap-4;
 
     .comments {
         @apply pt-4;
@@ -41,7 +42,7 @@ article  {
         @apply text-gray-800 prose prose-gray max-w-full w-full min-w-full py-2;
 
         .huge {
-            @apply text-7xl sm:text-5xl font-black italic font-sans;
+            @apply text-7xl sm:text-5xl font-black italic text-center font-sans;
         }
         
         * code:where(:not(pre)) {
@@ -64,13 +65,7 @@ article  {
         .thought-list {
             @apply flex flex-row gap-2;
 
-            .thought {
-                @apply flex flex-col w-fit justify-around bg-gray-200 rounded-md shadow-sm px-4 pb-2;
-
-                .thought-date {
-                    @apply text-sm text-gray-600 self-start;
-                }
-            }
+           
         }
 
     }
@@ -129,8 +124,12 @@ article  {
         .thumbnail {
             @apply h-fit max-h-64 sm:max-h-full sm:h-full w-fit sm:w-full shadow-lg rounded-lg my-0;
         }
+    }    
+}
+
+.thought-contrainer {
+    @apply flex flex-col self-center p-4 rounded-lg bg-gray-200 w-fit gap-2;
+    .thought-date {
+        @apply text-sm text-gray-600 self-end;
     }
-    
-  
-    
 }

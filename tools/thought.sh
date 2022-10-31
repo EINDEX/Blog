@@ -11,7 +11,7 @@ echo "content/thoughts/$filename"
 hugo new "thoughts/${filename}"
 
 if [ `uname` = "Darwin" ]; then
-    code -g "content/thoughts/${filename}:5"
+    code -g "content/thoughts/${filename}:6"
 elif [ `uname` = "Linux" ]; then
-    code-server -g "content/thoughts/${filename}:5"
+    code-server -g "content/thoughts/${filename}:6"
 fi

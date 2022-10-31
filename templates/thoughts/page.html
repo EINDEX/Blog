@@ -1,2 +1,14 @@
-{% extends "page.html" %}
+{% extends "_default/base.html" %}
 
+{% block content %}
+<article data-clarity-region="article">
+    {% include "thoughts/supports/thought-header.html" %}
+    <section class="thought-contrainer">
+        <div class="thought e-content">{{ macro::render_html(content=page.content) }}</div>
+        <span class="thought-date">at <time class="dt-published">{{ macro::date_format(datetime=page.date, lang=lang) }}</time></span>
+    </section>
+    {% include "partials/plugins/giscus.html" %}
+    {{ macro::backlink(pages=page.backlinks) }}
+</article>
+
+{% endblock content %}

@@ -50,6 +50,7 @@ label_about = "关于"
 label_books = "书"
 label_gallery = "相册"
 label_wiki = "Wiki"
+label_thought = "想法"
 
 [languages.en]
 generate_feed = true
@@ -68,6 +69,7 @@ label_about = "About"
 label_books = "Books"
 label_gallery = "Gallery"
 label_wiki = "Wiki"
+label_thought = "Thought"
 
 [extra]
 # Put all your custom variables here
