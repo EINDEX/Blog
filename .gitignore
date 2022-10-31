@@ -4,3 +4,4 @@ images
 static/processed_images
 static/css
 .DS_Store
+.hugo_build.lock
