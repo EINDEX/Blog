@@ -1,7 +1,7 @@
 {% extends "_default/base.html" %}
 
 {% block content %}
-<article data-clarity-region="article">
+<article data-clarity-region="article h-entry">
     {% include "thoughts/supports/thought-header.html" %}
     <section class="thought-contrainer">
         <div class="thought e-content">{{ macro::render_html(content=page.content) }}</div>
