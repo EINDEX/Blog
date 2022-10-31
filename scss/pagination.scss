@@ -4,7 +4,6 @@
     .item {
         @apply flex flex-row content-center min-w-fit;
 
-
         .button {
             min-width: 4rem;
             @apply text-gray-700 hover:bg-gray-700 hover:text-white px-2 py-2 rounded-md text-sm font-medium text-center;
@@ -17,8 +16,6 @@
         .hide {
             @apply sm:hidden;
         }
-
-
     }
 
     .item--current  {

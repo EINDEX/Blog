@@ -568,9 +568,6 @@ body {
     overscroll-behavior-y: none;
     --tw-bg-opacity: 1;
     background-color: rgb(243 244 246 / var(--tw-bg-opacity));
-    
-
-    
 }
 body .all {
   width: 100%;
@@ -764,21 +761,6 @@ body .all .footer {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.huge {
-  text-align: center;
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  font-size: 4.5rem;
-  line-height: 1;
-  font-weight: 900;
-  font-style: italic;
-}
-@media (max-width: 640px) {
-
-  .huge {
-    font-size: 3rem;
-    line-height: 1;
-  }
 }
 article {
   display: flex;
