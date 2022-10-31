@@ -84,9 +84,9 @@
         this.fullViewSrc = full_url
         this.fullView = true
         if (window.scrollY != 0)
-          this.beforeScrollY = window.scrollY
-        window.scrollTo(0, 0);
+          {this.beforeScrollY = window.scrollY}
         document.documentElement.style.overflow = 'hidden';
+        window.scrollTo(0, 0);
       },
       google_map_url(image){
         return `https://www.google.com/maps/embed/v1/view?key=AIzaSyAVVYMtIYTHX6SoX1Co00KQwnuGaWjACh0&center=${image.gps_latitude},${image.gps_longitude}&zoom=17&maptype=satellite`
@@ -117,6 +117,17 @@
         if(this.choosePicIndex == 0) {
         return}
         this.openFullView(this.choosePicIndex-1)
+      },
+      loading_data(data) {
+        this.images = data;
+        this.dataRedly = true;
+        const hash_url = window.location.hash.split('/').pop()
+        let target = null
+        const find_image = (image) => image.filename === hash_url
+        if (hash_url) {
+          target = this.images.findIndex(find_image)
+        }
+        if (target!=null) this.openFullView(target);
       }
     },
     compilerOptions: {
@@ -125,8 +136,7 @@
   }).mount('#gallery')
 
   function putImages(data) {
-    app.images = data;
-    app.dataRedly = true;
+    app.loading_data(data)
   }
 </script>
 <script src="https://img.eindex.me/pic/pic_list.js"></script>
