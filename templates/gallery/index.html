@@ -7,8 +7,10 @@
 
 {% block content %}
     <article>
+      <section class="title-area">
+        <h1 class="huge">{{section.title}}</h1>
+      </section>
         <section class="main">
-            <h1 class="huge">{{section.title}}</h1>
             <div class="gallery" id="gallery">
                 <h1 v-if="dataReady">Loading...</h1>
                 <a v-for="(image, index) in images" @click="openFullView(index)" :href="hash_url(image.filename)"><img class="thumbnail" :src="full_url(image.thumbnail)" loading="lazy"/></a>

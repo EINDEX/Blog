@@ -1,7 +1,9 @@
 {% extends "_default/base.html" %} {% block content %}
 <article class="h-entry" data-clarity-region="article">
+  <section class="title-area">
+    <h1 class="title p-name">AppSec Sepecialist, Developer, Photographer</h1>
+  </section>
   <section class="main">
-    <h1 class="huge p-name">AppSec Sepecialist, Developer, Photographer</h1>
     {{ macro::render_html(content=section.content) }} {% set posts_section =
     get_section(path="posts/_index" ~ current_lang_suffix ~ ".md") %} {% if lang
     == "cn" %}
