@@ -4,6 +4,7 @@
 <article class="h-entry" data-clarity-region="article">
     {% include "thoughts/supports/thought-header.html" %}
     <section class="thought-contrainer">
+        {% if thought.extra.reply.title %}<span>Reply: <a href="{{thought.extra.reply.url}}" class="u-in-reply-to">{{thought.extra.reply.title}}</a></span>{%endif%}
         <div class="thought e-content">{{ macro::render_html(content=page.content) }}</div>
         <div class="bar"><span class="thought-date">at <time class="dt-published">{{ macro::date_format(datetime=page.date, lang=lang) }}</time></span></div>
     </section>
