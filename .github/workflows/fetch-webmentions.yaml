@@ -40,6 +40,10 @@ jobs:
     - run: git push
       if: ${{ steps.change != 0 }}
 
-    - uses: eindex/blog/.github/workflows/release.yml@main
-      if: ${{ steps.change != 0 }}
+  trigger-release:
+    uses: eindex/blog/.github/workflows/release.yml@main
+    if: ${{ jobs.build.steps.change != 0 }}
+    needs: 
+      - build
+    
     
