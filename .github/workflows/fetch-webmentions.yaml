@@ -1,0 +1,45 @@
+name: Fetch Webmetnions
+
+on:
+  workflow_dispatch:
+  
+  schedule:
+    - 0 5,17 * * *
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    concurrency:
+      group: ${{ github.workflow }}
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+
+    - name: Fetch npm packages
+      run: npm ci
+
+    - uses: actions/checkout@v3
+      with:
+        ref: 'webmentions'
+
+    - run: node pipeline/webmentions.js
+      env:
+        WEBMENTION_TOKEN: ${{ secrets.WEBMENTION_TOKEN }}
+    
+    - run: echo ""::setOutput $(git rev-list --count origin/webmentions..webmentions)"
+      id: change
+
+    - run: git add .
+      if: ${{ steps.change != 0 }}
+
+    - run: git push
+      if: ${{ steps.change != 0 }}
+
+    - uses: eindex/blog/.github/workflows/release.yml@main
+      if: ${{ steps.change != 0 }}
+    
