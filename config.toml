@@ -76,7 +76,7 @@ label_backlinks = "BackLinks"
 [extra]
 # Put all your custom variables here
 ## ICP infomation China mainland only
-clarity = 'ao1gr1m9ku'
+# clarity = 'ao1gr1m9ku'
 adsense = "ca-pub-1265138627025369"
 twitter_user = '@eindex_li'
 

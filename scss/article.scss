@@ -3,7 +3,7 @@
     @apply flex flex-col justify-center items-center mb-2 gap-2;
 
     h1 {
-        @apply text-7xl sm:text-5xl font-black italic text-center font-sans;
+        @apply text-7xl md:text-5xl sm:text-4xl font-black italic text-center font-sans;
     }
 
     .series {
@@ -34,9 +34,8 @@ article  {
         @apply text-gray-800 prose prose-gray max-w-full w-full min-w-full py-2;
 
         .thought-list {
-            @apply flex flex-row gap-2;    
+            @apply grid grid-flow-row-dense grid-cols-3 gap-2 md:grid-cols-2 sm:grid-cols-1 w-full;
         }
-
     }
 
     .taxonomy-list {
@@ -96,8 +95,14 @@ article  {
 }
 
 .thought-contrainer {
-    @apply flex flex-col self-center p-4 rounded-lg bg-gray-200 w-fit gap-2;
-    .thought-date {
-        @apply text-sm text-gray-600 self-end;
+    @apply flex flex-col justify-between self-center p-4 h-full rounded-lg bg-gray-200 w-full gap-2 prose;
+
+    .bar {
+        @apply flex flex-row justify-between text-sm text-gray-600 w-full font-normal;
+
+        a {
+            @apply no-underline font-normal;
+        }
     }
+    
 }
