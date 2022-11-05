@@ -41,7 +41,7 @@ jobs:
       if: ${{ steps.change != 0 }}
 
   trigger-release:
-    uses: eindex/blog/.github/workflows/release.yml@main
+    uses: eindex/blog/.github/workflows/release.yaml@main
     if: ${{ jobs.build.steps.change != 0 }}
     needs: 
       - build
