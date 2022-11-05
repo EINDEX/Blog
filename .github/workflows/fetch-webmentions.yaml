@@ -45,7 +45,7 @@ jobs:
 
   trigger-release:
     uses: eindex/blog/.github/workflows/release.yaml@main
-    if: ${{ jobs.build.output.change != 0 }}
+    if: ${{ needs.build.output.change != 0 }}
     needs: 
       - build
     
