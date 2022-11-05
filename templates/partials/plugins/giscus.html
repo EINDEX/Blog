@@ -1,5 +1,6 @@
 {% if  config.extra.giscus %}
-<section class="comments">
+
+<section id="giscus" class="comments" style="display: none;">
     <script src="https://giscus.app/client.js"
         data-repo="{{ config.extra.giscus.repo }}"
         data-repo-id="{{ config.extra.giscus.repoId }}"
@@ -13,4 +14,5 @@
         async>
     </script>
 </section>
+<button id="giscus-button" onclick='document.getElementById("giscus").style="";document.getElementById("giscus-button").style="display:none";'>Loading Comments</button>
 {% endif %}

@@ -24,6 +24,93 @@
 {% endif %}
 {% endmacro date_format %}
 
+
+{% macro reactions(webmentions) %}
+{% set_global mentions = [] %}
+{% for  mention in webmentions %}
+  {% set type = mention["wm-property"] %}
+  {% if type == "like-of" or type == "repost-of" or type == "bookmark-of" %}
+    {% set_global mentions = mentions | concat(with=mention) %}
+  {% endif %}
+{% endfor %}
+{% if mentions %}
+<div class="reactions-container">
+  <h3>Recations</h3>
+  <div class="reactions">
+  {% for mention in mentions | sort(attribute="wm-id") %}
+    {% set type = mention["wm-property"] %}
+    <div class="reaction">
+      <span class="emoji">{% if type == "like-of" %}❤️{%elif type == "repost-of"%}🔗{%elif type=="bookmark-of" %}🔖{%endif%}</span>
+      <div class="author"><a title="{{ mention.author.name }}" href="{{ mention.url }}"><img src="{{mention.author.photo}}" alt="{{ mention.author.name }}"/></a></div>
+    </div>
+  {% endfor %}
+  </div>
+</div>
+{% endif %}
+{% endmacro %}
+
+{% macro comments(webmentions, page) %}
+{% set_global mentions = [] %}
+{% for  mention in webmentions %}
+  {% set type = mention["wm-property"] %}
+  {% if type == "in-reply-to" %}
+    {% set_global mentions = mentions | concat(with=mention) %}
+  {% endif %}
+{% endfor %}
+{% if mentions %}
+<div class="comments-container">
+  <h3>Comments</h3>
+  {% for mention in mentions | sort(attribute="wm-id") %}
+    <div class="reply p-comment h-entry" id="comment-wm{{ mention['wm-id'] }}">
+      <a  class="author p-author h-card u-url" title="{{ mention.author.name }}" href="{{ mention.author.url }}"><img src="{{mention.author.photo}}" alt="{{ mention.author.name }}" />{{ mention.author.name | truncate(length=20) }}</a>
+      <p class="text p-content">{{ mention.content.text }}</p>
+      <div class="bar"><a href="{{ page.permalink }}#{{ mention['wm-id'] }}">replied at</a> <time class="dt-published" >{{ macro::date_format(datetime=mention.published,lang=lang) }}</time></div>
+    </div>
+  {% endfor %}
+</div>
+{% endif %}
+{% endmacro %}
+
+{% macro mentions(webmentions, page) %}
+{% set_global mentions = [] %}
+{% for  mention in webmentions %}
+  {% set type = mention["wm-property"] %}
+  {% if type == "mention-of" %}
+    {% set_global mentions = mentions | concat(with=mention) %}
+  {% endif %}
+{% endfor %}
+{% if mentions %}
+<div class="mentions-container">
+  <h3>Mentions</h3>
+  {% for mention in mentions | sort(attribute="wm-id") %}
+    <div class="mention p-comment h-entry" id="comment-wm{{ mention['wm-id'] }}">
+      <a  class="author p-author h-card u-url" title="{{ mention.author.name }}" href="{{ mention.author.url }}"><img src="{{mention.author.photo}}" alt="{{ mention.author.name }}" />{{ mention.author.name | truncate(length=20) }}</a>
+      <p class="text p-content">{{ mention.content.text }}</p>
+      <div class="bar"><a href="{{ page.permalink }}#{{ mention['wm-id'] }}">mentioned at</a> <time class="dt-published" >{{ macro::date_format(datetime=mention.published,lang=lang) }}</time></div>
+    </div>
+  {% endfor %}
+</div>
+{% endif %}
+{% endmacro %}
+
+{% macro webmention_rvsp(webmentions) %}
+{# todo support rvsp #}
+
+{# {% for type, mentions in web_mentions_list | group_by(attribute="wm-property")%}
+{% if type == "rsvp" %}
+<!-- cal rvsp -->
+<div class="rvsp">
+{% for mention in mentions %}
+    <div class="author"><a title="{{ mention.author.name }}" href="{{ mention.url }}"><img src="{{mention.author.photo}}" alt="{{ mention.author.name }}" /></a></div>
+    <span>{{mention.rsvp}}</span>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% endfor %} #}
+
+{% endmacro %}
+
 {% macro render_html(content) %}
   {{ content | replace(from='<a ', to='<a class="h-card" ') | safe }}
 {% endmacro %}

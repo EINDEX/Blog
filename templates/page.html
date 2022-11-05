@@ -11,7 +11,7 @@
         {% include "partials/plugins/tag-list.html" %}
     </section>
     {{ macro::backlink(pages=page.backlinks) }}
+    {% include "partials/plugins/webmentions.html" %}
     {% include "partials/plugins/giscus.html" %}
 </article>
-
 {% endblock content %}

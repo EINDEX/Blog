@@ -1,0 +1,41 @@
+.webmentions {
+    @apply flex flex-col gap-4;
+
+    h3 {
+        @apply text-2xl italic;
+    }
+
+    .author {
+        @apply flex flex-row gap-2 items-end;
+        img {
+            @apply w-10 h-10 rounded-full shadow-md;
+        }
+    }
+
+    .reactions-container, .comments-container, .mentions-container {
+        @apply flex flex-col gap-4 pt-4;
+        
+        .reactions {
+            @apply flex flex-row flex-wrap;
+    
+            .reaction {
+                @apply relative py-1 px-1;
+                .emoji {
+                    @apply absolute top-0 right-0 text-sm;
+                }
+            }
+        }   
+        
+        .reply, .mention {
+            @apply flex flex-col gap-2 bg-gray-200 rounded-lg px-4 pt-4 pb-2;
+
+            .bar {
+                @apply flex flex-row justify-end gap-2 text-gray-600 text-sm;
+            }
+        }
+
+        .text {
+            @apply text-gray-700 pl-2 text-base;
+        }
+    }
+}

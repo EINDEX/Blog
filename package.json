@@ -24,6 +24,8 @@
   },
   "devDependencies": {
     "@iconify/iconify": "^3.0.0",
+    "axios": "^1.1.3",
+    "fs-extra": "^10.1.0",
     "iconify-icon": "^1.0.1",
     "postcss-nesting": "^10.1.10"
   }

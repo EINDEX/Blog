@@ -1,12 +1,17 @@
 #bin/sh
 
-echo "content/posts/$1"
-hugo new "posts/$1"
+if [ $1 = "en" ]; then
+    filename="$2.en.md"
+else
+    filename="$2.md"
+fi
 
+echo "content/posts/$filename"
+hugo new "posts/$filename"
 lineno=`wc -l archetypes/posts.md | awk '{printf ($1)}'`
 
 if [ `uname` = "Darwin" ]; then
-    code -g "content/posts/$1:${lineno}"
+    code -g "content/posts/$filename:${lineno}"
 elif [ `uname` = "Linux" ]; then
-    code-server -g "content/posts/$1:${lineno}"
+    code-server -g "content/posts/$filename:${lineno}"
 fi

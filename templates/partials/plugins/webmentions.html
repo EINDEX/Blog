@@ -1,0 +1,17 @@
+{% set link = page.permalink | replace(from=config.base_url,to="") | trim_end_matches(pat="/") %}
+{% set web_mentions_data_path = "webmentions/data" ~ link ~ ".json" %}
+{% set web_mentions_data = load_data(path=web_mentions_data_path, required=false) %}
+{% if  web_mentions_data %}
+{% set_global web_mentions_list = [] %}
+{% for key, mention in web_mentions_data %}
+{% set_global web_mentions_list = web_mentions_list | concat(with=mention) %}
+{% endfor %}
+{% endif %}
+
+{% if web_mentions_list %}
+<section class="webmentions">
+  {{ macro::reactions(webmentions=web_mentions_list) }}
+  {{ macro::comments(webmentions=web_mentions_list, page=page) }}
+  {{ macro::mentions(webmentions=web_mentions_list, page=page) }}
+</section>
+{% endif %}
