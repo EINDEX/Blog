@@ -4,7 +4,7 @@ const path = require("node:path");
 
 const prePage = 20;
 const domain = 'eindex.me';
-const token = 'Dhk2dC1xF7LrzyjiiR0fGw'
+const token = process.env.WEBMENTION_TOKEN
 const webMentionsFolder = "webmentions/"
 const sinceIDPath = webMentionsFolder + "since_id"
 
