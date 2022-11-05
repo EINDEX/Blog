@@ -26,7 +26,8 @@ jobs:
     - name: Fetch npm packages
       run: npm ci
 
-    - run: git checkout webmentions
+    - run: git fetch
+    - run: git switch webmentions
 
     - run: node pipeline/webmentions.js
       env:
