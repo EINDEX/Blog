@@ -24,7 +24,7 @@ jobs:
         node-version: '16'
 
     - name: Fetch npm packages
-      run: npm ci
+      run: npm -g ci
 
     - run: git fetch
     - run: git switch webmentions
