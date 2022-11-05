@@ -13,7 +13,7 @@ jobs:
       group: ${{ github.workflow }}
 
     outputs:
-      change: ${{ steps.change }}
+      change: ${{ steps.change.outputs.change }}
     
     steps:
     - uses: actions/checkout@v3
@@ -32,7 +32,7 @@ jobs:
       env:
         WEBMENTION_TOKEN: ${{ secrets.WEBMENTION_TOKEN }}
     
-    - run: echo ""::setOutput $(git rev-list --count origin/webmentions..webmentions)"
+    - run: echo "change=$(git rev-list --count origin/webmentions..webmentions)"
       id: change
 
     - run: git add .
