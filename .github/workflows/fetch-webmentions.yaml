@@ -1,4 +1,4 @@
-name: Fetch Webmetnions
+name: Fetch Webmentions
 
 on:
   schedule:
@@ -26,9 +26,7 @@ jobs:
     - name: Fetch npm packages
       run: npm ci
 
-    - uses: actions/checkout@v3
-      with:
-        ref: 'webmentions'
+    - run: git checkout webmentions
 
     - run: node pipeline/webmentions.js
       env:
