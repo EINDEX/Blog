@@ -1,10 +1,10 @@
 name: Fetch Webmetnions
 
 on:
-  workflow_dispatch:
-  
   schedule:
-    - 0 5,17 * * *
+    - cron: 0 5,17 * * *
+
+  workflow_dispatch:
 
 jobs:
   build:
