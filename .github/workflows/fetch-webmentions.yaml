@@ -11,6 +11,9 @@ jobs:
     runs-on: ubuntu-20.04
     concurrency:
       group: ${{ github.workflow }}
+
+    outputs:
+      change: ${{ steps.change }}
     
     steps:
     - uses: actions/checkout@v3
@@ -42,7 +45,7 @@ jobs:
 
   trigger-release:
     uses: eindex/blog/.github/workflows/release.yaml@main
-    if: ${{ jobs.build.steps.change != 0 }}
+    if: ${{ jobs.build.output.change != 0 }}
     needs: 
       - build
     

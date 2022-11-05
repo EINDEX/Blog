@@ -1,4 +1,4 @@
-name: Build Blog
+name: Build Preview
 
 on:
   push:
