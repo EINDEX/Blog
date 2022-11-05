@@ -1,0 +1,108 @@
+<!doctype html><html charset=utf-8 lang=en><head><link href=https://eindex.me/feed.xml rel=alternate title=RSS type=application/rss+xml><meta content="IE=edge" http-equiv=X-UA-Compatible><meta content="text/html; charset=utf-8" http-equiv=content-type><meta content="width=device-width,initial-scale=1.0,maximum-scale=1" name=viewport><meta content=EINDEX itemprop=author name=author><title>相册 • EINDEX's Blog</title><meta content="相册 • EINDEX's Blog" property=og:title><meta charset=utf-8><link href="https://eindex.me/css/index.css?h=a9aa3c09c20a04d608da0e9dbd6ced44fbaaf8df458a4d38f0ba528312446cbd" rel=stylesheet><style>@-moz-document url-prefix() {.lazy:-moz-loading {visibility:hidden;}}.ieOnly {display: none;}@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {.ieOnly {display: block;}}</style><link href=https://webmention.io/eindex.me/webmention rel=webmention><link href=https://webmention.io/eindex.me/xmlrpc rel=pingback><script src=https://cdn.jsdelivr.net/npm/iconify-icon@1.0.1/dist/iconify-icon.min.js></script><link href=/favicon-512.png rel=apple-touch-icon sizes=512x512><link href=/favicon-512.png rel=icon sizes=512x512 type=image/png><link href=/favicon-192.png rel=icon sizes=192x192 type=image/png><link href=/manifest.json rel=manifest><meta content=https://eindex.me property=og:url><meta content="EINDEX's Blog" property=og:site_name><meta content=https://eindex.me/images/avatar.png property=og:image><meta content=summary name=twitter:card><meta content="相册 • EINDEX's Blog" name=twitter:title><meta content=@eindex_li name=twitter:site><meta content=@eindex_li name=twitter:creator><meta content=https://eindex.me/images/avatar.png name=twitter:image><script type=application/ld+json>
+{
+  "@context": "https://schema.org/",
+  "@type": "BlogPosting",
+  
+  "image": "https://eindex.me/images/avatar.png",
+  
+  
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "EINDEX",
+    "url": "https://eindex.me/about"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "EINDEX's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://eindex.me/images/avatar.png"
+    },
+    "keywords": []
+  }
+}
+</script><script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1265138627025369" async crossorigin=anonymous></script><script src=https://unpkg.com/vue@3/dist/vue.global.js></script><body><div class=all><header><nav class=navbar><div class=avatar><a class=site-link href=https://eindex.me/><img alt=Workflow class=avatar src=https://eindex.me/processed_images/e75389feba7c019600.png></a></div><div class=menus><a href=https://wiki.eindex.me>Wiki</a><a href=https://eindex.me/gallery/>相册</a><a href=https://eindex.me/archive/>归档</a></div><div class=switcher><a class="language switch" href=https://eindex.me/en/><iconify-icon icon=ri:english-input></iconify-icon></a></div></nav></header><div class=content><main><article><section class=title-area><h1 class=huge>相册</h1></section><section class=main><div class=gallery id=gallery><h1 v-if=dataReady>Loading...</h1><a v-for="(image, index) in images" :href=hash_url(image.filename) @click=openFullView(index)><img :src=full_url(image.thumbnail) class=thumbnail loading=lazy></a><div v-if="fullView === true" class=photo-container><button @click=exit_full_screen class=exit-button><iconify-icon icon=ci:off-close></iconify-icon></button><div class=photo><button @click=go_prev><iconify-icon icon=carbon:previous-filled></iconify-icon></button><img :src=fullViewSrc><button @click=go_next><iconify-icon icon=carbon:next-filled></iconify-icon></button></div><div class=meta><div class=info><span><iconify-icon icon=ant-design:camera-twotone></iconify-icon> <em>${fullViewImage.camera}$</em></span><span><iconify-icon icon=ri:camera-lens-line></iconify-icon> <em>${fullViewImage.lens}$</em></span><div class=exif><span><iconify-icon icon=carbon:iso-filled></iconify-icon> <em>${fullViewImage.iso}$</em></span><span><em>f${fullViewImage.f_number}$</em></span><span><em>${fullViewImage.focal_length_in_35}$</em>mm</span><span><em>${exposure_time_span(fullViewImage.exposure_time)}$</em></span></div><span><iconify-icon icon=fluent-mdl2:date-time></iconify-icon> <em>${date_span(fullViewImage.create_at)}$</em> </span></div><div class=map-container><iframe :src=google_map_url(fullViewImage) allowfullscreen class=map frameborder=0 style=border:0 v-if=fullViewImage.gps_map_datum></iframe></div></div></div></div></section></article></main><aside></aside></div><footer class=footer><span class=webring> <a href=https://xn--sr8hvo.ws/%F0%9F%95%90%F0%9F%89%91%F0%9F%88%B6/previous>←</a> An IndieWeb Webring 🕸💍 <a href=https://xn--sr8hvo.ws/%F0%9F%95%90%F0%9F%89%91%F0%9F%88%B6/next>→</a> </span><link href=https://github.com/EINDEX rel=me></footer></div></body><script>const { createApp } = Vue
+  const app = createApp({
+    data() {
+      return {
+        dataRedly: false,
+        images: [],
+        choosePicIndex: 0,
+        fullView: false,
+        fullViewSrc: "",
+        fullViewStyle: "",
+        thisPic: null,
+        lang: "cn",
+        beforeScrollY: 0
+      }
+    },
+    methods: {
+      full_url(url) {
+        return 'https://img.eindex.me/pic/'+ url
+      },
+      hash_url(url) {
+        return '#/' + url
+      },
+      openFullView(index){
+        const full_url = this.full_url(this.images[index].filename)
+        this.choosePicIndex = index
+        this.fullViewImage = this.images[index]
+        this.fullViewSrc = full_url
+        this.fullView = true
+        if (window.scrollY != 0)
+          {this.beforeScrollY = window.scrollY}
+        document.documentElement.style.overflow = 'hidden';
+        window.scrollTo(0, 0);
+      },
+      google_map_url(image){
+        return `https://www.google.com/maps/embed/v1/view?key=AIzaSyAVVYMtIYTHX6SoX1Co00KQwnuGaWjACh0&center=${image.gps_latitude},${image.gps_longitude}&zoom=17&maptype=satellite`
+      },
+      exposure_time_span(exposure_time){
+        if (exposure_time < 1)
+          return `1/${Math.round(1/exposure_time)}s`
+        else 
+        return `${Math.round(exposure_time*10)/10}s`
+      },
+      date_span(date) {
+        if (this.lang == "cn")
+        return new Date(date).toLocaleString("zh-CN")
+        else 
+        return new Date(date).toLocaleString("en-US")
+      },
+      exit_full_screen(){
+        document.documentElement.style.overflow = 'auto';
+        this.fullView = false;
+        window.scrollTo(0, this.beforeScrollY)
+      },
+      go_next(){
+        if(this.choosePicIndex >= this.images.length - 1) {
+          return}
+        this.openFullView(this.choosePicIndex+1)
+      },
+      go_prev(){
+        if(this.choosePicIndex == 0) {
+        return}
+        this.openFullView(this.choosePicIndex-1)
+      },
+      loading_data(data) {
+        this.images = data;
+        this.dataRedly = true;
+        const hash_url = window.location.hash.split('/').pop()
+        let target = null
+        const find_image = (image) => image.filename === hash_url
+        if (hash_url) {
+          target = this.images.findIndex(find_image)
+        }
+        if (target!=null) this.openFullView(target);
+      }
+    },
+    compilerOptions: {
+      delimiters: ["${", "}$"]
+    }
+  }).mount('#gallery')
+
+  function putImages(data) {
+    app.loading_data(data)
+  }</script><script src=https://img.eindex.me/pic/pic_list.js></script>
