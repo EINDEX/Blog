@@ -28,7 +28,7 @@ jobs:
     - name: Get npm cache directory
       id: npm-cache-dir
       run: |
-        echo "::set-output name=dir::$(npm config get cache)"
+        echo "name=dir::$(npm config get cache)" >> $GITHUB_OUTPUT
 
     - uses: actions/cache@v3
       id: npm-cache # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
@@ -45,10 +45,10 @@ jobs:
       env:
         WEBMENTION_TOKEN: ${{ secrets.WEBMENTION_TOKEN }}
 
-    - run: echo "change=$(git status -u -s | wc -l | awk '{printf($1)}' )"
+    - run: echo "change=$(git status -u -s | wc -l | awk '{printf($1)}' )" >> $GITHUB_OUTPUT
       id: change
 
-    - if: steps.change.change != 0
+    - if: ${{ steps.change.outputs.change }}
       run: |
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -58,7 +58,7 @@ jobs:
 
   trigger-release:
     uses: eindex/blog/.github/workflows/release.yaml@main
-    if: needs.build.output.change != 0
+    if: ${{ needs.build.output.change }}
     needs: 
       - build
     
