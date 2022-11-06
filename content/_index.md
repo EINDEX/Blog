@@ -4,9 +4,9 @@ title: "EINDEX's Blog"
 
 Hello, welcome to my blog, I'm EINDEX.
 
-I will write my thoughts and notes. Meanwhile there have some [Chinese content](content/_index.cn.md).
+I will write my thoughts and notes. Meanwhile there have some [Chinese content](@/_index.cn.md).
 
-Also I put my photograph in [gallery](content/gallery/_index.md).
+Also I put my photograph in [gallery](@/gallery/_index.md).
 
 And I have some fragmented note and knowladage in my [wike site](https://wiki.eindex.me).
 
