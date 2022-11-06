@@ -17,6 +17,8 @@ jobs:
     
     steps:
     - uses: actions/checkout@v3
+      with:
+        ref: webmentions
     
     - name: Setup Node
       uses: actions/setup-node@v3
@@ -24,10 +26,7 @@ jobs:
         node-version: '16'
 
     - name: Fetch npm packages
-      run: npm i -g
-
-    - run: git fetch
-    - run: git switch webmentions
+      run: npm ci
 
     - run: node pipeline/webmentions.js
       env:
