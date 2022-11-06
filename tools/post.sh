@@ -1,9 +1,9 @@
 #bin/sh
 
 if [ $1 = "en" ]; then
-    filename="$2.en.md"
-else
     filename="$2.md"
+else
+    filename="$2.cn.md"
 fi
 
 echo "content/posts/$filename"

@@ -2,11 +2,11 @@
 
 {% set_global current_lang = lang %}
 {% set_global current_lang_suffix = "" %}
-{% if current_lang != "cn" %}
+{% if current_lang == "cn" %}
   {% set_global another_lang_suffix = ""   %}
-  {% set_global current_lang_suffix = ".en"  %}
+  {% set_global current_lang_suffix = ".cn"  %}
 {% else %}
-  {% set_global another_lang_suffix = ".en"   %}
+  {% set_global another_lang_suffix = ".cn"   %}
   {% set_global current_lang_suffix = ""  %}
 {% endif %}
 

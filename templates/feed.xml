@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-{% set posts_section = get_section(path="posts/_index.md") %}
+{% set posts_section = get_section(path="posts/_index.cn.md") %}
+
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
   <title>{{ config.title }}</title>
   <link>{{ get_url(path="feed.xml", trailing_slash=false) }}</link>
-  <description>{{ config.description }}</description>
+  <description xml:lang="{{lang}}">{{ config.description }}</description>
   <atom:link href="{{ get_url(path="feed.xml", trailing_slash=false) }}" rel="self" type="application/rss+xml"/>
 
-  {% for post in posts_section.pages %}
+  {% for post in pages %}
+  {% if  post.relative_path is not starting_with("thoughts/") %}
   <item>
-    <title>{{post.title}}</title>
+    <title xml:lang="{{lang}}">{{post.title}}</title>
     <link>{{ post.permalink }}</link>
     <pubDate>{{ post.date | date(format="%a, %d %b %Y %H:00:00 %z", timezone="Asia/Shanghai") }}</pubDate>
     <guid>{{ post.permalink }}</guid>
-    <description>{{ post.summary }}<br/><a href="{{ post.permalink }}#continue-reading">Continue Reading</a></description>
+    <description xml:lang="{{lang}}">{% if post.summary %}{{post.summary}}<br/><a href="{{ post.permalink }}#continue-reading">Continue Reading</a>{%else%}{{ post.content }}{%endif%}</description>
   </item>
+  {% endif %}
   {% endfor %}
 </channel>
 </rss>

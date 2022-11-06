@@ -1,11 +1,13 @@
-{% extends "_default/base.html" %} {% block content %}
+{% extends "_default/base.html" %} 
+
+{% block content %}
 <article class="h-entry" data-clarity-region="article">
   <section class="title-area">
     <h1 class="title p-name">AppSec Sepecialist, Developer, Photographer</h1>
   </section>
   <section class="main">
     {{ macro::render_html(content=section.content) }} {% set posts_section =
-    get_section(path="posts/_index" ~ current_lang_suffix ~ ".md") %} {% if lang
+    get_section(path="posts/_index"~ current_lang_suffix ~ ".md", lang=lang) %} {% if lang
     == "cn" %}
     <h3>以下是我最近更新的<a href="{{ posts_section.permalink }}">文章</a>:</h3>
     {% else %}
@@ -15,7 +17,7 @@
     {% endif %}
 
     <ul class="post-list">
-      {% for post in posts_section.pages %} {% if loop.index < 13 %}
+      {% for post in posts_section.pages %} {% if loop.index < 20 %}
       <li>
         <a href="{{ post.permalink }}">{{ post.title }}</a> Update on {% if
         post.updated %} {{ macro::date_format(datetime=post.updated, lang=lang)
@@ -25,7 +27,7 @@
       {% endif %} {% endfor %}
     </ul>
 
-    {% set archive_page = get_page(path="archive"~ current_lang_suffix ~".md")
+    {% set archive_page = get_page(path="archive"~ current_lang_suffix ~ ".md", lang=lang)
     %} {% if lang == "cn" %}
     <p>更多文章请前往 >>> <a href="{{ archive_page.permalink }}">归档</a></p>
     {% else %}
@@ -39,7 +41,7 @@
 
 
     {% set thoughts_section =
-        get_section(path="thoughts/_index" ~ current_lang_suffix ~ ".md") %}
+        get_section(path="thoughts/_index"~ current_lang_suffix ~ ".md", lang=lang) %}
     {% if lang == "cn" %}
     <h3>这里还有一些最近的<a href="{{ thoughts_section.permalink }}">想法</a>：</h3>
     {% else %}

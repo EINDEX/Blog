@@ -2,9 +2,9 @@
 
 export timestamp=$(date +%s)
 if [ $1 = "en" ]; then
-    filename="$timestamp.en.md"
-else
     filename="$timestamp.md"
+else
+    filename="$timestamp.cn.md"
 fi
 
 echo "content/thoughts/$filename"

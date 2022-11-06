@@ -3,7 +3,7 @@ base_url = "https://eindex.me"
 
 
 description = ""
-default_language = "cn"
+default_language = "en"
 
 minify_html = false
 generate_feed = true

@@ -1,5 +1,4 @@
 ---
-title: 相册
+title: Gallery
 template: "gallery/index.html"
 ---
-

@@ -2,7 +2,7 @@
 
 {% block content %} 
 
-{% set posts_section = get_section(path="posts/_index" ~ current_lang_suffix ~ ".md") %}
+{% set posts_section = get_section(path="posts/_index"~ current_lang_suffix ~ ".md", lang=lang) %}
 
 <article>
   <section class="header">
