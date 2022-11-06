@@ -1,6 +1,6 @@
 ---
 title: Join Webmentions
-date: 2022-11-05T15:44:12+08:00
+date: 2022-11-06T17:44:50+08:00
 description: "How I am join webmentions"
 ---
 
