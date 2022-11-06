@@ -45,6 +45,10 @@ jobs:
       env:
         WEBMENTION_TOKEN: ${{ secrets.WEBMENTION_TOKEN }}
 
+    - run: node pipeline/send-mentions.js
+      env:
+        WEBMENTION_APP_TOKEN: ${{ secrets.WEBMENTION_APP_TOKEN }}
+
     - run: echo "change=$(git status -u -s | wc -l | awk '{printf($1)}' )" >> $GITHUB_OUTPUT
       id: change
 
