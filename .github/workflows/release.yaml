@@ -61,3 +61,12 @@ jobs:
         user_name: 'github-actions[bot]'
         user_email: 'github-actions[bot]@users.noreply.github.com'
         publish_branch: dist
+
+    - name: Publish to Cloudflare Pages
+      uses: cloudflare/pages-action@1
+      with:
+        apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        projectName: blog
+        directory: public
+        gitHubToken: ${{ secrets.GITHUB_TOKEN }}
