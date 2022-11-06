@@ -16,8 +16,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
   <meta name="author" itemprop="author" content="EINDEX">
   {% block title %}
-  <title>{% if section.title %}{{ section.title }} &bull; {% endif %}{% if page.title %}{{ page.title }} &bull; {% endif %}{{ config.title }}</title>
-  <meta property="og:title" content="{% if section.title %}{{ section.title }} &bull; {% endif %}{% if page.title %}{{ page.title }} &bull; {% endif %}{{ config.title }}" />
+  <title>{% if section.title and section.title != config.title %}{{ section.title }} &bull; {% endif %}{% if page.title %}{{ page.title }} &bull; {% endif %}{{ config.title }}</title>
+  <meta property="og:title" content="{% if section.title and section.title != config.title %}{{ section.title }} &bull; {% endif %}{% if page.title %}{{ page.title }} &bull; {% endif %}{{ config.title }}" />
   {% endblock title %}
 
   <!-- Required meta tags -->
