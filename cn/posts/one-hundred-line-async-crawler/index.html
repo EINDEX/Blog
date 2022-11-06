@@ -1,0 +1,126 @@
+<!doctype html><html charset=utf-8 lang=en><head><link href=https://eindex.me/cn/feed.xml rel=alternate title=RSS type=application/rss+xml><meta content="IE=edge" http-equiv=X-UA-Compatible><meta content="text/html; charset=utf-8" http-equiv=content-type><meta content="width=device-width,initial-scale=1.0,maximum-scale=1" name=viewport><meta content=EINDEX itemprop=author name=author><title>一百行代码实现异步爬虫 • EINDEX's Blog</title><meta content="一百行代码实现异步爬虫 • EINDEX's Blog" property=og:title><meta charset=utf-8><link href="https://eindex.me/css/index.css?h=64e3ebc7a0259534a9b1d2bad7fee2fbaeac6b90a92d110e8e75b40dfd8fce19" rel=stylesheet><style>@-moz-document url-prefix() {.lazy:-moz-loading {visibility:hidden;}}.ieOnly {display: none;}@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {.ieOnly {display: block;}}</style><link href=https://webmention.io/eindex.me/webmention rel=webmention><link href=https://webmention.io/eindex.me/xmlrpc rel=pingback><script src=https://cdn.jsdelivr.net/npm/iconify-icon@1.0.1/dist/iconify-icon.min.js></script><link href=/favicon-512.png rel=apple-touch-icon sizes=512x512><link href=/favicon-512.png rel=icon sizes=512x512 type=image/png><link href=/favicon-192.png rel=icon sizes=192x192 type=image/png><link href=/manifest.json rel=manifest><meta content=https://eindex.me/cn/posts/one-hundred-line-async-crawler/ property=og:url><meta content="EINDEX's Blog" property=og:site_name><meta content=https://eindex.me/images/avatar.png property=og:image><meta content=summary name=twitter:card><meta content="一百行代码实现异步爬虫 • EINDEX's Blog" name=twitter:title><meta content=@eindex_li name=twitter:site><meta content=@eindex_li name=twitter:creator><meta content=https://eindex.me/images/avatar.png name=twitter:image><script type=application/ld+json>
+{
+  "@context": "https://schema.org/",
+  "@type": "BlogPosting",
+  "headline": "一百行代码实现异步爬虫",
+  "image": "https://eindex.me/images/avatar.png",
+  
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://eindex.me/cn/posts/one-hundred-line-async-crawler/"
+  },
+  
+  "datePublished": "2019-09-07",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "EINDEX",
+    "url": "https://eindex.me/about"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "EINDEX's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://eindex.me/images/avatar.png"
+    },
+    "keywords": ["代码","Python","Crawler","Async"]
+  }
+}
+</script><script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1265138627025369" async crossorigin=anonymous></script><body><div class=all><header><nav class=navbar><div class=avatar><a class=site-link href=https://eindex.me/cn/><img alt=Workflow class=avatar src=https://eindex.me/processed_images/e75389feba7c019600.png></a></div><div class=menus><a href=https://wiki.eindex.me>Wiki</a><a href=https://eindex.me/cn/gallery/>相册</a><a href=https://eindex.me/cn/archive/>归档</a></div><div class=switcher><a class="language switch" href=https://eindex.me/><iconify-icon icon=ri:english-input></iconify-icon></a></div></nav></header><div class=content><main><article class=h-entry data-clarity-region=article><section class=header><section class=title-area><h1 class="title p-name"><a class=u-url href=https://eindex.me/cn/posts/one-hundred-line-async-crawler/>一百行代码实现异步爬虫</a></h1></section><section class=meta-area><p style="display: none;" class=p-summary>&LTp>一个优雅的爬虫需要一下这些东西：&LT/p> &LTul> &LTli>请求器&LT/li> &LTli>页面解析器&LT/li> &LTli>链接生成器&LT/li> &LTli>调度器&LT/li> &LT/ul></p><span><iconify-icon icon=ant-design:calendar-outlined></iconify-icon> <time class=dt-published>2019-09-07</time></span><span><iconify-icon icon=fluent:mail-inbox-16-regular></iconify-icon><a class=categories href=https://eindex.me/cn/categories/dai-ma/>代码</a></span><span><iconify-icon icon=bx:time-five></iconify-icon> 3 mins</span></section></section><section class="main e-content"><p>一个优雅的爬虫需要一下这些东西：<ul><li>请求器<li>页面解析器<li>链接生成器<li>调度器</ul><span id=continue-reading></span><h2 id=qing-qiu-qi>请求器</h2><p>负责发送请求。<h2 id=ye-mian-jie-xi-qi>页面解析器</h2><p>负责从页面上解析出继续爬的链接。<h2 id=lian-jie-sheng-cheng-qi>链接生成器</h2><p>负责处理继续爬虫的链接并放入队列。<h2 id=diao-du-qi>调度器</h2><p>决定链接是否应该被爬去的核心部件。<h2 id=yi-bu>异步</h2><p>同时有多个请求在发送，即时异步爬虫。<h2 id=dai-ma>代码</h2><p>相关代码已上传到 <a class=h-card href=https://github.com/EINDEX/100-line-async-spider rel=nofollow>Github[https://github.com/EINDEX/100-line-async-spider]</a>。<pre class=language-python data-lang=python style=background-color:#272822;color:#f8f8f2;><code class=language-python data-lang=python><span style=color:#f92672;>import </span><span>aiohttp, asyncio, aiofiles, lxml, pathlib, sys, re, lxml.html
+</span><span style=color:#f92672;>from </span><span>urllib.parse </span><span style=color:#f92672;>import </span><span>urlparse
+</span><span style=color:#f92672;>from </span><span>pathlib </span><span style=color:#f92672;>import </span><span>Path
+</span><span style=color:#f92672;>from </span><span>hashlib </span><span style=color:#f92672;>import </span><span>md5
+</span><span>
+</span><span>MAX_GET, MAX_QUEUE_SIZE, MAX_WORKER </span><span style=color:#f92672;>= </span><span style=color:#ae81ff;>10000</span><span>, </span><span style=color:#ae81ff;>100</span><span>, </span><span style=color:#ae81ff;>20
+</span><span>spider_url_set, spider_content_set </span><span style=color:#f92672;>= </span><span style=font-style:italic;color:#66d9ef;>set</span><span>(), </span><span style=font-style:italic;color:#66d9ef;>set</span><span>()
+</span><span>status </span><span style=color:#f92672;>= </span><span>{</span><span style=color:#e6db74;>"success"</span><span>: </span><span style=color:#ae81ff;>0</span><span>, </span><span style=color:#e6db74;>"all"</span><span>: </span><span style=color:#ae81ff;>0</span><span>, </span><span style=color:#e6db74;>"same"</span><span>: </span><span style=color:#ae81ff;>0</span><span>, </span><span style=color:#e6db74;>"same_content"</span><span>:</span><span style=color:#ae81ff;>0</span><span>}
+</span><span>
+</span><span style=color:#f92672;>async </span><span style=font-style:italic;color:#f92672;>def </span><span style=color:#a6e22e;>fetch</span><span>(</span><span style=font-style:italic;color:#fd971f;>url</span><span>):
+</span><span>    </span><span style=color:#f92672;>global </span><span>MAX_GET
+</span><span>    </span><span style=color:#f92672;>if </span><span>MAX_GET </span><span style=color:#f92672;>< </span><span style=color:#ae81ff;>0</span><span>:
+</span><span>        </span><span style=color:#f92672;>return
+</span><span>    </span><span style=color:#f92672;>async with </span><span>aiohttp.ClientSession(</span><span style=font-style:italic;color:#fd971f;>connector</span><span style=color:#f92672;>=</span><span>aiohttp.TCPConnector(</span><span style=font-style:italic;color:#fd971f;>ssl</span><span style=color:#f92672;>=</span><span style=color:#ae81ff;>False</span><span>), </span><span style=font-style:italic;color:#fd971f;>timeout</span><span style=color:#f92672;>=</span><span>aiohttp.ClientTimeout(</span><span style=font-style:italic;color:#fd971f;>total</span><span style=color:#f92672;>=</span><span style=color:#ae81ff;>1</span><span>)) </span><span style=color:#f92672;>as </span><span>session:
+</span><span>        </span><span style=color:#f92672;>async with </span><span>session.get(url) </span><span style=color:#f92672;>as </span><span>response:
+</span><span>            </span><span style=color:#f92672;>return await </span><span>response.text()
+</span><span>
+</span><span style=color:#f92672;>async </span><span style=font-style:italic;color:#f92672;>def </span><span style=color:#a6e22e;>savefile</span><span>(</span><span style=font-style:italic;color:#fd971f;>path</span><span>, </span><span style=font-style:italic;color:#fd971f;>data</span><span>):
+</span><span>    path </span><span style=color:#f92672;>= </span><span>Path(path)
+</span><span>    path.parent.mkdir(</span><span style=font-style:italic;color:#fd971f;>parents</span><span style=color:#f92672;>=</span><span style=color:#ae81ff;>True</span><span>, </span><span style=font-style:italic;color:#fd971f;>exist_ok</span><span style=color:#f92672;>=</span><span style=color:#ae81ff;>True</span><span>)
+</span><span>    </span><span style=color:#f92672;>async with </span><span>aiofiles.open(path, </span><span style=font-style:italic;color:#fd971f;>mode</span><span style=color:#f92672;>=</span><span style=color:#e6db74;>'w'</span><span>) </span><span style=color:#f92672;>as </span><span>f:
+</span><span>        </span><span style=color:#f92672;>await </span><span>f.write(data)
+</span><span>
+</span><span style=font-style:italic;color:#f92672;>def </span><span style=color:#a6e22e;>data_analysis</span><span>(</span><span style=font-style:italic;color:#fd971f;>data</span><span>):
+</span><span>    </span><span style=color:#f92672;>try</span><span>:
+</span><span>        html </span><span style=color:#f92672;>= </span><span>lxml.html.fromstring(data)
+</span><span>        </span><span style=color:#f92672;>return </span><span>html.xpath(</span><span style=color:#e6db74;>'//a/@href'</span><span>)
+</span><span>    </span><span style=color:#f92672;>except</span><span>:
+</span><span>        </span><span style=color:#f92672;>return </span><span>[]
+</span><span>
+</span><span style=font-style:italic;color:#f92672;>def </span><span style=color:#a6e22e;>url_analysis</span><span>(</span><span style=font-style:italic;color:#fd971f;>endpoint</span><span>, </span><span style=font-style:italic;color:#fd971f;>urls</span><span>):
+</span><span>    </span><span style=color:#f92672;>for </span><span>url </span><span style=color:#f92672;>in </span><span>urls:
+</span><span>        </span><span style=color:#f92672;>if not </span><span>url </span><span style=color:#f92672;>or </span><span>url </span><span style=color:#f92672;>== </span><span style=color:#e6db74;>'#' </span><span style=color:#f92672;>or </span><span style=color:#e6db74;>'javascript' </span><span style=color:#f92672;>in </span><span>url:
+</span><span>            </span><span style=color:#f92672;>continue
+</span><span>        </span><span style=color:#f92672;>elif </span><span>url.startswith(</span><span style=color:#e6db74;>'/'</span><span>):
+</span><span>            </span><span style=color:#f92672;>if </span><span>endpoint.endswith(</span><span style=color:#e6db74;>'/'</span><span>):
+</span><span>                endpoint </span><span style=color:#f92672;>= </span><span>endpoint[:</span><span style=color:#f92672;>-</span><span style=color:#ae81ff;>1</span><span>]
+</span><span>            </span><span style=color:#f92672;>yield </span><span>endpoint </span><span style=color:#f92672;>+ </span><span>url
+</span><span>        </span><span style=color:#f92672;>elif </span><span>url.endswith(</span><span style=color:#e6db74;>'.html'</span><span>) </span><span style=color:#f92672;>or </span><span>url.endswith(</span><span style=color:#e6db74;>'.htm'</span><span>) </span><span style=color:#f92672;>or </span><span>url.endswith(</span><span style=color:#e6db74;>'.shtml'</span><span>) </span><span style=color:#f92672;>or </span><span>url.endswith(</span><span style=color:#e6db74;>'/'</span><span>) </span><span style=color:#f92672;>or </span><span style=color:#e6db74;>'?' </span><span style=color:#f92672;>in </span><span>url:
+</span><span>            </span><span style=color:#f92672;>yield </span><span>url
+</span><span>
+</span><span style=font-style:italic;color:#f92672;>def </span><span style=color:#a6e22e;>path_gene</span><span>(</span><span style=font-style:italic;color:#fd971f;>endpoint</span><span>):
+</span><span>    result </span><span style=color:#f92672;>= </span><span>urlparse(endpoint)
+</span><span>    </span><span style=color:#f92672;>return </span><span style=font-style:italic;color:#66d9ef;>f</span><span style=color:#e6db74;>'data/</span><span>{</span><span style=color:#e6db74;>"/"</span><span>.join(</span><span style=font-style:italic;color:#66d9ef;>list</span><span>(</span><span style=color:#66d9ef;>filter</span><span>(</span><span style=font-style:italic;color:#f92672;>lambda </span><span style=font-style:italic;color:#fd971f;>x</span><span>:x, result.hostname.split(</span><span style=color:#e6db74;>"."</span><span>)))[::</span><span style=color:#f92672;>-</span><span style=color:#ae81ff;>1</span><span>])}{result.path</span><span style=color:#f92672;>+</span><span style=color:#e6db74;>"/index.html" </span><span style=color:#f92672;>if </span><span>result.path</span><span style=color:#f92672;>!=</span><span style=color:#e6db74;>"/" </span><span style=color:#f92672;>else </span><span style=color:#e6db74;>"/index.html"</span><span>}{result.query.replace(</span><span style=color:#e6db74;>"/"</span><span>,</span><span style=color:#e6db74;>""</span><span>)}</span><span style=color:#e6db74;>'
+</span><span>
+</span><span style=color:#f92672;>async </span><span style=font-style:italic;color:#f92672;>def </span><span style=color:#a6e22e;>pushurl</span><span>(</span><span style=font-style:italic;color:#fd971f;>url_iter</span><span>, </span><span style=font-style:italic;color:#fd971f;>queue</span><span>):
+</span><span>    </span><span style=color:#f92672;>global </span><span>MAX_GET
+</span><span>    </span><span style=color:#f92672;>try</span><span>:
+</span><span>        </span><span style=color:#f92672;>for </span><span>url </span><span style=color:#f92672;>in </span><span>url_iter:
+</span><span>            </span><span style=color:#f92672;>if </span><span>MAX_GET </span><span style=color:#f92672;>> </span><span style=color:#ae81ff;>0</span><span>:
+</span><span>                </span><span style=color:#f92672;>await </span><span>queue.put(url)
+</span><span>    </span><span style=color:#f92672;>except </span><span style=font-style:italic;color:#66d9ef;>Exception </span><span style=color:#f92672;>as </span><span>e:
+</span><span>        </span><span style=color:#f92672;>pass
+</span><span>    
+</span><span style=color:#f92672;>async </span><span style=font-style:italic;color:#f92672;>def </span><span style=color:#a6e22e;>spider</span><span>(</span><span style=font-style:italic;color:#fd971f;>name</span><span>,</span><span style=font-style:italic;color:#fd971f;>queue</span><span>):
+</span><span>    </span><span style=color:#f92672;>global </span><span>MAX_GET, spider_content_set, spider_url_set
+</span><span>    </span><span style=color:#f92672;>while </span><span>MAX_GET </span><span style=color:#f92672;>> </span><span style=color:#ae81ff;>0</span><span>:
+</span><span>        </span><span style=color:#f92672;>try</span><span>:
+</span><span>            endpoint </span><span style=color:#f92672;>= await </span><span>queue.get()
+</span><span>            data </span><span style=color:#f92672;>= await </span><span>fetch(endpoint)
+</span><span>            md5data </span><span style=color:#f92672;>= </span><span>md5(data.encode()).hexdigest()
+</span><span>            </span><span style=color:#f92672;>if </span><span>md5data </span><span style=color:#f92672;>in </span><span>spider_content_set:
+</span><span>                status[</span><span style=color:#e6db74;>'same_content'</span><span>] </span><span style=color:#f92672;>+= </span><span style=color:#ae81ff;>1
+</span><span>                </span><span style=color:#f92672;>continue
+</span><span>            MAX_GET </span><span style=color:#f92672;>-= </span><span style=color:#ae81ff;>1
+</span><span>            status[</span><span style=color:#e6db74;>'all'</span><span>] </span><span style=color:#f92672;>+= </span><span style=color:#ae81ff;>1
+</span><span>            spider_content_set.add(md5data)
+</span><span>            </span><span style=color:#f92672;>await </span><span>savefile(path_gene(endpoint), data)
+</span><span>            asyncio.gather(asyncio.create_task(pushurl(url_analysis(endpoint, data_analysis(data)), queue)), </span><span style=font-style:italic;color:#fd971f;>return_exceptions</span><span style=color:#f92672;>=</span><span style=color:#ae81ff;>False</span><span>)
+</span><span>            status[</span><span style=color:#e6db74;>'success'</span><span>] </span><span style=color:#f92672;>+= </span><span style=color:#ae81ff;>1
+</span><span>        </span><span style=color:#f92672;>except </span><span style=font-style:italic;color:#66d9ef;>Exception </span><span style=color:#f92672;>as </span><span>e:
+</span><span>            </span><span style=color:#f92672;>pass
+</span><span>
+</span><span style=font-style:italic;color:#f92672;>def </span><span style=color:#a6e22e;>exit</span><span>():
+</span><span>    </span><span style=color:#66d9ef;>print</span><span>(</span><span style=color:#e6db74;>'exit'</span><span>)
+</span><span>    </span><span style=color:#f92672;>for </span><span>task </span><span style=color:#f92672;>in </span><span>asyncio.Task.all_tasks():
+</span><span>        task.cancel()
+</span><span>    sys.exit(</span><span style=color:#ae81ff;>0</span><span>)
+</span><span>
+</span><span style=color:#f92672;>async </span><span style=font-style:italic;color:#f92672;>def </span><span style=color:#a6e22e;>main</span><span>(</span><span style=font-style:italic;color:#fd971f;>first_endpoint</span><span>):
+</span><span>    queue </span><span style=color:#f92672;>= </span><span>asyncio.Queue(MAX_QUEUE_SIZE)
+</span><span>    </span><span style=color:#f92672;>await </span><span>queue.put(first_endpoint)
+</span><span>    asyncio.gather(</span><span style=color:#f92672;>*</span><span>[asyncio.create_task(spider(spider_id,queue)) </span><span style=color:#f92672;>for </span><span>spider_id </span><span style=color:#f92672;>in </span><span style=color:#66d9ef;>range</span><span>(MAX_WORKER)], </span><span style=font-style:italic;color:#fd971f;>return_exceptions</span><span style=color:#f92672;>=</span><span style=color:#ae81ff;>False</span><span>)
+</span><span>    </span><span style=color:#f92672;>try</span><span>:
+</span><span>        </span><span style=color:#f92672;>while </span><span style=color:#ae81ff;>True</span><span>:
+</span><span>            </span><span style=color:#f92672;>await </span><span>asyncio.sleep(</span><span style=color:#ae81ff;>1</span><span>)
+</span><span>            </span><span style=color:#66d9ef;>print</span><span>(queue.qsize(), MAX_GET, status)
+</span><span>            </span><span style=color:#f92672;>if </span><span>MAX_GET </span><span style=color:#f92672;><= </span><span style=color:#ae81ff;>0 </span><span style=color:#f92672;>or not </span><span>queue.qsize():
+</span><span>                exit()
+</span><span>    </span><span style=color:#f92672;>except</span><span>:
+</span><span>        exit()
+</span><span>
+</span><span style=color:#f92672;>if </span><span>__name__ </span><span style=color:#f92672;>== </span><span style=color:#e6db74;>"__main__"</span><span>:
+</span><span>    asyncio.run(main(</span><span style=color:#e6db74;>'https://eindex.me/'</span><span>))
+</span><span>    asyncio.get_event_loop().close()
+</span></code></pre></section><section class=post-footer><div class=tags><span class=tag><a href=https://eindex.me/cn/tags/python/>Python</a></span><span class=tag><a href=https://eindex.me/cn/tags/crawler/>Crawler</a></span><span class=tag><a href=https://eindex.me/cn/tags/async/>Async</a></span></div></section><section style="display: none;" class=comments id=giscus><script async crossorigin=anonymous data-category-id=DIC_kwDOGWb6Ys4CAKn- data-emit-metadata=0 data-lang=zh-CN data-mapping=pathname data-reactions-enabled=1 data-repo=EINDEX/blog data-repo-id=R_kgDOGWb6Yg data-theme=light src=https://giscus.app/client.js></script></section><button onclick='document.getElementById("giscus").style="";document.getElementById("giscus-button").style="display:none";' id=giscus-button>Loading Comments</button></article></main><aside></aside></div><footer class=footer><span class=webring> <a href=https://xn--sr8hvo.ws/%F0%9F%95%90%F0%9F%89%91%F0%9F%88%B6/previous>←</a> An IndieWeb Webring 🕸💍 <a href=https://xn--sr8hvo.ws/%F0%9F%95%90%F0%9F%89%91%F0%9F%88%B6/next>→</a> </span><link href=https://github.com/EINDEX rel=me></footer></div>

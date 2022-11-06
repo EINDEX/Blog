@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>EINDEX&#x27;s Blog</title>
+  <link>https://eindex.me/feed.xml</link>
+  <description xml:lang="cn"></description>
+  <atom:link href="https://eindex.me/feed.xml" rel="self" type="application/rss+xml"/>
+
+  
+  
+  <item>
+    <title xml:lang="cn">倒排索引</title>
+    <link>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;inverted-index&#x2F;</link>
+    <pubDate>Tue, 27 Aug 2019 12:00:00 +0800</pubDate>
+    <guid>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;inverted-index&#x2F;</guid>
+    <description xml:lang="cn">&lt;p&gt;世界上最伟大的互联网产品,说是搜索引擎,绝对没有别的产品可以替代,尤其是伟大的先在市场占用率最高的搜索引擎,Google Search.&lt;&#x2F;p&gt;
+&lt;p&gt;还有很多差一大截的,比如 Bing, Yahoo 和 YANDEX.&lt;&#x2F;p&gt;
+<br/><a href="https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;inverted-index&#x2F;#continue-reading">Continue Reading</a></description>
+  </item>
+  
+  
+  
+  <item>
+    <title xml:lang="cn">KMP 算法</title>
+    <link>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;kmp&#x2F;</link>
+    <pubDate>Fri, 11 May 2018 14:00:00 +0800</pubDate>
+    <guid>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;kmp&#x2F;</guid>
+    <description xml:lang="cn">&lt;blockquote&gt;
+&lt;p&gt;在计算机科学中，Knuth-Morris-Pratt字符串查找算法（简称为KMP算法）可在一个主文本字符串S内查找一个词W的出现位置。此算法通过运用对这个词在不匹配时本身就包含足够的信息来确定下一个匹配将在哪里开始的发现，从而避免重新检查先前匹配的字符。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+<br/><a href="https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;kmp&#x2F;#continue-reading">Continue Reading</a></description>
+  </item>
+  
+  
+  
+  <item>
+    <title xml:lang="cn">Tree in Python</title>
+    <link>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;tree-in-python&#x2F;</link>
+    <pubDate>Sun, 08 Apr 2018 14:00:00 +0800</pubDate>
+    <guid>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;tree-in-python&#x2F;</guid>
+    <description xml:lang="cn">&lt;p&gt;树是计算机科学中常用的数据结构之一,常见的地方有，Java 的继承树等。
+还有一些基于树的特殊数据结构，比如二叉树，B 树，等等。&lt;&#x2F;p&gt;
+&lt;p&gt;本篇会讲述一些关于简单关于树的操作。&lt;&#x2F;p&gt;
+<br/><a href="https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;tree-in-python&#x2F;#continue-reading">Continue Reading</a></description>
+  </item>
+  
+  
+  
+  <item>
+    <title xml:lang="cn">基本排序算法的Python实现</title>
+    <link>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;sort-in-python&#x2F;</link>
+    <pubDate>Thu, 05 Oct 2017 14:00:00 +0800</pubDate>
+    <guid>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;sort-in-python&#x2F;</guid>
+    <description xml:lang="cn">&lt;p&gt;本篇主要实现九(八）大排序算法，分别是冒泡排序，插入排序，选择排序，希尔排序，归并排序，快速排序，堆排序,计数排序。希望大家回顾知识的时候也能从我的这篇文章得到帮助。&lt;&#x2F;p&gt;
+<br/><a href="https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;sort-in-python&#x2F;#continue-reading">Continue Reading</a></description>
+  </item>
+  
+  
+  
+  <item>
+    <title xml:lang="cn">基本线性数据结构的Python实现</title>
+    <link>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;liner-in-python&#x2F;</link>
+    <pubDate>Thu, 05 Oct 2017 14:00:00 +0800</pubDate>
+    <guid>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;liner-in-python&#x2F;</guid>
+    <description xml:lang="cn">&lt;p&gt;本篇主要实现四种数据结构，分别是数组、堆栈、队列、链表。我不知道我为什么要用Python来干C干的事情，总之Python就是可以干。&lt;&#x2F;p&gt;
+<br/><a href="https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;liner-in-python&#x2F;#continue-reading">Continue Reading</a></description>
+  </item>
+  
+  
+</channel>
+</rss>
