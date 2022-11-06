@@ -9,6 +9,9 @@ on:
       - "scss/**"
       - "pipeline/**"
       - "templates/**"
+      - "**.scss"
+      - "**.js"
+      - "**.toml"
 
   workflow_call:
   workflow_dispatch:
