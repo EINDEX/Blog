@@ -40,7 +40,6 @@ jobs:
 
     - name: Fetch npm packages
       run: npm ci
-      if: steps.npm-cache.outputs.cache-hit != 'true'
 
     - run: node pipeline/webmentions.js
       env:
