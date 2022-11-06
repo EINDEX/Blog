@@ -24,9 +24,23 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: '16'
+        
+    - name: Get npm cache directory
+      id: npm-cache-dir
+      run: |
+        echo "::set-output name=dir::$(npm config get cache)"
+
+    - uses: actions/cache@v3
+      id: npm-cache # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
+      with:
+        path: ${{ steps.npm-cache-dir.outputs.dir }}
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
 
     - name: Fetch npm packages
       run: npm ci
+      if: steps.npm-cache.outputs.cache-hit != 'true'
 
     - run: node pipeline/webmentions.js
       env:
@@ -35,15 +49,15 @@ jobs:
     - run: echo "change=$(git diff --stat | wc -l | awk '{printf($1)}' )"
       id: change
 
-    - run: git add .
-      if: ${{ steps.change != 0 }}
-
-    - run: git push
-      if: ${{ steps.change != 0 }}
+    - if: steps.change.change != 0
+      run: |
+        git add .
+        git comment -m "auto fetch webmentions"
+        git push
 
   trigger-release:
     uses: eindex/blog/.github/workflows/release.yaml@main
-    if: ${{ needs.build.output.change != 0 }}
+    if: needs.build.output.change != 0
     needs: 
       - build
     
