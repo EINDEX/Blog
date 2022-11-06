@@ -46,6 +46,9 @@ jobs:
       env:
         WEBMENTION_TOKEN: ${{ secrets.WEBMENTION_TOKEN }}
     
+    - run: git diff --stat
+    - run: git diff --stat | wc -l
+
     - run: echo "change=$(git diff --stat | wc -l | awk '{printf($1)}' )"
       id: change
 
