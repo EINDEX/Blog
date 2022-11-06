@@ -32,7 +32,7 @@ jobs:
       env:
         WEBMENTION_TOKEN: ${{ secrets.WEBMENTION_TOKEN }}
     
-    - run: echo "change=$(git rev-list --count origin/webmentions..webmentions)"
+    - run: echo "change=$(git diff --stat | wc -l | awk '{printf($1)}' )"
       id: change
 
     - run: git add .
