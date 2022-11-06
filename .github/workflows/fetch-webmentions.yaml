@@ -44,15 +44,14 @@ jobs:
     - run: node pipeline/webmentions.js
       env:
         WEBMENTION_TOKEN: ${{ secrets.WEBMENTION_TOKEN }}
-    
-    - run: git diff --stat
-    - run: git diff --stat | wc -l
 
-    - run: echo "change=$(git diff --stat | wc -l | awk '{printf($1)}' )"
+    - run: echo "change=$(git status -u -s | wc -l | awk '{printf($1)}' )"
       id: change
 
     - if: steps.change.change != 0
       run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
         git add .
         git comment -m "auto fetch webmentions"
         git push
