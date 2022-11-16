@@ -1,7 +1,7 @@
 {% macro backlink(pages) %}
 {% if pages and pages | length >0 %}
   <section class="backlinks">
-    <h3>{{ trans(key="label_backlinks",lang=lang) }} ({{ pages | length }})</h3>
+    <h3>{{ trans(key="label_backlinks",lang=lang) }}</h3>
       {% for page in pages %}
       <p><a href="{{ page.permalink }}">{{ page.title }}</a></p>
       {% endfor %}

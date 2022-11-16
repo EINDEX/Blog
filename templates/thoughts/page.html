@@ -3,6 +3,7 @@
 {% block content %}
 <article class="h-entry" data-clarity-region="article">
     {% include "thoughts/supports/thought-header.html" %}
+    {% include "partials/plugins/invisable-h-card.html" %}
     <section class="thought-contrainer">
         {% if page.extra.reply.title %}<span>Reply: <a href="{{page.extra.reply.url}}" class="u-in-reply-to">{{page.extra.reply.title}}</a></span>{%endif%}
         <div class="thought e-content">{{ macro::render_html(content=page.content) }}</div>

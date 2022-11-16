@@ -4,7 +4,7 @@ title: "EINDEX's Blog"
 
 你好，欢迎你来到我的博客，我是 EINDEX。
 
-我会将我成型的想法，笔记写在这里。当然还有一些[英文内容](@/_index.md)。
+我会将我的想法和笔记记录在这里。当然还有一些[英文内容](@/_index.md)。
 
 与此同时我还会在这里存放我的[相册](@/gallery/_index.cn.md)。
 
@@ -18,5 +18,7 @@ title: "EINDEX's Blog"
 [<iconify-icon icon="cib:keybase"></iconify-icon>](https://keybase.io/eindexli)
 
 也欢迎你与我交换[友链](@links.cn.md)。
+
+本博客更新日志[Changelog](content/changelog.md)。
 
 ---
