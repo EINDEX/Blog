@@ -161,6 +161,9 @@
         <loc>https://eindex.me/series/</loc>
     </url>
     <url>
+        <loc>https://eindex.me/series/blog-enhance-plan/</loc>
+    </url>
+    <url>
         <loc>https://eindex.me/tags/</loc>
     </url>
     <url>
@@ -183,6 +186,9 @@
     </url>
     <url>
         <loc>https://eindex.me/tags/cache/</loc>
+    </url>
+    <url>
+        <loc>https://eindex.me/tags/chatgpt/</loc>
     </url>
     <url>
         <loc>https://eindex.me/tags/crawler/</loc>
@@ -225,6 +231,9 @@
     </url>
     <url>
         <loc>https://eindex.me/tags/linear/</loc>
+    </url>
+    <url>
+        <loc>https://eindex.me/tags/memos/</loc>
     </url>
     <url>
         <loc>https://eindex.me/tags/pipenv/</loc>
