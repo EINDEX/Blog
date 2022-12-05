@@ -40,7 +40,6 @@ const makeThoughts = async (memo) => {
     const chineseRegex = /[\u4e00-\u9fa5]/
     const findChinese = chineseRegex.exec(memo.content)
     const filename = `content/thoughts/${memo.createdTs}${findChinese? ".cn": ""}.md`
-    console.log(fetchTags(memo.content))
     const template = `---
 date: ${dateFormat(memo.createdTs)}
 updated: ${dateFormat(memo.updatedTs)}

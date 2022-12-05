@@ -55,5 +55,14 @@ jobs:
         git commit -m "auto fetch memos"
         git push
 
+  trigger-release:
+    uses: eindex/blog/.github/workflows/release.yaml@main
+    if: ${{ needs.build.outputs.change > 0 }}
+    needs: 
+      - build
+    secrets:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
     
     
