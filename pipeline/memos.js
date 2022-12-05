@@ -44,7 +44,7 @@ const makeThoughts = async (memo) => {
 date: ${dateFormat(memo.createdTs)}
 updated: ${dateFormat(memo.updatedTs)}
 template: thoughts/page.html
-extra:
+taxonomies:
   tags: ${JSON.stringify(fetchTags(memo.content))}
 ---
 

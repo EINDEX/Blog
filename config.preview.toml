@@ -1,5 +1,5 @@
 # The URL the site will be built for
-base_url = "https://eindex.me"
+base_url = "https://test-format.eindex.me"
 
 
 description = ""
@@ -82,6 +82,7 @@ label_backlinks = "BackLinks"
 # googleAnalytics = 'G-SR36ZS0R52'
 # clarity = 'ao1gr1m9ku'
 # adsense = "ca-pub-1265138627025369"
+bio = "My goal is make happy."
 twitter_user = '@eindex_li'
 
 [extra.giscus]

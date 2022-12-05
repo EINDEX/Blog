@@ -11,10 +11,10 @@ title: "EINDEX's Blog"
 我的积累的一些零散的笔记和知识存放在我的[Wiki](https://wiki.eindex.me)里。
 
 欢迎你来这些地方与我联系:
-[<iconify-icon icon="bxl:twitter"></iconify-icon>](https://twitter.com/eindex_li)
-[<iconify-icon icon="bxl:github"></iconify-icon>](https://github.com/eindex)
+<a rel="me" href="https://twitter.com/eindex_li"><iconify-icon icon="bxl:twitter"></iconify-icon></a>
+<a rel="me" href="https://github.com/eindex"><iconify-icon icon="bxl:github"></iconify-icon></a>
 [<iconify-icon icon="bxl:telegram"></iconify-icon>](https://t.me/eindex)
-[<iconify-icon icon="bx:at"></iconify-icon>](mailto:eindex.me@outlook.com)
+<a rel="me" href="mailto:eindex.me@outlook.com"><iconify-icon icon="bx:at"></iconify-icon></a>
 [<iconify-icon icon="cib:keybase"></iconify-icon>](https://keybase.io/eindexli)
 
 也欢迎你与我交换[友链](@links.cn.md)。

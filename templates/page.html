@@ -3,6 +3,7 @@
 {% block content %}
   <article class="h-entry" data-clarity-region="article">
     {% include "posts/supports/post-header.html" %}
+    {% include "partials/plugins/invisable-h-card.html" %}
     <section class="main e-content">
         {{ macro::render_html(content=page.content) }}
     </section>

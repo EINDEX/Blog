@@ -11,10 +11,10 @@ Also, I put my photograph in [gallery](@/gallery/_index.md).
 And I have some fragmented note and knowladage in my [wike site](https://wiki.eindex.me).
 
 Welcome to connect me via those methods:
-[<iconify-icon icon="bxl:twitter"></iconify-icon>](https://twitter.com/eindex_li)
-[<iconify-icon icon="bxl:github"></iconify-icon>](https://github.com/eindex)
+<a rel="me" href="https://twitter.com/eindex_li"><iconify-icon icon="bxl:twitter"></iconify-icon></a>
+<a rel="me" href="https://github.com/eindex"><iconify-icon icon="bxl:github"></iconify-icon></a>
 [<iconify-icon icon="bxl:telegram"></iconify-icon>](https://t.me/eindex)
-[<iconify-icon icon="bx:at"></iconify-icon>](mailto:eindex.me@outlook.com)
+<a rel="me" href="mailto:eindex.me@outlook.com"><iconify-icon icon="bx:at"></iconify-icon></a>
 [<iconify-icon icon="cib:keybase"></iconify-icon>](https://keybase.io/eindexli)
 
 Here have the blog [Changelog](content/changelog.md).
