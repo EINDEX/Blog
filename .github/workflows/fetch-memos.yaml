@@ -1,0 +1,59 @@
+name: Fetch Memos
+
+on:
+  schedule:
+    - cron: 0 5,17 * * *
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    concurrency:
+      group: ${{ github.workflow }}
+
+    outputs:
+      change: ${{ steps.change.outputs.change }}
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+        
+    - name: Get npm cache directory
+      id: npm-cache-dir
+      run: |
+        echo "dir=$(npm config get cache)" >> $GITHUB_OUTPUT
+
+    - uses: actions/cache@v3
+      id: npm-cache # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
+      with:
+        path: ${{ steps.npm-cache-dir.outputs.dir }}
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+
+    - name: Fetch npm packages
+      run: npm ci
+
+    - run: node pipeline/memos.js
+      env:
+        MEMOS_URL: ${{ secrets.MEMOS_URL }}
+        MEMOS_OPEN_ID: ${{ secrets.MEMOS_OPEN_ID }}
+
+    - run: echo "change=$(git status -u -s | wc -l | awk '{printf($1)}' )" >> $GITHUB_OUTPUT
+      id: change
+
+    - if: ${{ steps.change.outputs.change > 0 }}
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git add .
+        git commit -m "auto fetch memos"
+        git push
+
+    
+    
