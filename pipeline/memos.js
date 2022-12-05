@@ -16,6 +16,7 @@ const getMemos = async () => {
         })
         return resp.data.data
     } catch (e) {
+        console.error("connection error")
         return []
     }
     
@@ -40,8 +41,7 @@ const makeThoughts = async (memo) => {
     const findChinese = chineseRegex.exec(memo.content)
     const filename = `content/thoughts/${memo.createdTs}${findChinese? ".cn": ""}.md`
     console.log(fetchTags(memo.content))
-    const template = `
----
+    const template = `---
 date: ${dateFormat(memo.createdTs)}
 updated: ${dateFormat(memo.updatedTs)}
 template: thoughts/page.html
