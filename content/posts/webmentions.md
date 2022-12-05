@@ -1,6 +1,7 @@
 ---
 title: "Joining the Webmentions Community: A Beginner's Guide"
 date: 2022-11-06T17:44:50+08:00
+updated: 2022-12-05T23:48:50+08:00
 description: "Learn how to join the webmentions community and improve the interactivity and engagement of your blog with other websites and their users."
 taxonomies:
     series:
@@ -26,27 +27,30 @@ To join the webmentions community and start receiving notifications when other w
     <link rel="pingback" href="https://webmention.io/eindex.me/xmlrpc" />
     ```
 
-2. Make sure your website follows the [microformats2](https://microformats.org/) standard. This may require some effort, but it is important for ensuring that your website can properly send and receive webmentions. You can use a tool like [IndieWebify.Me](https://indiewebify.me/) to check if your website is using microformats2 correctly. You may also want to use a tool like  `ngrok`  or  `cloudflare tunnel`  to debug your website locally, which can save you time.
+2. Make sure your website follows the [microformats2](https://microformats.org/) standard. This may require some effort, but it is important for ensuring that your website can properly send and receive webmentions. You can use a tool like [IndieWebify.Me](https://indiewebify.me/) to check if your website is using microformats2 correctly. You may also want to use a tool like `ngrok` or `cloudflare tunnel` to debug your website locally, which can save you time.
 
 3. Start sending and receiving webmentions on your website. Once your website is registered with a webmention service and you have tested your implementation, you can start using webmentions on your site. Whenever you link to another website, you can send a webmention to notify them of your link. And whenever someone else links to your website, you can receive a webmention notification and display that link on your site.
 
-4. Consider using tools like Github actions and JavaScript scripts to automate the process of sending and receiving webmentions. This is particularly useful for static websites. For example, you can store your webmentions in a  `webmentions`  branch on Github, and use a workflow file like this to fetch webmentions:
+4. Consider using tools like Github actions and JavaScript scripts to automate the process of sending and receiving webmentions. This is particularly useful for static websites. For example, you can store your webmentions in a `webmentions` branch on Github, and use a workflow file like this to fetch webmentions and send your webmentions, you also can check my [implement](https://github.com/EINDEX/blog/blob/main/.github/workflows/fetch-webmentions.yaml) for this blog:
   
-```yaml
-  name: Fetch Webmentions
-  on:
-  schedule:
-    - cron: "0 0 * * *"
-  jobs:
-  fetch_webmentions:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          ref: webmentions
-      - name: Fetch Webmentions
-        run: node pipeline/webmentions.js
-```
+    ```yaml
+    name: Fetch Webmentions
+    on:
+    schedule:
+        - cron: "0 0 * * *"
+    jobs:
+    fetch_webmentions:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v2
+            with:
+            ref: webmentions
+        - name: Fetch Webmentions
+            run: node pipeline/webmentions.js
+        - name: Send Webmetnions 
+            run: node pipeline/send-webmentions.js
+    ```
+
   
 By following these steps, you can join the webmentions community and start enjoying the benefits of more interactive and engaging communication with other websites and their users.
 
