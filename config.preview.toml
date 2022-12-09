@@ -13,7 +13,6 @@ feed_filename = "feed.xml"
 [link_checker]
 # Skip link checking for external URLs that start with these prefixes
 skip_prefixes = [
-    "@/posts",
 ]
 
 [slugify]

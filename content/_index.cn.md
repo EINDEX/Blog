@@ -17,7 +17,7 @@ title: "EINDEX's Blog"
 <a rel="me" href="mailto:eindex.me@outlook.com"><iconify-icon icon="bx:at"></iconify-icon></a>
 [<iconify-icon icon="cib:keybase"></iconify-icon>](https://keybase.io/eindexli)
 
-也欢迎你与我交换[友链](@links.cn.md)。
+也欢迎你与我交换[友链](@/links.cn.md)。
 
 本博客更新日志[Changelog](content/changelog.md)。
 
