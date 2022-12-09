@@ -60,7 +60,7 @@ article  {
     .post-footer {
         @apply flex w-full flex-col gap-2;
         .tags {
-            @apply self-center leading-4 justify-center items-center text-base;
+            @apply flex flex-wrap self-center leading-4 justify-center items-center text-base gap-2;
         }
         .tag {
             @apply self-center italic;

@@ -1,7 +1,7 @@
 {
   "scripts": {
     "clean": "rimraf public && rimraf static/css",
-    "initcss": "node initcss.js",
+    "initcss": "touch ./static/css/index.css",
     "start": "TAILWIND_MODE=watch NODE_ENV=development npm-run-all --parallel dev:*",
     "dev:postcss": "postcss styles.scss -o ./static/css/index.css --config ./postcss.config.js -w",
     "dev:serve": "zola  --config config.toml serve --drafts",
