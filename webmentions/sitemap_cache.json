@@ -273,5 +273,39 @@
   "https://eindex.me/thoughts/1670245525/": {
     "loc": "https://eindex.me/thoughts/1670245525/",
     "lastmod": "2022-12-05T13:05:25Z"
+  },
+  "https://eindex.me/cn/posts/thoughtworks-one-month/": {
+    "loc": "https://eindex.me/cn/posts/thoughtworks-one-month/",
+    "lastmod": "2017-10-05T14:34:54+08:00"
+  },
+  "https://eindex.me/series/algorithm/": {
+    "loc": "https://eindex.me/series/algorithm/"
+  },
+  "https://eindex.me/tags/beginner-s-guide/": {
+    "loc": "https://eindex.me/tags/beginner-s-guide/"
+  },
+  "https://eindex.me/tags/community/": {
+    "loc": "https://eindex.me/tags/community/"
+  },
+  "https://eindex.me/tags/connectivity/": {
+    "loc": "https://eindex.me/tags/connectivity/"
+  },
+  "https://eindex.me/tags/engagement/": {
+    "loc": "https://eindex.me/tags/engagement/"
+  },
+  "https://eindex.me/tags/github-actions/": {
+    "loc": "https://eindex.me/tags/github-actions/"
+  },
+  "https://eindex.me/tags/indie-web/": {
+    "loc": "https://eindex.me/tags/indie-web/"
+  },
+  "https://eindex.me/tags/javascript/": {
+    "loc": "https://eindex.me/tags/javascript/"
+  },
+  "https://eindex.me/tags/microformats2/": {
+    "loc": "https://eindex.me/tags/microformats2/"
+  },
+  "https://eindex.me/tags/webmentions/": {
+    "loc": "https://eindex.me/tags/webmentions/"
   }
 }
