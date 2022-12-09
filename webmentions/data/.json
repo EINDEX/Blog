@@ -1,0 +1,20 @@
+{
+  "1547545": {
+    "type": "entry",
+    "author": {
+      "type": "card",
+      "name": "EINDEX",
+      "photo": "https://webmention.io/avatar/pbs.twimg.com/7bee0a03032ef374ae1e30bcf2b3ea0328931462430abc15ba51b32907500a54.jpg",
+      "url": "https://twitter.com/eindex_li"
+    },
+    "url": "https://twitter.com/eindex_li/status/1551469792137445376#favorited-by-2634612548",
+    "published": null,
+    "wm-received": "2022-10-31T10:50:04Z",
+    "wm-id": 1547545,
+    "wm-source": "https://brid.gy/like/twitter/eindex_li/1551469792137445376/2634612548",
+    "wm-target": "https://eindex.me/",
+    "like-of": "https://eindex.me/",
+    "wm-property": "like-of",
+    "wm-private": false
+  }
+}

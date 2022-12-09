@@ -1,6 +1,6 @@
 ---
 title: "Thoughtworks 一月"
-date: 2019-07-08T14:28:37+08:00
+date: 2017-10-05T14:34:54+08:00
 draft: false
 template: "posts/page.html"
 taxonomies:

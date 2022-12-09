@@ -2,6 +2,7 @@ const axios = require("axios");
 const process = require("process")
 const fs = require("node:fs")
 
+const memosFilePath = "memos/memos.js"
 
 const getMemos = async () => {
     try {
@@ -59,7 +60,7 @@ ${contentFormat(memo.content)}
 
 const main = async () => {
     const memos = await getMemos()
-    const data = JSON.parse(await fs.readFileSync("thoughts.json"))
+    const data = JSON.parse(await fs.readFileSync(memosFilePath))
     for (const memo of memos) {
         if(data.hasOwnProperty(memo.id) && data[memo.id].updatedTs >= memo.updatedTs) {
             continue
@@ -72,7 +73,7 @@ const main = async () => {
         }
         await makeThoughts(memo)
     }
-    await fs.writeFileSync("thoughts.json", JSON.stringify(data, null, 2));
+    await fs.writeFileSync(memosFilePath, JSON.stringify(data, null, 2));
 }
 
 

@@ -1,0 +1,42 @@
+{
+    "-1": {
+      "type": "entry",
+      "author": {
+        "type": "card",
+        "name": "ZenZing",
+        "photo": "https://avatars.githubusercontent.com/u/54519635?v=4",
+        "url": "https://www.dao1314.com/"
+      },
+      "url": "",
+      "published": "2021-12-19T10:50:04+08:00",
+      "wm-received": "2021-12-19T10:50:04+08:00",
+      "wm-id": -1,
+      "wm-source": "https://eindex.me/cn/posts/thoughtworks-one-month/",
+      "wm-target": "https://eindex.me/cn/posts/thoughtworks-one-month/",
+      "like-of": "https://eindex.me/cn/posts/thoughtworks-one-month/",
+      "wm-property": "like-of",
+      "wm-private": false
+    },
+    "-2": {
+        "type": "entry",
+        "author": {
+          "type": "card",
+          "name": "ZenZing",
+          "photo": "https://avatars.githubusercontent.com/u/54519635?v=4",
+          "url": "https://www.dao1314.com/"
+        },
+        "url": "",
+        "published": "2021-12-19T10:50:04+08:00",
+        "wm-received": "2021-12-19T10:50:04+08:00",
+        "wm-id": -2,
+        "wm-source": "https://eindex.me/cn/posts/thoughtworks-one-month/",
+        "wm-target": "https://eindex.me/cn/posts/thoughtworks-one-month/",
+        "content": {
+            "text": "😄放到现在也有参考价值"
+        },
+        "in-reply-to": "https://eindex.me/cn/posts/thoughtworks-one-month/",
+        "wm-property": "in-reply-to",
+        "wm-private": false
+      }
+}
+  

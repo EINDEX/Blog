@@ -26,6 +26,8 @@
     "@iconify/iconify": "^3.0.0",
     "axios": "^1.2.0",
     "iconify-icon": "^1.0.1",
-    "postcss-nesting": "^10.1.10"
+    "fs-extra": "^10.1.0",
+    "postcss-nesting": "^10.1.10",
+    "xml2json": "^0.12.0"
   }
 }

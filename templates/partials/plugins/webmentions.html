@@ -1,5 +1,5 @@
-{% set link = page.permalink | replace(from=config.base_url,to="") | trim_end_matches(pat="/") %}
-{% set web_mentions_data_path = "webmentions" ~ link ~ ".json" %}
+{% set link = page.permalink | replace(from=config.base_url, to="") | replace(from="/cn", to="") | trim_end_matches(pat="/") %}
+{% set web_mentions_data_path = "webmentions/data" ~ link ~ ".json" %}
 {% set web_mentions_data = load_data(path=web_mentions_data_path, required=false) %}
 {% if  web_mentions_data %}
 {% set_global web_mentions_list = [] %}

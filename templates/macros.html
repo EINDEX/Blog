@@ -85,7 +85,7 @@
     <div class="mention p-comment h-entry" id="comment-wm{{ mention['wm-id'] }}">
       <a  class="author p-author h-card u-url" title="{{ mention.author.name }}" href="{{ mention.author.url }}"><img src="{{mention.author.photo}}" alt="{{ mention.author.name }}" />{{ mention.author.name | truncate(length=20) }}</a>
       <p class="text p-content">{{ mention.content.text }}</p>
-      <div class="bar"><a href="{{ page.permalink }}#{{ mention['wm-id'] }}">mentioned at</a> <time class="dt-published" >{{ macro::date_format(datetime=mention.published,lang=lang) }}</time></div>
+      <div class="bar"><a href="{{ page.permalink }}#{{ mention['wm-id'] }}">mentioned at</a> <time class="dt-published" >{{ macro::date_format(datetime=mention.published, lang=lang)}}</time></div>
     </div>
   {% endfor %}
 </div>
