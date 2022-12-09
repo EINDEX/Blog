@@ -5,7 +5,6 @@ draft: false
 template: "posts/page.html"
 taxonomies:
     tags: [Python, Sort]
-    categories: [算法]
 ---
 本篇主要实现九(八）大排序算法，分别是冒泡排序，插入排序，选择排序，希尔排序，归并排序，快速排序，堆排序,计数排序。希望大家回顾知识的时候也能从我的这篇文章得到帮助。
 <!-- more -->

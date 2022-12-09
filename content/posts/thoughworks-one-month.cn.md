@@ -5,7 +5,6 @@ draft: false
 template: "posts/page.html"
 taxonomies:
     tags: [Thoughtworks]
-    categories: [随笔]
 ---
 
 距离加入 Thoughtworks 已有一个月。

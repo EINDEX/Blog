@@ -7,8 +7,6 @@ template: "posts/page.html"
 taxonomies:
   series: 
     - markdown-testing
-  categories: 
-    - testing
   tags:
     - markdown
     - testing

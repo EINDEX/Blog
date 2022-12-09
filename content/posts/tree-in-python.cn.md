@@ -6,7 +6,8 @@ draft: false
 template: "posts/page.html"
 taxonomies:
   tags: [Python]
-  categories: ["算法"]
+  series: 
+    - algorithm
 ---
 
 树是计算机科学中常用的数据结构之一,常见的地方有，Java 的继承树等。

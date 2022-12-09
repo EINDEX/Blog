@@ -4,7 +4,6 @@ date: 2017-10-05T14:24:21+08:00
 draft: false
 template: "posts/page.html"
 taxonomies:
-    categories: [教程]
     tags: [ArchLinux]
 ---
 ArchLinux 是一个非常符合我个人哲学的操作系统，深得与我一样的大部分 Pythonista 之心(不好意思代表你们了)。

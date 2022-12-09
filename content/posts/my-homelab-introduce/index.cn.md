@@ -4,7 +4,6 @@ date: 2022-05-15T23:39:46+08:00
 draft: false
 latex: false
 taxonomies:
-    categories: [HomeLab]
     tags: [K3S, Proxmox VE, Self-Hosted, Docker]
 ---
 

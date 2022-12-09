@@ -5,7 +5,6 @@ draft: false
 template: "posts/page.html"
 taxonomies:
     tags: [Python, Crawler, Async]
-    categories: [代码]
 ---
 
 一个优雅的爬虫需要一下这些东西：
@@ -18,23 +17,29 @@ taxonomies:
 <!-- more -->
 
 ## 请求器
+
 负责发送请求。
 
 ## 页面解析器
+
 负责从页面上解析出继续爬的链接。
 
 ## 链接生成器
+
 负责处理继续爬虫的链接并放入队列。
 
 ## 调度器
+
 决定链接是否应该被爬去的核心部件。
 
 ## 异步
+
 同时有多个请求在发送，即时异步爬虫。
 
 ## 代码
 
 相关代码已上传到 [Github\[https://github.com/EINDEX/100-line-async-spider\]](https://github.com/EINDEX/100-line-async-spider)。
+
 ```python
 import aiohttp, asyncio, aiofiles, lxml, pathlib, sys, re, lxml.html
 from urllib.parse import urlparse

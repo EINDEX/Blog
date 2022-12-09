@@ -10,8 +10,6 @@ template: "posts/page.html"
 taxonomies:
   series: 
     - qingzhuo
-  categories: 
-    - theme
   tags:
     - hello world
     - hugo

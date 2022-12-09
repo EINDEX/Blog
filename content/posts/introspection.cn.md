@@ -5,7 +5,6 @@ draft: false
 latex: false
 template: "posts/page.html"
 taxonomies:
-    categories: [随笔]
     tags: [Introspection]
 ---
 

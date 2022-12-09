@@ -2,9 +2,10 @@
 <section class="header">
   <section class="title-area">
     {% if page.taxonomies.series %}
-      {% set series_name = page.taxonomies.series[0] %}
-      {% set series_url = get_taxonomy_url(kind="series", name=series_name, lang=lang) %}
-      <a class="series p-category" href="{{ series_url }}">{{ series_name }}</a>
+      {% set series_key = page.taxonomies.series[0] %}
+      {% set series_url = get_taxonomy_url(kind="series", name=series_key, lang=lang) %}
+      {% set trans_series_name = trans(key="series_"~series_key) %}
+      <a class="series p-category" href="{{ series_url }}">{{ trans_series_name }}</a>
     {% endif %}
     <h1 class="title p-name">
     <a class="u-url" href="{{ page.permalink }}">{{page.title}}</a>

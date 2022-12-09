@@ -5,7 +5,6 @@ draft: false
 template: "posts/page.html"
 taxonomies:
     tags: ["Python", "Cache", "ETag"]
-    categories: [代码]
 ---
 
 

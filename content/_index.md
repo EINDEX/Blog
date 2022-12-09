@@ -17,6 +17,6 @@ Welcome to connect me via those methods:
 <a rel="me" href="mailto:eindex.me@outlook.com"><iconify-icon icon="bx:at"></iconify-icon></a>
 [<iconify-icon icon="cib:keybase"></iconify-icon>](https://keybase.io/eindexli)
 
-Here have the blog [Changelog](content/changelog.md).
+Here have the blog [Changelog](@/changelog.md).
 
 ---

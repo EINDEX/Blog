@@ -5,7 +5,8 @@ draft: false
 template: "posts/page.html"
 taxonomies:
     tags: [KMP, Python]
-    categories: [算法]
+    series:
+      - algorithm
 ---
 
 > 在计算机科学中，Knuth-Morris-Pratt字符串查找算法（简称为KMP算法）可在一个主文本字符串S内查找一个词W的出现位置。此算法通过运用对这个词在不匹配时本身就包含足够的信息来确定下一个匹配将在哪里开始的发现，从而避免重新检查先前匹配的字符。

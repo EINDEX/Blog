@@ -4,8 +4,9 @@ date: 2019-11-30T00:00:00+08:00
 draft: false
 template: "posts/page.html"
 taxonomies:
-  categories: [投资]
   tags: [Beancount]
+  series:
+    - algorithm
 ---
 
 本文简单介绍一下复式记账和 Beancount 的使用方法。

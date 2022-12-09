@@ -19,6 +19,6 @@ title: "EINDEX's Blog"
 
 也欢迎你与我交换[友链](@/links.cn.md)。
 
-本博客更新日志[Changelog](content/changelog.md)。
+本博客更新日志[Changelog](@/changelog.md)。
 
 ---

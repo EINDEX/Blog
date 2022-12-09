@@ -5,7 +5,8 @@ draft: false
 template: "posts/page.html"
 taxonomies:
     tags: [Python, Data structure, Linear]
-    categories: [算法]
+    series:
+      - algorithm
 ---
 
 本篇主要实现四种数据结构，分别是数组、堆栈、队列、链表。我不知道我为什么要用Python来干C干的事情，总之Python就是可以干。
