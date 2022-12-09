@@ -133,20 +133,6 @@
   
   
   <item>
-    <title xml:lang="cn">Thoughtworks 一月</title>
-    <link>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;thoughworks-one-month&#x2F;</link>
-    <pubDate>Mon, 08 Jul 2019 14:00:00 +0800</pubDate>
-    <guid>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;thoughworks-one-month&#x2F;</guid>
-    <description xml:lang="cn">&lt;p&gt;距离加入 Thoughtworks 已有一个月。
-这家公司也并非互联网公司，没有高强度的工作节奏，没有996，有一些敏捷信仰。
-对于武汉来说，也算是一个优秀的公司。&lt;&#x2F;p&gt;
-&lt;p&gt;同时正如网上所言：该有的缺点也是有的。好奇的同学可以去看一下我的编程引路人（也是我司黑粉头子）耗子叔（陈皓）的文章。&lt;&#x2F;p&gt;
-<br/><a href="https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;thoughworks-one-month&#x2F;#continue-reading">Continue Reading</a></description>
-  </item>
-  
-  
-  
-  <item>
     <title xml:lang="cn">Tornado Auto Etag 机制</title>
     <link>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;tornado-auto-etag&#x2F;</link>
     <pubDate>Wed, 24 Apr 2019 14:00:00 +0800</pubDate>
@@ -201,6 +187,20 @@
     <guid>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;sort-in-python&#x2F;</guid>
     <description xml:lang="cn">&lt;p&gt;本篇主要实现九(八）大排序算法，分别是冒泡排序，插入排序，选择排序，希尔排序，归并排序，快速排序，堆排序,计数排序。希望大家回顾知识的时候也能从我的这篇文章得到帮助。&lt;&#x2F;p&gt;
 <br/><a href="https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;sort-in-python&#x2F;#continue-reading">Continue Reading</a></description>
+  </item>
+  
+  
+  
+  <item>
+    <title xml:lang="cn">Thoughtworks 一月</title>
+    <link>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;thoughtworks-one-month&#x2F;</link>
+    <pubDate>Thu, 05 Oct 2017 14:00:00 +0800</pubDate>
+    <guid>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;thoughtworks-one-month&#x2F;</guid>
+    <description xml:lang="cn">&lt;p&gt;距离加入 Thoughtworks 已有一个月。
+这家公司也并非互联网公司，没有高强度的工作节奏，没有996，有一些敏捷信仰。
+对于武汉来说，也算是一个优秀的公司。&lt;&#x2F;p&gt;
+&lt;p&gt;同时正如网上所言：该有的缺点也是有的。好奇的同学可以去看一下我的编程引路人（也是我司黑粉头子）耗子叔（陈皓）的文章。&lt;&#x2F;p&gt;
+<br/><a href="https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;thoughtworks-one-month&#x2F;#continue-reading">Continue Reading</a></description>
   </item>
   
   

@@ -7,27 +7,6 @@
         <loc>https://eindex.me/archive/</loc>
     </url>
     <url>
-        <loc>https://eindex.me/categories/</loc>
-    </url>
-    <url>
-        <loc>https://eindex.me/categories/dai-ma/</loc>
-    </url>
-    <url>
-        <loc>https://eindex.me/categories/homelab/</loc>
-    </url>
-    <url>
-        <loc>https://eindex.me/categories/jiao-cheng/</loc>
-    </url>
-    <url>
-        <loc>https://eindex.me/categories/suan-fa/</loc>
-    </url>
-    <url>
-        <loc>https://eindex.me/categories/sui-bi/</loc>
-    </url>
-    <url>
-        <loc>https://eindex.me/categories/tou-zi/</loc>
-    </url>
-    <url>
         <loc>https://eindex.me/changelog/</loc>
     </url>
     <url>
@@ -101,8 +80,8 @@
         <lastmod>2017-10-05T14:34:54+08:00</lastmod>
     </url>
     <url>
-        <loc>https://eindex.me/cn/posts/thoughworks-one-month/</loc>
-        <lastmod>2019-07-08T14:28:37+08:00</lastmod>
+        <loc>https://eindex.me/cn/posts/thoughtworks-one-month/</loc>
+        <lastmod>2017-10-05T14:34:54+08:00</lastmod>
     </url>
     <url>
         <loc>https://eindex.me/cn/posts/tornado-auto-etag/</loc>
@@ -161,6 +140,9 @@
         <loc>https://eindex.me/series/</loc>
     </url>
     <url>
+        <loc>https://eindex.me/series/algorithm/</loc>
+    </url>
+    <url>
         <loc>https://eindex.me/series/blog-enhance-plan/</loc>
     </url>
     <url>
@@ -185,10 +167,19 @@
         <loc>https://eindex.me/tags/beancount/</loc>
     </url>
     <url>
+        <loc>https://eindex.me/tags/beginner-s-guide/</loc>
+    </url>
+    <url>
         <loc>https://eindex.me/tags/cache/</loc>
     </url>
     <url>
         <loc>https://eindex.me/tags/chatgpt/</loc>
+    </url>
+    <url>
+        <loc>https://eindex.me/tags/community/</loc>
+    </url>
+    <url>
+        <loc>https://eindex.me/tags/connectivity/</loc>
     </url>
     <url>
         <loc>https://eindex.me/tags/crawler/</loc>
@@ -201,6 +192,9 @@
     </url>
     <url>
         <loc>https://eindex.me/tags/ending/</loc>
+    </url>
+    <url>
+        <loc>https://eindex.me/tags/engagement/</loc>
     </url>
     <url>
         <loc>https://eindex.me/tags/environment/</loc>
@@ -218,10 +212,19 @@
         <loc>https://eindex.me/tags/financial/</loc>
     </url>
     <url>
+        <loc>https://eindex.me/tags/github-actions/</loc>
+    </url>
+    <url>
         <loc>https://eindex.me/tags/index/</loc>
     </url>
     <url>
+        <loc>https://eindex.me/tags/indie-web/</loc>
+    </url>
+    <url>
         <loc>https://eindex.me/tags/introspection/</loc>
+    </url>
+    <url>
+        <loc>https://eindex.me/tags/javascript/</loc>
     </url>
     <url>
         <loc>https://eindex.me/tags/k3s/</loc>
@@ -234,6 +237,9 @@
     </url>
     <url>
         <loc>https://eindex.me/tags/memos/</loc>
+    </url>
+    <url>
+        <loc>https://eindex.me/tags/microformats2/</loc>
     </url>
     <url>
         <loc>https://eindex.me/tags/pipenv/</loc>
@@ -255,6 +261,9 @@
     </url>
     <url>
         <loc>https://eindex.me/tags/thoughtworks/</loc>
+    </url>
+    <url>
+        <loc>https://eindex.me/tags/webmentions/</loc>
     </url>
     <url>
         <loc>https://eindex.me/thoughts/</loc>
