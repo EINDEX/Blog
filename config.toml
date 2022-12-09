@@ -88,16 +88,12 @@ series_algorithm = "Algorithm"
 [extra]
 # Put all your custom variables here
 ## ICP infomation China mainland only
-# clarity = 'ao1gr1m9ku'
-bio = "My goal is make happy."
-adsense = "ca-pub-1265138627025369"
+
 twitter_user = '@eindex_li'
+bio = "My goal is make happy."
 
-# [extra.giscus]
-# repo = "EINDEX/blog"
-# repoId = "R_kgDOGWb6Yg"
-# categoryId = "DIC_kwDOGWb6Ys4CAKn-"
-
+adsense = "ca-pub-1265138627025369"
+googleAnalytics = "G-SR36ZS0R52"
 
 ## extra.menus in navbar
 [extra.menu]
