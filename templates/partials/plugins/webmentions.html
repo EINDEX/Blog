@@ -8,10 +8,19 @@
 {% endfor %}
 {% endif %}
 
-{% if web_mentions_list %}
+<hr/>
+
 <section class="webmentions">
+  <h2>Webmentions</h2>
+  <p class="how-to-send-webmention">How to send web mentions, send webmetions is easy, you can do reply on my POSSE.</p>
+  <form class="webmention-form" action="https://webmention.io/eindex.me/webmention" method="post">
+    <input name="target" type="hidden" value="{{ page.permalink }}" />
+    <input name="source" type="text" placeholder="Your webmention link" />
+    <button type="submit">Send Webmention</button>
+  </form>
+{% if web_mentions_list %}
   {{ macro::reactions(webmentions=web_mentions_list) }}
   {{ macro::comments(webmentions=web_mentions_list, page=page) }}
   {{ macro::mentions(webmentions=web_mentions_list, page=page) }}
-</section>
 {% endif %}
+</section>

@@ -1,4 +1,26 @@
 .webmentions {
+
+    .webmention-form {
+        @apply flex flex-row sm:flex-col w-full h-auto gap-4;
+
+        input {
+            @apply w-full shadow-lg px-4 bg-gray-100 rounded-md h-12 text-gray-800;
+        }
+
+        button {
+            @apply shadow-lg px-4 rounded-md bg-gray-200 hover:bg-slate-400 whitespace-nowrap h-12 text-gray-800;
+        }
+
+        
+    }
+
+    .how-to-send-webmention {
+        @apply text-sm text-gray-600;
+    }
+    h2 {
+        @apply text-2xl;
+    }
+
     @apply flex flex-col gap-4;
 
     h3 {
