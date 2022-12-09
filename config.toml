@@ -93,10 +93,10 @@ bio = "My goal is make happy."
 adsense = "ca-pub-1265138627025369"
 twitter_user = '@eindex_li'
 
-[extra.giscus]
-repo = "EINDEX/blog"
-repoId = "R_kgDOGWb6Yg"
-categoryId = "DIC_kwDOGWb6Ys4CAKn-"
+# [extra.giscus]
+# repo = "EINDEX/blog"
+# repoId = "R_kgDOGWb6Yg"
+# categoryId = "DIC_kwDOGWb6Ys4CAKn-"
 
 
 ## extra.menus in navbar
