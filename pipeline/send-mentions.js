@@ -5,10 +5,16 @@ const parser = require('xml2json');
 const remoteSiteMapPath = "https://eindex.me/sitemap.xml"
 const webMentionAppAPI = "https://webmention.app/check/"
 const token = process.env.WEBMENTION_APP_TOKEN
-const localSite = "data/sitemap_cache.json"
+const localSite = "webmentions/sitemap_cache.json"
 
 const loadSiteMap = async () => {
-    const resp = await axios.get(remoteSiteMapPath)
+    const resp = await axios.get(remoteSiteMapPath, {
+        headers: {
+            "Accept-Content": "application/xml",
+            "Accept-Encoding": "UTF-8"
+        }
+    })
+    
     return JSON.parse(parser.toJson(resp.data)).urlset.url
 }
 
