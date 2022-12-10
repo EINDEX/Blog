@@ -31,11 +31,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - uses: actions/checkout@v3
-      with:
-        ref: webmentions
-        path: webmentions
-
     - run: sudo snap install zola --edge
 
     - name: Setup Node
