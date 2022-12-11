@@ -6,8 +6,8 @@ const prePage = 20;
 const domain = 'eindex.me';
 const token = process.env.WEBMENTION_TOKEN
 const webmentionsPath = "webmentions/"
-const webMentionsFolder = webmentionsPath + "/" 
-const sinceIDPath = webMentionsFolder + "since_id"
+const webMentionsFolder = webmentionsPath + "data/" 
+const sinceIDPath = webmentionsPath + "since_id"
 
 const fetchWebMentions = async (domain, token, sinceID, page, retry=3) => {
     if (retry < 0) {
@@ -23,7 +23,7 @@ const fetchWebMentions = async (domain, token, sinceID, page, retry=3) => {
                 "token": token,
             }
         })
-        return resp.data.children
+        return resp.data.children || []
     } catch (error) {
         console.error(error)
         return await fetchWebMentions(domain, token, sinceID, retry-1)
@@ -63,6 +63,7 @@ const fetchAllMentions = async(domain, token) => {
     let page = 0
     while(true){
         const mentions = await fetchWebMentions(domain, token, sinceID, page)
+        console.log(mentions)
         newMenionts = newMenionts.concat(mentions)
         if (mentions.length < 20){
             break
