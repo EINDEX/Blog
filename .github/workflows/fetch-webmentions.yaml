@@ -1,4 +1,4 @@
-name: Fetch Webmentions
+name: Schedule Update
 
 on:
   schedule:
@@ -39,15 +39,24 @@ jobs:
     - name: Fetch npm packages
       run: npm ci
 
-    - run: node pipeline/webmentions.js
+    - name: Update webmentions
+      run: node pipeline/webmentions.js
       env:
         WEBMENTION_TOKEN: ${{ secrets.WEBMENTION_TOKEN }}
 
-    - run: node pipeline/send-mentions.js
+    - name: Sending out webmentions
+      run: node pipeline/send-mentions.js
       env:
         WEBMENTION_APP_TOKEN: ${{ secrets.WEBMENTION_APP_TOKEN }}
 
-    - run: echo "change=$(git status -u -s | wc -l | awk '{printf($1)}' )" >> $GITHUB_OUTPUT
+    - name: fetch memos
+      run: node pipeline/memos.js
+      env:
+        MEMOS_URL: ${{ secrets.MEMOS_URL }}
+        MEMOS_OPEN_ID: ${{ secrets.MEMOS_OPEN_ID }}
+
+    - name: Check repo change
+      run: echo "change=$(git status -u -s | wc -l | awk '{printf($1)}' )" >> $GITHUB_OUTPUT
       id: change
 
     - if: ${{ steps.change.outputs.change > 0 }}

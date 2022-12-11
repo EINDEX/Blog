@@ -11,13 +11,14 @@
 <hr/>
 
 <section class="webmentions">
-  <h2>Webmentions</h2>
-  <p class="how-to-send-webmention">How to send web mentions, send webmetions is easy, you can do reply on my POSSE.</p>
+  <h2>Response</h2>
+  <p class="how-to-send-webmention">Have you written any replies to this article? If so, please send your article or tweet link below. (Making sure to include the link of this article in the content, learn more about webmentions from <a href="https://indieweb.org/Webmention">here</a>.)</p>
   <form class="webmention-form" action="https://webmention.io/eindex.me/webmention" method="post">
     <input name="target" type="hidden" value="{{ page.permalink }}" />
     <input name="source" type="text" placeholder="Your webmention link" />
     <button type="submit">Send Webmention</button>
   </form>
+  <p class="how-to-send-webmention">Have you written any replies to this article? If so, please send your article or tweet link below. (Making sure to include the link of this article in the content, learn more about webmentions from <a href="https://indieweb.org/Webmention">here</a>.)</p>
 {% if web_mentions_list %}
   {{ macro::reactions(webmentions=web_mentions_list) }}
   {{ macro::comments(webmentions=web_mentions_list, page=page) }}
