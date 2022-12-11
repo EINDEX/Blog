@@ -49,6 +49,7 @@ taxonomies:
 extra:
   posse:
     twitter: true
+    mastodon: true
 ---
 
 ${contentFormat(memo.content)}

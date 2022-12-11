@@ -7,5 +7,6 @@ extra:
         title: ""
     posse:
         twitter: true
+        mastodon: true
 ---
 

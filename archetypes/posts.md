@@ -10,6 +10,7 @@ taxonomies:
 extra:
     posse: 
         twitter: true
+        mastodon: true
 ---
 
 <!-- more -->

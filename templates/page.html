@@ -6,9 +6,7 @@
     {% include "partials/plugins/invisable-h-card.html" %}
     <section class="main e-content">
         {{ macro::render_html(content=page.content) }}
-        {% if page.extra.posse.twitter %}
-            <a href="https://brid.gy/publish/twitter"></a>
-        {% endif %}
+        {% include "partials/plugins/posse.html" %}
     </section>
     <section class="post-footer">
         {# {{- partial "prev-next-page.html" . -}} #}
