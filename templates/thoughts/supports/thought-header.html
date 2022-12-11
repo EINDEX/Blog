@@ -6,12 +6,11 @@
         {% set series_url = get_taxonomy_url(kind="series", name=series_name) %}
         <a class="series" href="{{ series_url }}">{{ series_name }}</a>
       {% endif %}
-      <h1 class="title p-name">
+      <h1 class="title">
       <a class="u-url" href="{{ page.permalink }}">{{ trans(key="label_thought", lang=lang) }}</a>
       </h1>
     </section>
     <section class="meta-area">
-      <p class="p-summary" style="display: none;">{%if page.summary%}{{page.summary}}{%else%}{%if page.description%}{{page.description}}{%endif%}{%endif%}</p>
     {% if page.date %}
       <span><iconify-icon icon="ant-design:calendar-outlined"></iconify-icon> <time class="dt-published">{{ page.date | date }}</time></span>
     {% endif %}
