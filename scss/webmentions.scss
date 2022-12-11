@@ -28,7 +28,7 @@
     }
 
     .author {
-        @apply flex flex-row gap-2 items-end;
+        @apply flex flex-row gap-2 items-center pl-2 w-auto;
         img {
             @apply w-10 h-10 rounded-full shadow-md;
         }
@@ -36,6 +36,7 @@
 
     .reactions-container, .comments-container, .mentions-container {
         @apply flex flex-col gap-4 pt-4;
+
         
         .reactions {
             @apply flex flex-row flex-wrap;
@@ -48,12 +49,28 @@
             }
         }   
         
-        .reply, .mention {
+        .reply, .mention, .twitter, .mastodon {
             @apply flex flex-col gap-2 bg-gray-200 rounded-lg px-4 pt-4 pb-2;
 
             .bar {
-                @apply flex flex-row justify-end gap-2 text-gray-600 text-sm;
+                @apply flex flex-row px-2 justify-end gap-1 text-gray-600 text-sm text-center items-center;
+
+                a {
+                    @apply flex text-center items-center gap-1;
+                }
+
+                .type {
+                    @apply italic
+                }
             }
+        }
+
+        .twitter {
+            @apply bg-blue-200;
+        }
+
+        .mastodon {
+            @apply bg-purple-200;
         }
 
         .text {

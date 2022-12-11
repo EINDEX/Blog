@@ -11,8 +11,8 @@
 {% if page.extra.posse.twitter %}
     <a href="https://brid.gy/publish/twitter"></a>
     {% if web_mentions_list %}
-        {% for mention in webmentions %}
-            {% if type == "mention-of" and  mention.url is starting_with("https://twitter.com/eindex_li/") %}
+        {% for mention in web_mentions_list %}
+            {% if mention["wm-property"] == "mention-of" and mention.author.url in config.extra.webmentions.posse.twitter %}
                 <a rel="syndication" class="u-syndication" href="{{ mention.url }}"></a>
             {% endif %}
         {% endfor %}
@@ -21,8 +21,8 @@
 {% if page.extra.posse.mastodon %}
     <a href="https://brid.gy/publish/mastodon"></a>
     {% if web_mentions_list %}
-        {% for mention in webmentions %}
-            {% if type == "mention-of" and  mention.url is starting_with("https://mastodon.social/@eindex/109495704265439010") %}
+        {% for mention in web_mentions_list %}
+            {% if mention["wm-property"] == "mention-of" and mention.author.url in config.extra.webmentions.posse.mastodon %}
                 <a rel="syndication" class="u-syndication" href="{{ mention.url }}"></a>
             {% endif %}
         {% endfor %}

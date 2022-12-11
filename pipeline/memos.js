@@ -13,6 +13,10 @@ const getMemos = async () => {
                 rowStatus: "NORMAL",
                 creatorId: 1,
                 limit: 100,
+            },
+            headers: {
+                "Accept-Content": "application/json",
+                "Accept-Encoding": "UTF-8"
             }
         })
         return resp.data.data

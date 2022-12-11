@@ -21,9 +21,13 @@ const fetchWebMentions = async (domain, token, sinceID, page, retry=3) => {
                 "page": page,
                 "since_id": sinceID,
                 "token": token,
+            },
+            headers: {
+                "Accept-Content": "application/json",
+                "Accept-Encoding": "UTF-8"
             }
         })
-        return resp.data.children || []
+        return resp.data.children
     } catch (error) {
         console.error(error)
         return await fetchWebMentions(domain, token, sinceID, retry-1)
@@ -76,7 +80,7 @@ const fetchAllMentions = async(domain, token) => {
 const mentionProcess = async (mention) => {
     const id = mention['wm-id']
     const target = new URL(mention['wm-target'])
-    const pathname = target.pathname.replace(/^\//,"").replace(/\/$/,"")
+    const pathname = target.pathname.replace(/^\/(cn)?/,"").replace(/\/$/,"")
     const filepath = `${webMentionsFolder}${pathname}.json`
     
     console.log(`process ${id} to ${filepath}`)

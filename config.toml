@@ -95,6 +95,11 @@ bio = "My goal is make happy."
 adsense = "ca-pub-1265138627025369"
 googleAnalytics = "G-SR36ZS0R52"
 
+[extra.webmentions]
+[extra.webmentions.posse]
+twitter = ["https://twitter.com/eindex_li"]
+mastodon = ["https://mastodon.social/@eindex"]
+
 ## extra.menus in navbar
 [extra.menu]
 [[extra.menu.navbar]]
