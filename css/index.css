@@ -488,6 +488,9 @@ video {
 .max-w-3xl{
     max-width: 48rem;
 }
+.grow{
+    flex-grow: 1;
+}
 .truncate{
     overflow: hidden;
     text-overflow: ellipsis;
@@ -3145,9 +3148,11 @@ article .gallery .thumbnail{
 }
 .webmentions .author{
     display: flex;
+    width: auto;
     flex-direction: row;
-    align-items: flex-end;
+    align-items: center;
     gap: 0.5rem;
+    padding-left: 0.5rem;
 }
 .webmentions .author img{
     height: 2.5rem;
@@ -3182,7 +3187,7 @@ article .gallery .thumbnail{
     font-size: 0.875rem;
     line-height: 1.25rem;
 }
-.webmentions .reactions-container .reply, .webmentions .reactions-container .mention, .webmentions .comments-container .reply, .webmentions .comments-container .mention, .webmentions .mentions-container .reply, .webmentions .mentions-container .mention{
+.webmentions .reactions-container .reply, .webmentions .reactions-container .mention, .webmentions .reactions-container .twitter, .webmentions .reactions-container .mastodon, .webmentions .comments-container .reply, .webmentions .comments-container .mention, .webmentions .comments-container .twitter, .webmentions .comments-container .mastodon, .webmentions .mentions-container .reply, .webmentions .mentions-container .mention, .webmentions .mentions-container .twitter, .webmentions .mentions-container .mastodon{
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -3194,15 +3199,36 @@ article .gallery .thumbnail{
     padding-top: 1rem;
     padding-bottom: 0.5rem;
 }
-.webmentions .reactions-container .reply .bar, .webmentions .reactions-container .mention .bar, .webmentions .comments-container .reply .bar, .webmentions .comments-container .mention .bar, .webmentions .mentions-container .reply .bar, .webmentions .mentions-container .mention .bar{
+.webmentions .reactions-container .reply .bar, .webmentions .reactions-container .mention .bar, .webmentions .reactions-container .twitter .bar, .webmentions .reactions-container .mastodon .bar, .webmentions .comments-container .reply .bar, .webmentions .comments-container .mention .bar, .webmentions .comments-container .twitter .bar, .webmentions .comments-container .mastodon .bar, .webmentions .mentions-container .reply .bar, .webmentions .mentions-container .mention .bar, .webmentions .mentions-container .twitter .bar, .webmentions .mentions-container .mastodon .bar{
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: flex-end;
-    gap: 0.5rem;
+    gap: 0.25rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    text-align: center;
     font-size: 0.875rem;
     line-height: 1.25rem;
     --tw-text-opacity: 1;
     color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+.webmentions .reactions-container .reply .bar a, .webmentions .reactions-container .mention .bar a, .webmentions .reactions-container .twitter .bar a, .webmentions .reactions-container .mastodon .bar a, .webmentions .comments-container .reply .bar a, .webmentions .comments-container .mention .bar a, .webmentions .comments-container .twitter .bar a, .webmentions .comments-container .mastodon .bar a, .webmentions .mentions-container .reply .bar a, .webmentions .mentions-container .mention .bar a, .webmentions .mentions-container .twitter .bar a, .webmentions .mentions-container .mastodon .bar a{
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    text-align: center;
+}
+.webmentions .reactions-container .reply .bar .type, .webmentions .reactions-container .mention .bar .type, .webmentions .reactions-container .twitter .bar .type, .webmentions .reactions-container .mastodon .bar .type, .webmentions .comments-container .reply .bar .type, .webmentions .comments-container .mention .bar .type, .webmentions .comments-container .twitter .bar .type, .webmentions .comments-container .mastodon .bar .type, .webmentions .mentions-container .reply .bar .type, .webmentions .mentions-container .mention .bar .type, .webmentions .mentions-container .twitter .bar .type, .webmentions .mentions-container .mastodon .bar .type{
+    font-style: italic;
+}
+.webmentions .reactions-container .twitter, .webmentions .comments-container .twitter, .webmentions .mentions-container .twitter{
+    --tw-bg-opacity: 1;
+    background-color: rgb(191 219 254 / var(--tw-bg-opacity));
+}
+.webmentions .reactions-container .mastodon, .webmentions .comments-container .mastodon, .webmentions .mentions-container .mastodon{
+    --tw-bg-opacity: 1;
+    background-color: rgb(233 213 255 / var(--tw-bg-opacity));
 }
 .webmentions .reactions-container .text, .webmentions .comments-container .text, .webmentions .mentions-container .text{
     padding-left: 0.5rem;
