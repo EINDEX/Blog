@@ -63,7 +63,6 @@ const fetchAllMentions = async(domain, token) => {
     let page = 0
     while(true){
         const mentions = await fetchWebMentions(domain, token, sinceID, page)
-        console.log(mentions)
         newMenionts = newMenionts.concat(mentions)
         if (mentions.length < 20){
             break
