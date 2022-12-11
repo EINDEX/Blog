@@ -2,7 +2,7 @@ const axios = require("axios");
 const process = require("process")
 const fs = require("node:fs")
 
-const memosFilePath = "memos/memos.js"
+const memosFilePath = "memos/memos.json"
 
 const getMemos = async () => {
     try {
@@ -33,8 +33,7 @@ const contentFormat = (content) => {
 
 const fetchTags = (content) => {
     const pattern = /#(\w+) /g
-    return content.match(pattern).map(i => i.trim().replace(/^#/,""))
-     
+    return (content.match(pattern) || []).map(i => i.trim().replace(/^#/,""))
 }
 
 const makeThoughts = async (memo) => {
