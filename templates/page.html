@@ -4,6 +4,11 @@
   <article class="h-entry" data-clarity-region="article">
     {% include "posts/supports/post-header.html" %}
     {% include "partials/plugins/invisable-h-card.html" %}
+    {% if page.description %}
+    <section class="p-summary" style="display:none">
+        {{ page.description }}
+    </section>
+    {% endif %}
     <section class="main e-content">
         {{ macro::render_html(content=page.content) }}
         {% include "partials/plugins/posse.html" %}

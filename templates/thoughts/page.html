@@ -6,7 +6,7 @@
     {% include "partials/plugins/invisable-h-card.html" %}
     <section class="thought-contrainer">
         {% if page.extra.reply.title %}<span>Reply: <a href="{{page.extra.reply.url}}" class="u-in-reply-to">{{page.extra.reply.title}}</a></span>{%endif%}
-        <div class="thought e-content">{{ macro::render_html(content=page.content) }}</div>
+        <div class="thought e-content p-summary">{{ macro::render_html(content=page.content) }}</div>
         <div class="bar"><span class="thought-date">at <time class="dt-published">{{ macro::date_format(datetime=page.date, lang=lang) }}</time></span></div>
         {% include "partials/plugins/posse.html" %}
     </section>
