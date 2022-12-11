@@ -5,5 +5,7 @@ extra:
     reply:
         url: ""
         title: ""
+    posse:
+        twitter: true
 ---
 

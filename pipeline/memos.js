@@ -28,7 +28,7 @@ const dateFormat = (timestamp) => {
 }
 
 const contentFormat = (content) => {
-    return content.replace(/(#\w+) /g, "`$1`")
+    return content
 }
 
 const fetchTags = (content) => {
@@ -47,6 +47,9 @@ updated: ${dateFormat(memo.updatedTs)}
 template: thoughts/page.html
 taxonomies:
   tags: ${JSON.stringify(fetchTags(memo.content))}
+extra:
+  posse:
+    twitter: true
 ---
 
 ${contentFormat(memo.content)}

@@ -5,9 +5,11 @@ description: ""
 draft: true
 template: posts/page.html
 taxonomies:
-    categories: []
     tags: []
     series: []
+extra:
+    posse: 
+        twitter: true
 ---
 
 <!-- more -->
