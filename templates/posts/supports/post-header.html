@@ -12,11 +12,11 @@
     </h1>
   </section>
   <section class="meta-area">
-    <p class="p-summary" style="display: none;">{%if page.summary%}{{page.summary}}{%else%}{%if page.description%}{{page.description}}{%endif%}{%endif%}</p>
+    <p class="p-summary" style="display: none;">{%if page.description%}{{page.description}}{%elif page.summary%}{{page.summary}}{%endif%}</p>
   {% if page.date %}
-    <span><iconify-icon icon="ant-design:calendar-outlined"></iconify-icon> <time class="dt-published">{{ page.date | date }}</time></span>
+    <span><iconify-icon icon="ant-design:calendar-outlined"></iconify-icon>&nbsp;<time class="dt-published">{{ page.date | date }}</time>&nbsp;</span>
   {% endif %}
-    <span><iconify-icon icon="bx:time-five"></iconify-icon> {{ page.reading_time }} mins</span>  
-    <span style="display:none"><iconify-icon icon="mdi:eye-outline"></iconify-icon><span id="pv"></span> views</span>
+    <span><iconify-icon icon="bx:time-five"></iconify-icon>&nbsp;{{ page.reading_time }} mins</span>  
+    <span style="display:none"><iconify-icon icon="mdi:eye-outline"></iconify-icon>&nbsp;<span id="pv"></span>&nbsp;views</span>
   </section>
 </section>

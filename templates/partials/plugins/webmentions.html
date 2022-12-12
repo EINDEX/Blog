@@ -9,7 +9,6 @@
 {% endif %}
 
 <hr/>
-
 <section class="webmentions">
   <h2>Response</h2>
   <p class="how-to-send-webmention">Have you written any responses to this article? If so, please send your article or tweet link below. (Making sure to include the link of this article in the content, learn more about webmentions from <a href="https://indieweb.org/Webmention">here</a>.)</p>
@@ -18,11 +17,15 @@
     <input name="source" type="text" placeholder="Your webmention link" />
     <button type="submit">Send Webmention</button>
   </form>
-{% if web_mentions_list %}
-  <p class="how-to-send-webmention">Or you can reply on below tweets.</p>
-  {{ macro::mention_cards(webmentions=web_mentions_list, page=page) }}
-  {{ macro::reactions(webmentions=web_mentions_list) }}
-  {{ macro::comments(webmentions=web_mentions_list, page=page) }}
-  {{ macro::mentions(webmentions=web_mentions_list, page=page) }}
-{% endif %}
+  <p class="how-to-send-webmention"><a class="twitter-share-button" href="https://twitter.com/intent/tweet">Tweet</a> and send response
+  
+  {% if web_mentions_list %}
+  &nbsp;or you can reply on below tweets.</p>
+    {{ macro::mention_cards(webmentions=web_mentions_list, page=page) }}
+    {{ macro::reactions(webmentions=web_mentions_list) }}
+    {{ macro::comments(webmentions=web_mentions_list, page=page) }}
+    {{ macro::mentions(webmentions=web_mentions_list, page=page) }}
+  {% else %}
+    </p>
+  {% endif %}
 </section>

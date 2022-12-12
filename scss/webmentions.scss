@@ -15,7 +15,7 @@
     }
 
     .how-to-send-webmention {
-        @apply text-sm text-gray-600;
+        @apply flex flex-row text-sm text-gray-600;
     }
     h2 {
         @apply text-2xl;
@@ -67,6 +67,9 @@
 
         .twitter {
             @apply bg-blue-200;
+        }
+        .twitter-tweet {
+            @apply self-center w-full;
         }
 
         .mastodon {
