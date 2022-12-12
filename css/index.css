@@ -3127,6 +3127,8 @@ article .gallery .thumbnail{
     background-color: rgb(148 163 184 / var(--tw-bg-opacity));
 }
 .webmentions .how-to-send-webmention{
+    display: flex;
+    flex-direction: row;
     font-size: 0.875rem;
     line-height: 1.25rem;
     --tw-text-opacity: 1;
@@ -3225,6 +3227,10 @@ article .gallery .thumbnail{
 .webmentions .reactions-container .twitter, .webmentions .comments-container .twitter, .webmentions .mentions-container .twitter{
     --tw-bg-opacity: 1;
     background-color: rgb(191 219 254 / var(--tw-bg-opacity));
+}
+.webmentions .reactions-container .twitter-tweet, .webmentions .comments-container .twitter-tweet, .webmentions .mentions-container .twitter-tweet{
+    width: 100%;
+    align-self: center;
 }
 .webmentions .reactions-container .mastodon, .webmentions .comments-container .mastodon, .webmentions .mentions-container .mastodon{
     --tw-bg-opacity: 1;
