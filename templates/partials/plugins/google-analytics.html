@@ -5,9 +5,17 @@
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  
+  var page_link = new URL(window.location.href);
   gtag('js', new Date());
+  gtag('config', '{{ config.extra.googleAnalytics }}', {
+    internal_type: page_link.searchParams.get("internal_type")
+  });
+  gtag('set', {
+    internal_type: page_link.searchParams.get("internal_type")
+  })
+  
 
-  gtag('config', '{{ config.extra.googleAnalytics }}');
 </script>
 
 {% endif %}
