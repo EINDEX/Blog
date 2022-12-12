@@ -16,11 +16,7 @@
   {% if page.date %}
     <span><iconify-icon icon="ant-design:calendar-outlined"></iconify-icon> <time class="dt-published">{{ page.date | date }}</time></span>
   {% endif %}
-  {% if page.taxonomies.categories %}
-    {% set categories_name = page.taxonomies.categories[0] %}
-    {% set categories_url = get_taxonomy_url(kind="categories", name=categories_name, lang=lang) %}
-    <span><iconify-icon icon="fluent:mail-inbox-16-regular"></iconify-icon><a class="categories" href="{{ categories_url }}">{{ categories_name }}</a></span>
-  {% endif %}
     <span><iconify-icon icon="bx:time-five"></iconify-icon> {{ page.reading_time }} mins</span>  
+    <span style="display:none"><iconify-icon icon="mdi:eye-outline"></iconify-icon><span id="pv"></span> views</span>
   </section>
 </section>

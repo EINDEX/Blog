@@ -14,7 +14,6 @@
         {% include "partials/plugins/posse.html" %}
     </section>
     <section class="post-footer">
-        {# {{- partial "prev-next-page.html" . -}} #}
         {% include "partials/plugins/tag-list.html" %}
     </section>
     {{ macro::backlink(pages=page.backlinks) }}
@@ -22,3 +21,7 @@
     {% include "partials/plugins/giscus.html" %}
 </article>
 {% endblock content %}
+
+{% block script %}
+    {% include "partials/plugins/pv-counter.html" %}
+{% endblock %}

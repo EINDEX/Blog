@@ -1,0 +1,8 @@
+name = "pv-counter"
+main = "src/index.ts"
+compatibility_date = "2022-12-12"
+
+[[ d1_databases ]]
+binding = "DB"
+database_name = "blog"
+database_id = "d078443f-0500-43a0-b7ff-563260204054"
