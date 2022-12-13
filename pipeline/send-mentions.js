@@ -11,7 +11,8 @@ const loadSiteMap = async () => {
     const resp = await axios.get(remoteSiteMapPath, {
         headers: {
             "Accept-Content": "application/xml",
-            "Accept-Encoding": "UTF-8"
+            "Accept-Encoding": "UTF-8",
+            "Cache-Control": "no-cache"
         }
     })
     
@@ -56,7 +57,7 @@ const main = async () => {
     for(const url of urls) {
         let sendFlag = false
         if (data.hasOwnProperty(url.loc)) {
-            if (data[url.loc].lastmod !== url.lastmod) {
+            if (data[url.loc].lastmod !== url.lastmod || url.lastmod === undefined) {
                 sendFlag = true
             }
         } else {

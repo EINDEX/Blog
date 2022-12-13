@@ -66,6 +66,9 @@ jobs:
         user_email: 'github-actions[bot]@users.noreply.github.com'
         publish_branch: dist
 
+    - name: Sending out webmentions
+      run: node pipeline/fetch-sitemap.js
+
     - name: Publish to Cloudflare Pages
       uses: cloudflare/pages-action@1
       with:
