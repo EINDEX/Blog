@@ -39,27 +39,28 @@ jobs:
     - name: Fetch npm packages
       run: npm ci
 
+    - name: Update webmentions
+      run: node pipeline/webmentions.js
+      env:
+        WEBMENTION_TOKEN: ${{ secrets.WEBMENTION_TOKEN }}
+
     - name: fetch memos
       run: node pipeline/memos.js
       env:
         MEMOS_URL: ${{ secrets.MEMOS_URL }}
         MEMOS_OPEN_ID: ${{ secrets.MEMOS_OPEN_ID }}
 
-    - name: Update webmentions
-      run: node pipeline/webmentions.js
-      env:
-        WEBMENTION_TOKEN: ${{ secrets.WEBMENTION_TOKEN }}
-
     - name: Check repo change
       run: echo "change=$(git status -u -s | wc -l | awk '{printf($1)}' )" >> $GITHUB_OUTPUT
       id: change
+      if: ${{ always() }}
 
     - if: ${{ steps.change.outputs.change > 0 }}
       run: |
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
         git add .
-        git commit -m "auto fetch webmentions"
+        git commit -m "Auto updated"
         git push
 
   trigger-release:
