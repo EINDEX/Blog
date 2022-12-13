@@ -9,10 +9,10 @@
   var page_link = new URL(window.location.href);
   gtag('js', new Date());
   gtag('config', '{{ config.extra.googleAnalytics }}', {
-    internal_type: page_link.searchParams.get("internal_type")
+    traffic_type: page_link.searchParams.get("traffic_type")
   });
   gtag('set', {
-    internal_type: page_link.searchParams.get("internal_type")
+    traffic_type: page_link.searchParams.get("traffic_type")
   })
   
 
