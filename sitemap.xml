@@ -142,6 +142,10 @@
         <loc>https://eindex.me/posts/</loc>
     </url>
     <url>
+        <loc>https://eindex.me/posts/improving-your-code-review-process-with-semgrep/</loc>
+        <lastmod>2022-12-13T20:55:03+08:00</lastmod>
+    </url>
+    <url>
         <loc>https://eindex.me/posts/webmentions/</loc>
         <lastmod>2022-12-05T23:48:50+08:00</lastmod>
     </url>
@@ -179,10 +183,22 @@
         <loc>https://eindex.me/tags/beginner-s-guide/</loc>
     </url>
     <url>
+        <loc>https://eindex.me/tags/best-practices/</loc>
+    </url>
+    <url>
+        <loc>https://eindex.me/tags/build-security-in/</loc>
+    </url>
+    <url>
         <loc>https://eindex.me/tags/cache/</loc>
     </url>
     <url>
         <loc>https://eindex.me/tags/chatgpt/</loc>
+    </url>
+    <url>
+        <loc>https://eindex.me/tags/ci/</loc>
+    </url>
+    <url>
+        <loc>https://eindex.me/tags/code-review/</loc>
     </url>
     <url>
         <loc>https://eindex.me/tags/community/</loc>
@@ -195,6 +211,12 @@
     </url>
     <url>
         <loc>https://eindex.me/tags/data-structure/</loc>
+    </url>
+    <url>
+        <loc>https://eindex.me/tags/devops/</loc>
+    </url>
+    <url>
+        <loc>https://eindex.me/tags/devsecops/</loc>
     </url>
     <url>
         <loc>https://eindex.me/tags/docker/</loc>
@@ -260,13 +282,25 @@
         <loc>https://eindex.me/tags/python/</loc>
     </url>
     <url>
+        <loc>https://eindex.me/tags/sast/</loc>
+    </url>
+    <url>
         <loc>https://eindex.me/tags/search-engine/</loc>
+    </url>
+    <url>
+        <loc>https://eindex.me/tags/security/</loc>
     </url>
     <url>
         <loc>https://eindex.me/tags/self-hosted/</loc>
     </url>
     <url>
+        <loc>https://eindex.me/tags/semgrep/</loc>
+    </url>
+    <url>
         <loc>https://eindex.me/tags/sort/</loc>
+    </url>
+    <url>
+        <loc>https://eindex.me/tags/static-analysis/</loc>
     </url>
     <url>
         <loc>https://eindex.me/tags/thoughtworks/</loc>

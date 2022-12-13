@@ -19,62 +19,7 @@
 &lt;p&gt;本文通过 DeepL 翻译自 &lt;a href=&quot;https:&#x2F;&#x2F;eindex.me&#x2F;posts&#x2F;webmentions&#x2F;&quot;&gt;Joining the Webmentions Community: A Beginner&#x27;s Guide&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;&#x2F;blockquote&gt;
 &lt;p&gt;最近我看到了&lt;a rel=&quot;nofollow&quot; href=&quot;https:&#x2F;&#x2F;www.owenyoung.com&#x2F;en&#x2F;blog&#x2F;indieweb&#x2F;&quot;&gt;Now, I&#x27;m in IndieWeb?&lt;&#x2F;a&gt;，了解到了 Webmentions。我发现这个概念非常有趣，于是决定加入我的博客的 Webmentions 社区。&lt;&#x2F;p&gt;
-&lt;p&gt;&amp;lt;！--更多 --&amp;gt;&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;shi-yao-shi-webmentions&quot;&gt;什么是 Webmentions&lt;&#x2F;h2&gt;
-&lt;p&gt;Webmentions 是一种网站相互交流的方式，当它们链接到对方的内容时，可以通知对方。这使得网络社区的互动性更强，联系更紧密，网站可以与对方和用户实时互动。&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;wo-ru-he-jia-ru-webmentions-she-qu&quot;&gt;我如何加入 Webmentions 社区？&lt;&#x2F;h2&gt;
-&lt;p&gt;要加入 Webmentions 社区，并开始接收其他网站链接到你的内容时的通知，你需要采取以下步骤。&lt;&#x2F;p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;在 Webmentions 服务中注册你的网站，比如 webmention.io。这将使你的网站能够接收来自其他网站的网络提示，也使你能够在链接到其他网站时向它们发送网络提示。要做到这一点，你可以在你的网站上添加以下 HTML 代码。&lt;&#x2F;p&gt;
-&lt;pre data-lang=&quot;HTML&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-HTML &quot;&gt;&lt;code class=&quot;language-HTML&quot; data-lang=&quot;HTML&quot;&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;link &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;rel&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;webmention&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;href&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;https:&#x2F;&#x2F;webmention.io&#x2F;eindex.me&#x2F;webmention&amp;quot; &lt;&#x2F;span&gt;&lt;span&gt;&#x2F;&amp;gt;
-&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;link &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;rel&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;pingback&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;href&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;https:&#x2F;&#x2F;webmention.io&#x2F;eindex.me&#x2F;xmlrpc&amp;quot; &lt;&#x2F;span&gt;&lt;span&gt;&#x2F;&amp;gt;
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-&lt;&#x2F;li&gt;
-&lt;li&gt;
-&lt;p&gt;确保你的网站遵循&lt;a rel=&quot;nofollow&quot; href=&quot;https:&#x2F;&#x2F;microformats.org&#x2F;&quot;&gt;microformats2&lt;&#x2F;a&gt;标准。这可能需要一些努力，但这对于确保你的网站能够正确地发送和接收 Webmentions 是很重要的。你可以使用&lt;a rel=&quot;nofollow&quot; href=&quot;https:&#x2F;&#x2F;indiewebify.me&#x2F;&quot;&gt;IndieWebify.Me&lt;&#x2F;a&gt;这样的工具来检查你的网站是否正确使用 microformats2。你也可以使用像&lt;code&gt;ngrok&lt;&#x2F;code&gt;或&lt;code&gt;cloudflare tunnel&lt;&#x2F;code&gt;这样的工具，在本地调试你的网站，这样可以节省时间。&lt;&#x2F;p&gt;
-&lt;&#x2F;li&gt;
-&lt;li&gt;
-&lt;p&gt;开始在你的网站上发送和接收 Webmentions。一旦你的网站在 Webmentions 服务中注册，并且你已经测试了你的实施，你就可以开始在你的网站上使用 Webmentions 来通知他们你的链接。而每当别人链接到你的网站时，你可以收到 webmention 通知，并在你的网站上显示该链接。&lt;&#x2F;p&gt;
-&lt;&#x2F;li&gt;
-&lt;li&gt;
-&lt;p&gt;考虑使用 Github 行动和 JavaScript 脚本等工具来自动发送和接收 Webmentions 的过程。这对静态网站特别有用。例如，你可以在 Github 上的&lt;code&gt;webmentions&lt;&#x2F;code&gt;分支中存储你的 Webmentions，并使用像这样的工作流文件来获取 Webmentions 和发送你的 Webmentions，你也可以查看我的&lt;a rel=&quot;nofollow&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;EINDEX&#x2F;blog&#x2F;blob&#x2F;main&#x2F;.github&#x2F;workflows&#x2F;fetch-webmentions.yaml&quot;&gt;实现&lt;&#x2F;a&gt;这个博客的。&lt;&#x2F;p&gt;
-&lt;pre data-lang=&quot;yaml&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-yaml &quot;&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;Fetch Webmentions
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;on&lt;&#x2F;span&gt;&lt;span&gt;:
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;schedule&lt;&#x2F;span&gt;&lt;span&gt;:
-&lt;&#x2F;span&gt;&lt;span&gt;    - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;cron&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;0 0 * * *&amp;quot;
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;jobs&lt;&#x2F;span&gt;&lt;span&gt;:
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;fetch_webmentions&lt;&#x2F;span&gt;&lt;span&gt;:
-&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;runs-on&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;ubuntu-latest
-&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;steps&lt;&#x2F;span&gt;&lt;span&gt;:
-&lt;&#x2F;span&gt;&lt;span&gt;    - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;uses&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;actions&#x2F;checkout@v2
-&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;with&lt;&#x2F;span&gt;&lt;span&gt;:
-&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;ref&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;webmentions
-&lt;&#x2F;span&gt;&lt;span&gt;    - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;Fetch Webmentions
-&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;run&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;node pipeline&#x2F;webmentions.js
-&lt;&#x2F;span&gt;&lt;span&gt;    - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;Send Webmetnions
-&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;run&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;node pipeline&#x2F;send-webmentions.js
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-&lt;&#x2F;li&gt;
-&lt;&#x2F;ol&gt;
-&lt;p&gt;按照这些步骤，你可以加入 Webmentions 社区，并开始享受与其他网站及其用户进行更多互动和参与性交流的好处。&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;wei-shi-yao-yao-jia-ru-webmentions-she-qu&quot;&gt;为什么要加入 Webmentions 社区？&lt;&#x2F;h2&gt;
-&lt;p&gt;加入 Webmentions 社区并在您的网站上实施 Webmentions 有许多潜在的好处。一些潜在的好处包括。&lt;&#x2F;p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;增加与其他网站及其用户的接触和联系。通过在其他网站链接到你的内容时收到通知，并在你链接到其他网站时能够通知其他网站，你可以培养一个更加互动和连接的在线社区。这可以带来更多的流量，甚至有可能带来更多的合作和参与机会。&lt;&#x2F;p&gt;
-&lt;&#x2F;li&gt;
-&lt;li&gt;
-&lt;p&gt;改善与其他网站的沟通和协作。 Webmentions 允许网站之间进行实时沟通，这对协调工作和保持 Webmentions 社区的最新发展很有帮助。&lt;&#x2F;p&gt;
-&lt;&#x2F;li&gt;
-&lt;li&gt;
-&lt;p&gt;参与不断发展的网络生态系统的能力。 Webmentions 是 &amp;quot;Web 3.0 &amp;quot;的一种形式，与过去相比，网站之间的相互联系和互动更多。通过加入 Webmentions 社区，你可以成为这个不断发展的网络生态系统的一部分，并有可能从出现的新机会和联系中受益。&lt;&#x2F;p&gt;
-&lt;&#x2F;li&gt;
-&lt;&#x2F;ul&gt;
-&lt;p&gt;当然，加入 Webmentions 社区确实需要一些努力和资源，所以它不一定是每个人的正确决定。但对许多网站所有者来说，加入 Webmentions 社区的潜在好处可能会超过挑战，使其成为一项值得的投资。&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;zong-jie&quot;&gt;总结&lt;&#x2F;h2&gt;
-&lt;p&gt;在这个初学者指南中，我们已经介绍了加入 Webmentions 社区和在网站上实施 Webmentions 的步骤。按照这些步骤，你可以加入 Webmentions 社区，并开始享受与其他网站及其用户进行更多互动和参与性交流的好处。虽然加入 Webmentions 社区需要一些挑战和资源，但对许多网站所有者来说，潜在的好处可能超过了挑战。&lt;&#x2F;p&gt;
-</description>
+<br/><a href="https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;webmentions&#x2F;#continue-reading">Continue Reading</a></description>
   </item>
   
   
