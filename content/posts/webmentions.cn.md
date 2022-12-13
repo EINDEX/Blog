@@ -24,7 +24,7 @@ taxonomies:
 
 最近我看到了[Now, I'm in IndieWeb?](https://www.owenyoung.com/en/blog/indieweb/)，了解到了 Webmentions。我发现这个概念非常有趣，于是决定加入我的博客的 Webmentions 社区。
 
-<！--更多 -->
+<!-- more -->
 
 ## 什么是 Webmentions
 
