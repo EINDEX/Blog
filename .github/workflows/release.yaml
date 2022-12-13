@@ -74,3 +74,8 @@ jobs:
         projectName: blog
         directory: public
         gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Sending out webmentions
+      run: node pipeline/send-mentions.js
+      env:
+        WEBMENTION_APP_TOKEN: ${{ secrets.WEBMENTION_APP_TOKEN }}

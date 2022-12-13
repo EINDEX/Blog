@@ -39,21 +39,16 @@ jobs:
     - name: Fetch npm packages
       run: npm ci
 
-    - name: Update webmentions
-      run: node pipeline/webmentions.js
-      env:
-        WEBMENTION_TOKEN: ${{ secrets.WEBMENTION_TOKEN }}
-
-    - name: Sending out webmentions
-      run: node pipeline/send-mentions.js
-      env:
-        WEBMENTION_APP_TOKEN: ${{ secrets.WEBMENTION_APP_TOKEN }}
-
     - name: fetch memos
       run: node pipeline/memos.js
       env:
         MEMOS_URL: ${{ secrets.MEMOS_URL }}
         MEMOS_OPEN_ID: ${{ secrets.MEMOS_OPEN_ID }}
+
+    - name: Update webmentions
+      run: node pipeline/webmentions.js
+      env:
+        WEBMENTION_TOKEN: ${{ secrets.WEBMENTION_TOKEN }}
 
     - name: Check repo change
       run: echo "change=$(git status -u -s | wc -l | awk '{printf($1)}' )" >> $GITHUB_OUTPUT
