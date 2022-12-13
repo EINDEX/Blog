@@ -2,7 +2,7 @@
 title: Improving Your Code Review Process With Semgrep
 date: 2022-12-13T20:55:03+08:00
 description: "Learn how to improve your code review process with Semgrep, a tool for statically analyzing code and detecting security issues. The post covers setting up Semgrep and tips for getting the most out of it. #Semgrep #SDLC #BSI"
-draft: true
+draft: false
 img: https://img.eindex.me/img/78d0adc1c11bf760d948647d0392f4be.png
 template: posts/page.html
 taxonomies:
