@@ -9,7 +9,6 @@
   <atom:link href="https://eindex.me/feed.xml" rel="self" type="application/rss+xml"/>
 
   
-  
   <item>
     <title xml:lang="cn">加入 Webmentions 社区: 新手指导</title>
     <link>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;webmentions&#x2F;</link>
@@ -21,7 +20,6 @@
 &lt;p&gt;最近我看到了&lt;a rel=&quot;nofollow&quot; href=&quot;https:&#x2F;&#x2F;www.owenyoung.com&#x2F;en&#x2F;blog&#x2F;indieweb&#x2F;&quot;&gt;Now, I&#x27;m in IndieWeb?&lt;&#x2F;a&gt;，了解到了 Webmentions。我发现这个概念非常有趣，于是决定加入我的博客的 Webmentions 社区。&lt;&#x2F;p&gt;
 <br/><a href="https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;webmentions&#x2F;#continue-reading">Continue Reading</a></description>
   </item>
-  
   
 </channel>
 </rss>

@@ -9,7 +9,6 @@
   <atom:link href="https://eindex.me/feed.xml" rel="self" type="application/rss+xml"/>
 
   
-  
   <item>
     <title xml:lang="cn">复式记账工具 Beancount</title>
     <link>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;beancount-introduce&#x2F;</link>
@@ -18,8 +17,6 @@
     <description xml:lang="cn">&lt;p&gt;本文简单介绍一下复式记账和 Beancount 的使用方法。&lt;&#x2F;p&gt;
 <br/><a href="https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;beancount-introduce&#x2F;#continue-reading">Continue Reading</a></description>
   </item>
-  
-  
   
   <item>
     <title xml:lang="cn">倒排索引</title>
@@ -30,8 +27,6 @@
 &lt;p&gt;还有很多差一大截的,比如 Bing, Yahoo 和 YANDEX.&lt;&#x2F;p&gt;
 <br/><a href="https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;inverted-index&#x2F;#continue-reading">Continue Reading</a></description>
   </item>
-  
-  
   
   <item>
     <title xml:lang="cn">KMP 算法</title>
@@ -44,8 +39,6 @@
 <br/><a href="https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;kmp&#x2F;#continue-reading">Continue Reading</a></description>
   </item>
   
-  
-  
   <item>
     <title xml:lang="cn">Tree in Python</title>
     <link>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;tree-in-python&#x2F;</link>
@@ -57,8 +50,6 @@
 <br/><a href="https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;tree-in-python&#x2F;#continue-reading">Continue Reading</a></description>
   </item>
   
-  
-  
   <item>
     <title xml:lang="cn">基本线性数据结构的Python实现</title>
     <link>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;liner-in-python&#x2F;</link>
@@ -67,7 +58,6 @@
     <description xml:lang="cn">&lt;p&gt;本篇主要实现四种数据结构，分别是数组、堆栈、队列、链表。我不知道我为什么要用Python来干C干的事情，总之Python就是可以干。&lt;&#x2F;p&gt;
 <br/><a href="https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;liner-in-python&#x2F;#continue-reading">Continue Reading</a></description>
   </item>
-  
   
 </channel>
 </rss>

@@ -9,6 +9,14 @@
   <atom:link href="https://eindex.me/feed.xml" rel="self" type="application/rss+xml"/>
 
   
+  <item>
+    <title xml:lang="en"></title>
+    <link>https:&#x2F;&#x2F;eindex.me&#x2F;thoughts&#x2F;1670991775&#x2F;</link>
+    <pubDate>Wed, 14 Dec 2022 12:00:00 +0800</pubDate>
+    <guid>https:&#x2F;&#x2F;eindex.me&#x2F;thoughts&#x2F;1670991775&#x2F;</guid>
+    <description xml:lang="en">&lt;p&gt;This tool can help you do the Diagram as code for cloud system architectures.&lt;a rel=&quot;nofollow&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;mingrammer&#x2F;diagrams&quot;&gt;mingrammer&#x2F;diagrams&lt;&#x2F;a&gt; &lt;&#x2F;p&gt;
+</description>
+  </item>
   
   <item>
     <title xml:lang="en">Improving Your Code Review Process With Semgrep</title>
@@ -22,9 +30,14 @@
 <br/><a href="https:&#x2F;&#x2F;eindex.me&#x2F;posts&#x2F;improving-your-code-review-process-with-semgrep&#x2F;#continue-reading">Continue Reading</a></description>
   </item>
   
-  
-  
-  
+  <item>
+    <title xml:lang="en"></title>
+    <link>https:&#x2F;&#x2F;eindex.me&#x2F;thoughts&#x2F;1670245525&#x2F;</link>
+    <pubDate>Mon, 05 Dec 2022 21:00:00 +0800</pubDate>
+    <guid>https:&#x2F;&#x2F;eindex.me&#x2F;thoughts&#x2F;1670245525&#x2F;</guid>
+    <description xml:lang="en">&lt;p&gt;This is my first memos, automatic public on my website. #memos&lt;&#x2F;p&gt;
+</description>
+  </item>
   
   <item>
     <title xml:lang="en">Joining the Webmentions Community: A Beginner&#x27;s Guide</title>
@@ -35,11 +48,23 @@
 <br/><a href="https:&#x2F;&#x2F;eindex.me&#x2F;posts&#x2F;webmentions&#x2F;#continue-reading">Continue Reading</a></description>
   </item>
   
+  <item>
+    <title xml:lang="en"></title>
+    <link>https:&#x2F;&#x2F;eindex.me&#x2F;thoughts&#x2F;1667229010&#x2F;</link>
+    <pubDate>Mon, 31 Oct 2022 23:00:00 +0800</pubDate>
+    <guid>https:&#x2F;&#x2F;eindex.me&#x2F;thoughts&#x2F;1667229010&#x2F;</guid>
+    <description xml:lang="en">&lt;p&gt;All freedom is worth it.&lt;&#x2F;p&gt;
+</description>
+  </item>
   
-  
-  
-  
-  
+  <item>
+    <title xml:lang="en"></title>
+    <link>https:&#x2F;&#x2F;eindex.me&#x2F;thoughts&#x2F;1667192687&#x2F;</link>
+    <pubDate>Mon, 31 Oct 2022 13:00:00 +0800</pubDate>
+    <guid>https:&#x2F;&#x2F;eindex.me&#x2F;thoughts&#x2F;1667192687&#x2F;</guid>
+    <description xml:lang="en">&lt;p&gt;Using a shell create zola md file from &lt;code&gt;hugo new&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+</description>
+  </item>
   
   <item>
     <title xml:lang="en">Changelog</title>
@@ -68,8 +93,14 @@
 </description>
   </item>
   
-  
-  
+  <item>
+    <title xml:lang="en"></title>
+    <link>https:&#x2F;&#x2F;eindex.me&#x2F;thoughts&#x2F;1&#x2F;</link>
+    <pubDate>Sat, 29 Oct 2022 00:00:00 +0000</pubDate>
+    <guid>https:&#x2F;&#x2F;eindex.me&#x2F;thoughts&#x2F;1&#x2F;</guid>
+    <description xml:lang="en">&lt;p&gt;This is the first thought.&lt;&#x2F;p&gt;
+</description>
+  </item>
   
 </channel>
 </rss>

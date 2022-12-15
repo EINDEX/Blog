@@ -9,16 +9,56 @@
   <atom:link href="https://eindex.me/feed.xml" rel="self" type="application/rss+xml"/>
 
   
+  <item>
+    <title xml:lang="cn"></title>
+    <link>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;thoughts&#x2F;1670750428&#x2F;</link>
+    <pubDate>Sun, 11 Dec 2022 17:00:00 +0800</pubDate>
+    <guid>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;thoughts&#x2F;1670750428&#x2F;</guid>
+    <description xml:lang="cn">&lt;p&gt;我好像已经是阳过了，但没发烧。只是特别想喝水，然后没什么精神，也不知道是流感还是新冠。Whatever~&lt;&#x2F;p&gt;
+</description>
+  </item>
   
+  <item>
+    <title xml:lang="cn"></title>
+    <link>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;thoughts&#x2F;1670228552&#x2F;</link>
+    <pubDate>Mon, 05 Dec 2022 16:00:00 +0800</pubDate>
+    <guid>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;thoughts&#x2F;1670228552&#x2F;</guid>
+    <description xml:lang="cn">&lt;p&gt;&lt;code&gt;#ChatGPT&lt;&#x2F;code&gt;真的太神奇了，什么都可以问。&lt;&#x2F;p&gt;
+</description>
+  </item>
   
+  <item>
+    <title xml:lang="cn"></title>
+    <link>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;thoughts&#x2F;1668569710&#x2F;</link>
+    <pubDate>Wed, 16 Nov 2022 11:00:00 +0800</pubDate>
+    <guid>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;thoughts&#x2F;1668569710&#x2F;</guid>
+    <description xml:lang="cn">&lt;p&gt;难得加班到0点20。&lt;&#x2F;p&gt;
+&lt;p&gt;哎，老了，第二天头都转不动了。&lt;&#x2F;p&gt;
+</description>
+  </item>
   
+  <item>
+    <title xml:lang="cn"></title>
+    <link>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;thoughts&#x2F;1668056426&#x2F;</link>
+    <pubDate>Thu, 10 Nov 2022 13:00:00 +0800</pubDate>
+    <guid>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;thoughts&#x2F;1668056426&#x2F;</guid>
+    <description xml:lang="cn">&lt;p&gt;这两天体验了一下 Github Codespaces.&lt;&#x2F;p&gt;
+&lt;p&gt;除了需要科学上网，体验还是挺好的。&lt;&#x2F;p&gt;
+&lt;p&gt;说不好部分服务可以迁移上去，又能大省一笔。&lt;&#x2F;p&gt;
+</description>
+  </item>
   
-  
-  
-  
-  
-  
-  
+  <item>
+    <title xml:lang="cn"></title>
+    <link>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;thoughts&#x2F;1668056178&#x2F;</link>
+    <pubDate>Thu, 10 Nov 2022 12:00:00 +0800</pubDate>
+    <guid>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;thoughts&#x2F;1668056178&#x2F;</guid>
+    <description xml:lang="cn">&lt;p&gt;最近发现家里的电费疯涨，和附近的邻居沟通了一下电费消耗情况，发现：&lt;&#x2F;p&gt;
+&lt;p&gt;我的服务器一天3.5度电，一个月100度电。&lt;&#x2F;p&gt;
+&lt;p&gt;决定迁移一下，就那么点东西都放 NAS 好了。 毕竟 NAS 总是需要一只开的。&lt;&#x2F;p&gt;
+&lt;p&gt;在家搞服务器还是需要多关注一下功耗，不然还不如租云服务器。&lt;&#x2F;p&gt;
+</description>
+  </item>
   
   <item>
     <title xml:lang="cn">加入 Webmentions 社区: 新手指导</title>
@@ -32,15 +72,43 @@
 <br/><a href="https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;webmentions&#x2F;#continue-reading">Continue Reading</a></description>
   </item>
   
+  <item>
+    <title xml:lang="cn"></title>
+    <link>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;thoughts&#x2F;1667615735&#x2F;</link>
+    <pubDate>Sat, 05 Nov 2022 10:00:00 +0800</pubDate>
+    <guid>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;thoughts&#x2F;1667615735&#x2F;</guid>
+    <description xml:lang="cn">&lt;p&gt;只是想在这个世界上看见更多，各种想法，各种观点。&lt;&#x2F;p&gt;
+</description>
+  </item>
   
+  <item>
+    <title xml:lang="cn"></title>
+    <link>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;thoughts&#x2F;1667198331&#x2F;</link>
+    <pubDate>Mon, 31 Oct 2022 14:00:00 +0800</pubDate>
+    <guid>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;thoughts&#x2F;1667198331&#x2F;</guid>
+    <description xml:lang="cn">&lt;p&gt;尤其是做个人项目的时候，会最求完美，导致很多计划流产。&lt;&#x2F;p&gt;
+&lt;p&gt;但实际上真正有价值是业务、逻辑，只要能用、能完成需求就可以上线。&lt;&#x2F;p&gt;
+&lt;p&gt;如果以后在不爽了，投入时间在维护也是不错的。&lt;&#x2F;p&gt;
+</description>
+  </item>
   
+  <item>
+    <title xml:lang="cn"></title>
+    <link>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;thoughts&#x2F;2&#x2F;</link>
+    <pubDate>Sun, 30 Oct 2022 00:00:00 +0000</pubDate>
+    <guid>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;thoughts&#x2F;2&#x2F;</guid>
+    <description xml:lang="cn">&lt;p&gt;最近在推上逛的有点多，觉得有点政治抑郁。&lt;&#x2F;p&gt;
+</description>
+  </item>
   
-  
-  
-  
-  
-  
-  
+  <item>
+    <title xml:lang="cn"></title>
+    <link>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;thoughts&#x2F;1&#x2F;</link>
+    <pubDate>Sat, 29 Oct 2022 00:00:00 +0000</pubDate>
+    <guid>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;thoughts&#x2F;1&#x2F;</guid>
+    <description xml:lang="cn">&lt;p&gt;这是第一条想法。&lt;&#x2F;p&gt;
+</description>
+  </item>
   
   <item>
     <title xml:lang="cn">要钱还是要生活</title>
@@ -52,8 +120,6 @@
 <br/><a href="https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;books&#x2F;your-money-or-your-life&#x2F;#continue-reading">Continue Reading</a></description>
   </item>
   
-  
-  
   <item>
     <title xml:lang="cn">My HomeLab</title>
     <link>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;my-homelab-introduce&#x2F;</link>
@@ -63,8 +129,6 @@
 &lt;p&gt;为什么会建设 HomeLab，它给我带来了什么价值？以及为什么是现在的结构，解决了什么问题。&lt;&#x2F;p&gt;
 <br/><a href="https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;my-homelab-introduce&#x2F;#continue-reading">Continue Reading</a></description>
   </item>
-  
-  
   
   <item>
     <title xml:lang="cn">反躬自问</title>
@@ -78,8 +142,6 @@
 <br/><a href="https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;introspection&#x2F;#continue-reading">Continue Reading</a></description>
   </item>
   
-  
-  
   <item>
     <title xml:lang="cn">2021 Ending</title>
     <link>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;2021-ending&#x2F;</link>
@@ -92,8 +154,6 @@
 <br/><a href="https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;2021-ending&#x2F;#continue-reading">Continue Reading</a></description>
   </item>
   
-  
-  
   <item>
     <title xml:lang="cn">复式记账工具 Beancount</title>
     <link>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;beancount-introduce&#x2F;</link>
@@ -102,8 +162,6 @@
     <description xml:lang="cn">&lt;p&gt;本文简单介绍一下复式记账和 Beancount 的使用方法。&lt;&#x2F;p&gt;
 <br/><a href="https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;beancount-introduce&#x2F;#continue-reading">Continue Reading</a></description>
   </item>
-  
-  
   
   <item>
     <title xml:lang="cn">一百行代码实现异步爬虫</title>
@@ -120,8 +178,6 @@
 <br/><a href="https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;one-hundred-line-async-crawler&#x2F;#continue-reading">Continue Reading</a></description>
   </item>
   
-  
-  
   <item>
     <title xml:lang="cn">1984</title>
     <link>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;1984-after-reading&#x2F;</link>
@@ -134,8 +190,6 @@
 <br/><a href="https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;1984-after-reading&#x2F;#continue-reading">Continue Reading</a></description>
   </item>
   
-  
-  
   <item>
     <title xml:lang="cn">倒排索引</title>
     <link>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;inverted-index&#x2F;</link>
@@ -146,8 +200,6 @@
 <br/><a href="https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;inverted-index&#x2F;#continue-reading">Continue Reading</a></description>
   </item>
   
-  
-  
   <item>
     <title xml:lang="cn">Tornado Auto Etag 机制</title>
     <link>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;tornado-auto-etag&#x2F;</link>
@@ -157,8 +209,6 @@
 <br/><a href="https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;tornado-auto-etag&#x2F;#continue-reading">Continue Reading</a></description>
   </item>
   
-  
-  
   <item>
     <title xml:lang="cn">Pipenv + Autoenv 更友善的工作环境</title>
     <link>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;pipenv-autoenv&#x2F;</link>
@@ -167,8 +217,6 @@
     <description xml:lang="cn">&lt;p&gt;Python 包管理一直都是一个问题，如今 3.6 推荐采用 Pipenv 出自 Requests 的大牛做所。配合上他写的 Autoenv 切换环境再也不是问题。&lt;&#x2F;p&gt;
 <br/><a href="https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;pipenv-autoenv&#x2F;#continue-reading">Continue Reading</a></description>
   </item>
-  
-  
   
   <item>
     <title xml:lang="cn">KMP 算法</title>
@@ -181,8 +229,6 @@
 <br/><a href="https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;kmp&#x2F;#continue-reading">Continue Reading</a></description>
   </item>
   
-  
-  
   <item>
     <title xml:lang="cn">Tree in Python</title>
     <link>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;tree-in-python&#x2F;</link>
@@ -194,8 +240,6 @@
 <br/><a href="https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;tree-in-python&#x2F;#continue-reading">Continue Reading</a></description>
   </item>
   
-  
-  
   <item>
     <title xml:lang="cn">基本排序算法的Python实现</title>
     <link>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;sort-in-python&#x2F;</link>
@@ -204,8 +248,6 @@
     <description xml:lang="cn">&lt;p&gt;本篇主要实现九(八）大排序算法，分别是冒泡排序，插入排序，选择排序，希尔排序，归并排序，快速排序，堆排序,计数排序。希望大家回顾知识的时候也能从我的这篇文章得到帮助。&lt;&#x2F;p&gt;
 <br/><a href="https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;sort-in-python&#x2F;#continue-reading">Continue Reading</a></description>
   </item>
-  
-  
   
   <item>
     <title xml:lang="cn">Thoughtworks 一月</title>
@@ -219,8 +261,6 @@
 <br/><a href="https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;thoughtworks-one-month&#x2F;#continue-reading">Continue Reading</a></description>
   </item>
   
-  
-  
   <item>
     <title xml:lang="cn">基本线性数据结构的Python实现</title>
     <link>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;liner-in-python&#x2F;</link>
@@ -230,8 +270,6 @@
 <br/><a href="https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;liner-in-python&#x2F;#continue-reading">Continue Reading</a></description>
   </item>
   
-  
-  
   <item>
     <title xml:lang="cn">小白也能上手的 ArchLinux 安装教程</title>
     <link>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;archlinux-install-guide&#x2F;</link>
@@ -240,7 +278,6 @@
     <description xml:lang="cn">&lt;p&gt;ArchLinux 是一个非常符合我个人哲学的操作系统，深得与我一样的大部分 Pythonista 之心(不好意思代表你们了)。&lt;&#x2F;p&gt;
 <br/><a href="https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;archlinux-install-guide&#x2F;#continue-reading">Continue Reading</a></description>
   </item>
-  
   
 </channel>
 </rss>
