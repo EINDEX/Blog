@@ -4,7 +4,7 @@ date: 2022-11-06T17:44:50+08:00
 updated: 2022-12-05T23:48:50+08:00
 description: "Learn how to join the webmentions community and improve the interactivity and engagement of your blog with other websites and their users."
 taxonomies:
-    tags: ["webmentions", "community", "beginner's guide", "indie web", "microformats2", "engagement", "connectivity", "Github actions", "JavaScript"]
+    tags: ["Webmentions", "Community", "Beginner's Guide", "Indie Web", "Microformats2", "Engagement", "Connectivity", "Github Actions", "JavaScript"]
     series:
     - blog-enhance-plan
 ---

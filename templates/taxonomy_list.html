@@ -1,24 +1,14 @@
-{% extends "_default/base.html" %}
-
-{% block content %}
+{% extends "_default/base.html" %} {% block content %}
 <article>
   <section class="header">
-      <section class="title-area">
-          <h1 class="title"><a href="">{{ taxonomy.name }}</a></h1>
-      </section>
+    <section class="title-area">
+      <h1>{{ taxonomy.name }}</h1>
+    </section>
   </section>
-  {% for term in terms %}
   <section class="main">
-      <h3><a href="{{ term.permalink }}">{{ term.name }}</a></h3>
-      <ul class="archive-list">
-          {% for pages in term.pages %}
-              <li>
-              <a href="{{ pages.permalink }}">{{ pages.title }}</a>
-              </li>
-            {% endfor %}
-      </ul>
+      {% for term in terms %}
+        <a href="{{ term.permalink }}">{{ term.name }}</a>
+      {% endfor %}
   </section>
-  {% endfor %}
-
 </article>
 {% endblock %}

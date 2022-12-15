@@ -1,18 +1,32 @@
 {% extends "_default/base.html" %}
 
 {% block content %}
+  <article>
+    <section class="header">
+      <section class="title-area">
+        <span>Tags</span>
+        <h1>{{ term.name }}</h1>
+      </section>
+    </section>
+    <section class="main">
+        <ul class="archive-list">
+          {% for page in term.pages %}
+          {% if not page.path is containing("/thoughts/") %}
+          <li>
+            <a href="{{ page.permalink }}">{{ page.title }}</a>
+          </li>
+          {% endif %}
+          {% endfor %}
+        </ul>
+        <h2>Thoughts</h2>
+        <div class="thought-list">
+        {% for thought in term.pages %}
+          {% if thought.path is containing("/thoughts/") %}
+          {% include "thoughts/item.html" %}
+          {% endif %}
+        {% endfor %}
+        </div>
+    </section>
+</article>
 
-  <ul class="posts">
-    <article>
-        <section class="header">
-            <section class="title-area">
-                <h1 class="title">{{ term.name }}</h1>
-            </section>
-        </section>
-    </article>
-    {% for page in term.pages %}
-    {% include "posts/supports/li.html" %}
-    {% endfor %}
-  </ul>
-  
 {% endblock %}

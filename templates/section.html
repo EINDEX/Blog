@@ -1,1 +1,13 @@
-{% extends "list.html" %}
+{% extends "_default/base.html" %}
+
+{% block content %}
+
+{{ section | json_encode }}
+
+  <ul class="posts">
+    {% for page in section.pages %}
+    {% include "posts/supports/li.html" %}
+    {% endfor %}
+  </ul>
+
+{% endblock content %}

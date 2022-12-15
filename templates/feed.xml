@@ -9,7 +9,6 @@
   <atom:link href="{{ get_url(path="feed.xml", trailing_slash=false) }}" rel="self" type="application/rss+xml"/>
 
   {% for post in pages %}
-  {% if  post.relative_path is not starting_with("thoughts/") %}
   <item>
     <title xml:lang="{{lang}}">{{post.title}}</title>
     <link>{{ post.permalink }}</link>
@@ -17,7 +16,6 @@
     <guid>{{ post.permalink }}</guid>
     <description xml:lang="{{lang}}">{% if post.summary %}{{post.summary}}<br/><a href="{{ post.permalink }}#continue-reading">Continue Reading</a>{%else%}{{ post.content }}{%endif%}</description>
   </item>
-  {% endif %}
   {% endfor %}
 </channel>
 </rss>
