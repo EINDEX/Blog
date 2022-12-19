@@ -8,7 +8,7 @@ default_language = "en"
 build_search_index = false
 compile_sass = false
 
-minify_html = true
+minify_html = false
 generate_feed = true
 generate_rss = true
 feed_filename = "feed.xml"
@@ -65,6 +65,7 @@ series_blog-enhance-plan = "博客演进计划"
 series_markdown-testing = "Markdown 测试"
 series_qingzhuo = "系列 Testing"
 series_algorithm = "算法"
+series_security = "应用安全"
 
 [languages.en]
 generate_feed = true
@@ -90,6 +91,7 @@ series_blog-enhance-plan = "Blog Enhance Plan"
 series_markdown-testing = "Markdown Testing"
 series_qingzhuo = "Series Testing"
 series_algorithm = "Algorithm"
+series_security = "Cyber Security"
 
 [extra]
 # Put all your custom variables here
@@ -114,3 +116,11 @@ url = "gallery"
 [[extra.menu.navbar]]
 label = "archive"
 url = "archive"
+
+
+[extra.meilisearch]
+hostUrl="https://meili.eindex.me"
+indexUid="blog"
+# this key just provide search permission on blog index.
+apiKey="a39cff5442b90bb926f6408b0b08671eee444599e6d9c44c29bd0adae09a4b86"
+version="2.4.1"

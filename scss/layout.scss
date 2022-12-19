@@ -44,18 +44,23 @@ body {
 
 
         .content {
-            @apply w-full flex flex-col justify-center sm:flex-col gap-4 sm:px-2 px-4 py-6;
+            @apply w-full flex flex-row justify-between md:flex-col gap-4 md:px-2 px-4 py-6;
     
             main {
-                @apply flex flex-col w-full;
+                @apply flex flex-col w-3/4 md:w-full;
+                max-width: 45rem;
     
                 .posts {
                     @apply flex flex-col gap-4;
                 }
             }
+
+            aside {
+                @apply flex flex-col w-1/4 max-w-sm md:hidden gap-4 pt-2;
+            }
         }
         .footer {
-            @apply py-4 flex justify-center text-gray-500 text-sm;
+            @apply py-4 flex text-gray-500 text-sm flex-col items-center;
         }
     }
 }

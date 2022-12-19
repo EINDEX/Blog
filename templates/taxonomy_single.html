@@ -18,14 +18,22 @@
           {% endif %}
           {% endfor %}
         </ul>
+        {%  set_global thoughts = [] %}
+        {% for thought in term.pages %}
+          {% if thought.path is containing("/thoughts/") %}
+          {% set_global thoughts = thoughts | concat(with=thought) %}
+          {% endif %}
+        {% endfor %}
+        {% if thoughts %}
         <h2>Thoughts</h2>
         <div class="thought-list">
-        {% for thought in term.pages %}
+        {% for thought in thoughts %}
           {% if thought.path is containing("/thoughts/") %}
           {% include "thoughts/item.html" %}
           {% endif %}
         {% endfor %}
         </div>
+        {% endif %}
     </section>
 </article>
 

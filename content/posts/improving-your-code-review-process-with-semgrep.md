@@ -7,7 +7,7 @@ img: https://img.eindex.me/img/78d0adc1c11bf760d948647d0392f4be.png
 template: posts/page.html
 taxonomies:
     tags: ["Code Review", "Semgrep", "Static Analysis", "Best Practices", "SAST", "Security", "DevOps", "DevSecOps", "CI", "Build Security In"]
-    series: []
+    series: ["security"]
 extra:
     posse: 
         twitter: true
