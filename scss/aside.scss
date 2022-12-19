@@ -47,11 +47,21 @@
                 @apply pl-2;
             }
 
-            ins {
-                @apply self-center mt-2 bg-slate-100;
-                width: 192px;
-                height: 500px;
-            }
         }
     }
+}
+
+.adsbygoogle {
+    @apply self-center bg-slate-100 rounded-md;
+}
+
+.adsbygoogle.aside {
+    @apply mt-2;
+    width: 192px;
+    height: 500px;
+}
+
+.adsbygoogle.main {
+    width: 45rem;
+    height: 4rem;
 }

@@ -8,12 +8,18 @@
     <section class="p-summary" style="display:none">
         {{ page.description }}
     </section>
+    <ins class="adsbygoogle main"
+        style="display:inline-block;width:100%;height:64px"
+        data-ad-client="ca-pub-1265138627025369"
+        data-ad-slot="3577756156"></ins>
     {% endif %}
     <section class="main e-content">
         {{ macro::render_html(content=page.content) }}
         {% include "partials/plugins/posse.html" %}
     </section>
+    <!-- page ending -->
     <section class="post-footer">
+        
         {% include "partials/plugins/tag-list.html" %}
     </section>
     {{ macro::backlink(pages=page.backlinks) }}
