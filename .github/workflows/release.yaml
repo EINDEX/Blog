@@ -94,5 +94,5 @@ jobs:
         docker run -t --rm \
           -e MEILISEARCH_HOST_URL=$HOST_URL \
           -e MEILISEARCH_API_KEY=$API_KEY \
-          -v $CONFIG_FILE_PATH:/docs-scraper/meili.json \
-          getmeili/docs-scraper:latest pipenv run ./docs_scraper meili.json
+          -v $PWD:/blog \
+          getmeili/docs-scraper:latest pipenv run ./docs_scraper /blog/meili.json
