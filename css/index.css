@@ -649,15 +649,15 @@ body .all header .navbar .switcher a{
 body .all .content{
     display: flex;
     width: 100%;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
     gap: 1rem;
     padding-left: 1rem;
     padding-right: 1rem;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
 }
-@media (max-width: 640px){
+@media (max-width: 820px){
 
     body .all .content{
         flex-direction: column;
@@ -667,17 +667,41 @@ body .all .content{
 }
 body .all .content main{
     display: flex;
-    width: 100%;
+    width: 75%;
     flex-direction: column;
 }
+@media (max-width: 820px){
+
+    body .all .content main{
+        width: 100%;
+    }
+}
+body .all .content main {
+                max-width: 45rem;
+            }
 body .all .content main .posts{
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
+body .all .content aside{
+    display: flex;
+    width: 25%;
+    max-width: 24rem;
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 0.5rem;
+}
+@media (max-width: 820px){
+
+    body .all .content aside{
+        display: none;
+    }
+}
 body .all .footer{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     padding-top: 1rem;
     padding-bottom: 1rem;
     font-size: 0.875rem;
@@ -701,7 +725,7 @@ body .all .footer{
     font-weight: 900;
     font-style: italic;
 }
-@media (max-width: 768px){
+@media (max-width: 820px){
 
     .title-area h1{
         font-size: 3rem;
@@ -1297,7 +1321,7 @@ article .main .thought-list{
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 0.5rem;
 }
-@media (max-width: 768px){
+@media (max-width: 820px){
 
     article .main .thought-list{
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -3242,4 +3266,75 @@ article .gallery .thumbnail{
     line-height: 1.5rem;
     --tw-text-opacity: 1;
     color: rgb(55 65 81 / var(--tw-text-opacity));
+}
+.content aside section.search #search-bar-input{
+    width: 100%;
+    border-radius: 0.5rem;
+    border-width: 1px;
+    border-style: solid;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    line-height: 2rem;
+    --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.content aside section.search #search-bar-input:hover{
+    --tw-border-opacity: 1;
+    border-color: rgb(209 213 219 / var(--tw-border-opacity));
+}
+.content aside section.search input:focus{
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+}
+.content aside section.search .docs-searchbar-js{
+    width: 100%;
+}
+.content aside section.search .docs-searchbar-js .meilisearch-autocomplete{
+    width: 100%;
+}
+.content aside section.search .docs-searchbar-js #search-bar-input{
+    width: 100%;
+}
+.content aside section.search .docs-searchbar-js .docs-searchbar-footer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+.content aside section.search .docs-searchbar-js .dsb-dropdown-menu{
+    width: 50%;
+}
+.content aside section{
+    display: flex;
+    flex-direction: column;
+}
+.content aside section h3{
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 700;
+}
+.content aside section *{
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    --tw-text-opacity: 1;
+    color: rgb(31 41 55 / var(--tw-text-opacity));
+}
+.content aside section ul{
+    list-style-position: outside;
+}
+.content aside section .tags{
+    padding-left: 0.5rem;
+}
+.content aside section p{
+    padding-left: 0.5rem;
+}
+.content aside section ins{
+    margin-top: 0.5rem;
+    align-self: center;
+    --tw-bg-opacity: 1;
+    background-color: rgb(241 245 249 / var(--tw-bg-opacity));
+                width: 192px;
+                height: 144px;
 }

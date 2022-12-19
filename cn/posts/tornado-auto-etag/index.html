@@ -1,4 +1,19 @@
-<!doctype html><html charset=utf-8 lang=en><head><script src="https://www.googletagmanager.com/gtag/js?id=G-SR36ZS0R52" async></script><script>window.dataLayer = window.dataLayer || [];
+
+
+
+  
+  
+
+
+<!DOCTYPE html>
+<html lang="en" charset="utf-8">
+  <head>
+    
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SR36ZS0R52"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   
   var page_link = new URL(window.location.href);
@@ -8,7 +23,100 @@
   });
   gtag('set', {
     traffic_type: page_link.searchParams.get("traffic_type")
-  })</script><link href=https://eindex.me/cn/feed.xml rel=alternate title=RSS type=application/rss+xml><meta content="IE=edge" http-equiv=X-UA-Compatible><meta content="text/html; charset=utf-8" http-equiv=content-type><meta content="width=device-width,initial-scale=1.0,maximum-scale=1" name=viewport><meta content=EINDEX itemprop=author name=author><title>Tornado Auto Etag 机制 • EINDEX's Blog</title><meta content="Tornado Auto Etag 机制 • EINDEX's Blog" property=og:title><meta charset=utf-8><link href="https://eindex.me/css/index.css?h=88c08404b1cd92dd4bcad8159536da194662baa74ba813d10705f15277878149" rel=stylesheet><style>@-moz-document url-prefix() {.lazy:-moz-loading {visibility:hidden;}}.ieOnly {display: none;}@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {.ieOnly {display: block;}}</style><link href=https://webmention.io/eindex.me/webmention rel=webmention><link href=https://webmention.io/eindex.me/xmlrpc rel=pingback><script src=https://cdn.jsdelivr.net/npm/iconify-icon@1.0.1/dist/iconify-icon.min.js></script><link href=/favicon-512.png rel=apple-touch-icon sizes=512x512><link href=/favicon-512.png rel=icon sizes=512x512 type=image/png><link href=/favicon-192.png rel=icon sizes=192x192 type=image/png><link href=/manifest.json rel=manifest><meta content=on name=twitter:dnt><meta content=on name=twitter:widgets:csp><meta content=https://eindex.me/cn/posts/tornado-auto-etag/ property=og:url><meta content="EINDEX's Blog" property=og:site_name><meta content=https://eindex.me/images/avatar.png property=og:image><meta content=summary name=twitter:card><meta content="Tornado Auto Etag 机制" name=twitter:title><meta content=@eindex_li name=twitter:site><meta content=@eindex_li name=twitter:creator><meta content=https://eindex.me/images/avatar.png name=twitter:image><link href=https://twitter.com/eindex_li rel=me><script type=application/ld+json>
+  })
+  
+
+</script>
+
+
+
+
+
+
+
+
+
+  
+    
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="https://eindex.me/cn/feed.xml">
+    
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <meta name="author" itemprop="author" content="EINDEX">
+  
+  <title>Tornado Auto Etag 机制 &bull; EINDEX&#x27;s Blog</title>
+  <meta property="og:title" content="Tornado Auto Etag 机制 &bull; EINDEX&#x27;s Blog" />
+  
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+
+
+  <!-- **** BEGINNING, favicons **** -->
+
+  <!-- generics -->
+
+  <!-- iOS -->
+
+  <!-- Android -->
+
+  <!-- Windows 8, IE 10 -->
+
+  <!-- Windows 8.1 and up, IE 11 -->
+
+  <!-- **** CONCLUSION, favicons **** -->
+
+  <!-- CSS/SCSS -->
+  <link rel="stylesheet" href="https://eindex.me/css/index.css?h=ff5e76b2b0aa3b98d43d63a71cff2769965e6d0f4c5dafd8914c19f3a7f51d12" />  <style>@-moz-document url-prefix() {.lazy:-moz-loading {visibility:hidden;}}.ieOnly {display: none;}@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {.ieOnly {display: block;}}</style>
+
+
+  <link rel="webmention" href="https://webmention.io/eindex.me/webmention" />
+  <link rel="pingback" href="https://webmention.io/eindex.me/xmlrpc" />
+
+  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.1/dist/iconify-icon.min.js"></script>
+  
+  
+  <link rel="apple-touch-icon" sizes="512x512" href="/favicon-512.png">
+  
+  <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png">
+  
+  
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+  
+  <link rel="manifest" href="/manifest.json">
+  <meta name="twitter:dnt" content="on">
+  <meta name="twitter:widgets:csp" content="on">
+  
+
+
+
+  
+    
+  
+    
+  
+    
+  
+
+
+
+
+
+<meta property="og:url" content="https://eindex.me/cn/posts/tornado-auto-etag/">
+<meta property="og:site_name" content="EINDEX&#x27;s Blog">
+<meta property="og:image" content="https://eindex.me/images/avatar.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Tornado Auto Etag 机制">
+
+<meta name="twitter:site" content="@eindex_li">
+<meta name="twitter:creator" content="@eindex_li">
+<meta name="twitter:image" content="https://eindex.me/images/avatar.png">
+<link
+  rel="me"
+  href="https://twitter.com/eindex_li">
+<script type="application/ld+json">
 {
   "@context": "https://schema.org/",
   "@type": "BlogPosting",
@@ -38,65 +146,313 @@
   },
   "keywords": ["Python","Cache","ETag"]
 }
-</script><script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1265138627025369" async crossorigin=anonymous></script><body><div class=all><header><nav class=navbar><div class=avatar><a class=site-link href=https://eindex.me/cn/><img alt=Workflow class=avatar src=https://eindex.me/processed_images/e75389feba7c019600.png></a></div><div class=menus><a href=https://eindex.me/cn/gallery/>相册</a><a href=https://eindex.me/cn/archive/>归档</a></div><div class=switcher><a class="language switch" href=https://eindex.me/><iconify-icon icon=ri:english-input></iconify-icon></a></div></nav></header><div class=content><main><article class=h-entry data-clarity-region=article><section class=header><section class=title-area><h1 class="title p-name"><a class=u-url href=https://eindex.me/cn/posts/tornado-auto-etag/>Tornado Auto Etag 机制</a></h1></section><section class=meta-area><p style="display: none;" class=p-summary>&LTp>为了研究缓存看了 tornado &LTcode>web.py&LT/code> 里的 &LTcode>finish&LT/code> 函数&LT/p></p><span><iconify-icon icon=ant-design:calendar-outlined></iconify-icon> <time class=dt-published>2019-04-24</time> </span><span><iconify-icon icon=bx:time-five></iconify-icon> 2 mins</span><span style=display:none><iconify-icon icon=mdi:eye-outline></iconify-icon> <span id=pv></span> views</span></section></section><div class="p-author h-card" style="display: none;"><img class="u-logo u-photo" src=https://eindex.me/images/avatar.png><a class="p-nickname p-name u-url" href=https://eindex.me>EINDEX</a><p class=p-note>My goal is make happy.</div><section class="main e-content"><p>为了研究缓存看了 tornado <code>web.py</code> 里的 <code>finish</code> 函数</p><span id=continue-reading></span><p>代码如下<pre class=language-python data-lang=python style=background-color:#272822;color:#f8f8f2;><code class=language-python data-lang=python><span>    </span><span style=font-style:italic;color:#f92672;>def </span><span style=color:#a6e22e;>finish</span><span>(</span><span style=font-style:italic;color:#fd971f;>self</span><span>, </span><span style=font-style:italic;color:#fd971f;>chunk</span><span>: Union[</span><span style=font-style:italic;color:#66d9ef;>str</span><span>, </span><span style=font-style:italic;color:#66d9ef;>bytes</span><span>, </span><span style=font-style:italic;color:#66d9ef;>dict</span><span>] </span><span style=color:#f92672;>= </span><span style=color:#ae81ff;>None</span><span>) -> </span><span style=color:#e6db74;>"Future[None]"</span><span>:
-</span><span>        </span><span style=color:#75715e;>"""Finishes this response, ending the HTTP request.
-</span><span style=color:#75715e;>
-</span><span style=color:#75715e;>        Passing a ``chunk`` to ``finish()`` is equivalent to passing that
-</span><span style=color:#75715e;>        chunk to ``write()`` and then calling ``finish()`` with no arguments.
-</span><span style=color:#75715e;>
-</span><span style=color:#75715e;>        Returns a `.Future` which may optionally be awaited to track the sending
-</span><span style=color:#75715e;>        of the response to the client. This `.Future` resolves when all the response
-</span><span style=color:#75715e;>        data has been sent, and raises an error if the connection is closed before all
-</span><span style=color:#75715e;>        data can be sent.
-</span><span style=color:#75715e;>
-</span><span style=color:#75715e;>        .. versionchanged:: 5.1
-</span><span style=color:#75715e;>
-</span><span style=color:#75715e;>           Now returns a `.Future` instead of ``None``.
-</span><span style=color:#75715e;>        """
-</span><span>        </span><span style=color:#f92672;>if </span><span>self._finished:
-</span><span>            </span><span style=color:#f92672;>raise </span><span style=font-style:italic;color:#66d9ef;>RuntimeError</span><span>(</span><span style=color:#e6db74;>"finish() called twice"</span><span>)
+</script>
+
+  
+  <link
+rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/docs-searchbar.js@2.4.1/dist/cdn/docs-searchbar.min.css"
+/>
+  
+  
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1265138627025369"
+     crossorigin="anonymous"></script>
+
+
+
+
+
+    
+  </head>
+  <body>
+    <div class="all">
+      <header>
+  <nav class="navbar">
+    <div class="avatar">
+      
+      <a class="site-link" href="https://eindex.me/cn/"><img
+        class="avatar"
+        src="https:&#x2F;&#x2F;eindex.me&#x2F;processed_images&#x2F;e75389feba7c019600.png"
+        alt="Workflow"
+    /></a>
+  </div>
+  <div class="menus">
+    
+    
+      <a
+        href="https://eindex.me/cn/gallery/"
+        >相册</a
+      >
+    
+    
+    
+      <a
+        href="https://eindex.me/cn/archive/"
+        >归档</a
+      >
+    
+    
+  </div>
+    
+    <div class="switcher">
+      <a class="language switch"href = "https://eindex.me/"><iconify-icon icon="ri:english-input"></iconify-icon></a>
+    </div>
+  </nav>
+</header>
+
+
+      <div class="content">
+          <main>
+              
+  <article class="h-entry" data-clarity-region="article">
+    
+<section class="header">
+  <section class="title-area">
+    
+    <h1 class="title p-name">
+    <a class="u-url" href="https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;tornado-auto-etag&#x2F;">Tornado Auto Etag 机制</a>
+    </h1>
+  </section>
+  <section class="meta-area">
+    <p class="p-summary" style="display: none;">&lt;p&gt;为了研究缓存看了 tornado &lt;code&gt;web.py&lt;&#x2F;code&gt; 里的 &lt;code&gt;finish&lt;&#x2F;code&gt; 函数&lt;&#x2F;p&gt;
+</p>
+  
+    <span><iconify-icon icon="ant-design:calendar-outlined"></iconify-icon>&nbsp;<time class="dt-published">2019-04-24</time>&nbsp;</span>
+  
+    <span><iconify-icon icon="bx:time-five"></iconify-icon>&nbsp;2 mins</span>  
+    <span style="display:none"><iconify-icon icon="mdi:eye-outline"></iconify-icon>&nbsp;<span id="pv"></span>&nbsp;views</span>
+  </section>
+</section>
+
+    <div class="p-author h-card" style="display: none;">
+    <img class="u-logo u-photo" src="https://eindex.me/images/avatar.png">
+    <a class="p-nickname p-name u-url" href="https://eindex.me">EINDEX</a>
+    <p class="p-note">My goal is make happy.</p>
+</div>
+    
+    <section class="main e-content">
+        
+  <p>为了研究缓存看了 tornado <code>web.py</code> 里的 <code>finish</code> 函数</p>
+<span id="continue-reading"></span>
+<p>代码如下</p>
+<pre data-lang="python" style="background-color:#272822;color:#f8f8f2;" class="language-python "><code class="language-python" data-lang="python"><span>    </span><span style="font-style:italic;color:#f92672;">def </span><span style="color:#a6e22e;">finish</span><span>(</span><span style="font-style:italic;color:#fd971f;">self</span><span>, </span><span style="font-style:italic;color:#fd971f;">chunk</span><span>: Union[</span><span style="font-style:italic;color:#66d9ef;">str</span><span>, </span><span style="font-style:italic;color:#66d9ef;">bytes</span><span>, </span><span style="font-style:italic;color:#66d9ef;">dict</span><span>] </span><span style="color:#f92672;">= </span><span style="color:#ae81ff;">None</span><span>) -&gt; </span><span style="color:#e6db74;">&quot;Future[None]&quot;</span><span>:
+</span><span>        </span><span style="color:#75715e;">&quot;&quot;&quot;Finishes this response, ending the HTTP request.
+</span><span style="color:#75715e;">
+</span><span style="color:#75715e;">        Passing a ``chunk`` to ``finish()`` is equivalent to passing that
+</span><span style="color:#75715e;">        chunk to ``write()`` and then calling ``finish()`` with no arguments.
+</span><span style="color:#75715e;">
+</span><span style="color:#75715e;">        Returns a `.Future` which may optionally be awaited to track the sending
+</span><span style="color:#75715e;">        of the response to the client. This `.Future` resolves when all the response
+</span><span style="color:#75715e;">        data has been sent, and raises an error if the connection is closed before all
+</span><span style="color:#75715e;">        data can be sent.
+</span><span style="color:#75715e;">
+</span><span style="color:#75715e;">        .. versionchanged:: 5.1
+</span><span style="color:#75715e;">
+</span><span style="color:#75715e;">           Now returns a `.Future` instead of ``None``.
+</span><span style="color:#75715e;">        &quot;&quot;&quot;
+</span><span>        </span><span style="color:#f92672;">if </span><span>self._finished:
+</span><span>            </span><span style="color:#f92672;">raise </span><span style="font-style:italic;color:#66d9ef;">RuntimeError</span><span>(</span><span style="color:#e6db74;">&quot;finish() called twice&quot;</span><span>)
 </span><span>
-</span><span>        </span><span style=color:#f92672;>if </span><span>chunk </span><span style=color:#f92672;>is not </span><span style=color:#ae81ff;>None</span><span>:
+</span><span>        </span><span style="color:#f92672;">if </span><span>chunk </span><span style="color:#f92672;">is not </span><span style="color:#ae81ff;">None</span><span>:
 </span><span>            self.write(chunk)
 </span><span>
-</span><span>        </span><span style=color:#75715e;># Automatically support ETags and add the Content-Length header if
-</span><span>        </span><span style=color:#75715e;># we have not flushed any content yet.
-</span><span>        </span><span style=color:#f92672;>if not </span><span>self._headers_written:
-</span><span>            </span><span style=color:#f92672;>if </span><span>(
-</span><span>                self._status_code </span><span style=color:#f92672;>== </span><span style=color:#ae81ff;>200
-</span><span>                </span><span style=color:#f92672;>and </span><span>self.request.method </span><span style=color:#f92672;>in </span><span>(</span><span style=color:#e6db74;>"GET"</span><span>, </span><span style=color:#e6db74;>"HEAD"</span><span>)
-</span><span>                </span><span style=color:#f92672;>and </span><span style=color:#e6db74;>"Etag" </span><span style=color:#f92672;>not in </span><span>self._headers
+</span><span>        </span><span style="color:#75715e;"># Automatically support ETags and add the Content-Length header if
+</span><span>        </span><span style="color:#75715e;"># we have not flushed any content yet.
+</span><span>        </span><span style="color:#f92672;">if not </span><span>self._headers_written:
+</span><span>            </span><span style="color:#f92672;">if </span><span>(
+</span><span>                self._status_code </span><span style="color:#f92672;">== </span><span style="color:#ae81ff;">200
+</span><span>                </span><span style="color:#f92672;">and </span><span>self.request.method </span><span style="color:#f92672;">in </span><span>(</span><span style="color:#e6db74;">&quot;GET&quot;</span><span>, </span><span style="color:#e6db74;">&quot;HEAD&quot;</span><span>)
+</span><span>                </span><span style="color:#f92672;">and </span><span style="color:#e6db74;">&quot;Etag&quot; </span><span style="color:#f92672;">not in </span><span>self._headers
 </span><span>            ):
 </span><span>                self.set_etag_header()
-</span><span>                </span><span style=color:#f92672;>if </span><span>self.check_etag_header():
-</span><span>                    self._write_buffer </span><span style=color:#f92672;>= </span><span>[]
-</span><span>                    self.set_status(</span><span style=color:#ae81ff;>304</span><span>)
-</span><span>            </span><span style=color:#f92672;>if </span><span>self._status_code </span><span style=color:#f92672;>in </span><span>(</span><span style=color:#ae81ff;>204</span><span>, </span><span style=color:#ae81ff;>304</span><span>) </span><span style=color:#f92672;>or </span><span>(
-</span><span>                self._status_code </span><span style=color:#f92672;>>= </span><span style=color:#ae81ff;>100 </span><span style=color:#f92672;>and </span><span>self._status_code </span><span style=color:#f92672;>< </span><span style=color:#ae81ff;>200
+</span><span>                </span><span style="color:#f92672;">if </span><span>self.check_etag_header():
+</span><span>                    self._write_buffer </span><span style="color:#f92672;">= </span><span>[]
+</span><span>                    self.set_status(</span><span style="color:#ae81ff;">304</span><span>)
+</span><span>            </span><span style="color:#f92672;">if </span><span>self._status_code </span><span style="color:#f92672;">in </span><span>(</span><span style="color:#ae81ff;">204</span><span>, </span><span style="color:#ae81ff;">304</span><span>) </span><span style="color:#f92672;">or </span><span>(
+</span><span>                self._status_code </span><span style="color:#f92672;">&gt;= </span><span style="color:#ae81ff;">100 </span><span style="color:#f92672;">and </span><span>self._status_code </span><span style="color:#f92672;">&lt; </span><span style="color:#ae81ff;">200
 </span><span>            ):
-</span><span>                </span><span style=color:#f92672;>assert not </span><span>self._write_buffer, (
-</span><span>                    </span><span style=color:#e6db74;>"Cannot send body with </span><span style=color:#ae81ff;>%s</span><span style=color:#e6db74;>" </span><span style=color:#f92672;>% </span><span>self._status_code
+</span><span>                </span><span style="color:#f92672;">assert not </span><span>self._write_buffer, (
+</span><span>                    </span><span style="color:#e6db74;">&quot;Cannot send body with </span><span style="color:#ae81ff;">%s</span><span style="color:#e6db74;">&quot; </span><span style="color:#f92672;">% </span><span>self._status_code
 </span><span>                )
 </span><span>                self._clear_headers_for_304()
-</span><span>            </span><span style=color:#f92672;>elif </span><span style=color:#e6db74;>"Content-Length" </span><span style=color:#f92672;>not in </span><span>self._headers:
-</span><span>                content_length </span><span style=color:#f92672;>= </span><span style=color:#66d9ef;>sum</span><span>(</span><span style=color:#66d9ef;>len</span><span>(part) </span><span style=color:#f92672;>for </span><span>part </span><span style=color:#f92672;>in </span><span>self._write_buffer)
-</span><span>                self.set_header(</span><span style=color:#e6db74;>"Content-Length"</span><span>, content_length)
+</span><span>            </span><span style="color:#f92672;">elif </span><span style="color:#e6db74;">&quot;Content-Length&quot; </span><span style="color:#f92672;">not in </span><span>self._headers:
+</span><span>                content_length </span><span style="color:#f92672;">= </span><span style="color:#66d9ef;">sum</span><span>(</span><span style="color:#66d9ef;">len</span><span>(part) </span><span style="color:#f92672;">for </span><span>part </span><span style="color:#f92672;">in </span><span>self._write_buffer)
+</span><span>                self.set_header(</span><span style="color:#e6db74;">&quot;Content-Length&quot;</span><span>, content_length)
 </span><span>
-</span><span>        </span><span style=color:#f92672;>assert </span><span>self.request.connection </span><span style=color:#f92672;>is not </span><span style=color:#ae81ff;>None
-</span><span>        </span><span style=color:#75715e;># Now that the request is finished, clear the callback we
-</span><span>        </span><span style=color:#75715e;># set on the HTTPConnection (which would otherwise prevent the
-</span><span>        </span><span style=color:#75715e;># garbage collection of the RequestHandler when there
-</span><span>        </span><span style=color:#75715e;># are keepalive connections)
-</span><span>        self.request.connection.set_close_callback(</span><span style=color:#ae81ff;>None</span><span>)  </span><span style=color:#75715e;># type: ignore
+</span><span>        </span><span style="color:#f92672;">assert </span><span>self.request.connection </span><span style="color:#f92672;">is not </span><span style="color:#ae81ff;">None
+</span><span>        </span><span style="color:#75715e;"># Now that the request is finished, clear the callback we
+</span><span>        </span><span style="color:#75715e;"># set on the HTTPConnection (which would otherwise prevent the
+</span><span>        </span><span style="color:#75715e;"># garbage collection of the RequestHandler when there
+</span><span>        </span><span style="color:#75715e;"># are keepalive connections)
+</span><span>        self.request.connection.set_close_callback(</span><span style="color:#ae81ff;">None</span><span>)  </span><span style="color:#75715e;"># type: ignore
 </span><span>
-</span><span>        future </span><span style=color:#f92672;>= </span><span>self.flush(</span><span style=font-style:italic;color:#fd971f;>include_footers</span><span style=color:#f92672;>=</span><span style=color:#ae81ff;>True</span><span>)
+</span><span>        future </span><span style="color:#f92672;">= </span><span>self.flush(</span><span style="font-style:italic;color:#fd971f;">include_footers</span><span style="color:#f92672;">=</span><span style="color:#ae81ff;">True</span><span>)
 </span><span>        self.request.connection.finish()
 </span><span>        self._log()
-</span><span>        self._finished </span><span style=color:#f92672;>= </span><span style=color:#ae81ff;>True
+</span><span>        self._finished </span><span style="color:#f92672;">= </span><span style="color:#ae81ff;">True
 </span><span>        self.on_finish()
 </span><span>        self._break_cycles()
-</span><span>        </span><span style=color:#f92672;>return </span><span>future
-</span></code></pre><p>从代码中可以看出, 满足下面条件的请求:<ul><li><code>self._headers_written</code> 为不为<code>True</code><li>http status 为 <code>200</code> 的 <code>GET</code>、 <code>HEAD</code> 请求<li>同时没有 <code>Etag</code> 在 <code>response header</code> 的情况下</ul><p>tornado 会自动计算返回结果的 sha1, 并设置 Etag 若客户端支持 Etag 机制, 正确返回 <code>If-None-Match</code>, 就能节约一波流量, 美滋滋.</section><section class=post-footer><div class=tags><span class=tag><a href=https://eindex.me/cn/tags/python/>Python</a></span><span class=tag><a href=https://eindex.me/cn/tags/cache/>Cache</a></span><span class=tag><a href=https://eindex.me/cn/tags/etag/>ETag</a></span></div></section><hr><section class=webmentions><h2>Response</h2><p class=how-to-send-webmention>Have you written any responses to this article? If so, please send your article or tweet link below. (Making sure to include the link of this article in the content, learn more about webmentions from <a href=https://indieweb.org/Webmention>here</a>.)<form action=https://webmention.io/eindex.me/webmention class=webmention-form method=post><input name=target type=hidden value=https://eindex.me/cn/posts/tornado-auto-etag/><input placeholder="Your webmention link" name=source><button>Send Webmention</button></form><p class=how-to-send-webmention><a class=twitter-share-button href=https://twitter.com/intent/tweet>Tweet</a> and send response</section></article></main><aside></aside></div><footer class=footer><span class=webring> <a href=https://xn--sr8hvo.ws/%F0%9F%95%90%F0%9F%89%91%F0%9F%88%B6/previous>←</a> An IndieWeb Webring 🕸💍 <a href=https://xn--sr8hvo.ws/%F0%9F%95%90%F0%9F%89%91%F0%9F%88%B6/next>→</a> </span><link href=https://github.com/EINDEX rel=me></footer></div></body><script async data-domains=eindex.me data-host-url=https://u.eindex.me data-website-id=692d9153-7341-4370-b652-60df196f2b31 defer src=/js/umami.js></script><script>window.twttr = (function(d, s, id) {
+</span><span>        </span><span style="color:#f92672;">return </span><span>future
+</span></code></pre>
+<p>从代码中可以看出, 满足下面条件的请求:</p>
+<ul>
+<li><code>self._headers_written</code> 为不为<code>True</code> </li>
+<li>http status 为 <code>200</code> 的 <code>GET</code>、 <code>HEAD</code> 请求</li>
+<li>同时没有 <code>Etag</code> 在 <code>response header</code> 的情况下</li>
+</ul>
+<p>tornado 会自动计算返回结果的 sha1, 并设置 Etag 若客户端支持 Etag 机制, 正确返回 <code>If-None-Match</code>, 就能节约一波流量, 美滋滋.</p>
+
+
+        
+
+
+
+
+
+
+    </section>
+    <section class="post-footer">
+        
+<div class="tags">
+    
+        
+        <span class="tag"><a href="https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;tags&#x2F;python&#x2F;">Python</a></span>
+    
+        
+        <span class="tag"><a href="https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;tags&#x2F;cache&#x2F;">Cache</a></span>
+    
+        
+        <span class="tag"><a href="https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;tags&#x2F;etag&#x2F;">ETag</a></span>
+    
+</div>
+
+    </section>
+    
+
+
+    
+
+
+
+
+<hr/>
+<section class="webmentions">
+  <h2>Response</h2>
+  <p class="how-to-send-webmention">Have you written any responses to this article? If so, please send your article or tweet link below. (Making sure to include the link of this article in the content, learn more about webmentions from <a href="https://indieweb.org/Webmention">here</a>.)</p>
+  <form class="webmention-form" action="https://webmention.io/eindex.me/webmention" method="post">
+    <input name="target" type="hidden" value="https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;tornado-auto-etag&#x2F;" />
+    <input name="source" type="text" placeholder="Your webmention link" />
+    <button type="submit">Send Webmention</button>
+  </form>
+  <p class="how-to-send-webmention"><a class="twitter-share-button" href="https://twitter.com/intent/tweet">Tweet</a> and send response
+  
+  
+    </p>
+  
+</section>
+    
+</article>
+
+          </main>
+          <aside>
+              
+<section class="search">
+<input type="search" id="search-bar-input" placeholder="Searching..." />
+</section>
+<section>
+    <h3 class="section-title">Series</h3>
+    
+    
+    <p><a href="https:&#x2F;&#x2F;eindex.me&#x2F;series&#x2F;blog-enhance-plan&#x2F;">博客演进计划 (1)</a></p>
+    
+    <p><a href="https:&#x2F;&#x2F;eindex.me&#x2F;series&#x2F;security&#x2F;">应用安全 (1)</a></p>
+    
+</section>
+
+<section class="tags">
+<h3 class="section-title">Tags</h3>
+
+<div class="tags">
+    
+    <a href="https:&#x2F;&#x2F;eindex.me&#x2F;tags&#x2F;webmentions&#x2F;">Webmentions (1)</a>,
+    
+    <a href="https:&#x2F;&#x2F;eindex.me&#x2F;tags&#x2F;umami&#x2F;">umami (1)</a>,
+    
+    <a href="https:&#x2F;&#x2F;eindex.me&#x2F;tags&#x2F;static-analysis&#x2F;">Static Analysis (1)</a>,
+    
+    <a href="https:&#x2F;&#x2F;eindex.me&#x2F;tags&#x2F;semgrep&#x2F;">Semgrep (1)</a>,
+    
+    <a href="https:&#x2F;&#x2F;eindex.me&#x2F;tags&#x2F;security&#x2F;">Security (1)</a>,
+    
+    <a href="https:&#x2F;&#x2F;eindex.me&#x2F;tags&#x2F;sast&#x2F;">SAST (1)</a>,
+    
+    <a href="https:&#x2F;&#x2F;eindex.me&#x2F;tags&#x2F;microformats2&#x2F;">Microformats2 (1)</a>,
+    
+    <a href="https:&#x2F;&#x2F;eindex.me&#x2F;tags&#x2F;memos&#x2F;">memos (1)</a>,
+    
+    <a href="https:&#x2F;&#x2F;eindex.me&#x2F;tags&#x2F;meilisearch&#x2F;">meilisearch (1)</a>,
+    
+    <a href="https:&#x2F;&#x2F;eindex.me&#x2F;tags&#x2F;javascript&#x2F;">JavaScript (1)</a>,
+    
+    <a href="https:&#x2F;&#x2F;eindex.me&#x2F;tags&#x2F;indie-web&#x2F;">Indie Web (1)</a>,
+    
+    <a href="https:&#x2F;&#x2F;eindex.me&#x2F;tags&#x2F;github-actions&#x2F;">Github Actions (1)</a>,
+    
+    <a href="https:&#x2F;&#x2F;eindex.me&#x2F;tags&#x2F;engagement&#x2F;">Engagement (1)</a>,
+    
+    <a href="https:&#x2F;&#x2F;eindex.me&#x2F;tags&#x2F;devsecops&#x2F;">DevSecOps (1)</a>,
+    
+    <a href="https:&#x2F;&#x2F;eindex.me&#x2F;tags&#x2F;devops&#x2F;">DevOps (1)</a>,
+    
+    <a href="https:&#x2F;&#x2F;eindex.me&#x2F;tags&#x2F;connectivity&#x2F;">Connectivity (1)</a>,
+    
+    <a href="https:&#x2F;&#x2F;eindex.me&#x2F;tags&#x2F;community&#x2F;">Community (1)</a>,
+    
+    <a href="https:&#x2F;&#x2F;eindex.me&#x2F;tags&#x2F;code-review&#x2F;">Code Review (1)</a>,
+    
+    <a href="https:&#x2F;&#x2F;eindex.me&#x2F;tags&#x2F;ci&#x2F;">CI (1)</a>,
+    
+    <a href="https:&#x2F;&#x2F;eindex.me&#x2F;tags&#x2F;build-security-in&#x2F;">Build Security In (1)</a>,
+    
+    <a href="https:&#x2F;&#x2F;eindex.me&#x2F;tags&#x2F;best-practices&#x2F;">Best Practices (1)</a>,
+    
+    <a href="https:&#x2F;&#x2F;eindex.me&#x2F;tags&#x2F;beginner-s-guide&#x2F;">Beginner&#x27;s Guide (1)</a>
+    
+<div>
+</section>
+
+<section class="advertisement">
+    <h3 class="section-title">Advertisement</h3>
+    <ins class="adsbygoogle"
+        style="display:inline-block;width:192px;height:144px"
+        data-ad-client="ca-pub-1265138627025369"
+        data-ad-slot="3727265125"></ins>
+    <ins class="adsbygoogle"
+        style="display:inline-block;width:192px;height:144px"
+        data-ad-client="ca-pub-1265138627025369"
+        data-ad-slot="3727265125"></ins>
+    <ins class="adsbygoogle"
+        style="display:inline-block;width:192px;height:144px"
+        data-ad-client="ca-pub-1265138627025369"
+        data-ad-slot="3727265125"></ins>
+</section>
+          </aside>
+      </div>
+      <footer class="footer">
+  <span class="webring">
+<a href="https://xn--sr8hvo.ws/%F0%9F%95%90%F0%9F%89%91%F0%9F%88%B6/previous">←</a>
+An IndieWeb Webring 🕸💍
+<a href="https://xn--sr8hvo.ws/%F0%9F%95%90%F0%9F%89%91%F0%9F%88%B6/next">→</a>
+</span>
+  <link href="https://github.com/eindex" rel="me">
+  <span>@2022 EINDEX</span>
+</footer>
+
+    </div>
+  </body>
+  
+<script async defer data-website-id="692d9153-7341-4370-b652-60df196f2b31" data-host-url="https://u.eindex.me" data-domains="eindex.me" src="/js/umami.js"></script>
+<script>window.twttr = (function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0],
       t = window.twttr || {};
     if (d.getElementById(id)) return t;
@@ -111,4 +467,24 @@
     };
   
     return t;
-  }(document, "script", "twitter-wjs"));</script><script async defer src=/js/pv-counter.js></script>
+  }(document, "script", "twitter-wjs"));</script>
+<script src="https://cdn.jsdelivr.net/npm/docs-searchbar.js@2.4.1/dist/cdn/docs-searchbar.min.js"></script>
+<script>
+  docsSearchBar({
+    hostUrl: "https://meili.eindex.me",
+    apiKey: "a39cff5442b90bb926f6408b0b08671eee444599e6d9c44c29bd0adae09a4b86",
+    indexUid: "blog",
+    inputSelector: '#search-bar-input',
+    debug: true, // Set debug to true if you want to inspect the dropdown
+  })
+</script>
+
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+</body>
+  
+    <script src="/js/pv-counter.js" async defer></script>
+
+</html>

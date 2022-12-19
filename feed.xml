@@ -11,6 +11,15 @@
   
   <item>
     <title xml:lang="en"></title>
+    <link>https:&#x2F;&#x2F;eindex.me&#x2F;thoughts&#x2F;1671430490&#x2F;</link>
+    <pubDate>Mon, 19 Dec 2022 14:00:00 +0800</pubDate>
+    <guid>https:&#x2F;&#x2F;eindex.me&#x2F;thoughts&#x2F;1671430490&#x2F;</guid>
+    <description xml:lang="en">&lt;p&gt;Building #meilisearch and #umami analytics systems on #flyio. Glad everything is running in the free tier.&lt;&#x2F;p&gt;
+</description>
+  </item>
+  
+  <item>
+    <title xml:lang="en"></title>
     <link>https:&#x2F;&#x2F;eindex.me&#x2F;thoughts&#x2F;1670991775&#x2F;</link>
     <pubDate>Wed, 14 Dec 2022 12:00:00 +0800</pubDate>
     <guid>https:&#x2F;&#x2F;eindex.me&#x2F;thoughts&#x2F;1670991775&#x2F;</guid>
@@ -72,7 +81,11 @@
     <link>https:&#x2F;&#x2F;eindex.me&#x2F;changelog&#x2F;</link>
     <pubDate>Sat, 29 Oct 2022 00:00:00 +0000</pubDate>
     <guid>https:&#x2F;&#x2F;eindex.me&#x2F;changelog&#x2F;</guid>
-    <description xml:lang="en">&lt;h2 id=&quot;2022-12-13&quot;&gt;2022-12-13&lt;&#x2F;h2&gt;
+    <description xml:lang="en">&lt;h2 id=&quot;2022-12-19&quot;&gt;2022-12-19&lt;&#x2F;h2&gt;
+&lt;p&gt;Add meilisearch.
+&lt;img src=&quot;https:&#x2F;&#x2F;img.eindex.me&#x2F;img&#x2F;3f047d5cf75757dbda28ad1aa81a8d24.png&quot; alt=&quot;Screenshot for meilisearch on this blog&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Add aside colume.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;2022-12-13&quot;&gt;2022-12-13&lt;&#x2F;h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Add pv counter.&lt;&#x2F;li&gt;
 &lt;li&gt;Add tweet card feature via Twitter script.&lt;&#x2F;li&gt;

@@ -132,6 +132,10 @@
         <lastmod>2022-12-11T14:31:43Z</lastmod>
     </url>
     <url>
+        <loc>https://eindex.me/cn/thoughts/1671430535/</loc>
+        <lastmod>2022-12-19T06:15:35Z</lastmod>
+    </url>
+    <url>
         <loc>https://eindex.me/cn/thoughts/2/</loc>
         <lastmod>2022-10-30</lastmod>
     </url>
@@ -157,6 +161,9 @@
     </url>
     <url>
         <loc>https://eindex.me/series/blog-enhance-plan/</loc>
+    </url>
+    <url>
+        <loc>https://eindex.me/series/security/</loc>
     </url>
     <url>
         <loc>https://eindex.me/tags/</loc>
@@ -243,6 +250,9 @@
         <loc>https://eindex.me/tags/financial/</loc>
     </url>
     <url>
+        <loc>https://eindex.me/tags/flyio/</loc>
+    </url>
+    <url>
         <loc>https://eindex.me/tags/github-actions/</loc>
     </url>
     <url>
@@ -265,6 +275,9 @@
     </url>
     <url>
         <loc>https://eindex.me/tags/linear/</loc>
+    </url>
+    <url>
+        <loc>https://eindex.me/tags/meilisearch/</loc>
     </url>
     <url>
         <loc>https://eindex.me/tags/memos/</loc>
@@ -306,6 +319,9 @@
         <loc>https://eindex.me/tags/thoughtworks/</loc>
     </url>
     <url>
+        <loc>https://eindex.me/tags/umami/</loc>
+    </url>
+    <url>
         <loc>https://eindex.me/tags/webmentions/</loc>
     </url>
     <url>
@@ -330,5 +346,9 @@
     <url>
         <loc>https://eindex.me/thoughts/1670991775/</loc>
         <lastmod>2022-12-14T04:22:55Z</lastmod>
+    </url>
+    <url>
+        <loc>https://eindex.me/thoughts/1671430490/</loc>
+        <lastmod>2022-12-19T06:14:50Z</lastmod>
     </url>
 </urlset>
