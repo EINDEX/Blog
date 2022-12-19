@@ -6,9 +6,7 @@ Hello, welcome to my blog, I'm EINDEX.
 
 I will write my thoughts and notes. Meanwhile, there have some [Chinese content](@/_index.cn.md).
 
-Also, I put my photograph in [gallery](@/gallery/_index.md).
-
-And I have some fragmented note and knowladage in my [wike site](https://wiki.eindex.me).
+Also, I put my photograph in [gallery](@/gallery.md).
 
 Welcome to connect me via those methods:
 <a rel="me" href="https://twitter.com/eindex_li"><iconify-icon icon="bxl:twitter"></iconify-icon></a>

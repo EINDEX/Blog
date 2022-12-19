@@ -6,9 +6,7 @@ title: "EINDEX's Blog"
 
 我会将我的想法和笔记记录在这里。当然还有一些[英文内容](@/_index.md)。
 
-与此同时我还会在这里存放我的[相册](@/gallery/_index.cn.md)。
-
-我的积累的一些零散的笔记和知识存放在我的[Wiki](https://wiki.eindex.me)里。
+与此同时我还会在这里存放我的[相册](@/gallery.cn.md)。
 
 欢迎你来这些地方与我联系:
 <a rel="me" href="https://twitter.com/eindex_li"><iconify-icon icon="bxl:twitter"></iconify-icon></a>

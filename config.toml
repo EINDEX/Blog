@@ -5,17 +5,23 @@ base_url = "https://eindex.me"
 description = ""
 default_language = "en"
 
+build_search_index = false
+compile_sass = false
+
 minify_html = true
 generate_feed = true
+generate_rss = true
 feed_filename = "feed.xml"
+hard_link_static = false
+
 
 # Configuration of the link checker.
 [link_checker]
 # Skip link checking for external URLs that start with these prefixes
-skip_prefixes = [
-    "@/posts",
-    "content/posts",
-]
+# skip_prefixes = [
+#     "@/posts",
+#     "content/posts",
+# ]
 
 [slugify]
 paths = "on"
@@ -104,7 +110,7 @@ mastodon = ["https://mastodon.social/@eindex"]
 [extra.menu]
 [[extra.menu.navbar]]
 label = "gallery"
-url = "gallery/_index"
+url = "gallery"
 [[extra.menu.navbar]]
 label = "archive"
 url = "archive"
