@@ -12,6 +12,9 @@
         </div>
         <div class="bar"><span class="thought-date">at <time class="dt-published">{{ macro::date_format(datetime=page.date, lang=lang) }}</time></span></div>
     </section>
+    <section class="post-footer">
+        {% include "partials/plugins/tag-list.html" %}
+    </section>
     {% include "partials/plugins/webmentions.html" %}
     {% include "partials/plugins/giscus.html" %}
     {{ macro::backlink(pages=page.backlinks) }}

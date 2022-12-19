@@ -17,7 +17,7 @@
     {% for item in tags.items | sort(attribute="pages") | reverse %}
     <a href="{{ item.permalink }}">{{ item.name }} ({{ item.pages | length }})</a>{% if not loop.last %},{% endif %}
     {% endfor %}
-<div>
+</div>
 </section>
 
 <section class="advertisement">
