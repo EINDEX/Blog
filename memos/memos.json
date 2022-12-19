@@ -22,5 +22,17 @@
     "updatedTs": 1670991775,
     "createdTs": 1670991775,
     "content": "This tool can help you do the Diagram as code for cloud system architectures.[mingrammer/diagrams](https://github.com/mingrammer/diagrams) "
+  },
+  "31": {
+    "id": 31,
+    "updatedTs": 1671430490,
+    "createdTs": 1671430490,
+    "content": "Building #meilisearch and #umami analytics systems on #flyio. Glad everything is running in the free tier."
+  },
+  "32": {
+    "id": 32,
+    "updatedTs": 1671430535,
+    "createdTs": 1671430535,
+    "content": "在#flyio 上构建了#meilisearch 和#umami 分析系统。这些都运行在免费额度中。"
   }
 }
