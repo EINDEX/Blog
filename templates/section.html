@@ -2,8 +2,6 @@
 
 {% block content %}
 
-{{ section | json_encode }}
-
   <ul class="posts">
     {% for page in section.pages %}
     {% include "posts/supports/li.html" %}
