@@ -8,7 +8,7 @@ const localSite = "webmentions/sitemap_cache.json"
 const buildedSitemap = "public/sitemap.xml"
 
 const loadSiteMap = async () => {
-    return (parser.toJson(await fs.readJSONSync(buildedSitemap))).urlset.url
+    return JSON.parse(parser.toJson(await fs.readFileSync(buildedSitemap, {encoding: "utf-8"}))).urlset.url
 }
 
 const loadLocalCache = async () => {
