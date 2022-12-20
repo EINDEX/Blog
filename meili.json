@@ -39,21 +39,23 @@
       },
       "lvl3": "section.main.e-content > h2",
       "lvl4": "section.main.e-content > h3",
-      "text": "section.main.e-content p, section.main.e-content li, main > article > section.thought-contrainer > div.thought.e-content.p-summary"
+      "text": "section.main.e-content p, section.main.e-content li"
     },
     "thoughts": {
       "lvl0": {
-        "selector": "main h1.title.p-name",
+        "selector": "main article .header .title-area h1",
         "default_value": "Thoughts"
       },
-      "lv11": {
-        "selector": "main > article > section.post-footer > div.tags",
+      "lvl1": "main .meta-area time.dt-published",
+      "lvl2": {
+        "selector": "main article .tags span.tag",
+        "global": true,
         "default_value": "Random"
       },
-      "lvl2": "main time.dt-published",
-      "lvl3": "main > article > section.thought-contrainer > div.thought.e-content.p-summary p, main > article > section.thought-contrainer > div.thought.e-content.p-summary li"
+      "text": "main .e-content p, main .e-content li"
     }
   },
+  "min_indexed_level": 2,
   "custom_settings": {
     "synonyms": {
       "js": ["javascript", "nodejs"],
