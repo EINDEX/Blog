@@ -27,6 +27,7 @@
   "selectors": {
     "default": {
       "lvl0": {
+        "selector": "main something not exists",
         "default_value": "Post"
       },
       "lvl1": {
