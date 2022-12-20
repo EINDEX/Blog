@@ -26,7 +26,7 @@ Code review is an essential part of the SDLC(software development live cycle). I
 
 ![Semgrep compare with AST and regex](https://img.eindex.me/img/e23bd0bbaf9d2513d3d26042b1aa702b.png)
 
-Enter Semgrep, a tool for statically analyzing code and detecting common issues. Semgrep runs mostly language-agnostic analysis on analysis-friendly IR(intermediate language) which translate by AST(abstract syntax tree) tree. This process will not generate AST tree via your entile project with dependencies like CodeQL. So semgrep can run it quick and easy to create rules to find and fix common problems in your code, such as security vulnerabilities, logical errors, and style violations.
+Enter Semgrep, a tool for statically analyzing code and detecting common issues. Semgrep runs mostly language-agnostic analysis on analysis-friendly IR(intermediate language) which translate by AST(abstract syntax tree) tree. This process will not generate AST tree via your compile project with dependencies like CodeQL. So semgrep can run it quick and easy to create rules to find and fix common problems in your code, such as security vulnerabilities, logical errors, and style violations.
 
 ## Setting up Semgrep for your project
 
