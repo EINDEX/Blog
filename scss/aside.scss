@@ -2,12 +2,10 @@
     aside {
         section.search {
             #search-bar-input {
-                @apply shadow-md border-solid border rounded-lg w-full leading-8 px-2 hover:border-gray-300;
+                @apply w-full shadow-lg px-4 bg-gray-100 rounded-md h-12 text-gray-800;
             }
 
-            input {
-                @apply focus:outline-none;
-            }
+
 
             .docs-searchbar-js {
                 @apply w-full;
@@ -62,6 +60,11 @@
 }
 
 .adsbygoogle.main {
+    @apply py-0;
     width: 45rem;
     height: 4rem;
+}
+
+input {
+    @apply focus:outline-none;
 }
