@@ -19,6 +19,15 @@
   </item>
   
   <item>
+    <title xml:lang="en">Improving Code Review with Semgrep</title>
+    <link>https:&#x2F;&#x2F;eindex.me&#x2F;posts&#x2F;semgrep-in-workflow&#x2F;</link>
+    <pubDate>Wed, 14 Dec 2022 14:00:00 +0800</pubDate>
+    <guid>https:&#x2F;&#x2F;eindex.me&#x2F;posts&#x2F;semgrep-in-workflow&#x2F;</guid>
+    <description xml:lang="en">&lt;p&gt;In this post, we will discuss how Semgrep can be integrated into your code review process. If you are unfamiliar with Semgrep, we recommend checking out our previous article on the topic, titled &amp;quot;&lt;a href=&quot;https:&#x2F;&#x2F;eindex.me&#x2F;posts&#x2F;improving-your-code-review-process-with-semgrep&#x2F;&quot;&gt;Improving Your Code Review Process With Semgrep&lt;&#x2F;a&gt;&amp;quot;.&lt;&#x2F;p&gt;
+<br/><a href="https:&#x2F;&#x2F;eindex.me&#x2F;posts&#x2F;semgrep-in-workflow&#x2F;#continue-reading">Continue Reading</a></description>
+  </item>
+  
+  <item>
     <title xml:lang="en"></title>
     <link>https:&#x2F;&#x2F;eindex.me&#x2F;thoughts&#x2F;1670991775&#x2F;</link>
     <pubDate>Wed, 14 Dec 2022 12:00:00 +0800</pubDate>
