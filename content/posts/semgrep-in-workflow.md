@@ -1,46 +1,122 @@
 ---
-title: How to use Semgrep in code review process
+title: Improving Code Review with Semgrep
 date: 2022-12-14T14:14:56+08:00
-description: "This post share some actual usecases for Semgrep in code review process"
-draft: true
+description: "This article explores the benefits of using Semgrep in the code review process to improve code quality and consistency. It discusses how custom rules can be utilized to enforce team coding standards and detect potential vulnerabilities in the code, leading to more effective code review and ultimately better software."
+draft: false
 template: posts/page.html
 taxonomies:
-    tags: ["Semgrep"]
+    tags: [
+      "Code review",
+      "Semgrep",
+      "Custom rules",
+      "Code quality",
+      "Code consistency",
+      "Coding standards",
+      "Vulnerability detection",
+      "Software development",
+      "Workflow",
+      "Best practices"
+      ]
+
     series: ["security"]
-extra:
-    posse: 
-        twitter: true
-        mastodon: true
 ---
 
-This post about how Semgrep actually work with your workflow, If you don't know about Semgrep, please check another blog, which talk about what is semgrep and why you should starting using it, [Improving Your Code Review Process With Semgrep](@/posts/improving-your-code-review-process-with-semgrep.md)
+
+In this post, we will discuss how Semgrep can be integrated into your code review process. If you are unfamiliar with Semgrep, we recommend checking out our previous article on the topic, titled "[Improving Your Code Review Process With Semgrep](@/posts/improving-your-code-review-process-with-semgrep.md)".
 
 <!-- more -->
 
 ## Codereview and Semgrep
 
-在大多数情况下，开发团队都会有一个代码交付的生命周期，在这个生命周期是由设计、开发、测试、上线的四个主要流程来组成的。
+Code review is a crucial step in the software development workflow, as it allows team members to review and critique each other's code.
 
-在开发结束准备开始测试之前，在敏捷开发背景下我们会做一定程度上的代码审查，不同的公司，不同的团队做代码审查的侧重点都是不同的，所以这并没有一个统一的标准。
+However, code review can sometimes be a source of contention, with debates over code style or disagreements over team coding standards.
 
-但 Semgrep 是一个很神奇的工具，就我前文所提到，这个工具可以为 Code review 节省时间与精力。
+Additionally, there may be cases where the team lacks domain expertise, leading to the inclusion of vulnerabilities in the code. Semgrep can help address these issues by promoting consistent coding practices and identifying potential vulnerabilities.
 
-这个文章会介绍几个不同的使用 Semgrep 加速 code review 过程的等级, 等级的创建一句是依照 BSIMM 所提出的 Code Review 成熟度。
-https://www.bsimm.com/framework/software-security-development-lifecycle/code-review.html
+Let's take a closer look at how Semgrep can be utilized in the code review process.
 
-## Level 1: Beginning to use Semgrep
+## Cases
 
-[CR1.4: 107] Use automated review tools.
+In this section, we will examine three cases where Semgrep custom rules can be utilized to improve code quality.
 
-在level1， 团队可能刚刚开始使用semgrep 工具，接触并熟悉这个工具
+Case 1: Preventing the use of `System.out` in Java. It is not uncommon for team members to use `System.out` for logging or debugging purposes. However, this practice can be problematic. The following custom rule can help address this issue:
 
+```yaml
+rules:
+- id: logging-via-system-out
+  pattern: System.out.$PRINT($ARG);
+  message: Using system out as logging method.
+  languages: [java]
+  severity: WARNING
+```
 
-## Level 2: Integrate with Workflow
+If your team has established logging standards, the `fix` function can be used to automatically replace instances of `System.out` with a preferred logging method. For example:
 
+```yaml
+rules:
+- id: logging-via-system-out
+  pattern: System.out.$PRINT($ARG);
+  message: Using system out as logging method.
+  fix: log.info($ALG)
+  languages: [java]
+  severity: WARNING
+```
 
-## Level 3: Starting to create and mantance Custom rules.
-[CR2.6: 28] Use custom rules with automated code review tools.
+Case 2: Disallowing system calls. In some situations, it may be desirable to prohibit system commands in order to protect the user's device or cloud machine. The following custom rule can be used to detect and prevent the execution of system commands:
 
+```yaml
+rules:
+- id: java-rec-checker
+  patterns:
+    - pattern-inside: $FUN(...,$ARG,...){...}
+    - pattern-either:
+        - pattern: Runtime.getRuntime().exec(..., $ARG, ...);
+        - patterns:
+          - pattern: Process $PROCESS = Runtime.getRuntime();
+          - pattern: $PROCESS.exec(..., $ARG, ...);
+  message: RCE risk from user input.
+  languages: [java]
+  severity: ERROR
+```
 
-## Level 4: Evevy one intergate tool in localy and running it as pre-commit checker.
-[CR3.3: 8] Create capability to eradicate bugs.
+Case 3: Ensuring that all request mappings have authentication checks. It is important to ensure that all request mappings have proper permission checks in place. The following custom rule can be used to identify instances where these checks are missing:
+
+```yaml
+rules:
+- id: vaild-permission-check-on-all-request-mapping
+  patterns:
+    - pattern-inside: |
+        @$CONTROLLER_ANNOTATION
+        public class $CONTROLLER {
+          ...
+        }
+    - pattern: |
+        @$MAPPING_ANNOTATION(...)
+        public $RET $METHOD(...){...}
+    - pattern-not: |
+        @$MAPPING_ANNOTATION(...)
+        @$PERMISSION_ANNOTATION(...)
+        public $RET $METHOD(...){...}
+    - metavariable-regex:
+        metavariable: $CONTROLLER_ANNOTATION
+        regex: (.*Controller$)
+    - metavariable-regex:
+        metavariable: $MAPPING_ANNOTATION
+        regex: (.*Mapping$)
+    - metavariable-regex:
+        metavariable: $PERMISSION_ANNOTATION
+        regex: (.*Permission$)
+  message: Should check user permission on all request mapping
+  languages: [java]
+  severity: WARNING
+
+```
+
+## Summarize
+
+This article has discussed how Semgrep can be integrated into the code review process to improve code quality and consistency.
+
+By using custom rules, Semgrep can enforce team coding standards and detect potential vulnerabilities in the code.
+
+By incorporating Semgrep into the code review workflow, teams can more effectively identify and address issues before code is released to production.
