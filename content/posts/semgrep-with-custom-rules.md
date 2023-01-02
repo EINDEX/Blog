@@ -1,9 +1,5 @@
 ---
-<<<<<<< HEAD:content/posts/semgrep-with-custom-rules.md
-title: Improving Code Review with Semgrep Custom Rules
-=======
-title: How to use Semgrep in code review process
->>>>>>> parent of 4d9cece (write: release semgrep custom rules):content/posts/semgrep-in-workflow.md
+title: Code Review with Semgrep Custom Rules
 date: 2022-12-14T14:14:56+08:00
 description: "This post share some actual usecases for Semgrep in code review process"
 draft: true
