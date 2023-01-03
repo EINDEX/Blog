@@ -1,7 +1,8 @@
-{% set link = page.permalink | replace(from=config.base_url, to="") | replace(from="/cn", to="") | trim_end_matches(pat="/") %}
+{% set link = page.permalink | replace(from=config.base_url, to="") | replace(from="/cn", to="") |
+trim_end_matches(pat="/") %}
 {% set web_mentions_data_path = "webmentions/data" ~ link ~ ".json" %}
 {% set web_mentions_data = load_data(path=web_mentions_data_path, required=false) %}
-{% if  web_mentions_data %}
+{% if web_mentions_data %}
 {% set_global web_mentions_list = [] %}
 {% for key, mention in web_mentions_data %}
 {% set_global web_mentions_list = web_mentions_list | concat(with=mention) %}
@@ -9,22 +10,22 @@
 {% endif %}
 
 {% if page.extra.posse.twitter %}
-    <a href="https://brid.gy/publish/twitter"></a>
-    {% if web_mentions_list %}
-        {% for mention in web_mentions_list %}
-            {% if mention["wm-property"] == "mention-of" and mention.author.url in config.extra.webmentions.posse.twitter %}
-                <a rel="syndication" class="u-syndication" href="{{ mention.url }}"></a>
-            {% endif %}
-        {% endfor %}
-    {% endif %}
+<a href="https://brid.gy/publish/twitter"></a>
+{% if web_mentions_list %}
+{% for mention in web_mentions_list %}
+{% if mention["wm-property"] == "mention-of" and mention.author.url in config.extra.webmentions.posse.twitter %}
+<a rel="syndication" class="u-syndication" href="{{ mention.url }}"></a>
+{% endif %}
+{% endfor %}
+{% endif %}
 {% endif %}
 {% if page.extra.posse.mastodon %}
-    <a href="https://brid.gy/publish/mastodon"></a>
-    {% if web_mentions_list %}
-        {% for mention in web_mentions_list %}
-            {% if mention["wm-property"] == "mention-of" and mention.author.url in config.extra.webmentions.posse.mastodon %}
-                <a rel="syndication" class="u-syndication" href="{{ mention.url }}"></a>
-            {% endif %}
-        {% endfor %}
-    {% endif %}
+<a href="https://brid.gy/publish/mastodon"></a>
+{% if web_mentions_list %}
+{% for mention in web_mentions_list %}
+{% if mention["wm-property"] == "mention-of" and mention.author.url in config.extra.webmentions.posse.mastodon %}
+<a rel="syndication" class="u-syndication" href="{{ mention.url }}"></a>
+{% endif %}
+{% endfor %}
+{% endif %}
 {% endif %}

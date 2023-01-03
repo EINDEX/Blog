@@ -1,10 +1,10 @@
 {
   "scripts": {
     "clean": "rimraf public && rimraf static/css",
-    "initcss": "touch ./static/css/index.css",
+    "initcss": "mkdir -p ./static/css/ && touch ./static/css/index.css",
     "start": "TAILWIND_MODE=watch NODE_ENV=development npm-run-all --parallel dev:*",
     "dev:postcss": "postcss styles.scss -o ./static/css/index.css --config ./postcss.config.js -w",
-    "dev:serve": "zola  --config config.toml serve --drafts -i 0.0.0.0 -u 127.0.0.1",
+    "dev:serve": "zola  --config config.toml serve --drafts -i 127.0.0.1",
     "prod-start": "TAILWIND_MODE=watch NODE_ENV=development npm-run-all --parallel dev:postcss prod:serve",
     "prod:serve": "zola  --config config.toml serve",
     "build": "NODE_ENV=production npm-run-all clean prod:postcss prod:build",
@@ -25,8 +25,8 @@
   "devDependencies": {
     "@iconify/iconify": "^3.0.0",
     "axios": "^1.2.0",
-    "iconify-icon": "^1.0.1",
     "fs-extra": "^10.1.0",
+    "iconify-icon": "^1.0.1",
     "postcss-nesting": "^10.1.10",
     "xml2json": "^0.12.0"
   }

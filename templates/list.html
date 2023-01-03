@@ -4,10 +4,10 @@
 
 {% set posts_section = get_section(path="posts/_index" ~ current_lang_suffix ~ ".md") %}
 
-  <ul class="posts">
-    {% for page in posts_section.pages %}
-      {% include "posts/supports/li.html" %}
-    {% endfor %}
-  </ul>
+<ul class="posts">
+  {% for page in posts_section.pages %}
+  {% include "posts/supports/li.html" %}
+  {% endfor %}
+</ul>
 
 {% endblock content %}

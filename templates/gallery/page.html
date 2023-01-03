@@ -1,16 +1,16 @@
 {% extends "_default/base.html" %}
 
 {% block content %}
-  <article data-clarity-region="article">
-    {% include "posts/supports/post-header.html" %}
-    <section class="main">
-        {{ macro::render_html(content=page.content) }}
-    </section>
-    <section class="post-footer">
-        {% include "partials/plugins/tag-list.html" %}
-    </section>
-    {% include "partials/plugins/giscus.html" %}
-    {{ macro::backlink(pages=page.backlinks) }}
+<article data-clarity-region="article">
+  {% include "posts/supports/post-header.html" %}
+  <section class="main">
+    {{ macro::render_html(content=page.content) }}
+  </section>
+  <section class="post-footer">
+    {% include "partials/plugins/tag-list.html" %}
+  </section>
+  {% include "partials/plugins/giscus.html" %}
+  {{ macro::backlink(pages=page.backlinks) }}
 </article>
 
 {% endblock content %}

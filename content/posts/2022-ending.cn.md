@@ -6,6 +6,8 @@ latex: false
 template: "posts/page.html"
 taxonomies:
     tags: [Ending, "Annual Summary"]
+    series: 
+        ["review"]
 ---
 
 

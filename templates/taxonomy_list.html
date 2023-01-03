@@ -6,9 +6,9 @@
     </section>
   </section>
   <section class="main">
-      {% for term in terms %}
-        <a href="{{ term.permalink }}">{{ term.name }}</a>
-      {% endfor %}
+    {% for term in terms %}
+    <a href="{{ term.permalink }}">{{ term.name }}</a>
+    {% endfor %}
   </section>
 </article>
 {% endblock %}

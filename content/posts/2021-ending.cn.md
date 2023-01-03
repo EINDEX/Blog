@@ -6,6 +6,8 @@ latex: false
 template: "posts/page.html"
 taxonomies:
     tags: [Ending, "Annual Summary"]
+    series: 
+        [ "review"]
 ---
 
 2021年就要过去了，分享一下我今年都干了些什么事请。

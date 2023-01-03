@@ -4,8 +4,8 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ config.extra.googleAnalytics }}"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  
+  function gtag() { dataLayer.push(arguments); }
+
   var page_link = new URL(window.location.href);
   gtag('js', new Date());
   gtag('config', '{{ config.extra.googleAnalytics }}', {
@@ -14,7 +14,7 @@
   gtag('set', {
     traffic_type: page_link.searchParams.get("traffic_type")
   })
-  
+
 
 </script>
 

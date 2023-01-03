@@ -5,7 +5,7 @@
   </section>
   <section class="main">
     {{ macro::render_html(content=section.content) }}
-    
+
     {% set posts_section =
     get_section(path="posts/_index"~ current_lang_suffix ~ ".md", lang=lang) %}
     {% if lang == "cn" %}
@@ -18,14 +18,13 @@
     {% endif %}
 
     <ul class="post-list">
-      {% for post in posts_section.pages %} {% if loop.index < 20 %}
-      <li>
+      {% for post in posts_section.pages %} {% if loop.index < 20 %} <li>
         <a href="{{ post.permalink }}">{{ post.title }}</a> Update on {% if
         post.updated %} {{ macro::date_format(datetime=post.updated, lang=lang)
         }} {%else%} {{ macro::date_format(datetime=post.date, lang=lang) }}
         {%endif%}
-      </li>
-      {% endif %} {% endfor %}
+        </li>
+        {% endif %} {% endfor %}
     </ul>
 
     {% set archive_page = get_page(path="archive"~ current_lang_suffix ~ ".md",
@@ -52,25 +51,24 @@
     </h3>
     {% endif %}
     <div class="thought-list">
-      {% for thought in thoughts_section.pages %} {% if loop.index < 20 %} {%
-      include "thoughts/item.html" %} {% endif %} {% endfor %}
-    </div>
+      {% for thought in thoughts_section.pages %} {% if loop.index < 20 %} {% include "thoughts/item.html" %} {% endif
+        %} {% endfor %} </div>
 
-    <hr />
+        <hr />
 
-    {% set posts_section =
-      get_section(path="posts/_index"~ current_lang_suffix ~ ".md", lang=lang) %}
-      {% if lang == "cn" %}
-      <p style="display:none">目前本站被访问 <span id="total-pv"></span> 次。</p>
-      {% else %}
-      <p style="display:none">Until now this site have <span id="total-pv"></span> visits.</p>
-      {% endif %}
+        {% set posts_section =
+        get_section(path="posts/_index"~ current_lang_suffix ~ ".md", lang=lang) %}
+        {% if lang == "cn" %}
+        <p style="display:none">目前本站被访问 <span id="total-pv"></span> 次。</p>
+        {% else %}
+        <p style="display:none">Until now this site have <span id="total-pv"></span> visits.</p>
+        {% endif %}
   </section>
 </article>
 {% endblock content %}
 
 {% block script %}
-    {% include "partials/plugins/pv-total.html" %}
+{% include "partials/plugins/pv-total.html" %}
 {% endblock %}
 
 

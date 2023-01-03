@@ -66,6 +66,7 @@ series_markdown-testing = "Markdown 测试"
 series_qingzhuo = "系列 Testing"
 series_algorithm = "算法"
 series_security = "应用安全"
+series_review = "年终总结"
 
 [languages.en]
 generate_feed = true
@@ -92,6 +93,7 @@ series_markdown-testing = "Markdown Testing"
 series_qingzhuo = "Series Testing"
 series_algorithm = "Algorithm"
 series_security = "Cyber Security"
+series_review = "Review"
 
 [extra]
 # Put all your custom variables here

@@ -1,8 +1,11 @@
 <div class="thought-contrainer h-entry">
-    {% include "partials/plugins/invisable-h-card.html" %}
-    {% if thought.extra.reply.title %}<span>Reply: <a href="{{thought.extra.reply.url}}" class="u-in-reply-to">{{thought.extra.reply.title}}</a></span>{%endif%}
-    <div class="thought e-content p-summary">
-    {{ macro::render_html(content=thought.content) }} 
-    </div>
-    <div class="bar"><a href="{{ thought.permalink }}"><iconify-icon icon="uil:comments"></iconify-icon>Comment</a><span class="thought-date">at <time class="dt-published">{{ macro::date_format(datetime=thought.date, lang=lang) }}</time></span></div>
+  {% include "partials/plugins/invisable-h-card.html" %}
+  {% if thought.extra.reply.title %}<span>Reply: <a href="{{thought.extra.reply.url}}"
+      class="u-in-reply-to">{{thought.extra.reply.title}}</a></span>{%endif%}
+  <div class="thought e-content p-summary">
+    {{ macro::render_html(content=thought.content) }}
+  </div>
+  <div class="bar"><a href="{{ thought.permalink }}"><iconify-icon icon="uil:comments"></iconify-icon>Comment</a><span
+      class="thought-date">at <time class="dt-published">{{ macro::date_format(datetime=thought.date, lang=lang)
+        }}</time></span></div>
 </div>

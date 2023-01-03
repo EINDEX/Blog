@@ -10,11 +10,23 @@
 
   {% for post in pages %}
   <item>
-    <title xml:lang="{{lang}}">{{post.title}}</title>
+    {% if post.path is starting_with("/thoughts/") %}
+    <title xml:lang="{{lang}}">Thoughts | {{ post.date | date(format="%a, %d %b %Y", timezone="Asia/Shanghai") }}</title>
+    {% else %}
+    <title xml:lang="{{lang}}">{{ post.title }}</title>
+    {% endif %}
     <link>{{ post.permalink }}</link>
     <pubDate>{{ post.date | date(format="%a, %d %b %Y %H:00:00 %z", timezone="Asia/Shanghai") }}</pubDate>
     <guid>{{ post.permalink }}</guid>
-    <description xml:lang="{{lang}}">{% if post.summary %}{{post.summary}}<br/><a href="{{ post.permalink }}#continue-reading">Continue Reading</a>{%else%}{{ post.content }}{%endif%}</description>
+    {% if post.path is starting_with("/thoughts/") %}
+    <description xml:lang="{{lang}}">{{ post.content }}</description>
+    {% else %}
+      {% if not post.summary %}
+      <description xml:lang="{{lang}}">{{ post.content }}</description>
+      {% else %}
+        <description xml:lang="{{lang}}">{{ post.summary }}{{ '<p><a href="' ~ post.permalink ~ '#continue-reading">Continue Reading</a></p>' | escape | safe }}</description>
+      {% endif %}
+    {% endif %}
   </item>
   {% endfor %}
 </channel>

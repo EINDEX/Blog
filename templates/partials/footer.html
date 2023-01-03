@@ -1,5 +1,4 @@
 <footer class="footer">
   {% include "partials/plugins/webring.html" %}
-  <link href="https://github.com/eindex" rel="me">
-  <span>EINDEX @ 2023</span>
+  <span>EINDEX @ {{ now() | date(format="%Y", timezone="Asia/Shanghai") }}</span>
 </footer>
