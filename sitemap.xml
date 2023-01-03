@@ -41,6 +41,10 @@
         <lastmod>2021-12-29T14:08:01+08:00</lastmod>
     </url>
     <url>
+        <loc>https://eindex.me/cn/posts/2022-ending/</loc>
+        <lastmod>2023-01-03T09:52:29+08:00</lastmod>
+    </url>
+    <url>
         <loc>https://eindex.me/cn/posts/archlinux-install-guide/</loc>
         <lastmod>2017-10-05T14:24:21+08:00</lastmod>
     </url>
@@ -150,10 +154,6 @@
         <lastmod>2022-12-13T20:55:03+08:00</lastmod>
     </url>
     <url>
-        <loc>https://eindex.me/posts/semgrep-in-workflow/</loc>
-        <lastmod>2022-12-14T14:14:56+08:00</lastmod>
-    </url>
-    <url>
         <loc>https://eindex.me/posts/webmentions/</loc>
         <lastmod>2022-12-05T23:48:50+08:00</lastmod>
     </url>
@@ -209,16 +209,7 @@
         <loc>https://eindex.me/tags/ci/</loc>
     </url>
     <url>
-        <loc>https://eindex.me/tags/code-consistency/</loc>
-    </url>
-    <url>
-        <loc>https://eindex.me/tags/code-quality/</loc>
-    </url>
-    <url>
         <loc>https://eindex.me/tags/code-review/</loc>
-    </url>
-    <url>
-        <loc>https://eindex.me/tags/coding-standards/</loc>
     </url>
     <url>
         <loc>https://eindex.me/tags/community/</loc>
@@ -228,9 +219,6 @@
     </url>
     <url>
         <loc>https://eindex.me/tags/crawler/</loc>
-    </url>
-    <url>
-        <loc>https://eindex.me/tags/custom-rules/</loc>
     </url>
     <url>
         <loc>https://eindex.me/tags/data-structure/</loc>
@@ -326,9 +314,6 @@
         <loc>https://eindex.me/tags/semgrep/</loc>
     </url>
     <url>
-        <loc>https://eindex.me/tags/software-development/</loc>
-    </url>
-    <url>
         <loc>https://eindex.me/tags/sort/</loc>
     </url>
     <url>
@@ -341,13 +326,7 @@
         <loc>https://eindex.me/tags/umami/</loc>
     </url>
     <url>
-        <loc>https://eindex.me/tags/vulnerability-detection/</loc>
-    </url>
-    <url>
         <loc>https://eindex.me/tags/webmentions/</loc>
-    </url>
-    <url>
-        <loc>https://eindex.me/tags/workflow/</loc>
     </url>
     <url>
         <loc>https://eindex.me/thoughts/</loc>
