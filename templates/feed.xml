@@ -4,9 +4,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
   <title>{{ config.title }}</title>
-  <link>{{ get_url(path="feed.xml", trailing_slash=false) }}</link>
+  <link>{{ get_url(path='feed.xml', trailing_slash=false) }}</link>
   <description xml:lang="{{lang}}">{{ config.description }}</description>
-  <atom:link href="{{ get_url(path="feed.xml", trailing_slash=false) }}" rel="self" type="application/rss+xml"/>
+  <atom:link href="{{ get_url(path='feed.xml', trailing_slash=false) }}" rel="self" type="application/rss+xml"/>
 
   {% for post in pages %}
   <item>

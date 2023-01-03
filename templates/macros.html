@@ -34,7 +34,7 @@
   {% for allow_twitter_link in config.extra.webmentions.posse.twitter %}
   {% if mention.author.url == allow_twitter_link %}
   <blockquote class="twitter-tweet twitter p-comment h-entry" dnt="true"
-    data-id="{{mention.url | replace(from= allow_twitter_link~" /status/",to="" )}}"
+    data-id="{{mention.url | replace(from= allow_twitter_link~'/status/',to='' )}}"
     id="comment-wm{{ mention['wm-id'] }}">
     <a class="author p-author h-card u-url" title="{{ mention.author.name }}" href="{{ mention.author.url }}"><img
         src="{{mention.author.photo}}" alt="{{ mention.author.name }}" />{{ mention.author.name | truncate(length=20)
@@ -179,5 +179,5 @@ config.extra.webmentions.posse.mastodon %}
 {% endmacro %}
 
 {% macro render_html(content) %}
-{{ content | replace(from='<a ', to=' <a rel="webmention" ') | safe }}
+{{ content | replace(from='<a ', to=' <a rel="webmention"') | safe }}
 {% endmacro %}

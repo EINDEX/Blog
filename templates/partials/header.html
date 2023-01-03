@@ -2,21 +2,21 @@
   <nav class="navbar">
     <div class="avatar">
       {% set avatar = resize_image( path="/images/avatar.png", op="scale", width=40, height=40 ) %}
-      <a class="site-link" href="{{ get_url(path=" @/_index.md", lang=lang) }}"><img class="avatar"
+      <a class="site-link" href="{{ get_url(path='@/_index.md', lang=lang) }}"><img class="avatar"
           src="{{ avatar.url }}" alt="Workflow" /></a>
     </div>
     <div class="menus">
       {% for menu in config.extra.menu.navbar %}
       {% if menu.cn_only and lang != 'cn' %}
       {% else %}
-      <a href="{% if menu.external %}{{ menu.url }}{% else %}{{ get_url(path=" @/" ~ menu.url ~ ".md" , lang=lang) }}{%
+      <a href="{% if menu.external %}{{ menu.url }}{% else %}{{ get_url(path='@/' ~ menu.url ~ '.md' , lang=lang) }}{%
         endif %}">{{ trans(key="label_" ~ menu.label, lang=lang) }}</a>
       {% endif %}
       {% endfor %}
     </div>
 
     <div class="switcher">
-      <a class="language switch" href="{{ get_url(path=" @/_index"~ another_lang_suffix ~ ".md" ) }}">{% if lang == "cn"
+      <a class="language switch" href="{{ get_url(path='@/_index'~ another_lang_suffix ~ '.md' ) }}">{% if lang == "cn"
         %}<iconify-icon icon="ri:english-input"></iconify-icon>{% else %}<iconify-icon
           icon="uil:letter-chinese-a"></iconify-icon>{% endif %}</a>
     </div>

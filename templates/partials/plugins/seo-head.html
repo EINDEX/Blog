@@ -2,52 +2,56 @@
 {% set_global keywords = [] %}
 {% if page.taxonomies %}
 {% for _, items in page.taxonomies %}
-  {% for item in items %}
-    {% set_global keywords = keywords | concat(with=item) %}
-  {% endfor %}
+{% for item in items %}
+{% set_global keywords = keywords | concat(with=item) %}
+{% endfor %}
 {% endfor %}
 {% endif %}
 
 
-{%if page.description%}<meta property="og:description" content="{{page.description}}">{%endif%}
-<meta property="og:url" content="{% if page.permalink %}{{ page.permalink | safe }}{% else %}{{ config.base_url | safe }}{% endif %}">
+{%if page.description%}
+<meta property="og:description" content="{{page.description}}">{%endif%}
+<meta property="og:url"
+  content="{% if page.permalink %}{{ page.permalink | safe }}{% else %}{{ config.base_url | safe }}{% endif %}">
 <meta property="og:site_name" content="{{ config.title }}">
-<meta property="og:image" content="{% if page.image %}{{ page.image }}{% else %}{{get_url(path="/images/avatar.png")}}{% endif %}">
+<meta property="og:image"
+  content="{% if page.image %}{{ page.image }}{% else %}{{get_url(path='/images/avatar.png')}}{% endif %}">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="{% if section.title %}{{ section.title }}{% elif page.title %}{{ page.title }}{% else %}{{ config.title }}{% endif %}">
-{%if page.description%}<meta property="twitter:description" content="{{page.description}}">{%endif%}
+<meta name="twitter:title"
+  content="{% if section.title %}{{ section.title }}{% elif page.title %}{{ page.title }}{% else %}{{ config.title }}{% endif %}">
+{%if page.description%}
+<meta property="twitter:description" content="{{page.description}}">{%endif%}
 <meta name="twitter:site" content="{{ config.extra.twitter_user }}">
 <meta name="twitter:creator" content="{{ config.extra.twitter_user }}">
-<meta name="twitter:image" content="{% if page.extra.image %}{{ page.extra.image }}{% else %}{{get_url(path="/images/avatar.png")}}{% endif %}">
-<link
-  rel="me"
-  href="https://twitter.com/{{ config.extra.twitter_user | replace(from="@",to="") }}">
+<meta name="twitter:image"
+  content="{% if page.extra.image %}{{ page.extra.image }}{% else %}{{get_url(path='/images/avatar.png')}}{% endif %}">
+<link rel="me" href="https://twitter.com/{{ config.extra.twitter_user | replace(from='@',to='' ) }}">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org/",
   "@type": "BlogPosting",
   {%if page.title%}"headline": "{{ page.title }}",{%endif %}
-  "image": "{% if page.image %}{{ page.image }}{% else%}{{get_url(path="/images/avatar.png")}}{% endif %}",
+  "image": "{% if page.image %}{{ page.image }}{% else%}{{get_url(path='/images/avatar.png')}}{% endif %}",
   {% if page.permalink %}
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "{{ page.permalink | safe }}"
   },
   {% endif %}
-  {% if page.date %}"datePublished": "{{ page.date | date(timezone="Asia/Shanghai") }}",{% endif %}
-  {% if page.updated %}"dateModified": "{{ page.updated | date(timezone="Asia/Shanghai") }}",{% endif %}
+  {% if page.date %}"datePublished": "{{ page.date | date(timezone='Asia/Shanghai') }}",{% endif %}
+  {% if page.updated %}"dateModified": "{{ page.updated | date(timezone='Asia/Shanghai') }}",{% endif %}
   {% if page.description %}"description": "{{ page.description }}",{% endif %}
   "author": {
     "@type": "Person",
     "name": "EINDEX",
-    "url": "{{get_url(path="about")}}"
+    "url": "{{get_url(path='about')}}"
   },
   "publisher": {
     "@type": "Organization",
     "name": "{{config.title | safe}}",
     "logo": {
       "@type": "ImageObject",
-      "url": "{{get_url(path="/images/avatar.png")}}"
+      "url": "{{get_url(path='/images/avatar.png')}}"
     }
   },
   "keywords": {{ keywords | json_encode | safe}}
