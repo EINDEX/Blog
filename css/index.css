@@ -479,6 +479,9 @@ video {
 .block{
     display: block;
 }
+.flex{
+    display: flex;
+}
 .hidden{
     display: none;
 }
@@ -490,6 +493,9 @@ video {
 }
 .grow{
     flex-grow: 1;
+}
+.flex-row{
+    flex-direction: row;
 }
 .truncate{
     overflow: hidden;
@@ -3151,8 +3157,6 @@ article .gallery .thumbnail{
     background-color: rgb(148 163 184 / var(--tw-bg-opacity));
 }
 .webmentions .how-to-send-webmention{
-    display: flex;
-    flex-direction: row;
     font-size: 0.875rem;
     line-height: 1.25rem;
     --tw-text-opacity: 1;

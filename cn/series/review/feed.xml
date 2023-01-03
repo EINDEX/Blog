@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>EINDEX&#x27;s Blog</title>
+  <link>https://eindex.me/feed.xml</link>
+  <description xml:lang="cn"></description>
+  <atom:link href="https://eindex.me/feed.xml" rel="self" type="application/rss+xml"/>
+
+  
+  <item>
+    
+    <title xml:lang="cn">2022 Ending</title>
+    
+    <link>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;2022-ending&#x2F;</link>
+    <pubDate>Tue, 03 Jan 2023 09:00:00 +0800</pubDate>
+    <guid>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;2022-ending&#x2F;</guid>
+    
+      
+        <description xml:lang="cn">&lt;h2 id=&quot;2022&quot;&gt;2022&lt;&#x2F;h2&gt;
+&lt;p&gt;2022 年过去了，又是一年，今年好像什么也没做。&lt;&#x2F;p&gt;
+&lt;p&gt;我很讨厌这一年经历的一些事，封城，跑毒等等，总让我感觉没有安全感。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;2022-ending&#x2F;#continue-reading&quot;&gt;Continue Reading&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;</description>
+      
+    
+  </item>
+  
+  <item>
+    
+    <title xml:lang="cn">2021 Ending</title>
+    
+    <link>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;2021-ending&#x2F;</link>
+    <pubDate>Wed, 29 Dec 2021 14:00:00 +0800</pubDate>
+    <guid>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;2021-ending&#x2F;</guid>
+    
+      
+        <description xml:lang="cn">&lt;p&gt;2021年就要过去了，分享一下我今年都干了些什么事请。
+下面会分为几个维度来说。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;zhi-ye&quot;&gt;职业&lt;&#x2F;h2&gt;
+&lt;p&gt;今年无缝转职成了安全从业人员，学习到了很多 DevSecOps 的知识，同时了解到安全不仅仅是技术开发，有时候流程安全能比应用安全起到更多更大的作用。这里也要感谢一下我的领导们。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;2021-ending&#x2F;#continue-reading&quot;&gt;Continue Reading&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;</description>
+      
+    
+  </item>
+  
+</channel>
+</rss>
