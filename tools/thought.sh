@@ -12,8 +12,4 @@ hugo new "thoughts/${filename}"
 
 lineno=`wc -l archetypes/thoughts.md | awk '{printf ($1)}'`
 
-if [ `uname` = "Darwin" ]; then
-    code -g "content/thoughts/${filename}:${lineno}"
-elif [ `uname` = "Linux" ]; then
-    code-server -g "content/thoughts/${filename}:${lineno}"
-fi
+code -g "content/thoughts/${filename}:${lineno}"
