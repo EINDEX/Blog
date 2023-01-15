@@ -1,31 +1,38 @@
-{% set link = page.permalink | replace(from=config.base_url, to="") | replace(from="/cn", to="") | trim_end_matches(pat="/") %}
+{% set link = page.permalink | replace(from=config.base_url, to="") | replace(from="/cn", to="") |
+trim_end_matches(pat="/") %}
 {% set web_mentions_data_path = "webmentions/data" ~ link ~ ".json" %}
 {% set web_mentions_data = load_data(path=web_mentions_data_path, required=false) %}
-{% if  web_mentions_data %}
+{% if web_mentions_data %}
 {% set_global web_mentions_list = [] %}
 {% for key, mention in web_mentions_data %}
 {% set_global web_mentions_list = web_mentions_list | concat(with=mention) %}
 {% endfor %}
 {% endif %}
 
-<hr/>
+<hr />
 <section class="webmentions">
   <h2>Response</h2>
-  <p class="how-to-send-webmention">Have you written any responses to this article? If so, please send your article or tweet link below. (Making sure to include the link of this article in the content, learn more about webmentions from <a href="https://indieweb.org/Webmention">here</a>.)</p>
+  <p class="how-to-send-webmention">Have you written any responses to this article? If so, please send your article or
+    tweet link below. (Making sure to include the link of this article in the content, learn more about webmentions from
+    <a href="https://indieweb.org/Webmention">here</a>.)
+  </p>
   <form class="webmention-form" action="https://webmention.io/eindex.me/webmention" method="post">
     <input name="target" type="hidden" value="{{ page.permalink }}" />
     <input name="source" type="text" placeholder="Your webmention link" />
     <button type="submit">Send Webmention</button>
   </form>
-  <p class="how-to-send-webmention"><a class="twitter-share-button" href="https://twitter.com/intent/tweet">Tweet</a> and send response
-  
-  {% if web_mentions_list %}
-  &nbsp;or you can reply on below tweets.</p>
-    {{ macro::mention_cards(webmentions=web_mentions_list, page=page) }}
-    {{ macro::reactions(webmentions=web_mentions_list) }}
-    {{ macro::comments(webmentions=web_mentions_list, page=page) }}
-    {{ macro::mentions(webmentions=web_mentions_list, page=page) }}
+  <p class="flex flex-row how-to-send-webmention"><a class="twitter-share-button"
+      href="https://twitter.com/intent/tweet">Tweet</a>&nbsp;
+    and send response.
+    {% if web_mentions_list %}
+    or you can reply on below tweets.</p>
+  {{ macro::mention_cards(webmentions=web_mentions_list, page=page) }}
+  {{ macro::reactions(webmentions=web_mentions_list) }}
+  {{ macro::comments(webmentions=web_mentions_list, page=page) }}
+  {{ macro::mentions(webmentions=web_mentions_list, page=page) }}
   {% else %}
-    </p>
+  </p>
+
   {% endif %}
+
 </section>

@@ -3,33 +3,36 @@
 {% set_global current_lang = lang %}
 {% set_global current_lang_suffix = "" %}
 {% if current_lang == "cn" %}
-  {% set_global another_lang_suffix = ""   %}
-  {% set_global current_lang_suffix = ".cn"  %}
+{% set_global another_lang_suffix = "" %}
+{% set_global current_lang_suffix = ".cn" %}
 {% else %}
-  {% set_global another_lang_suffix = ".cn"   %}
-  {% set_global current_lang_suffix = ""  %}
+{% set_global another_lang_suffix = ".cn" %}
+{% set_global current_lang_suffix = "" %}
 {% endif %}
 
 <!DOCTYPE html>
 <html lang="en" charset="utf-8">
-  <head>
-    {% include "partials/head.html" %}
-    {% block head %}{% endblock %}
-  </head>
-  <body>
-    <div class="all">
-      {% include "partials/header.html" %}
-      <div class="content">
-          <main>
-              {% block content %}{% endblock %}
-          </main>
-          <aside>
-              {% include "partials/aside.html" %}
-          </aside>
-      </div>
-      {% include "partials/footer.html" %}
+
+<head>
+  {% include "partials/head.html" %}
+  {% block head %}{% endblock %}
+</head>
+
+<body>
+  <div class="all">
+    {% include "partials/header.html" %}
+    <div class="content">
+      <main>
+        {% block content %}{% endblock %}
+      </main>
+      <aside>
+        {% include "partials/aside.html" %}
+      </aside>
     </div>
-  </body>
-  {% include "partials/scripts.html" %}
-  {% block script %}{% endblock %}
+    {% include "partials/footer.html" %}
+  </div>
+</body>
+{% include "partials/scripts.html" %}
+{% block script %}{% endblock %}
+
 </html>

@@ -8,7 +8,7 @@ taxonomies:
     tags: []
     series: []
 extra:
-    posse: 
+    posse:
         twitter: true
         mastodon: true
 ---

@@ -1,6 +1,7 @@
 ---
 title: "My HomeLab"
 date: 2022-05-15T23:39:46+08:00
+updated: 2023-01-03T17:40:23+08:00
 draft: false
 latex: false
 taxonomies:
@@ -10,6 +11,24 @@ taxonomies:
 这篇文章将会介绍一下我的 HomeLab。
 
 为什么会建设 HomeLab，它给我带来了什么价值？以及为什么是现在的结构，解决了什么问题。
+
+## Update in 2022
+
+今年接触了DevOps、Kubernetes、Terrafrom 和 Pulumi。
+
+所以在空闲时间把HomeLab的架构迁移了好几轮，从 Helm3 到 Pulumi，最终觉得实在是在折腾了，回到了 docker-compose + terrafrom 的模式。
+
+顺便开源了一下 [Homelab infra](https://github.com/EINDEX/homelab-infra)。
+
+同时也调整了一下维护的服务:
+
+- **Dev** 从 Tekton 换回了 Drone CI, 去掉了 SonarQube 改用 Semgrep，去掉了PVE, Tekton 和 Keel，为了省电改回了 Docker 所有 K8s 相关的服务都可以拿掉了。
+- **Media** 增加了 NASTool 和 Tautulli 为影片数据护航，去掉了Jackett。
+- **Application** 去掉了 RocketChat, Syncthings。 增加了 Fava 和 Memos。
+- **Other** docker 镜像的自动更新改为使用 watchtower。
+
+
+![2022 Authentik Page](https://img.eindex.me/img/cad20937c8d2b0d3259d0602761a88fc.png)
 
 <!-- more -->
 
@@ -67,7 +86,7 @@ taxonomies:
 
 下面是现在的简单截图。
 
-![](./authentik.png)
+![Authentik Screenshot](https://img.eindex.me/img/5cc645f8387d4a78c9645191f9292d58.png)
 
 当然还有一些服务是在命令行中运行的，就没有在此展示了。
 
@@ -76,7 +95,7 @@ taxonomies:
 设备方面，想采购一个更加正规的设备如 HPE MicroServer Gen10 Plus 或其他小型的服务器，来提供更多的性能，满足我对安静且占地小的需求。增加一些 AP，提高上网体验。
 
 服务方面，现在正在研究如何合理的托管 Beancount 的 webui Fava，如果不知道啥事 Beancount 可以看这篇[《复式记账工具 Beancount》](@/posts/beancount-introduce.cn.md)。
-考虑增加一个 8n8,来做服务建的桥梁，减少自己写代码实现的工作量。还期望弄个 code-server，可以随时随地有个可用的开发环境。
+考虑增加一个 n8n,来做服务建的桥梁，减少自己写代码实现的工作量。还期望弄个 code-server，可以随时随地有个可用的开发环境。
 增加一个 Clash 服务在 HomeLab 中，能快速的调整整个局域网中的上网规则。
 
 ## HomeLab 对我的价值

@@ -1,40 +1,40 @@
 {% extends "_default/base.html" %}
 
 {% block content %}
-  <article>
-    <section class="header">
-      <section class="title-area">
-        <span>Tags</span>
-        <h1>{{ term.name }}</h1>
-      </section>
+<article>
+  <section class="header">
+    <section class="title-area">
+      <span>Tags</span>
+      <h1>{{ term.name }}</h1>
     </section>
-    <section class="main">
-        <ul class="archive-list">
-          {% for page in term.pages %}
-          {% if not page.path is containing("/thoughts/") %}
-          <li>
-            <a href="{{ page.permalink }}">{{ page.title }}</a>
-          </li>
-          {% endif %}
-          {% endfor %}
-        </ul>
-        {%  set_global thoughts = [] %}
-        {% for thought in term.pages %}
-          {% if thought.path is containing("/thoughts/") %}
-          {% set_global thoughts = thoughts | concat(with=thought) %}
-          {% endif %}
-        {% endfor %}
-        {% if thoughts %}
-        <h2>Thoughts</h2>
-        <div class="thought-list">
-        {% for thought in thoughts %}
-          {% if thought.path is containing("/thoughts/") %}
-          {% include "thoughts/item.html" %}
-          {% endif %}
-        {% endfor %}
-        </div>
-        {% endif %}
-    </section>
+  </section>
+  <section class="main">
+    <ul class="archive-list">
+      {% for page in term.pages %}
+      {% if not page.path is containing("/thoughts/") %}
+      <li>
+        <a href="{{ page.permalink }}">{{ page.title }}</a>
+      </li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+    {% set_global thoughts = [] %}
+    {% for thought in term.pages %}
+    {% if thought.path is containing("/thoughts/") %}
+    {% set_global thoughts = thoughts | concat(with=thought) %}
+    {% endif %}
+    {% endfor %}
+    {% if thoughts %}
+    <h2>Thoughts</h2>
+    <div class="thought-list">
+      {% for thought in thoughts %}
+      {% if thought.path is containing("/thoughts/") %}
+      {% include "thoughts/item.html" %}
+      {% endif %}
+      {% endfor %}
+    </div>
+    {% endif %}
+  </section>
 </article>
 
 {% endblock %}

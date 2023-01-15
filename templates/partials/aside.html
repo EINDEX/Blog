@@ -1,32 +1,43 @@
 {% block aside %}{% endblock %}
 <section class="search">
-<input type="search" id="search-bar-input" placeholder="Searching..." />
+  <input type="search" id="search-bar-input" placeholder="Searching..." />
 </section>
 <section>
-    <h3 class="section-title">Series</h3>
-    {% set series = get_taxonomy(kind="series") %}
-    {% for item in series.items %}
-    <p><a href="{{ item.permalink }}">{{ trans(key="series_" ~ item.name, lang=lang) }} ({{ item.pages | length }})</a></p>
-    {% endfor %}
+  <h3 class="section-title">Series</h3>
+  {% set series = get_taxonomy(kind="series", lang=lang) %}
+  {% for item in series.items | sort(attribute="pages") | reverse %}
+  <p><a href="{{ item.permalink }}">{{ trans(key="series_" ~ item.name, lang=lang) }} ({{ item.pages | length }})</a>
+  </p>
+  {% endfor %}
 </section>
 
-<section class="tags">
-<h3 class="section-title">Tags</h3>
-{% set tags = get_taxonomy(kind="tags") %}
-<div class="tags">
-    {% for item in tags.items | sort(attribute="pages") | reverse %}
-    <a href="{{ item.permalink }}">{{ item.name }} ({{ item.pages | length }})</a>{% if not loop.last %},{% endif %}
-    {% endfor %}
-</div>
+<section>
+  <h3 class="section-title">Links</h3>
+  <p><a href="https://github.com/EINDEX" rel="me">Github</a></p>
+  <p><a href="{{ get_page(path='toolkit.md') | get(key='permalink') }}">
+      {{ get_page(path='toolkit.md') | get(key='title') }}</a></p>
+  <p><a href="/feed.xml">RSS Feed</a></p>
+  {% if lang=="cn" %}
+  <p><a href="/cn/links">友情链接</a></p>
+  {% else %}
+  {% endif %}
 </section>
 
 <section class="advertisement">
-    <h3 class="section-title">Advertisements</h3>
-    <ins class="adsbygoogle aside"
-        style="display:inline-block;width: 100%;height:500px"
-        data-ad-client="ca-pub-1265138627025369"
-        data-ad-slot="3472732805"></ins>
-</section>
-<script>
+  <h3 class="section-title">Advertisements</h3>
+  <ins class="adsbygoogle aside" style="display:inline-block;width: 100%;height:500px"
+    data-ad-client="ca-pub-1265138627025369" data-ad-slot="3472732805"></ins>
+  <script>
     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+  </script>
+</section>
+
+<section class="tags">
+  <h3 class="section-title">Tags</h3>
+  {% set tags = get_taxonomy(kind="tags", lang=lang) %}
+  <div class="tags">
+    {% for item in tags.items | sort(attribute="pages") | reverse %}
+    <a href="{{ item.permalink }}">{{ item.name }} ({{ item.pages | length }})</a>{% if not loop.last %},{% endif %}
+    {% endfor %}
+  </div>
+</section>

@@ -1,0 +1,49 @@
+{
+    "auto-close-tag.activationOnLanguage": [
+
+        "xml",
+        "php",
+        "blade",
+        "ejs",
+        "jinja",
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "plaintext",
+        "markdown",
+        "vue",
+        "liquid",
+        "erb",
+        "lang-cfml",
+        "cfml",
+        "HTML (EEx)",
+        "HTML (Eex)",
+        "plist"
+    ],
+    "files.associations": {
+        "*.html": "jinja-html",
+        "*.xml": "jinja-xml"
+    },
+    // settings.json
+    "emmet.includeLanguages": {
+        "jinja2": "html",
+        "jinja-html": "html",
+        "jinja-xml": "xml",
+    },
+    "[jinja]": {
+        "editor.detectIndentation": false,
+        "editor.tabSize": 2,
+        "editor.formatOnSave": true,
+    },
+    "[jinja-html]": {
+        "editor.detectIndentation": false,
+        "editor.tabSize": 2,
+        "editor.formatOnSave": true,
+    },
+    "[jinja-xml]": {
+        "editor.detectIndentation": false,
+        "editor.tabSize": 2,
+        "editor.formatOnPaste": true,
+    },
+}

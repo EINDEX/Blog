@@ -1,20 +1,20 @@
-
-<section class="header">  
-    <section class="title-area">
-      {% if page.taxonomies.series %}
-        {% set series_name = page.taxonomies.series[0] %}
-        {% set series_url = get_taxonomy_url(kind="series", name=series_name) %}
-        <a class="series" href="{{ series_url }}">{{ series_name }}</a>
-      {% endif %}
-      <h1 class="title">
-      <a class="u-url" href="{{ page.permalink }}">{{ trans(key="label_thought", lang=lang) }}</a>
-      </h1>
-    </section>
-    <section class="meta-area">
-    {% if page.date %}
-      <span><iconify-icon icon="ant-design:calendar-outlined"></iconify-icon>&nbsp;<time class="dt-published">{{ page.date | date }}</time></span>
+<section class="header">
+  <section class="title-area">
+    {% if page.taxonomies.series %}
+    {% set series_name = page.taxonomies.series[0] %}
+    {% set series_url = get_taxonomy_url(kind="series", name=series_name) %}
+    <a class="series" href="{{ series_url }}">{{ series_name }}</a>
     {% endif %}
-    <span style="display:none"><iconify-icon icon="mdi:eye-outline"></iconify-icon>&nbsp;<span id="pv"></span>&nbsp;views</span>
-    </section>
+    <h1 class="title">
+      <a class="u-url" href="{{ page.permalink }}">{{ trans(key="label_thought", lang=lang) }}</a>
+    </h1>
   </section>
-  
+  <section class="meta-area">
+    {% if page.date %}
+    <span><iconify-icon icon="ant-design:calendar-outlined"></iconify-icon>&nbsp;
+      <time class="dt-published">{{ page.date | date }}</time></span>
+    {% endif %}
+    <span style="display:none"><iconify-icon icon="mdi:eye-outline"></iconify-icon>&nbsp;
+      <span id="pv"></span>&nbsp;views</span>
+  </section>
+</section>

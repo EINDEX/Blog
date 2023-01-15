@@ -1,34 +1,28 @@
 <div class="photo-container">
-    <div class="photo">
-        <img src="{{ url | safe }}" {% if alt %} alt="{{alt  | default(value="") | safe}}" {% endif %} loading="lazy">
+  <div class="photo">
+    <img src="{{ url | safe }}" {% if alt %} alt="{{alt  | default(value='') | safe}}" {% endif %} loading="lazy">
+  </div>
+  {% if exif %}
+  {% set exif_url = url ~ ".exif.json" | safe %}
+  {% set exif_data = load_data(url=exif_url, format="json") %}
+  {% set img_info = exif_data['image'] %}
+  {% set img_exif = exif_data['exif'] %}
+  {% set img_gps = exif_data['gps'] %}
+  {% set exposureTime = img_exif["ExposureTime"] | float %}
+
+  {% if exposureTime < 1 %} {% set t=1/exposureTime | int %} {% set exposureSpan="1/" ~ t ~ "s" %} {% else %} {% set
+    t=exposureTime *10 | int / 10 %} {% set exposureSpan=t ~ "s" %} {% endif %} <div class="info">
+    <span><iconify-icon icon="ant-design:camera-twotone"></iconify-icon> <em>{{img_info["Make"]}}
+        {{img_info["Model"]}}</em></span>
+    <span><iconify-icon icon="ri:camera-lens-line"></iconify-icon> <em>{{img_exif["LensModel"]}}</em></span>
+    <div class="exif">
+      <span><iconify-icon icon="carbon:iso-filled"></iconify-icon> <em>{{img_exif["ISO"]}}</em></span>
+      <span><em>f{{img_exif["FNumber"]}}</em></span>
+      <span><em>{{img_exif["FocalLengthIn35mmFormat"]}}</em>mm</span>
+      <span><em>{{exposureSpan}}</em></span>
     </div>
-    {% if exif %}
-        {% set exif_url = url ~ ".exif.json" | safe %}
-        {% set exif_data = load_data(url=exif_url, format="json") %}
-        {% set img_info = exif_data['image'] %}
-        {% set img_exif = exif_data['exif'] %}
-        {% set img_gps = exif_data['gps'] %}
-        {% set exposureTime = img_exif["ExposureTime"] | float %}
+    <span><iconify-icon icon="fluent-mdl2:date-time"></iconify-icon> <em>{{img_exif["DateTimeOriginal"]}}</em> </span>
+</div>
+{% endif %}
 
-        {% if exposureTime < 1 %}
-            {% set t = 1/exposureTime | int  %}
-            {% set exposureSpan = "1/"~ t ~ "s" %}
-        {% else %}
-            {% set t = exposureTime *10 | int / 10 %}
-            {% set exposureSpan = t ~ "s" %}
-        {% endif %}
-
-        <div class="info">
-            <span><iconify-icon icon="ant-design:camera-twotone"></iconify-icon> <em>{{img_info["Make"]}} {{img_info["Model"]}}</em></span>
-            <span><iconify-icon icon="ri:camera-lens-line"></iconify-icon> <em>{{img_exif["LensModel"]}}</em></span>
-            <div class="exif">
-                <span><iconify-icon icon="carbon:iso-filled"></iconify-icon> <em>{{img_exif["ISO"]}}</em></span>
-                <span><em>f{{img_exif["FNumber"]}}</em></span>
-                <span><em>{{img_exif["FocalLengthIn35mmFormat"]}}</em>mm</span>
-                <span><em>{{exposureSpan}}</em></span>
-            </div>
-            <span><iconify-icon icon="fluent-mdl2:date-time"></iconify-icon> <em>{{img_exif["DateTimeOriginal"]}}</em> </span>
-        </div>
-    {% endif %}
-    
 </div>

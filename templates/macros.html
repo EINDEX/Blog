@@ -1,11 +1,11 @@
 {% macro backlink(pages) %}
 {% if pages and pages | length >0 %}
-  <section class="backlinks">
-    <h3>{{ trans(key="label_backlinks",lang=lang) }}</h3>
-      {% for page in pages %}
-      <p><a href="{{ page.permalink }}">{{ page.title }}</a></p>
-      {% endfor %}
-  </section>
+<section class="backlinks">
+  <h3>{{ trans(key="label_backlinks",lang=lang) }}</h3>
+  {% for page in pages %}
+  <p><a href="{{ page.permalink }}">{{ page.title }}</a></p>
+  {% endfor %}
+</section>
 {% endif %}
 {% endmacro backlink %}
 
@@ -17,9 +17,9 @@
 
 {% macro date_format(datetime, lang) %}
 {% if lang == "cn"%}
-  {{ datetime | date(format="%F") }}
+{{ datetime | date(format="%F") }}
 {% else %}
-  {{ datetime | date(format="%e %h, %Y") }}
+{{ datetime | date(format="%e %h, %Y") }}
 {% endif %}
 {% endmacro date_format %}
 
@@ -28,34 +28,48 @@
 {% set_global tweets = [] %}
 {% set_global mastodons = [] %}
 <div class="mentions-container">
-{% for mention in webmentions %}
+  {% for mention in webmentions %}
   {% set type = mention["wm-property"] %}
   {% if type == "mention-of" %}
-    {% for allow_twitter_link in config.extra.webmentions.posse.twitter %}
-    {% if mention.author.url == allow_twitter_link %}
-    <blockquote class="twitter-tweet twitter p-comment h-entry" dnt="true" data-id="{{mention.url | replace(from= allow_twitter_link~"/status/",to="")}}" id="comment-wm{{ mention['wm-id'] }}">
-      <a class="author p-author h-card u-url" title="{{ mention.author.name }}" href="{{ mention.author.url }}"><img src="{{mention.author.photo}}" alt="{{ mention.author.name }}" />{{ mention.author.name | truncate(length=20) }}</a>
-      <p class="text p-content">{{ mention.content.text }}</p>
-      <div class="bar"><a href="{{ mention.url }}"><iconify-icon icon="uil:comment"></iconify-icon> to reply</a><span class="grow"></span><a class="type" href="{{ page.permalink }}#{{ mention['wm-id'] }}">mentioned at</a> <a href="{{ mention.url }}"><time class="dt-published" >{% if mention.published %}{{ macro::date_format(datetime=mention.published, lang=lang)}}{% else %}{{ macro::date_format(datetime=mention["wm-received"], lang=lang)}}{% endif %}</time></a></div>
-    </blockquote>
-    {% endif %}
-    {% endfor %}
-    {% if mention.author.url in config.extra.webmentions.posse.twitter %}
-      {% set_global tweets = tweets | concat(with=mention) %}
-    {% elif mention.author.url in config.extra.webmentions.posse.mastodon %}
-      {% set_global mastodons = mastodons | concat(with=mention) %}
-    {% endif %}
+  {% for allow_twitter_link in config.extra.webmentions.posse.twitter %}
+  {% if mention.author.url == allow_twitter_link %}
+  <blockquote class="twitter-tweet twitter p-comment h-entry" dnt="true"
+    data-id="{{mention.url | replace(from= allow_twitter_link~'/status/',to='' )}}"
+    id="comment-wm{{ mention['wm-id'] }}">
+    <a class="author p-author h-card u-url" title="{{ mention.author.name }}" href="{{ mention.author.url }}"><img
+        src="{{mention.author.photo}}" alt="{{ mention.author.name }}" />{{ mention.author.name | truncate(length=20)
+      }}</a>
+    <p class="text p-content">{{ mention.content.text }}</p>
+    <div class="bar"><a href="{{ mention.url }}"><iconify-icon icon="uil:comment"></iconify-icon> to reply</a><span
+        class="grow"></span><a class="type" href="{{ page.permalink }}#{{ mention['wm-id'] }}">mentioned at</a> <a
+        href="{{ mention.url }}"><time class="dt-published">{% if mention.published %}{{
+          macro::date_format(datetime=mention.published, lang=lang)}}{% else %}{{
+          macro::date_format(datetime=mention["wm-received"], lang=lang)}}{% endif %}</time></a></div>
+  </blockquote>
   {% endif %}
-{% endfor %}
+  {% endfor %}
+  {% if mention.author.url in config.extra.webmentions.posse.twitter %}
+  {% set_global tweets = tweets | concat(with=mention) %}
+  {% elif mention.author.url in config.extra.webmentions.posse.mastodon %}
+  {% set_global mastodons = mastodons | concat(with=mention) %}
+  {% endif %}
+  {% endif %}
+  {% endfor %}
 </div>
 {% if mastodons %}
 <div class="mentions-container">
   {% for mention in mastodons | sort(attribute="wm-id") %}
-    <div class="mastodon p-comment h-entry" id="comment-wm{{ mention['wm-id'] }}">
-      <a class="author p-author h-card u-url" title="{{ mention.author.name }}" href="{{ mention.author.url }}"><img src="{{mention.author.photo}}" alt="{{ mention.author.name }}" />{{ mention.author.name | truncate(length=20) }}</a>
-      <p class="text p-content">{{ mention.content.text }}</p>
-      <div class="bar"><a href="{{ mention.url }}"><iconify-icon icon="uil:comment"></iconify-icon> to reply</a><span class="grow"></span><a class="type" href="{{ page.permalink }}#{{ mention['wm-id'] }}">mentioned at</a> <a href="{{ mention.url }}"><time class="dt-published" >{% if mention.published %}{{ macro::date_format(datetime=mention.published, lang=lang)}}{% else %}{{ macro::date_format(datetime=mention["wm-received"], lang=lang)}}{% endif %}</time></a></div>
-    </div>
+  <div class="mastodon p-comment h-entry" id="comment-wm{{ mention['wm-id'] }}">
+    <a class="author p-author h-card u-url" title="{{ mention.author.name }}" href="{{ mention.author.url }}"><img
+        src="{{mention.author.photo}}" alt="{{ mention.author.name }}" />{{ mention.author.name | truncate(length=20)
+      }}</a>
+    <p class="text p-content">{{ mention.content.text }}</p>
+    <div class="bar"><a href="{{ mention.url }}"><iconify-icon icon="uil:comment"></iconify-icon> to reply</a><span
+        class="grow"></span><a class="type" href="{{ page.permalink }}#{{ mention['wm-id'] }}">mentioned at</a> <a
+        href="{{ mention.url }}"><time class="dt-published">{% if mention.published %}{{
+          macro::date_format(datetime=mention.published, lang=lang)}}{% else %}{{
+          macro::date_format(datetime=mention["wm-received"], lang=lang)}}{% endif %}</time></a></div>
+  </div>
   {% endfor %}
 </div>
 {% endif %}
@@ -63,23 +77,25 @@
 
 {% macro reactions(webmentions) %}
 {% set_global mentions = [] %}
-{% for  mention in webmentions %}
-  {% set type = mention["wm-property"] %}
-  {% if type == "like-of" or type == "repost-of" or type == "bookmark-of" %}
-    {% set_global mentions = mentions | concat(with=mention) %}
-  {% endif %}
+{% for mention in webmentions %}
+{% set type = mention["wm-property"] %}
+{% if type == "like-of" or type == "repost-of" or type == "bookmark-of" %}
+{% set_global mentions = mentions | concat(with=mention) %}
+{% endif %}
 {% endfor %}
 {% if mentions %}
 <div class="reactions-container">
   <h3>Recations</h3>
   <div class="reactions">
-  {% for mention in mentions | sort(attribute="wm-id") %}
+    {% for mention in mentions | sort(attribute="wm-id") %}
     {% set type = mention["wm-property"] %}
     <div class="reaction">
-      <span class="emoji">{% if type == "like-of" %}❤️{%elif type == "repost-of"%}🔗{%elif type=="bookmark-of" %}🔖{%endif%}</span>
-      <div class="author"><a title="{{ mention.author.name }}" href="{{ mention.url }}"><img src="{{mention.author.photo}}" alt="{{ mention.author.name }}"/></a></div>
+      <span class="emoji">{% if type == "like-of" %}❤️{%elif type == "repost-of"%}🔗{%elif type=="bookmark-of"
+        %}🔖{%endif%}</span>
+      <div class="author"><a title="{{ mention.author.name }}" href="{{ mention.url }}"><img
+            src="{{mention.author.photo}}" alt="{{ mention.author.name }}" /></a></div>
     </div>
-  {% endfor %}
+    {% endfor %}
   </div>
 </div>
 {% endif %}
@@ -88,20 +104,25 @@
 {% macro comments(webmentions, page) %}
 {% set_global mentions = [] %}
 {% for mention in webmentions %}
-  {% set type = mention["wm-property"] %}
-  {% if type == "in-reply-to" %}
-    {% set_global mentions = mentions | concat(with=mention) %}
-  {% endif %}
+{% set type = mention["wm-property"] %}
+{% if type == "in-reply-to" %}
+{% set_global mentions = mentions | concat(with=mention) %}
+{% endif %}
 {% endfor %}
 {% if mentions %}
 <div class="comments-container">
   <h3>Comments</h3>
   {% for mention in mentions | sort(attribute="wm-id") %}
-    <div class="reply p-comment h-entry" id="comment-wm{{ mention['wm-id'] }}">
-      <a  class="author p-author h-card u-url" title="{{ mention.author.name }}" href="{{ mention.author.url }}"><img src="{{mention.author.photo}}" alt="{{ mention.author.name }}" />{{ mention.author.name | truncate(length=20) }}</a>
-      <p class="text p-content">{{ mention.content.text }}</p>
-      <div class="bar"><a class="type" href="{{ page.permalink }}#{{ mention['wm-id'] }}">replied at</a> <a href="{{ mention.url }}"><time class="dt-published" >{% if mention.published %}{{ macro::date_format(datetime=mention.published, lang=lang)}}{% else %}{{ macro::date_format(datetime=mention["wm-received"], lang=lang)}}{% endif %}</time></a></div>
-    </div>
+  <div class="reply p-comment h-entry" id="comment-wm{{ mention['wm-id'] }}">
+    <a class="author p-author h-card u-url" title="{{ mention.author.name }}" href="{{ mention.author.url }}"><img
+        src="{{mention.author.photo}}" alt="{{ mention.author.name }}" />{{ mention.author.name | truncate(length=20)
+      }}</a>
+    <p class="text p-content">{{ mention.content.text }}</p>
+    <div class="bar"><a class="type" href="{{ page.permalink }}#{{ mention['wm-id'] }}">replied at</a> <a
+        href="{{ mention.url }}"><time class="dt-published">{% if mention.published %}{{
+          macro::date_format(datetime=mention.published, lang=lang)}}{% else %}{{
+          macro::date_format(datetime=mention["wm-received"], lang=lang)}}{% endif %}</time></a></div>
+  </div>
   {% endfor %}
 </div>
 {% endif %}
@@ -109,24 +130,30 @@
 
 {% macro mentions(webmentions, page) %}
 {% set_global mentions = [] %}
-{% for  mention in webmentions %}
-  {% set type = mention["wm-property"] %}
-  {% if type == "mention-of" %}
-    {% if mention.author.url in config.extra.webmentions.posse.twitter or mention.author.url in config.extra.webmentions.posse.mastodon %}
-    {% else %}
-      {% set_global mentions = mentions | concat(with=mention) %}
-    {% endif %}
-  {% endif %}
+{% for mention in webmentions %}
+{% set type = mention["wm-property"] %}
+{% if type == "mention-of" %}
+{% if mention.author.url in config.extra.webmentions.posse.twitter or mention.author.url in
+config.extra.webmentions.posse.mastodon %}
+{% else %}
+{% set_global mentions = mentions | concat(with=mention) %}
+{% endif %}
+{% endif %}
 {% endfor %}
 {% if mentions %}
 <div class="mentions-container">
   <h3>Mentions</h3>
   {% for mention in mentions | sort(attribute="wm-id") %}
-    <div class="mention p-comment h-entry" id="comment-wm{{ mention['wm-id'] }}">
-      <a  class="author p-author h-card u-url" title="{{ mention.author.name }}" href="{{ mention.author.url }}"><img src="{{mention.author.photo}}" alt="{{ mention.author.name }}" />{{ mention.author.name | truncate(length=20) }}</a>
-      <p class="text p-content">{{ mention.content.text }}</p>
-      <div class="bar"><a class="type" href="{{ page.permalink }}#{{ mention['wm-id'] }}">mentioned at</a> <a href="{{ mention.url }}"><time class="dt-published" >{% if mention.published %}{{ macro::date_format(datetime=mention.published, lang=lang)}}{% else %}{{ macro::date_format(datetime=mention["wm-received"], lang=lang)}}{% endif %}</time></a></div>
-    </div>
+  <div class="mention p-comment h-entry" id="comment-wm{{ mention['wm-id'] }}">
+    <a class="author p-author h-card u-url" title="{{ mention.author.name }}" href="{{ mention.author.url }}"><img
+        src="{{mention.author.photo}}" alt="{{ mention.author.name }}" />{{ mention.author.name | truncate(length=20)
+      }}</a>
+    <p class="text p-content">{{ mention.content.text }}</p>
+    <div class="bar"><a class="type" href="{{ page.permalink }}#{{ mention['wm-id'] }}">mentioned at</a> <a
+        href="{{ mention.url }}"><time class="dt-published">{% if mention.published %}{{
+          macro::date_format(datetime=mention.published, lang=lang)}}{% else %}{{
+          macro::date_format(datetime=mention["wm-received"], lang=lang)}}{% endif %}</time></a></div>
+  </div>
   {% endfor %}
 </div>
 {% endif %}
@@ -139,10 +166,11 @@
 {% if type == "rsvp" %}
 <!-- cal rvsp -->
 <div class="rvsp">
-{% for mention in mentions %}
-    <div class="author"><a title="{{ mention.author.name }}" href="{{ mention.url }}"><img src="{{mention.author.photo}}" alt="{{ mention.author.name }}" /></a></div>
-    <span>{{mention.rsvp}}</span>
-    {% endfor %}
+  {% for mention in mentions %}
+  <div class="author"><a title="{{ mention.author.name }}" href="{{ mention.url }}"><img src="{{mention.author.photo}}"
+        alt="{{ mention.author.name }}" /></a></div>
+  <span>{{mention.rsvp}}</span>
+  {% endfor %}
 </div>
 {% endif %}
 
@@ -151,5 +179,5 @@
 {% endmacro %}
 
 {% macro render_html(content) %}
-  {{ content | replace(from='<a ', to='<a rel="webmention" ') | safe }}
+{{ content | replace(from='<a ', to=' <a rel="webmention"') | safe }}
 {% endmacro %}

@@ -1,22 +1,24 @@
-
 <section class="header">
   <section class="title-area">
     {% if page.taxonomies.series %}
-      {% set series_key = page.taxonomies.series[0] %}
-      {% set series_url = get_taxonomy_url(kind="series", name=series_key, lang=lang) %}
-      {% set trans_series_name = trans(key="series_"~series_key) %}
-      <a class="series p-category" href="{{ series_url }}">{{ trans_series_name }}</a>
+    {% set series_key = page.taxonomies.series[0] %}
+    {% set series_url = get_taxonomy_url(kind="series", name=series_key, lang=lang) %}
+    {% set trans_series_name = trans(key="series_"~series_key, lang=lang) %}
+    <a class="series p-category" href="{{ series_url }}">{{ trans_series_name }}</a>
     {% endif %}
     <h1 class="title p-name">
-    <a class="u-url" href="{{ page.permalink }}">{{page.title}}</a>
+      <a class="u-url" href="{{ page.permalink }}">{{page.title}}</a>
     </h1>
   </section>
   <section class="meta-area">
-    <p class="p-summary" style="display: none;">{%if page.description%}{{page.description}}{%elif page.summary%}{{page.summary}}{%endif%}</p>
-  {% if page.date %}
-    <span><iconify-icon icon="ant-design:calendar-outlined"></iconify-icon>&nbsp;<time class="dt-published">{{ page.date | date }}</time>&nbsp;</span>
-  {% endif %}
-    <span><iconify-icon icon="bx:time-five"></iconify-icon>&nbsp;{{ page.reading_time }} mins</span>  
-    <span style="display:none"><iconify-icon icon="mdi:eye-outline"></iconify-icon>&nbsp;<span id="pv"></span>&nbsp;views</span>
+    <p class="p-summary" style="display: none;">{%if page.description%}{{page.description}}{%elif
+      page.summary%}{{page.summary}}{%endif%}</p>
+    {% if page.date %}
+    <span><iconify-icon icon="ant-design:calendar-outlined"></iconify-icon>&nbsp;<time class="dt-published">{{ page.date
+        | date }}</time>&nbsp;</span>
+    {% endif %}
+    <span><iconify-icon icon="bx:time-five"></iconify-icon>&nbsp;{{ page.reading_time }} mins</span>
+    <span style="display:none"><iconify-icon icon="mdi:eye-outline"></iconify-icon>&nbsp;<span
+        id="pv"></span>&nbsp;views</span>
   </section>
 </section>

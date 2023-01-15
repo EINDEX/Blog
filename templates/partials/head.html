@@ -6,63 +6,80 @@
 {% set fallbackImg = 'typewriter-monochrome_2242164_6260x4374.jpg' %}
 {% set zolaVer = '0.13.0' %}
 
-  {% block rss %}
-    {% if lang == "en" %}
-    <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ get_url(path='feed.xml') }}">
-    {% else %}
-    <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ get_url(path='cn/feed.xml') }}">
-    {% endif %}
-  {% endblock %}
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  <meta name="author" itemprop="author" content="EINDEX">
-  {% block title %}
-  <title>{% if section.title and section.title != config.title %}{{ section.title }} &bull; {% endif %}{% if page.title %}{{ page.title }} &bull; {% endif %}{{ config.title }}</title>
-  <meta property="og:title" content="{% if section.title and section.title != config.title %}{{ section.title }} &bull; {% endif %}{% if page.title %}{{ page.title }} &bull; {% endif %}{{ config.title }}" />
-  {% endblock title %}
+{% block rss %}
+{% if lang == "en" %}
+<link rel="alternate" type="application/rss+xml" title="RSS" href="{{ get_url(path='feed.xml') }}">
+{% else %}
+<link rel="alternate" type="application/rss+xml" title="RSS" href="{{ get_url(path='cn/feed.xml') }}">
+{% endif %}
+{% endblock %}
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="author" itemprop="author" content="EINDEX">
+{% block title %}
+<title>{% if section.title and section.title != config.title %}{{ section.title }} &bull; {% endif %}{% if page.title
+  %}{{ page.title }} &bull; {% endif %}{{ config.title }}</title>
+<meta property="og:title"
+  content="{% if section.title and section.title != config.title %}{{ section.title }} &bull; {% endif %}{% if page.title %}{{ page.title }} &bull; {% endif %}{{ config.title }}" />
+{% endblock title %}
 
-  <!-- Required meta tags -->
-  <meta charset="utf-8" />
-
-
-  <!-- **** BEGINNING, favicons **** -->
-
-  <!-- generics -->
-
-  <!-- iOS -->
-
-  <!-- Android -->
-
-  <!-- Windows 8, IE 10 -->
-
-  <!-- Windows 8.1 and up, IE 11 -->
-
-  <!-- **** CONCLUSION, favicons **** -->
-
-  <!-- CSS/SCSS -->
-  <link rel="stylesheet" href="{{ get_url(path="css/index.css", trailing_slash=false, cachebust=true) | safe }}" />  <style>@-moz-document url-prefix() {.lazy:-moz-loading {visibility:hidden;}}.ieOnly {display: none;}@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {.ieOnly {display: block;}}</style>
+<!-- Required meta tags -->
+<meta charset="utf-8" />
 
 
-  <link rel="webmention" href="https://webmention.io/eindex.me/webmention" />
-  <link rel="pingback" href="https://webmention.io/eindex.me/xmlrpc" />
+<!-- **** BEGINNING, favicons **** -->
 
-  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.1/dist/iconify-icon.min.js"></script>
-  {% for size in [512, 192]%}
-  {% if size == 512 %}
-  <link rel="apple-touch-icon" sizes="{{size}}x{{size}}" href="/favicon-{{size}}.png">
-  {% endif %}
-  <link rel="icon" type="image/png" sizes="{{size}}x{{size}}" href="/favicon-{{size}}.png">
-  {% endfor %}
-  <link rel="manifest" href="/manifest.json">
-  <meta name="twitter:dnt" content="on">
-  <meta name="twitter:widgets:csp" content="on">
-  {% include "partials/plugins/seo-head.html" %}
+<!-- generics -->
 
-  {% include "partials/plugins/google-tag-manager/head.html" %}
-  {% include "partials/plugins/meilisearch/head.html" %}
-  {% include "partials/plugins/clarity.html" %}
-  {% include "partials/plugins/adsense.html" %}
+<!-- iOS -->
+
+<!-- Android -->
+
+<!-- Windows 8, IE 10 -->
+
+<!-- Windows 8.1 and up, IE 11 -->
+
+<!-- **** CONCLUSION, favicons **** -->
+
+<!-- CSS/SCSS -->
+<link rel="stylesheet" href="{{ get_url(path='css/index.css', trailing_slash=false, cachebust=true) | safe }}" />
+<style>
+  @-moz-document url-prefix() {
+    .lazy:-moz-loading {
+      visibility: hidden;
+    }
+  }
+
+  .ieOnly {
+    display: none;
+  }
+
+  @media all and (-ms-high-contrast: none),
+  (-ms-high-contrast: active) {
+    .ieOnly {
+      display: block;
+    }
+  }
+</style>
 
 
+<link rel="webmention" href="https://webmention.io/eindex.me/webmention" />
+<link rel="pingback" href="https://webmention.io/eindex.me/xmlrpc" />
 
+<script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.1/dist/iconify-icon.min.js"></script>
+{% for size in [512, 192]%}
+{% if size == 512 %}
+<link rel="apple-touch-icon" sizes="{{size}}x{{size}}" href="/favicon-{{size}}.png">
+{% endif %}
+<link rel="icon" type="image/png" sizes="{{size}}x{{size}}" href="/favicon-{{size}}.png">
+{% endfor %}
+<link rel="manifest" href="/manifest.json">
+<meta name="twitter:dnt" content="on">
+<meta name="twitter:widgets:csp" content="on">
+{% include "partials/plugins/seo-head.html" %}
+
+{% include "partials/plugins/google-tag-manager/head.html" %}
+{% include "partials/plugins/meilisearch/head.html" %}
+{% include "partials/plugins/clarity.html" %}
+{% include "partials/plugins/adsense.html" %}
