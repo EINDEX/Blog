@@ -20,10 +20,6 @@ taxonomies:
       "Build Security In",
     ]
   series: ["security"]
-extra:
-  posse:
-    twitter: true
-    mastodon: true
 ---
 
 > 本文通过 DeepL 翻译自 [Improving Your Code Review Process With Semgrep](@/posts/improving-your-code-review-process-with-semgrep.md)
