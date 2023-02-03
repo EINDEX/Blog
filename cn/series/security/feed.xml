@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>EINDEX&#x27;s Blog</title>
+  <link>https://eindex.me/feed.xml</link>
+  <description xml:lang="cn"></description>
+  <atom:link href="https://eindex.me/feed.xml" rel="self" type="application/rss+xml"/>
+
+  
+  <item>
+    
+    <title xml:lang="cn">用 Semgrep 改进你的代码审查流程</title>
+    
+    <link>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;improving-your-code-review-process-with-semgrep&#x2F;</link>
+    <pubDate>Tue, 13 Dec 2022 20:00:00 +0800</pubDate>
+    <guid>https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;improving-your-code-review-process-with-semgrep&#x2F;</guid>
+    
+      
+        <description xml:lang="cn">&lt;blockquote&gt;
+&lt;p&gt;本文通过 DeepL 翻译自 &lt;a href=&quot;https:&#x2F;&#x2F;eindex.me&#x2F;posts&#x2F;improving-your-code-review-process-with-semgrep&#x2F;&quot;&gt;Improving Your Code Review Process With Semgrep&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;img.eindex.me&#x2F;img&#x2F;0ec861d94c82a9e7fe57880e0f25a2dd.png&quot; alt=&quot;Semgrep Website&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;在这篇文章中，我将向你展示如何为你的项目设置 Semgrep，给出它能检测到的常见代码问题的例子，并提供在代码审查中使用 Semgrep 的最佳实践。到最后，你会对 Semgrep 如何改善你的代码审查过程，使你的代码更加安全、可靠和可维护有更好的了解。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;jie-shao-semgrep-yi-ji-wei-shi-yao-ta-dui-dai-ma-shen-cha-you-yong&quot;&gt;介绍 Semgrep 以及为什么它对代码审查有用&lt;&#x2F;h2&gt;
+&lt;p&gt;代码审查是 SDLC (软件开发生命周期)的一个重要组成部分。它有助于确保代码的正确性、可维护性、安全性，并遵循约定的标准和惯例。然而，手动代码审查可能很耗时，而且容易出错，特别是对于有许多贡献者或长时间历史的大型代码库。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;eindex.me&#x2F;cn&#x2F;posts&#x2F;improving-your-code-review-process-with-semgrep&#x2F;#continue-reading&quot;&gt;Continue Reading&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;</description>
+      
+    
+  </item>
+  
+</channel>
+</rss>
