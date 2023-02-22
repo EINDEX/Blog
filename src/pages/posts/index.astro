@@ -1,0 +1,14 @@
+---
+import { getCollection } from "astro:content";
+import i18next, { changeLanguage } from "i18next";
+import { getLastPartOfSlug } from "../../utils/slug"
+
+changeLanguage("en");
+
+
+const locale = i18next.language;
+const posts = await getCollection('posts-'+locale);
+
+---
+
+{posts.map(post=> <p><a href={`/posts/${getLastPartOfSlug(post.slug)}`}>{post.data.title}</a></p>)}

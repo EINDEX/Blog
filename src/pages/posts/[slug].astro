@@ -1,0 +1,34 @@
+---
+import { CollectionEntry, getCollection } from "astro:content";
+import i18next, { changeLanguage } from "i18next";
+import { getLastPartOfSlug } from "../../utils/slug"
+
+changeLanguage("en");
+
+
+const locale = i18next.language
+export async function getStaticPaths() {
+    const locale = i18next.language
+    const posts = await getCollection(`posts-${locale}`);
+    return posts.map(post=> { 
+        return {
+        params: { slug: getLastPartOfSlug(post.slug) },
+        props: { post }
+    }})
+}
+
+
+type Props = CollectionEntry<`posts-${locale}`>;
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+// const posts = await getCollection('posts');
+
+---
+<!-- <p>Static</p>
+
+    posts.map(post=> {<p>{post.title}</p>}) -->
+{locale}
+<h1>{post.data.title}</h1>
+
+<Content />

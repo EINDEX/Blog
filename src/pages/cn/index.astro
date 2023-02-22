@@ -1,0 +1,12 @@
+---
+import i18next, { changeLanguage } from "i18next";
+import Layout from "../../layouts/Layout.astro";
+
+changeLanguage("cn");
+---
+
+<Layout title="Welcome to Astro.">
+  <main>
+    {i18next.language}
+  </main>
+</Layout>

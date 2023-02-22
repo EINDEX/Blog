@@ -1,0 +1,20 @@
+---
+import { changeLanguage } from "i18next";
+
+changeLanguage("cn");
+
+export function getStaticPaths() {
+    return [
+        { params: { slug: 3 } },
+        { params: { slug: 2 } },
+        { params: { slug: 1 } }
+    ];
+}
+const { slug } = Astro.params;
+const { slug1 } = Astro.props;
+---
+<p>Static</p>
+
+<h1> {slug} params</h1>
+
+<h1>{slug1} porps</h1>
