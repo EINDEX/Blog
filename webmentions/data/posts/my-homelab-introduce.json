@@ -1,0 +1,20 @@
+{
+    "-4": {
+      "type": "entry",
+      "author": {
+        "type": "card",
+        "name": "ZenZing",
+        "photo": "https://avatars.githubusercontent.com/u/54519635?v=4",
+        "url": "https://www.dao1314.com/"
+      },
+      "url": "https://eindex.me/cn/posts/my-homelab-introduce/",
+      "published": null,
+      "wm-received": "2021-12-19T10:50:04Z",
+      "wm-id": -4,
+      "wm-source": "https://eindex.me/cn/posts/my-homelab-introduce/",
+      "wm-target": "https://eindex.me/cn/posts/my-homelab-introduce/",
+      "like-of": "https://eindex.me/cn/posts/my-homelab-introduce/",
+      "wm-property": "like-of",
+      "wm-private": false
+    }
+}

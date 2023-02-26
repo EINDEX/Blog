@@ -1,6 +1,9 @@
 ---
+import Footer from "@components/Footer.astro";
+import Navbar from "@components/Navbar.astro";
+
 export interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
@@ -8,29 +11,108 @@ const { title } = Astro.props;
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-		<link rel="stylesheet" href="/katex.min.css" crossorigin="anonymous">
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <link rel="webmention" href="https://webmention.io/eindex.me/webmention" />
+    <link rel="pingback" href="https://webmention.io/eindex.me/xmlrpc" />
+    <link
+      rel="preload"
+      href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/lxgwwenkai-regular.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link
+      href="https://{{cdn}}/prismjs@v1.x/themes/prism.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/katex.min.css" crossorigin="anonymous" />
+  </head>
+  <body>
+    <div class="blog">
+      <Navbar />
+      <slot />
+      <Footer />
+    </div>
+  </body>
 </html>
-<style is:global>
-	:root {
-		--accent: 124, 58, 237;
-		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background-color: #F6F6F6;
-	}
-	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
-	}
+<style is:global lang="scss">
+  // Light mode colors
+  $primary-color: #007bff;
+  $background-color: #ffffff;
+  $text-color: #333333;
+
+  // Dark mode colors
+  $primary-color-dark: #0a84ff;
+  $background-color-dark: #222222;
+  $text-color-dark: #ffffff;
+
+  $dark-mode: true;
+
+  @mixin colors {
+    @if $dark-mode {
+      background-color: $background-color-dark;
+      color: $text-color-dark;
+    }
+    else {
+      background-color: $background-color;
+      color: $text-color;
+    }
+  }
+
+  :root {
+    --bg-color: #dfdfdf;
+    --text-color: #323232;
+    --pre-background-color: #272822;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-color: #323232;
+      --text-color: #dfdfdf;
+      --pre-background-color: #272822;
+    }
+  }
+
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  }
+
+  html {
+    font-family: "LXGW WenKai", system-ui, sans-serif;
+  }
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    $dark-mode: true;
+  }
+  code {
+    font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
+      DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+  }
+  a {
+    color: var(--text-color);
+  }
+</style>
+
+<style lang="scss">
+  .blog {
+    @media screen and (min-width: 720px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 720px;
+    }
+  }
 </style>

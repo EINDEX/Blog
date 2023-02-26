@@ -1,0 +1,124 @@
+---
+import { decode } from "html-entities";
+import shiki from "shiki";
+import { Icon } from "astro-icon";
+
+const code = await Astro.slots.render("default");
+const decodeString = decode(
+  code.replace(/^<code class=".*?">([.\S\s]*?)<\/code>$/gm, "$1")
+);
+let tokens = null;
+const result = code.match("language-(?<lang>\\w+)");
+// console.log(result.groups);
+const lang = result && result.groups ? result.groups.lang : "";
+
+async function render() {
+  try {
+    const hightlighter = await shiki.getHighlighter({
+      theme: "monokai",
+      langs: [lang],
+    });
+    tokens = hightlighter.codeToThemedTokens(decodeString, lang);
+    const codeHtml = shiki.renderToHtml(tokens, {
+      bg: "none",
+    });
+    return codeHtml;
+  } catch (error) {
+    return code;
+  }
+}
+---
+
+<article-code>
+  <div class="code-header">
+    <span>{lang}</span><button>Copy<Icon name="uiw:copy" /></button>
+  </div>
+  <div class="code-body" set:html={render()} />
+
+  <style lang="scss">
+    article-code {
+      background-color: var(--pre-background-color);
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      border-radius: 1rem;
+      margin-top: 1rem;
+
+      .code-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background-color: rgb(13, 13, 13);
+        padding-top: 0.75rem;
+        padding-bottom: 0.5rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        color: #ffffff;
+
+        button {
+          display: flex;
+          flex-direction: row;
+          justify-items: center;
+          gap: 8px;
+          width: fit-content;
+          background: none;
+          border: none;
+          align-self: end;
+          color: #ffffff;
+
+          svg {
+            width: 12px;
+            height: 12px;
+          }
+        }
+      }
+
+      .code-body {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        padding-bottom: 0.25rem;
+        overflow-x: auto;
+        border-bottom-left-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+        scroll-behavior: auto;
+        background-color: var(--pre-background-color);
+      }
+      .code-body::-webkit-scrollbar {
+        width: 4px;
+        height: 4px;
+      }
+      .code-body::-webkit-scrollbar-track {
+        padding: 1rem 1rem 1rem 1rem;
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        margin-left: 1rem;
+        margin-right: 1rem;
+      }
+
+      .code-body::-webkit-scrollbar-thumb {
+        background-color: black;
+        border-radius: 1rem;
+        width: 4px;
+        height: 4px;
+      }
+    }
+  </style>
+
+  <script>
+    class Code extends HTMLElement {
+      constructor() {
+        super();
+        const copyButton = this.querySelector("button");
+        const pre = this.querySelector("div.code-body");
+        copyButton.addEventListener("click", () => {
+          navigator.clipboard.writeText(pre.innerText).then(() => {
+            console.log("copy successd");
+          });
+        });
+      }
+    }
+
+    customElements.define("article-code", Code);
+  </script>
+</article-code>

@@ -1,0 +1,90 @@
+name: Build Blog
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - "static/**"
+      - "content/**"
+      - "scss/**"
+      - "pipeline/**"
+      - "templates/**"
+      - "**.scss"
+      - "**.js"
+      - "**.toml"
+
+  workflow_call:
+    secrets:
+      CLOUDFLARE_ACCOUNT_ID:
+        required: true
+      CLOUDFLARE_API_TOKEN:
+        required: true
+
+  workflow_dispatch:
+    
+
+jobs:
+  release:
+    runs-on: ubuntu-20.04
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}-release
+
+    steps:
+    - name: Setup Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Get npm cache directory
+      id: npm-cache-dir
+      run: |
+        echo "dir=$(npm config get cache)" >> $GITHUB_OUTPUT
+
+    - uses: actions/cache@v3
+      id: npm-cache # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
+      with:
+        path: ${{ steps.npm-cache-dir.outputs.dir }}
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+
+    - name: Fetch npm packages
+      run: npm ci
+
+    - name: build site
+      run: npm run build
+        
+    - name: Publish
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
+        user_name: 'github-actions[bot]'
+        user_email: 'github-actions[bot]@users.noreply.github.com'
+        publish_branch: dist
+
+    - name: Sending out webmentions
+      run: node pipeline/fetch-sitemap.js
+
+    - name: Publish to Cloudflare Pages
+      uses: cloudflare/pages-action@1
+      with:
+        apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        projectName: blog
+        directory: dist
+        gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+        
+    - run: sleep 60
+
+    - name: Run scraper
+      env:
+        HOST_URL: ${{ secrets.MEILISEARCH_HOST_URL }}
+        API_KEY: ${{ secrets.MEILISEARCH_API_KEY }}
+        CONFIG_FILE_PATH: meili.json
+      run: |
+        docker run -t --rm \
+          -e MEILISEARCH_HOST_URL=$HOST_URL \
+          -e MEILISEARCH_API_KEY=$API_KEY \
+          -v $PWD:/blog \
+          getmeili/docs-scraper:latest pipenv run ./docs_scraper /blog/meili.json

@@ -1,4 +1,9 @@
 import { z, defineCollection } from "astro:content";
+import { rssSchema } from "@astrojs/rss";
+
+const blog = defineCollection({
+  schema: rssSchema,
+});
 
 const postSchema = z.object({
   title: z.string(),
@@ -12,6 +17,10 @@ const postSchema = z.object({
   series: z.string().optional(),
   katex: z.boolean().optional(),
   draft: z.boolean().optional(),
+});
+
+const pageSchema = z.object({
+  title: z.string(),
 });
 
 const posts = defineCollection({
@@ -31,11 +40,11 @@ const thoughtsCN = defineCollection({
 });
 
 const pages = defineCollection({
-  schema: postSchema,
+  schema: pageSchema,
 });
 
 const pagesCN = defineCollection({
-  schema: postSchema,
+  schema: pageSchema,
 });
 
 export const collections = {

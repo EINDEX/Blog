@@ -1,34 +1,64 @@
 ---
 import { CollectionEntry, getCollection } from "astro:content";
 import i18next, { changeLanguage } from "i18next";
-import { getLastPartOfSlug } from "../../utils/slug"
+import { getLastPartOfSlug, getLinkViaLocale } from "@utils/slug";
+import Layout from "@layouts/Layout.astro";
+import { getPosts } from "@utils/posts";
+import { timeFormat } from "@utils/time";
+import Code from "@components/Code.astro";
 
 changeLanguage("en");
 
-
-const locale = i18next.language
+const locale = i18next.language;
 export async function getStaticPaths() {
-    const locale = i18next.language
-    const posts = await getCollection(`posts-${locale}`);
-    return posts.map(post=> { 
+    const locale = i18next.language;
+    const posts = await getPosts(locale);
+    return posts.map((post) => {
+        const slug = getLastPartOfSlug(post.slug);
         return {
-        params: { slug: getLastPartOfSlug(post.slug) },
-        props: { post }
-    }})
+            params: { slug: slug },
+            props: { post },
+        };
+    });
 }
-
-
 type Props = CollectionEntry<`posts-${locale}`>;
+const { slug } = Astro.params;
 const { post } = Astro.props;
 const { Content } = await post.render();
-
-// const posts = await getCollection('posts');
-
 ---
-<!-- <p>Static</p>
 
-    posts.map(post=> {<p>{post.title}</p>}) -->
-{locale}
-<h1>{post.data.title}</h1>
+<Layout>
+  {locale}
+  <article class="h-entry">
+    <span class="series p-category"></span>
+    <h1 class="title p-name">
+      {post.data.title}<a class="u-url" href={getLinkViaLocale(locale, slug)}
+      ></a>
+    </h1>
+    <time>{timeFormat(post.data.date, locale)}</time>
 
-<Content />
+    <summary class="p-summary">{post.data.description}</summary>
+
+    <section class="main e-content">
+      <Content components={{ pre: Code }} />
+    </section>
+  </article>
+</Layout>
+
+<style lang="scss">
+  article {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    h1,
+    h2,
+    h3 {
+      align-self: center;
+    }
+
+    p {
+      line-height: 1.8rem;
+    }
+  }
+</style>

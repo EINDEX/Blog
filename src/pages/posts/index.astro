@@ -1,14 +1,33 @@
 ---
-import { getCollection } from "astro:content";
 import i18next, { changeLanguage } from "i18next";
-import { getLastPartOfSlug } from "../../utils/slug"
+import { getLastPartOfSlug, getLinkViaLocale } from "@utils/slug";
+import { getPosts } from "@utils/posts";
+import { timeFormat } from "@utils/time";
+import Layout from "@layouts/Layout.astro";
+import { getPosts } from "@utils/posts";
 
 changeLanguage("en");
 
-
 const locale = i18next.language;
-const posts = await getCollection('posts-'+locale);
-
+const posts = await getPosts(locale);
 ---
 
-{posts.map(post=> <p><a href={`/posts/${getLastPartOfSlug(post.slug)}`}>{post.data.title}</a></p>)}
+<Layout>
+  <h1>Posts</h1>
+  {import.meta.env.MODE}
+  {
+    posts.map((post) => (
+      <p>
+        <a
+          href={getLinkViaLocale(
+            locale,
+            `/posts/${getLastPartOfSlug(post.slug)}`
+          )}
+        >
+          {post.data.title}
+        </a>{" "}
+        Updated at {timeFormat(post.data.updated || post.data.date)}
+      </p>
+    ))
+  }
+</Layout>

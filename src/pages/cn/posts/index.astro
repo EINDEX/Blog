@@ -1,10 +1,33 @@
 ---
-import { changeLanguage } from "i18next";
-import Slag from "../../posts/[slug].astro";
+import i18next, { changeLanguage } from "i18next";
+import { getLastPartOfSlug, getLinkViaLocale } from "@utils/slug";
+import { getPosts } from "@utils/posts";
+import { timeFormat } from "@utils/time";
+import Layout from "@layouts/Layout.astro";
+import { getPosts } from "@utils/posts";
 
 changeLanguage("cn");
+
+const locale = i18next.language;
+const posts = await getPosts(locale);
 ---
 
-<Slag slug1={1}></Slag>
-
-Index
+<Layout>
+  <h1>Posts</h1>
+  {import.meta.env.MODE}
+  {
+    posts.map((post) => (
+      <p>
+        <a
+          href={getLinkViaLocale(
+            locale,
+            `/posts/${getLastPartOfSlug(post.slug)}`
+          )}
+        >
+          {post.data.title}
+        </a>{" "}
+        Updated at {timeFormat(post.data.updated || post.data.date)}
+      </p>
+    ))
+  }
+</Layout>

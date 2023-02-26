@@ -1,6 +1,11 @@
 ---
-const schema = JSON.stringify({})
+
+
+
+const { schema } = Astro.props
+
 ---
 
-<scrip type="application/ld+json" set:html={schema}>
-</scrip>
+<script type="application/ld+json" set:html={schema}>
+
+</script>
