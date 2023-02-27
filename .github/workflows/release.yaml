@@ -4,14 +4,8 @@ on:
   push:
     branches: [ main ]
     paths:
-      - "static/**"
-      - "content/**"
-      - "scss/**"
-      - "pipeline/**"
-      - "templates/**"
-      - "**.scss"
-      - "**.js"
-      - "**.toml"
+      - src/**
+      - public/**
 
   workflow_call:
     secrets:
