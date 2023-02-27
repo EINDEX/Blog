@@ -1,260 +1,340 @@
-<!doctype html><html charset=utf-8 lang=en><head><script src="https://www.googletagmanager.com/gtag/js?id=G-SR36ZS0R52" async></script><script>window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
+<!DOCTYPE html>
+<html lang="en" class="astro-SCKKX6R4">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <meta name="generator" content="Astro v2.0.15">
+    <title></title>
+    <link rel="webmention" href="https://webmention.io/eindex.me/webmention">
+    <link rel="pingback" href="https://webmention.io/eindex.me/xmlrpc">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/lxgwwenkai-regular.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link href="https://{{cdn}}/prismjs@v1.x/themes/prism.css" rel="stylesheet">
+    <link rel="stylesheet" href="/katex.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="/_astro/gallery.197e1a52.css" />
+<link rel="stylesheet" href="/_astro/_slug_.9be3c881.css" />
+<link rel="stylesheet" href="/_astro/_slug_.8ced6fc2.css" /><script type="module">class o extends HTMLElement{constructor(){super();const e=this.querySelector("button"),t=this.querySelector("div.code-body");e.addEventListener("click",()=>{navigator.clipboard.writeText(t.innerText).then(()=>{console.log("copy successd")})})}}customElements.define("article-code",o);
+</script></head>
+  <body class="astro-SCKKX6R4">
+    <div class="blog astro-SCKKX6R4">
+      <nav class="astro-5BLMO7YK">
+  <span class="astro-5BLMO7YK"><img width="32px" height="32px" src="/images/avatar.png" class="astro-5BLMO7YK"><a href="/" class="astro-5BLMO7YK">EINDEX's Blog</a></span>
+  <ul class="astro-5BLMO7YK">
+    <li class="astro-5BLMO7YK"><a rel="me" href="https://github.com/eindex" class="astro-5BLMO7YK">Github</a></li>
+    <li class="astro-5BLMO7YK"><a rel="me" href="https://twitter.com/@eindex_li" class="astro-5BLMO7YK">Twitter</a></li>
+  </ul>
+</nav>
+      cn<article class="h-entry astro-WMBV4WGB">
+    <span class="series p-category astro-WMBV4WGB"></span>
+    <h1 class="title p-name astro-WMBV4WGB">
+      基本线性数据结构的Python实现<a class="u-url astro-WMBV4WGB" href="/cnliner-in-python"></a>
+    </h1>
+    <time class="astro-WMBV4WGB">2017/10/05</time>
 
-  var page_link = new URL(window.location.href);
-  gtag('js', new Date());
-  gtag('config', 'G-SR36ZS0R52', {
-    traffic_type: page_link.searchParams.get("traffic_type")
-  });
-  gtag('set', {
-    traffic_type: page_link.searchParams.get("traffic_type")
-  })</script><link href=https://eindex.me/cn/feed.xml rel=alternate title=RSS type=application/rss+xml><meta content="IE=edge" http-equiv=X-UA-Compatible><meta content="text/html; charset=utf-8" http-equiv=content-type><meta content="width=device-width,initial-scale=1.0,maximum-scale=1" name=viewport><meta content=EINDEX itemprop=author name=author><title>基本线性数据结构的Python实现 • EINDEX's Blog</title><meta content="基本线性数据结构的Python实现 • EINDEX's Blog" property=og:title><meta charset=utf-8><link href="https://eindex.me/css/index.css?h=b4140d1b8e3196cffd2e47c68ff946d2e5312afa70cfe5c88add4caebf732a9e" rel=stylesheet><style>@-moz-document url-prefix() {
-    .lazy:-moz-loading {
-      visibility: hidden;
-    }
-  }
+    <summary class="p-summary astro-WMBV4WGB"></summary>
 
-  .ieOnly {
-    display: none;
-  }
+    <section class="main e-content astro-WMBV4WGB">
+      <p>本篇主要实现四种数据结构，分别是数组、堆栈、队列、链表。我不知道我为什么要用 Python 来干 C 干的事情，总之 Python 就是可以干。</p>
+<more></more>
+<p><strong>所有概念性内容可以在参考资料中找到出处</strong></p>
+<h2 id="数组">数组</h2>
+<h3 id="数组的设计">数组的设计</h3>
+<p>数组设计之初是在形式上依赖内存分配而成的，所以必须在使用前预先请求空间。这使得数组有以下特性：</p>
+<ol>
+<li>请求空间以后大小固定，不能再改变（数据溢出问题）；</li>
+<li>在内存中有空间连续性的表现，中间不会存在其他程序需要调用的数据，为此数组的专用内存空间；</li>
+<li>在旧式编程语言中（如有中阶语言之称的 C），程序不会对数组的操作做下界判断，也就有潜在的越界操作的风险（比如会把数据写在运行中程序需要调用的核心部分的内存上）。</li>
+</ol>
+<p>因为简单数组强烈倚赖电脑硬件之内存，所以不适用于现代的程序设计。欲使用可变大小、硬件无关性的数据类型，Java 等程序设计语言均提供了更高级的数据结构：ArrayList、Vector 等动态数组。</p>
+<h3 id="python-的数组">Python 的数组</h3>
+<p>从严格意义上来说:Python 里没有严格意义上的数组。
+<code>List</code>可以说是 Python 里的数组，下面这段代码是 CPython 的实现<code>List</code>的结构体:</p>
+<article-code class="astro-VKVMCQTA">
+  <div class="code-header astro-VKVMCQTA">
+    <span class="astro-VKVMCQTA">c</span><button class="astro-VKVMCQTA">Copy<svg viewBox="0 0 20 20" class="astro-VKVMCQTA" astro-icon="uiw:copy"><path fill="currentColor" d="M6.644 2.983a.252.252 0 0 0-.253.252c0 .139.113.251.253.251h3.713c.14 0 .253-.112.253-.251a.252.252 0 0 0-.253-.252H6.644zm3.713-1.342c.734 0 1.353.49 1.544 1.16l2.175.001c.621.004 1.122.205 1.432.638.266.372.372.85.345 1.387L15.85 17.84c.042.552-.062 1.04-.328 1.445-.312.473-.821.71-1.452.716H3.14c-.76-.03-1.323-.209-1.675-.609-.327-.371-.47-.88-.464-1.5V4.84c-.013-.6.154-1.106.518-1.48.376-.384.932-.554 1.647-.559h1.935c.19-.67.809-1.16 1.543-1.16h3.713zm0 3.187H6.644c-.546 0-1.027-.27-1.317-.684H3.17c-.383.002-.602.07-.682.152-.091.093-.144.252-.138.531v13.07c-.003.325.052.522.13.61.054.061.286.135.685.151h10.9c.2-.002.28-.04.326-.109.091-.138.133-.334.11-.658l.001-13.096c.014-.293-.027-.482-.096-.578-.026-.035-.116-.072-.336-.073h-2.397c-.29.414-.771.684-1.317.684zM17.2 0c.994 0 1.8.801 1.8 1.79v14.082c0 .988-.806 1.79-1.8 1.79h-1.958v-1.343h1.957c.249 0 .45-.2.45-.447V1.789a.449.449 0 0 0-.45-.447H9.643c-.248 0-.45.2-.45.447v.157h-1.35v-.157C7.843.801 8.649 0 9.643 0H17.2zM8.196 11.751c.373 0 .675.3.675.671 0 .37-.302.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h4.051zm4.052-2.684c.372 0 .675.3.675.671 0 .37-.303.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103zm0-2.684c.372 0 .675.3.675.671a.673.673 0 0 1-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103z"/></svg></button>
+  </div>
+  <div class="code-body astro-VKVMCQTA"><pre class="shiki " style="background-color: none" tabindex="0"><code><span class="line"><span style="color: #F92672">typedef</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF; font-style: italic">struct</span><span style="color: #F8F8F2"> {</span></span>
+<span class="line"><span style="color: #F8F8F2">    PyObject_VAR_HEAD</span></span>
+<span class="line"><span style="color: #88846F">    /* Vector of pointers to list elements.  list[0] is ob_item[0], etc. */</span></span>
+<span class="line"><span style="color: #F8F8F2">    PyObject </span><span style="color: #F92672">**</span><span style="color: #F8F8F2">ob_item;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #88846F">    /* ob_item contains space for &#39;allocated&#39; elements.  The number</span></span>
+<span class="line"><span style="color: #88846F">     * currently in use is ob_size.</span></span>
+<span class="line"><span style="color: #88846F">     * Invariants:</span></span>
+<span class="line"><span style="color: #88846F">     *     0 &lt;= ob_size &lt;= allocated</span></span>
+<span class="line"><span style="color: #88846F">     *     len(list) == ob_size</span></span>
+<span class="line"><span style="color: #88846F">     *     ob_item == NULL implies ob_size == allocated == 0</span></span>
+<span class="line"><span style="color: #88846F">     * list.sort() temporarily sets allocated to -1 to detect mutations.</span></span>
+<span class="line"><span style="color: #88846F">     *</span></span>
+<span class="line"><span style="color: #88846F">     * Items must normally not be NULL, except during construction when</span></span>
+<span class="line"><span style="color: #88846F">     * the list is not yet visible outside the function that builds it.</span></span>
+<span class="line"><span style="color: #88846F">     */</span></span>
+<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #66D9EF; font-style: italic">Py_ssize_t</span><span style="color: #F8F8F2"> allocated;</span></span>
+<span class="line"><span style="color: #F8F8F2">} PyListObject;</span></span>
+<span class="line"></span></code></pre></div>
 
-  @media all and (-ms-high-contrast: none),
-  (-ms-high-contrast: active) {
-    .ieOnly {
-      display: block;
-    }
-  }</style><link href=https://webmention.io/eindex.me/webmention rel=webmention><link href=https://webmention.io/eindex.me/xmlrpc rel=pingback><script src=https://cdn.jsdelivr.net/npm/iconify-icon@1.0.1/dist/iconify-icon.min.js></script><link href=/favicon-512.png rel=apple-touch-icon sizes=512x512><link href=/favicon-512.png rel=icon sizes=512x512 type=image/png><link href=/favicon-192.png rel=icon sizes=192x192 type=image/png><link href=/manifest.json rel=manifest><meta content=on name=twitter:dnt><meta content=on name=twitter:widgets:csp><meta content=https://eindex.me/cn/posts/liner-in-python/ property=og:url><meta content="EINDEX's Blog" property=og:site_name><meta content=https://eindex.me/images/avatar.png property=og:image><meta content=summary name=twitter:card><meta content=基本线性数据结构的Python实现 name=twitter:title><meta content=@eindex_li name=twitter:site><meta content=@eindex_li name=twitter:creator><meta content=https://eindex.me/images/avatar.png name=twitter:image><link href=https://twitter.com/eindex_li rel=me><script type=application/ld+json>
-{
-  "@context": "https://schema.org/",
-  "@type": "BlogPosting",
-  "headline": "基本线性数据结构的Python实现",
-  "image": "https://eindex.me/images/avatar.png",
   
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://eindex.me/cn/posts/liner-in-python/"
-  },
+
   
-  "datePublished": "2017-10-05",
+</article-code>
+<p>取自<a href="https://github.com/python/cpython/blob/f24143b25e4f83368ff6182bebe14f885073015c/Include/listobject.h">CPython-Github</a></p>
+<p>还有一篇文章讲<a href="http://www.laurentluce.com/posts/python-list-implementation/"><code>List</code>实现</a>,感兴趣的朋友可以去看看。<a href="http://python.jobbole.com/82549/">中文版</a>。</p>
+<p>当然，在 Python 里它就是数组。
+后面的一些结构也将用<code>List</code>来实现。</p>
+<h2 id="堆栈">堆栈</h2>
+<h3 id="什么是堆栈">什么是堆栈</h3>
+<p>堆栈（英语：stack），也可直接称栈，在计算机科学中，是一种特殊的串列形式的数据结构，它的特殊之处在于只能允许在链接串列或阵列的一端（称为堆叠顶端指标，英语：top）进行加入资料（英语：push）和输出资料（英语：pop）的运算。另外堆叠也可以用一维阵列或连结串列的形式来完成。堆叠的另外一个相对的操作方式称为伫列。</p>
+<p>由于堆叠数据结构只允许在一端进行操作，因而按照后进先出（LIFO, Last In First Out）的原理运作。</p>
+<h3 id="特点">特点</h3>
+<ul>
+<li>先入后出，后入先出。</li>
+<li>除头尾节点之外，每个元素有一个前驱，一个后继。</li>
+</ul>
+<h3 id="操作">操作</h3>
+<p>从原理可知，对堆栈(栈)可以进行的操作有:</p>
+<ul>
+<li>top():获取堆栈顶端对象</li>
+<li>push():向栈里添加一个对象</li>
+<li>pop():从栈里推出一个对象</li>
+</ul>
+<h3 id="实现">实现</h3>
+<article-code class="astro-VKVMCQTA">
+  <div class="code-header astro-VKVMCQTA">
+    <span class="astro-VKVMCQTA">python</span><button class="astro-VKVMCQTA">Copy<svg viewBox="0 0 20 20" class="astro-VKVMCQTA" astro-icon="uiw:copy"><path fill="currentColor" d="M6.644 2.983a.252.252 0 0 0-.253.252c0 .139.113.251.253.251h3.713c.14 0 .253-.112.253-.251a.252.252 0 0 0-.253-.252H6.644zm3.713-1.342c.734 0 1.353.49 1.544 1.16l2.175.001c.621.004 1.122.205 1.432.638.266.372.372.85.345 1.387L15.85 17.84c.042.552-.062 1.04-.328 1.445-.312.473-.821.71-1.452.716H3.14c-.76-.03-1.323-.209-1.675-.609-.327-.371-.47-.88-.464-1.5V4.84c-.013-.6.154-1.106.518-1.48.376-.384.932-.554 1.647-.559h1.935c.19-.67.809-1.16 1.543-1.16h3.713zm0 3.187H6.644c-.546 0-1.027-.27-1.317-.684H3.17c-.383.002-.602.07-.682.152-.091.093-.144.252-.138.531v13.07c-.003.325.052.522.13.61.054.061.286.135.685.151h10.9c.2-.002.28-.04.326-.109.091-.138.133-.334.11-.658l.001-13.096c.014-.293-.027-.482-.096-.578-.026-.035-.116-.072-.336-.073h-2.397c-.29.414-.771.684-1.317.684zM17.2 0c.994 0 1.8.801 1.8 1.79v14.082c0 .988-.806 1.79-1.8 1.79h-1.958v-1.343h1.957c.249 0 .45-.2.45-.447V1.789a.449.449 0 0 0-.45-.447H9.643c-.248 0-.45.2-.45.447v.157h-1.35v-.157C7.843.801 8.649 0 9.643 0H17.2zM8.196 11.751c.373 0 .675.3.675.671 0 .37-.302.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h4.051zm4.052-2.684c.372 0 .675.3.675.671 0 .37-.303.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103zm0-2.684c.372 0 .675.3.675.671a.673.673 0 0 1-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103z"/></svg></button>
+  </div>
+  <div class="code-body astro-VKVMCQTA"><pre class="shiki " style="background-color: none" tabindex="0"><code><span class="line"><span style="color: #66D9EF; font-style: italic">class</span><span style="color: #F8F8F2"> </span><span style="color: #A6E22E; text-decoration: underline">my_stack</span><span style="color: #F8F8F2">(</span><span style="color: #66D9EF; font-style: italic">object</span><span style="color: #F8F8F2">):</span></span>
+<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #66D9EF; font-style: italic">def</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">__init__</span><span style="color: #F8F8F2">(</span><span style="color: #FD971F; font-style: italic">self</span><span style="color: #F8F8F2">, </span><span style="color: #FD971F; font-style: italic">value</span><span style="color: #F8F8F2">):</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #FD971F">self</span><span style="color: #F8F8F2">.value </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> value</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #88846F"># 前驱</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #FD971F">self</span><span style="color: #F8F8F2">.before </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">None</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #88846F"># 后继</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #FD971F">self</span><span style="color: #F8F8F2">.behind </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">None</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #66D9EF; font-style: italic">def</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">__str__</span><span style="color: #F8F8F2">(</span><span style="color: #FD971F; font-style: italic">self</span><span style="color: #F8F8F2">):</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">return</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF; font-style: italic">str</span><span style="color: #F8F8F2">(</span><span style="color: #FD971F">self</span><span style="color: #F8F8F2">.value)</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color: #66D9EF; font-style: italic">def</span><span style="color: #F8F8F2"> </span><span style="color: #A6E22E">top</span><span style="color: #F8F8F2">(</span><span style="color: #FD971F; font-style: italic">stack</span><span style="color: #F8F8F2">):</span></span>
+<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">isinstance</span><span style="color: #F8F8F2">(stack, my_stack):</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> stack.behind </span><span style="color: #F92672">is</span><span style="color: #F8F8F2"> </span><span style="color: #F92672">not</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">None</span><span style="color: #F8F8F2">:</span></span>
+<span class="line"><span style="color: #F8F8F2">            </span><span style="color: #F92672">return</span><span style="color: #F8F8F2"> top(stack.behind)</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">else</span><span style="color: #F8F8F2">:</span></span>
+<span class="line"><span style="color: #F8F8F2">            </span><span style="color: #F92672">return</span><span style="color: #F8F8F2"> stack</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color: #66D9EF; font-style: italic">def</span><span style="color: #F8F8F2"> </span><span style="color: #A6E22E">push</span><span style="color: #F8F8F2">(</span><span style="color: #FD971F; font-style: italic">stack</span><span style="color: #F8F8F2">, </span><span style="color: #FD971F; font-style: italic">ele</span><span style="color: #F8F8F2">):</span></span>
+<span class="line"><span style="color: #F8F8F2">    push_ele </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> my_stack(ele)</span></span>
+<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">isinstance</span><span style="color: #F8F8F2">(stack, my_stack):</span></span>
+<span class="line"><span style="color: #F8F8F2">      stack_top </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> top(stack)</span></span>
+<span class="line"><span style="color: #F8F8F2">      push_ele.before </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> stack_top</span></span>
+<span class="line"><span style="color: #F8F8F2">      push_ele.before.behind </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> push_ele</span></span>
+<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F92672">else</span><span style="color: #F8F8F2">:</span></span>
+<span class="line"><span style="color: #F8F8F2">      </span><span style="color: #F92672">raise</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF; font-style: italic">Exception</span><span style="color: #F8F8F2">(</span><span style="color: #E6DB74">&#39;不要乱扔东西进来好么&#39;</span><span style="color: #F8F8F2">)</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color: #66D9EF; font-style: italic">def</span><span style="color: #F8F8F2"> </span><span style="color: #A6E22E">pop</span><span style="color: #F8F8F2">(</span><span style="color: #FD971F; font-style: italic">stack</span><span style="color: #F8F8F2">):</span></span>
+<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">isinstance</span><span style="color: #F8F8F2">(stack, my_stack):</span></span>
+<span class="line"><span style="color: #F8F8F2">        stack_top </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> top(stack)</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> stack_top.before </span><span style="color: #F92672">is</span><span style="color: #F8F8F2"> </span><span style="color: #F92672">not</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">None</span><span style="color: #F8F8F2">:</span></span>
+<span class="line"><span style="color: #F8F8F2">            stack_top.before.behind </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">None</span></span>
+<span class="line"><span style="color: #F8F8F2">            stack_top.behind </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">None</span></span>
+<span class="line"><span style="color: #F8F8F2">            </span><span style="color: #F92672">return</span><span style="color: #F8F8F2"> stack_top</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">else</span><span style="color: #F8F8F2">:</span></span>
+<span class="line"><span style="color: #F8F8F2">            </span><span style="color: #66D9EF">print</span><span style="color: #F8F8F2">(</span><span style="color: #E6DB74">&#39;已经是栈顶了&#39;</span><span style="color: #F8F8F2">)</span></span>
+<span class="line"></span></code></pre></div>
+
   
+
   
-  "author": {
-    "@type": "Person",
-    "name": "EINDEX",
-    "url": "https://eindex.me/about"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "EINDEX's Blog",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://eindex.me/images/avatar.png"
-    }
-  },
-  "keywords": ["Python","Data structure","Linear","algorithm"]
-}
-</script><link href=https://cdn.jsdelivr.net/npm/docs-searchbar.js@2.4.1/dist/cdn/docs-searchbar.min.css rel=stylesheet><script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1265138627025369" async crossorigin=anonymous></script><body><div class=all><header><nav class=navbar><div class=avatar><a class=site-link href=https://eindex.me/cn/><img alt=Workflow class=avatar src=https://eindex.me/processed_images/e75389feba7c019600.png></a></div><div class=menus><a href=https://eindex.me/cn/gallery/>相册</a><a href=https://eindex.me/cn/archive/>归档</a></div><div class=switcher><a class="language switch" href=https://eindex.me/><iconify-icon icon=ri:english-input></iconify-icon></a></div></nav></header><div class=content><main><article class=h-entry data-clarity-region=article><section class=header><section class=title-area><a class="series p-category" href=https://eindex.me/cn/series/algorithm/>算法</a><h1 class="title p-name"><a class=u-url href=https://eindex.me/cn/posts/liner-in-python/>基本线性数据结构的Python实现</a></h1></section><section class=meta-area><p style="display: none;" class=p-summary>&LTp>本篇主要实现四种数据结构，分别是数组、堆栈、队列、链表。我不知道我为什么要用Python来干C干的事情，总之Python就是可以干。&LT/p></p><span><iconify-icon icon=ant-design:calendar-outlined></iconify-icon> <time class=dt-published>2017-10-05</time> </span><span><iconify-icon icon=bx:time-five></iconify-icon> 9 mins</span><span style=display:none><iconify-icon icon=mdi:eye-outline></iconify-icon> <span id=pv></span> views</span></section></section><div class="p-author h-card" style="display: none;"><img class="u-logo u-photo" src=https://eindex.me/images/avatar.png><a class="p-nickname p-name u-url" href=https://eindex.me>EINDEX</a><p class=p-note>My goal is make happy.</div><section class="main e-content"><p>本篇主要实现四种数据结构，分别是数组、堆栈、队列、链表。我不知道我为什么要用Python来干C干的事情，总之Python就是可以干。</p><span id=continue-reading></span><p><strong>所有概念性内容可以在参考资料中找到出处</strong><h2 id=shu-zu>数组</h2><h3 id=shu-zu-de-she-ji>数组的设计</h3><p>数组设计之初是在形式上依赖内存分配而成的，所以必须在使用前预先请求空间。这使得数组有以下特性：<ol><li>请求空间以后大小固定，不能再改变（数据溢出问题）；<li>在内存中有空间连续性的表现，中间不会存在其他程序需要调用的数据，为此数组的专用内存空间；<li>在旧式编程语言中（如有中阶语言之称的C），程序不会对数组的操作做下界判断，也就有潜在的越界操作的风险（比如会把数据写在运行中程序需要调用的核心部分的内存上）。</ol><p>因为简单数组强烈倚赖电脑硬件之内存，所以不适用于现代的程序设计。欲使用可变大小、硬件无关性的数据类型，Java等程序设计语言均提供了更高级的数据结构：ArrayList、Vector等动态数组。<h3 id=pythonde-shu-zu>Python的数组</h3><p>从严格意义上来说:Python里没有严格意义上的数组。 <code>List</code>可以说是Python里的数组，下面这段代码是CPython的实现<code>List</code>的结构体:<pre class=language-c data-lang=c style=background-color:#272822;color:#f8f8f2;><code class=language-c data-lang=c><span style=font-style:italic;color:#66d9ef;>typedef struct </span><span>{
-</span><span>    PyObject_VAR_HEAD
-</span><span>    </span><span style=color:#75715e;>/* Vector of pointers to list elements.  list[0] is ob_item[0], etc. */
-</span><span>    PyObject </span><span style=color:#f92672;>**</span><span>ob_item;
-</span><span>
-</span><span>    </span><span style=color:#75715e;>/* ob_item contains space for 'allocated' elements.  The number
-</span><span style=color:#75715e;>     * currently in use is ob_size.
-</span><span style=color:#75715e;>     * Invariants:
-</span><span style=color:#75715e;>     *     0 <= ob_size <= allocated
-</span><span style=color:#75715e;>     *     len(list) == ob_size
-</span><span style=color:#75715e;>     *     ob_item == NULL implies ob_size == allocated == 0
-</span><span style=color:#75715e;>     * list.sort() temporarily sets allocated to -1 to detect mutations.
-</span><span style=color:#75715e;>     *
-</span><span style=color:#75715e;>     * Items must normally not be NULL, except during construction when
-</span><span style=color:#75715e;>     * the list is not yet visible outside the function that builds it.
-</span><span style=color:#75715e;>     */
-</span><span>    Py_ssize_t allocated;
-</span><span>} PyListObject;
-</span></code></pre><p>取自 <a href=https://github.com/python/cpython/blob/f24143b25e4f83368ff6182bebe14f885073015c/Include/listobject.h rel=nofollow>CPython-Github</a><p>还有一篇文章讲 <a href=http://www.laurentluce.com/posts/python-list-implementation/ rel=nofollow><code>List</code>实现</a>,感兴趣的朋友可以去看看。 <a href=http://python.jobbole.com/82549/ rel=nofollow>中文版</a>。<p>当然，在Python里它就是数组。 后面的一些结构也将用<code>List</code>来实现。<h2 id=dui-zhan>堆栈</h2><h3 id=shi-yao-shi-dui-zhan>什么是堆栈</h3><p>堆栈（英语：stack），也可直接称栈，在计算机科学中，是一种特殊的串列形式的数据结构，它的特殊之处在于只能允许在链接串列或阵列的一端（称为堆叠顶端指标，英语：top）进行加入资料（英语：push）和输出资料（英语：pop）的运算。另外堆叠也可以用一维阵列或连结串列的形式来完成。堆叠的另外一个相对的操作方式称为伫列。<p>由于堆叠数据结构只允许在一端进行操作，因而按照后进先出（LIFO, Last In First Out）的原理运作。<h3 id=te-dian>特点</h3><ul><li>先入后出，后入先出。<li>除头尾节点之外，每个元素有一个前驱，一个后继。</ul><h3 id=cao-zuo>操作</h3><p>从原理可知，对堆栈(栈)可以进行的操作有:<ul><li>top():获取堆栈顶端对象<li>push():向栈里添加一个对象<li>pop():从栈里推出一个对象</ul><h3 id=shi-xian>实现</h3><pre class=language-python data-lang=python style=background-color:#272822;color:#f8f8f2;><code class=language-python data-lang=python><span style=font-style:italic;color:#f92672;>class </span><span style=text-decoration:underline;color:#a6e22e;>my_stack</span><span>(</span><span style=text-decoration:underline;font-style:italic;color:#a6e22e;>object</span><span>):
-</span><span>    </span><span style=font-style:italic;color:#f92672;>def </span><span style=color:#66d9ef;>__init__</span><span>(</span><span style=font-style:italic;color:#fd971f;>self</span><span>, </span><span style=font-style:italic;color:#fd971f;>value</span><span>):
-</span><span>        self.value </span><span style=color:#f92672;>= </span><span>value
-</span><span>        </span><span style=color:#75715e;># 前驱
-</span><span>        self.before </span><span style=color:#f92672;>= </span><span style=color:#ae81ff;>None
-</span><span>        </span><span style=color:#75715e;># 后继
-</span><span>        self.behind </span><span style=color:#f92672;>= </span><span style=color:#ae81ff;>None
-</span><span>
-</span><span>    </span><span style=font-style:italic;color:#f92672;>def </span><span style=color:#66d9ef;>__str__</span><span>(</span><span style=font-style:italic;color:#fd971f;>self</span><span>):
-</span><span>        </span><span style=color:#f92672;>return </span><span style=font-style:italic;color:#66d9ef;>str</span><span>(self.value)
-</span><span>
-</span><span>
-</span><span style=font-style:italic;color:#f92672;>def </span><span style=color:#a6e22e;>top</span><span>(</span><span style=font-style:italic;color:#fd971f;>stack</span><span>):
-</span><span>    </span><span style=color:#f92672;>if </span><span style=color:#66d9ef;>isinstance</span><span>(stack, my_stack):
-</span><span>        </span><span style=color:#f92672;>if </span><span>stack.behind </span><span style=color:#f92672;>is not </span><span style=color:#ae81ff;>None</span><span>:
-</span><span>            </span><span style=color:#f92672;>return </span><span>top(stack.behind)
-</span><span>        </span><span style=color:#f92672;>else</span><span>:
-</span><span>            </span><span style=color:#f92672;>return </span><span>stack
-</span><span>
-</span><span>
-</span><span style=font-style:italic;color:#f92672;>def </span><span style=color:#a6e22e;>push</span><span>(</span><span style=font-style:italic;color:#fd971f;>stack</span><span>, </span><span style=font-style:italic;color:#fd971f;>ele</span><span>):
-</span><span>    push_ele </span><span style=color:#f92672;>= </span><span>my_stack(ele)
-</span><span>    </span><span style=color:#f92672;>if </span><span style=color:#66d9ef;>isinstance</span><span>(stack, my_stack):
-</span><span>      stack_top </span><span style=color:#f92672;>= </span><span>top(stack)
-</span><span>      push_ele.before </span><span style=color:#f92672;>= </span><span>stack_top
-</span><span>      push_ele.before.behind </span><span style=color:#f92672;>= </span><span>push_ele
-</span><span>    </span><span style=color:#f92672;>else</span><span>:
-</span><span>      </span><span style=color:#f92672;>raise </span><span style=font-style:italic;color:#66d9ef;>Exception</span><span>(</span><span style=color:#e6db74;>'不要乱扔东西进来好么'</span><span>)
-</span><span>
-</span><span>
-</span><span style=font-style:italic;color:#f92672;>def </span><span style=color:#a6e22e;>pop</span><span>(</span><span style=font-style:italic;color:#fd971f;>stack</span><span>):
-</span><span>    </span><span style=color:#f92672;>if </span><span style=color:#66d9ef;>isinstance</span><span>(stack, my_stack):
-</span><span>        stack_top </span><span style=color:#f92672;>= </span><span>top(stack)
-</span><span>        </span><span style=color:#f92672;>if </span><span>stack_top.before </span><span style=color:#f92672;>is not </span><span style=color:#ae81ff;>None</span><span>:
-</span><span>            stack_top.before.behind </span><span style=color:#f92672;>= </span><span style=color:#ae81ff;>None
-</span><span>            stack_top.behind </span><span style=color:#f92672;>= </span><span style=color:#ae81ff;>None
-</span><span>            </span><span style=color:#f92672;>return </span><span>stack_top
-</span><span>        </span><span style=color:#f92672;>else</span><span>:
-</span><span>            </span><span style=color:#66d9ef;>print</span><span>(</span><span style=color:#e6db74;>'已经是栈顶了'</span><span>)
-</span></code></pre><h2 id=dui-lie>队列</h2><h3 id=shi-yao-shi-dui-lie>什么是队列</h3><p>和堆栈类似，唯一的区别是队列只能在队头进行出队操作，所以队列是是先进先出（FIFO, First-In-First-Out）的线性表<h3 id=te-dian-1>特点</h3><ul><li>先入先出,后入后出<li>除尾节点外,每个节点有一个后继<li>（可选）除头节点外,每个节点有一个前驱</ul><h3 id=cao-zuo-1>操作</h3><ul><li>push（）:入队<li>pop（）：出队</ul><h3 id=shi-xian-1>实现</h3><h4 id=pu-tong-dui-lie>普通队列</h4><pre class=language-python data-lang=python style=background-color:#272822;color:#f8f8f2;><code class=language-python data-lang=python><span style=font-style:italic;color:#f92672;>class </span><span style=text-decoration:underline;color:#a6e22e;>MyQueue</span><span>():
-</span><span>    </span><span style=font-style:italic;color:#f92672;>def </span><span style=color:#66d9ef;>__init__</span><span>(</span><span style=font-style:italic;color:#fd971f;>self</span><span>, </span><span style=font-style:italic;color:#fd971f;>value</span><span style=color:#f92672;>=</span><span style=color:#ae81ff;>None</span><span>):
-</span><span>        self.value </span><span style=color:#f92672;>= </span><span>value
-</span><span>        </span><span style=color:#75715e;># 前驱
-</span><span>        </span><span style=color:#75715e;># self.before = None
-</span><span>        </span><span style=color:#75715e;># 后继
-</span><span>        self.behind </span><span style=color:#f92672;>= </span><span style=color:#ae81ff;>None
-</span><span>
-</span><span>    </span><span style=font-style:italic;color:#f92672;>def </span><span style=color:#66d9ef;>__str__</span><span>(</span><span style=font-style:italic;color:#fd971f;>self</span><span>):
-</span><span>        </span><span style=color:#f92672;>if </span><span>self.value </span><span style=color:#f92672;>is not </span><span style=color:#ae81ff;>None</span><span>:
-</span><span>            </span><span style=color:#f92672;>return </span><span style=font-style:italic;color:#66d9ef;>str</span><span>(self.value)
-</span><span>        </span><span style=color:#f92672;>else</span><span>:
-</span><span>            </span><span style=color:#f92672;>return </span><span style=color:#e6db74;>'None'
-</span><span>
-</span><span>
-</span><span style=font-style:italic;color:#f92672;>def </span><span style=color:#a6e22e;>create_queue</span><span>():
-</span><span>    </span><span style=color:#75715e;>"""仅有队头"""
-</span><span>    </span><span style=color:#f92672;>return </span><span>MyQueue()
-</span><span>
-</span><span>
-</span><span style=font-style:italic;color:#f92672;>def </span><span style=color:#a6e22e;>last</span><span>(</span><span style=font-style:italic;color:#fd971f;>queue</span><span>):
-</span><span>    </span><span style=color:#f92672;>if </span><span style=color:#66d9ef;>isinstance</span><span>(queue, MyQueue):
-</span><span>        </span><span style=color:#f92672;>if </span><span>queue.behind </span><span style=color:#f92672;>is not </span><span style=color:#ae81ff;>None</span><span>:
-</span><span>            </span><span style=color:#f92672;>return </span><span>last(queue.behind)
-</span><span>        </span><span style=color:#f92672;>else</span><span>:
-</span><span>            </span><span style=color:#f92672;>return </span><span>queue
-</span><span>
-</span><span>
-</span><span style=font-style:italic;color:#f92672;>def </span><span style=color:#a6e22e;>push</span><span>(</span><span style=font-style:italic;color:#fd971f;>queue</span><span>, </span><span style=font-style:italic;color:#fd971f;>ele</span><span>):
-</span><span>    </span><span style=color:#f92672;>if </span><span style=color:#66d9ef;>isinstance</span><span>(queue, MyQueue):
-</span><span>        last_queue </span><span style=color:#f92672;>= </span><span>last(queue)
-</span><span>        new_queue </span><span style=color:#f92672;>= </span><span>MyQueue(ele)
-</span><span>        last_queue.behind </span><span style=color:#f92672;>= </span><span>new_queue
-</span><span>
-</span><span>
-</span><span style=font-style:italic;color:#f92672;>def </span><span style=color:#a6e22e;>pop</span><span>(</span><span style=font-style:italic;color:#fd971f;>queue</span><span>):
-</span><span>    </span><span style=color:#f92672;>if </span><span>queue.behind </span><span style=color:#f92672;>is not </span><span style=color:#ae81ff;>None</span><span>:
-</span><span>        get_queue </span><span style=color:#f92672;>= </span><span>queue.behind
-</span><span>        queue.behind </span><span style=color:#f92672;>= </span><span>queue.behind.behind
-</span><span>        </span><span style=color:#f92672;>return </span><span>get_queue
-</span><span>    </span><span style=color:#f92672;>else</span><span>:
-</span><span>        </span><span style=color:#66d9ef;>print</span><span>(</span><span style=color:#e6db74;>'队列里已经没有元素了'</span><span>)
-</span><span>
-</span><span style=font-style:italic;color:#f92672;>def </span><span style=color:#a6e22e;>print_queue</span><span>(</span><span style=font-style:italic;color:#fd971f;>queue</span><span>):
-</span><span>    </span><span style=color:#66d9ef;>print</span><span>(queue)
-</span><span>    </span><span style=color:#f92672;>if </span><span>queue.behind </span><span style=color:#f92672;>is not </span><span style=color:#ae81ff;>None</span><span>:
-</span><span>        print_queue(queue.behind)
-</span></code></pre><h2 id=lian-biao>链表</h2><h3 id=shi-yao-shi-lian-biao>什么是链表</h3><p>链表（Linked list）是一种常见的基础数据结构，是一种线性表，但是并不会按线性的顺序存储数据，而是在每一个节点里存到下一个节点的指针(Pointer)。由于不必须按顺序存储，链表在插入的时候可以达到O(1)的复杂度，比另一种线性表顺序表快得多，但是查找一个节点或者访问特定编号的节点则需要O(n)的时间，而顺序表相应的时间复杂度分别是O(logn)和O(1)。<h3 id=te-dian-2>特点</h3><p>使用链表结构可以克服数组链表需要预先知道数据大小的缺点，链表结构可以充分利用计算机内存空间，实现灵活的内存动态管理。但是链表失去了数组随机读取的优点，同时链表由于增加了结点的指针域，空间开销比较大。<h3 id=cao-zuo-2>操作</h3><ul><li>init():初始化<li>insert(): 插入<li>trave(): 遍历<li>delete(): 删除<li>find(): 查找</ul><h3 id=shi-xian-2>实现</h3><p>此处仅实现双向列表<pre class=language-python data-lang=python style=background-color:#272822;color:#f8f8f2;><code class=language-python data-lang=python><span style=font-style:italic;color:#f92672;>class </span><span style=text-decoration:underline;color:#a6e22e;>LinkedList</span><span>():
-</span><span>    </span><span style=font-style:italic;color:#f92672;>def </span><span style=color:#66d9ef;>__init__</span><span>(</span><span style=font-style:italic;color:#fd971f;>self</span><span>, </span><span style=font-style:italic;color:#fd971f;>value</span><span style=color:#f92672;>=</span><span style=color:#ae81ff;>None</span><span>):
-</span><span>        self.value </span><span style=color:#f92672;>= </span><span>value
-</span><span>        </span><span style=color:#75715e;># 前驱
-</span><span>        self.before </span><span style=color:#f92672;>= </span><span style=color:#ae81ff;>None
-</span><span>        </span><span style=color:#75715e;># 后继
-</span><span>        self.behind </span><span style=color:#f92672;>= </span><span style=color:#ae81ff;>None
-</span><span>
-</span><span>    </span><span style=font-style:italic;color:#f92672;>def </span><span style=color:#66d9ef;>__str__</span><span>(</span><span style=font-style:italic;color:#fd971f;>self</span><span>):
-</span><span>        </span><span style=color:#f92672;>if </span><span>self.value </span><span style=color:#f92672;>is not </span><span style=color:#ae81ff;>None</span><span>:
-</span><span>            </span><span style=color:#f92672;>return </span><span style=font-style:italic;color:#66d9ef;>str</span><span>(self.value)
-</span><span>        </span><span style=color:#f92672;>else</span><span>:
-</span><span>            </span><span style=color:#f92672;>return </span><span style=color:#e6db74;>'None'
-</span><span>
-</span><span>
-</span><span style=font-style:italic;color:#f92672;>def </span><span style=color:#a6e22e;>init</span><span>():
-</span><span>    </span><span style=color:#f92672;>return </span><span>LinkedList(</span><span style=color:#e6db74;>'HEAD'</span><span>)
-</span><span>
-</span><span>
-</span><span style=font-style:italic;color:#f92672;>def </span><span style=color:#a6e22e;>delete</span><span>(</span><span style=font-style:italic;color:#fd971f;>linked_list</span><span>):
-</span><span>    </span><span style=color:#f92672;>if </span><span style=color:#66d9ef;>isinstance</span><span>(linked_list, LinkedList):
-</span><span>        </span><span style=color:#f92672;>if </span><span>linked_list.behind </span><span style=color:#f92672;>is not </span><span style=color:#ae81ff;>None</span><span>:
-</span><span>            delete(linked_list.behind)
-</span><span>            linked_list.behind </span><span style=color:#f92672;>= </span><span style=color:#ae81ff;>None
-</span><span>            linked_list.before </span><span style=color:#f92672;>= </span><span style=color:#ae81ff;>None
-</span><span>        linked_list.value </span><span style=color:#f92672;>= </span><span style=color:#ae81ff;>None
-</span><span>
-</span><span>
-</span><span style=font-style:italic;color:#f92672;>def </span><span style=color:#a6e22e;>insert</span><span>(</span><span style=font-style:italic;color:#fd971f;>linked_list</span><span>, </span><span style=font-style:italic;color:#fd971f;>index</span><span>, </span><span style=font-style:italic;color:#fd971f;>node</span><span>):
-</span><span>    node </span><span style=color:#f92672;>= </span><span>LinkedList(node)
-</span><span>    </span><span style=color:#f92672;>if </span><span style=color:#66d9ef;>isinstance</span><span>(linked_list, LinkedList):
-</span><span>        i </span><span style=color:#f92672;>= </span><span style=color:#ae81ff;>0
-</span><span>        </span><span style=color:#f92672;>while </span><span>linked_list.behind </span><span style=color:#f92672;>is not </span><span style=color:#ae81ff;>None</span><span>:
-</span><span>            </span><span style=color:#f92672;>if </span><span>i </span><span style=color:#f92672;>== </span><span>index:
-</span><span>                </span><span style=color:#f92672;>break
-</span><span>            i </span><span style=color:#f92672;>+= </span><span style=color:#ae81ff;>1
-</span><span>            linked_list </span><span style=color:#f92672;>= </span><span>linked_list.behind
-</span><span>        </span><span style=color:#f92672;>if </span><span>linked_list.behind </span><span style=color:#f92672;>is not </span><span style=color:#ae81ff;>None</span><span>:
-</span><span>            node.behind </span><span style=color:#f92672;>= </span><span>linked_list.behind
-</span><span>            linked_list.behind.before </span><span style=color:#f92672;>= </span><span>node
-</span><span>        node.before, linked_list.behind </span><span style=color:#f92672;>= </span><span>linked_list, node
-</span><span>
-</span><span>
-</span><span style=font-style:italic;color:#f92672;>def </span><span style=color:#a6e22e;>remove</span><span>(</span><span style=font-style:italic;color:#fd971f;>linked_list</span><span>, </span><span style=font-style:italic;color:#fd971f;>index</span><span>):
-</span><span>    </span><span style=color:#f92672;>if </span><span style=color:#66d9ef;>isinstance</span><span>(linked_list, LinkedList):
-</span><span>        i </span><span style=color:#f92672;>= </span><span style=color:#ae81ff;>0
-</span><span>        </span><span style=color:#f92672;>while </span><span>linked_list.behind </span><span style=color:#f92672;>is not </span><span style=color:#ae81ff;>None</span><span>:
-</span><span>            </span><span style=color:#f92672;>if </span><span>i </span><span style=color:#f92672;>== </span><span>index:
-</span><span>                </span><span style=color:#f92672;>break
-</span><span>            i </span><span style=color:#f92672;>+= </span><span style=color:#ae81ff;>1
-</span><span>            linked_list </span><span style=color:#f92672;>= </span><span>linked_list.behind
-</span><span>        </span><span style=color:#f92672;>if </span><span>linked_list.behind </span><span style=color:#f92672;>is not </span><span style=color:#ae81ff;>None</span><span>:
-</span><span>            linked_list.behind.before </span><span style=color:#f92672;>= </span><span>linked_list.before
-</span><span>        </span><span style=color:#f92672;>if </span><span>linked_list.before </span><span style=color:#f92672;>is not </span><span style=color:#ae81ff;>None</span><span>:
-</span><span>            linked_list.before.behind </span><span style=color:#f92672;>= </span><span>linked_list.behind
-</span><span>        linked_list.behind </span><span style=color:#f92672;>= </span><span style=color:#ae81ff;>None
-</span><span>        linked_list.before </span><span style=color:#f92672;>= </span><span style=color:#ae81ff;>None
-</span><span>        linked_list.value </span><span style=color:#f92672;>= </span><span style=color:#ae81ff;>None
-</span><span>
-</span><span>
-</span><span style=font-style:italic;color:#f92672;>def </span><span style=color:#a6e22e;>trave</span><span>(</span><span style=font-style:italic;color:#fd971f;>linked_list</span><span>):
-</span><span>    </span><span style=color:#f92672;>if </span><span style=color:#66d9ef;>isinstance</span><span>(linked_list, LinkedList):
-</span><span>        </span><span style=color:#66d9ef;>print</span><span>(linked_list)
-</span><span>        </span><span style=color:#f92672;>if </span><span>linked_list.behind </span><span style=color:#f92672;>is not </span><span style=color:#ae81ff;>None</span><span>:
-</span><span>            trave(linked_list.behind)
-</span><span>
-</span><span>
-</span><span style=font-style:italic;color:#f92672;>def </span><span style=color:#a6e22e;>find</span><span>(</span><span style=font-style:italic;color:#fd971f;>linked_list</span><span>, </span><span style=font-style:italic;color:#fd971f;>index</span><span>):
-</span><span>    </span><span style=color:#f92672;>if </span><span style=color:#66d9ef;>isinstance</span><span>(linked_list, LinkedList):
-</span><span>        i </span><span style=color:#f92672;>= </span><span style=color:#ae81ff;>0
-</span><span>        </span><span style=color:#f92672;>while </span><span>linked_list.behind </span><span style=color:#f92672;>is not </span><span style=color:#ae81ff;>None</span><span>:
-</span><span>            </span><span style=color:#f92672;>if </span><span>i </span><span style=color:#f92672;>== </span><span>index:
-</span><span>                </span><span style=color:#f92672;>return </span><span>linked_list
-</span><span>            i </span><span style=color:#f92672;>+= </span><span style=color:#ae81ff;>1
-</span><span>            linked_list </span><span style=color:#f92672;>= </span><span>linked_list.behind
-</span><span>        </span><span style=color:#f92672;>else</span><span>:
-</span><span>            </span><span style=color:#f92672;>if </span><span>i </span><span style=color:#f92672;>< </span><span>index:
-</span><span>                </span><span style=color:#f92672;>raise </span><span style=font-style:italic;color:#66d9ef;>Exception</span><span>(</span><span style=color:#ae81ff;>404</span><span>)
-</span><span>            </span><span style=color:#f92672;>return </span><span>linked_list
-</span></code></pre><p>以上所有源代码均在 <a href=https://github.com/EINDEX/Python-algorithm rel=nofollow>Github</a>共享，欢迎提出issue或PR，希望与大家共同进步!<hr><h2 id=can-kao-zi-liao>参考资料</h2><p>Wiki百科: <a href=https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84 rel=nofollow>数据结构</a>、 <a href=https://zh.wikipedia.org/wiki/%E6%95%B0%E7%BB%84 rel=nofollow>数组</a>、 <a href=https://zh.wikipedia.org/wiki/%E9%98%9F%E5%88%97 rel=nofollow>队列</a>、 <a href=https://zh.wikipedia.org/wiki/%E9%93%BE%E8%A1%A8#.E5.88.9D.E5.A7.8B.E5.8C.96.E5.92.8C.E9.94.80.E6.AF.81 rel=nofollow>链表</a></section><section class=post-footer><div class=tags><span class=tag><a href=https://eindex.me/cn/tags/python/>Python</a></span><span class=tag><a href=https://eindex.me/cn/tags/data-structure/>Data structure</a></span><span class=tag><a href=https://eindex.me/cn/tags/linear/>Linear</a></span></div></section><hr><section class=webmentions><h2>Response</h2><p class=how-to-send-webmention>Have you written any responses to this article? If so, please send your article or tweet link below. (Making sure to include the link of this article in the content, learn more about webmentions from <a href=https://indieweb.org/Webmention>here</a>.)<form action=https://webmention.io/eindex.me/webmention class=webmention-form method=post><input name=target type=hidden value=https://eindex.me/cn/posts/liner-in-python/><input placeholder="Your webmention link" name=source><button>Send Webmention</button></form><p class="flex flex-row how-to-send-webmention"><a class=twitter-share-button href=https://twitter.com/intent/tweet>Tweet</a>  and send response.</section></article></main><aside><section class=search><input id=search-bar-input placeholder=Searching... type=search></section><section><h3 class=section-title>Series</h3><p><a href=https://eindex.me/cn/series/algorithm/>算法 (5)</a><p><a href=https://eindex.me/cn/series/review/>年终总结 (2)</a><p><a href=https://eindex.me/cn/series/security/>应用安全 (1)</a><p><a href=https://eindex.me/cn/series/blog-enhance-plan/>博客演进计划 (1)</a></section><section><h3 class=section-title>Links</h3><p><a href=https://github.com/EINDEX rel=me>Github</a><p><a href=https://eindex.me/toolkit/> My Toolkit</a><p><a href=/feed.xml>RSS Feed</a><p><a href=/cn/links>友情链接</a></section><section class=advertisement><h3 class=section-title>Advertisements</h3><ins class="adsbygoogle aside" style="display:inline-block;width: 100%;height:500px" data-ad-client=ca-pub-1265138627025369 data-ad-slot=3472732805></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></section><section class=tags><h3 class=section-title>Tags</h3><div class=tags><a href=https://eindex.me/cn/tags/python/>Python (7)</a>, <a href=https://eindex.me/cn/tags/ending/>Ending (2)</a>, <a href=https://eindex.me/cn/tags/annual-summary/>Annual Summary (2)</a>, <a href=https://eindex.me/cn/tags/webmentions/>Webmentions (1)</a>, <a href=https://eindex.me/cn/tags/umami/>umami (1)</a>, <a href=https://eindex.me/cn/tags/thoughtworks/>Thoughtworks (1)</a>, <a href=https://eindex.me/cn/tags/static-analysis/>Static Analysis (1)</a>, <a href=https://eindex.me/cn/tags/sort/>Sort (1)</a>, <a href=https://eindex.me/cn/tags/semgrep/>Semgrep (1)</a>, <a href=https://eindex.me/cn/tags/self-hosted/>Self-Hosted (1)</a>, <a href=https://eindex.me/cn/tags/security/>Security (1)</a>, <a href=https://eindex.me/cn/tags/search-engine/>Search Engine (1)</a>, <a href=https://eindex.me/cn/tags/sast/>SAST (1)</a>, <a href=https://eindex.me/cn/tags/proxmox-ve/>Proxmox VE (1)</a>, <a href=https://eindex.me/cn/tags/pipenv/>Pipenv (1)</a>, <a href=https://eindex.me/cn/tags/microformats2/>Microformats2 (1)</a>, <a href=https://eindex.me/cn/tags/meilisearch/>meilisearch (1)</a>, <a href=https://eindex.me/cn/tags/linear/>Linear (1)</a>, <a href=https://eindex.me/cn/tags/kmp/>KMP (1)</a>, <a href=https://eindex.me/cn/tags/k3s/>K3S (1)</a>, <a href=https://eindex.me/cn/tags/javascript/>JavaScript (1)</a>, <a href=https://eindex.me/cn/tags/introspection/>Introspection (1)</a>, <a href=https://eindex.me/cn/tags/indie-web/>Indie Web (1)</a>, <a href=https://eindex.me/cn/tags/index/>Index (1)</a>, <a href=https://eindex.me/cn/tags/github-actions/>Github Actions (1)</a>, <a href=https://eindex.me/cn/tags/flyio/>flyio (1)</a>, <a href=https://eindex.me/cn/tags/financial-management/>financial-management (1)</a>, <a href=https://eindex.me/cn/tags/financial-independence/>financial-independence (1)</a>, <a href=https://eindex.me/cn/tags/financial/>financial (1)</a>, <a href=https://eindex.me/cn/tags/etag/>ETag (1)</a>, <a href=https://eindex.me/cn/tags/environment/>Environment (1)</a>, <a href=https://eindex.me/cn/tags/engagement/>Engagement (1)</a>, <a href=https://eindex.me/cn/tags/docker/>Docker (1)</a>, <a href=https://eindex.me/cn/tags/devsecops/>DevSecOps (1)</a>, <a href=https://eindex.me/cn/tags/devops/>DevOps (1)</a>, <a href=https://eindex.me/cn/tags/data-structure/>Data structure (1)</a>, <a href=https://eindex.me/cn/tags/crawler/>Crawler (1)</a>, <a href=https://eindex.me/cn/tags/connectivity/>Connectivity (1)</a>, <a href=https://eindex.me/cn/tags/community/>Community (1)</a>, <a href=https://eindex.me/cn/tags/code-review/>Code Review (1)</a>, <a href=https://eindex.me/cn/tags/ci/>CI (1)</a>, <a href=https://eindex.me/cn/tags/chatgpt/>ChatGPT (1)</a>, <a href=https://eindex.me/cn/tags/cache/>Cache (1)</a>, <a href=https://eindex.me/cn/tags/build-security-in/>Build Security In (1)</a>, <a href=https://eindex.me/cn/tags/best-practices/>Best Practices (1)</a>, <a href=https://eindex.me/cn/tags/beginner-s-guide/>Beginner's Guide (1)</a>, <a href=https://eindex.me/cn/tags/beancount/>Beancount (1)</a>, <a href=https://eindex.me/cn/tags/autoenv/>Autoenv (1)</a>, <a href=https://eindex.me/cn/tags/async/>Async (1)</a>, <a href=https://eindex.me/cn/tags/archlinux/>ArchLinux (1)</a>, <a href=https://eindex.me/cn/tags/after-reading/>After Reading (1)</a></div></section></aside></div><footer class=footer><span class=webring> <a href=https://xn--sr8hvo.ws/%F0%9F%95%90%F0%9F%89%91%F0%9F%88%B6/previous>←</a> An IndieWeb Webring 🕸💍 <a href=https://xn--sr8hvo.ws/%F0%9F%95%90%F0%9F%89%91%F0%9F%88%B6/next>→</a> </span><span>EINDEX @ 2023</span></footer></div></body><script async data-domains=eindex.me data-host-url=https://u.eindex.me data-website-id=692d9153-7341-4370-b652-60df196f2b31 defer src=/js/umami.js></script><script>window.twttr = (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0],
-      t = window.twttr || {};
-    if (d.getElementById(id)) return t;
-    js = d.createElement(s);
-    js.id = id;
-    js.src = "https://platform.twitter.com/widgets.js?omit_script=true";
-    fjs.parentNode.insertBefore(js, fjs);
+</article-code>
+<h2 id="队列">队列</h2>
+<h3 id="什么是队列">什么是队列</h3>
+<p>和堆栈类似，唯一的区别是队列只能在队头进行出队操作，所以队列是是先进先出（FIFO, First-In-First-Out）的线性表</p>
+<h3 id="特点-1">特点</h3>
+<ul>
+<li>先入先出,后入后出</li>
+<li>除尾节点外,每个节点有一个后继</li>
+<li>（可选）除头节点外,每个节点有一个前驱</li>
+</ul>
+<h3 id="操作-1">操作</h3>
+<ul>
+<li>push（）:入队</li>
+<li>pop（）：出队</li>
+</ul>
+<h3 id="实现-1">实现</h3>
+<h4 id="普通队列">普通队列</h4>
+<article-code class="astro-VKVMCQTA">
+  <div class="code-header astro-VKVMCQTA">
+    <span class="astro-VKVMCQTA">python</span><button class="astro-VKVMCQTA">Copy<svg viewBox="0 0 20 20" class="astro-VKVMCQTA" astro-icon="uiw:copy"><path fill="currentColor" d="M6.644 2.983a.252.252 0 0 0-.253.252c0 .139.113.251.253.251h3.713c.14 0 .253-.112.253-.251a.252.252 0 0 0-.253-.252H6.644zm3.713-1.342c.734 0 1.353.49 1.544 1.16l2.175.001c.621.004 1.122.205 1.432.638.266.372.372.85.345 1.387L15.85 17.84c.042.552-.062 1.04-.328 1.445-.312.473-.821.71-1.452.716H3.14c-.76-.03-1.323-.209-1.675-.609-.327-.371-.47-.88-.464-1.5V4.84c-.013-.6.154-1.106.518-1.48.376-.384.932-.554 1.647-.559h1.935c.19-.67.809-1.16 1.543-1.16h3.713zm0 3.187H6.644c-.546 0-1.027-.27-1.317-.684H3.17c-.383.002-.602.07-.682.152-.091.093-.144.252-.138.531v13.07c-.003.325.052.522.13.61.054.061.286.135.685.151h10.9c.2-.002.28-.04.326-.109.091-.138.133-.334.11-.658l.001-13.096c.014-.293-.027-.482-.096-.578-.026-.035-.116-.072-.336-.073h-2.397c-.29.414-.771.684-1.317.684zM17.2 0c.994 0 1.8.801 1.8 1.79v14.082c0 .988-.806 1.79-1.8 1.79h-1.958v-1.343h1.957c.249 0 .45-.2.45-.447V1.789a.449.449 0 0 0-.45-.447H9.643c-.248 0-.45.2-.45.447v.157h-1.35v-.157C7.843.801 8.649 0 9.643 0H17.2zM8.196 11.751c.373 0 .675.3.675.671 0 .37-.302.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h4.051zm4.052-2.684c.372 0 .675.3.675.671 0 .37-.303.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103zm0-2.684c.372 0 .675.3.675.671a.673.673 0 0 1-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103z"/></svg></button>
+  </div>
+  <div class="code-body astro-VKVMCQTA"><pre class="shiki " style="background-color: none" tabindex="0"><code><span class="line"><span style="color: #66D9EF; font-style: italic">class</span><span style="color: #F8F8F2"> </span><span style="color: #A6E22E; text-decoration: underline">MyQueue</span><span style="color: #F8F8F2">():</span></span>
+<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #66D9EF; font-style: italic">def</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">__init__</span><span style="color: #F8F8F2">(</span><span style="color: #FD971F; font-style: italic">self</span><span style="color: #F8F8F2">, </span><span style="color: #FD971F; font-style: italic">value</span><span style="color: #F92672">=</span><span style="color: #AE81FF">None</span><span style="color: #F8F8F2">):</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #FD971F">self</span><span style="color: #F8F8F2">.value </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> value</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #88846F"># 前驱</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #88846F"># self.before = None</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #88846F"># 后继</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #FD971F">self</span><span style="color: #F8F8F2">.behind </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">None</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #66D9EF; font-style: italic">def</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">__str__</span><span style="color: #F8F8F2">(</span><span style="color: #FD971F; font-style: italic">self</span><span style="color: #F8F8F2">):</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> </span><span style="color: #FD971F">self</span><span style="color: #F8F8F2">.value </span><span style="color: #F92672">is</span><span style="color: #F8F8F2"> </span><span style="color: #F92672">not</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">None</span><span style="color: #F8F8F2">:</span></span>
+<span class="line"><span style="color: #F8F8F2">            </span><span style="color: #F92672">return</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF; font-style: italic">str</span><span style="color: #F8F8F2">(</span><span style="color: #FD971F">self</span><span style="color: #F8F8F2">.value)</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">else</span><span style="color: #F8F8F2">:</span></span>
+<span class="line"><span style="color: #F8F8F2">            </span><span style="color: #F92672">return</span><span style="color: #F8F8F2"> </span><span style="color: #E6DB74">&#39;None&#39;</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color: #66D9EF; font-style: italic">def</span><span style="color: #F8F8F2"> </span><span style="color: #A6E22E">create_queue</span><span style="color: #F8F8F2">():</span></span>
+<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #E6DB74">&quot;&quot;&quot;仅有队头&quot;&quot;&quot;</span></span>
+<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F92672">return</span><span style="color: #F8F8F2"> MyQueue()</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color: #66D9EF; font-style: italic">def</span><span style="color: #F8F8F2"> </span><span style="color: #A6E22E">last</span><span style="color: #F8F8F2">(</span><span style="color: #FD971F; font-style: italic">queue</span><span style="color: #F8F8F2">):</span></span>
+<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">isinstance</span><span style="color: #F8F8F2">(queue, MyQueue):</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> queue.behind </span><span style="color: #F92672">is</span><span style="color: #F8F8F2"> </span><span style="color: #F92672">not</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">None</span><span style="color: #F8F8F2">:</span></span>
+<span class="line"><span style="color: #F8F8F2">            </span><span style="color: #F92672">return</span><span style="color: #F8F8F2"> last(queue.behind)</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">else</span><span style="color: #F8F8F2">:</span></span>
+<span class="line"><span style="color: #F8F8F2">            </span><span style="color: #F92672">return</span><span style="color: #F8F8F2"> queue</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color: #66D9EF; font-style: italic">def</span><span style="color: #F8F8F2"> </span><span style="color: #A6E22E">push</span><span style="color: #F8F8F2">(</span><span style="color: #FD971F; font-style: italic">queue</span><span style="color: #F8F8F2">, </span><span style="color: #FD971F; font-style: italic">ele</span><span style="color: #F8F8F2">):</span></span>
+<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">isinstance</span><span style="color: #F8F8F2">(queue, MyQueue):</span></span>
+<span class="line"><span style="color: #F8F8F2">        last_queue </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> last(queue)</span></span>
+<span class="line"><span style="color: #F8F8F2">        new_queue </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> MyQueue(ele)</span></span>
+<span class="line"><span style="color: #F8F8F2">        last_queue.behind </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> new_queue</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color: #66D9EF; font-style: italic">def</span><span style="color: #F8F8F2"> </span><span style="color: #A6E22E">pop</span><span style="color: #F8F8F2">(</span><span style="color: #FD971F; font-style: italic">queue</span><span style="color: #F8F8F2">):</span></span>
+<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> queue.behind </span><span style="color: #F92672">is</span><span style="color: #F8F8F2"> </span><span style="color: #F92672">not</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">None</span><span style="color: #F8F8F2">:</span></span>
+<span class="line"><span style="color: #F8F8F2">        get_queue </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> queue.behind</span></span>
+<span class="line"><span style="color: #F8F8F2">        queue.behind </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> queue.behind.behind</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">return</span><span style="color: #F8F8F2"> get_queue</span></span>
+<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F92672">else</span><span style="color: #F8F8F2">:</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #66D9EF">print</span><span style="color: #F8F8F2">(</span><span style="color: #E6DB74">&#39;队列里已经没有元素了&#39;</span><span style="color: #F8F8F2">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #66D9EF; font-style: italic">def</span><span style="color: #F8F8F2"> </span><span style="color: #A6E22E">print_queue</span><span style="color: #F8F8F2">(</span><span style="color: #FD971F; font-style: italic">queue</span><span style="color: #F8F8F2">):</span></span>
+<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #66D9EF">print</span><span style="color: #F8F8F2">(queue)</span></span>
+<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> queue.behind </span><span style="color: #F92672">is</span><span style="color: #F8F8F2"> </span><span style="color: #F92672">not</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">None</span><span style="color: #F8F8F2">:</span></span>
+<span class="line"><span style="color: #F8F8F2">        print_queue(queue.behind)</span></span>
+<span class="line"></span></code></pre></div>
+
   
-    t._e = [];
-    t.ready = function(f) {
-      t._e.push(f);
-    };
+
   
-    return t;
-  }(document, "script", "twitter-wjs"));</script><script src=https://cdn.jsdelivr.net/npm/docs-searchbar.js@2.4.1/dist/cdn/docs-searchbar.min.js></script><script>docsSearchBar({
-    hostUrl: "https://meili.eindex.me",
-    apiKey: "a39cff5442b90bb926f6408b0b08671eee444599e6d9c44c29bd0adae09a4b86",
-    indexUid: "blog",
-    inputSelector: '#search-bar-input',
-    debug: true, // Set debug to true if you want to inspect the dropdown
-  })</script><script async defer src=/js/pv-counter.js></script>
+</article-code>
+<h2 id="链表">链表</h2>
+<h3 id="什么是链表">什么是链表</h3>
+<p>链表（Linked list）是一种常见的基础数据结构，是一种线性表，但是并不会按线性的顺序存储数据，而是在每一个节点里存到下一个节点的指针(Pointer)。由于不必须按顺序存储，链表在插入的时候可以达到 O(1)的复杂度，比另一种线性表顺序表快得多，但是查找一个节点或者访问特定编号的节点则需要 O(n)的时间，而顺序表相应的时间复杂度分别是 O(logn)和 O(1)。</p>
+<h3 id="特点-2">特点</h3>
+<p>使用链表结构可以克服数组链表需要预先知道数据大小的缺点，链表结构可以充分利用计算机内存空间，实现灵活的内存动态管理。但是链表失去了数组随机读取的优点，同时链表由于增加了结点的指针域，空间开销比较大。</p>
+<h3 id="操作-2">操作</h3>
+<ul>
+<li>init():初始化</li>
+<li>insert(): 插入</li>
+<li>trave(): 遍历</li>
+<li>delete(): 删除</li>
+<li>find(): 查找</li>
+</ul>
+<h3 id="实现-2">实现</h3>
+<p>此处仅实现双向列表</p>
+<article-code class="astro-VKVMCQTA">
+  <div class="code-header astro-VKVMCQTA">
+    <span class="astro-VKVMCQTA">python</span><button class="astro-VKVMCQTA">Copy<svg viewBox="0 0 20 20" class="astro-VKVMCQTA" astro-icon="uiw:copy"><path fill="currentColor" d="M6.644 2.983a.252.252 0 0 0-.253.252c0 .139.113.251.253.251h3.713c.14 0 .253-.112.253-.251a.252.252 0 0 0-.253-.252H6.644zm3.713-1.342c.734 0 1.353.49 1.544 1.16l2.175.001c.621.004 1.122.205 1.432.638.266.372.372.85.345 1.387L15.85 17.84c.042.552-.062 1.04-.328 1.445-.312.473-.821.71-1.452.716H3.14c-.76-.03-1.323-.209-1.675-.609-.327-.371-.47-.88-.464-1.5V4.84c-.013-.6.154-1.106.518-1.48.376-.384.932-.554 1.647-.559h1.935c.19-.67.809-1.16 1.543-1.16h3.713zm0 3.187H6.644c-.546 0-1.027-.27-1.317-.684H3.17c-.383.002-.602.07-.682.152-.091.093-.144.252-.138.531v13.07c-.003.325.052.522.13.61.054.061.286.135.685.151h10.9c.2-.002.28-.04.326-.109.091-.138.133-.334.11-.658l.001-13.096c.014-.293-.027-.482-.096-.578-.026-.035-.116-.072-.336-.073h-2.397c-.29.414-.771.684-1.317.684zM17.2 0c.994 0 1.8.801 1.8 1.79v14.082c0 .988-.806 1.79-1.8 1.79h-1.958v-1.343h1.957c.249 0 .45-.2.45-.447V1.789a.449.449 0 0 0-.45-.447H9.643c-.248 0-.45.2-.45.447v.157h-1.35v-.157C7.843.801 8.649 0 9.643 0H17.2zM8.196 11.751c.373 0 .675.3.675.671 0 .37-.302.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h4.051zm4.052-2.684c.372 0 .675.3.675.671 0 .37-.303.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103zm0-2.684c.372 0 .675.3.675.671a.673.673 0 0 1-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103z"/></svg></button>
+  </div>
+  <div class="code-body astro-VKVMCQTA"><pre class="shiki " style="background-color: none" tabindex="0"><code><span class="line"><span style="color: #66D9EF; font-style: italic">class</span><span style="color: #F8F8F2"> </span><span style="color: #A6E22E; text-decoration: underline">LinkedList</span><span style="color: #F8F8F2">():</span></span>
+<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #66D9EF; font-style: italic">def</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">__init__</span><span style="color: #F8F8F2">(</span><span style="color: #FD971F; font-style: italic">self</span><span style="color: #F8F8F2">, </span><span style="color: #FD971F; font-style: italic">value</span><span style="color: #F92672">=</span><span style="color: #AE81FF">None</span><span style="color: #F8F8F2">):</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #FD971F">self</span><span style="color: #F8F8F2">.value </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> value</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #88846F"># 前驱</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #FD971F">self</span><span style="color: #F8F8F2">.before </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">None</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #88846F"># 后继</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #FD971F">self</span><span style="color: #F8F8F2">.behind </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">None</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #66D9EF; font-style: italic">def</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">__str__</span><span style="color: #F8F8F2">(</span><span style="color: #FD971F; font-style: italic">self</span><span style="color: #F8F8F2">):</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> </span><span style="color: #FD971F">self</span><span style="color: #F8F8F2">.value </span><span style="color: #F92672">is</span><span style="color: #F8F8F2"> </span><span style="color: #F92672">not</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">None</span><span style="color: #F8F8F2">:</span></span>
+<span class="line"><span style="color: #F8F8F2">            </span><span style="color: #F92672">return</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF; font-style: italic">str</span><span style="color: #F8F8F2">(</span><span style="color: #FD971F">self</span><span style="color: #F8F8F2">.value)</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">else</span><span style="color: #F8F8F2">:</span></span>
+<span class="line"><span style="color: #F8F8F2">            </span><span style="color: #F92672">return</span><span style="color: #F8F8F2"> </span><span style="color: #E6DB74">&#39;None&#39;</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color: #66D9EF; font-style: italic">def</span><span style="color: #F8F8F2"> </span><span style="color: #A6E22E">init</span><span style="color: #F8F8F2">():</span></span>
+<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F92672">return</span><span style="color: #F8F8F2"> LinkedList(</span><span style="color: #E6DB74">&#39;HEAD&#39;</span><span style="color: #F8F8F2">)</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color: #66D9EF; font-style: italic">def</span><span style="color: #F8F8F2"> </span><span style="color: #A6E22E">delete</span><span style="color: #F8F8F2">(</span><span style="color: #FD971F; font-style: italic">linked_list</span><span style="color: #F8F8F2">):</span></span>
+<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">isinstance</span><span style="color: #F8F8F2">(linked_list, LinkedList):</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> linked_list.behind </span><span style="color: #F92672">is</span><span style="color: #F8F8F2"> </span><span style="color: #F92672">not</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">None</span><span style="color: #F8F8F2">:</span></span>
+<span class="line"><span style="color: #F8F8F2">            delete(linked_list.behind)</span></span>
+<span class="line"><span style="color: #F8F8F2">            linked_list.behind </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">None</span></span>
+<span class="line"><span style="color: #F8F8F2">            linked_list.before </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">None</span></span>
+<span class="line"><span style="color: #F8F8F2">        linked_list.value </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">None</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color: #66D9EF; font-style: italic">def</span><span style="color: #F8F8F2"> </span><span style="color: #A6E22E">insert</span><span style="color: #F8F8F2">(</span><span style="color: #FD971F; font-style: italic">linked_list</span><span style="color: #F8F8F2">, </span><span style="color: #FD971F; font-style: italic">index</span><span style="color: #F8F8F2">, </span><span style="color: #FD971F; font-style: italic">node</span><span style="color: #F8F8F2">):</span></span>
+<span class="line"><span style="color: #F8F8F2">    node </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> LinkedList(node)</span></span>
+<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">isinstance</span><span style="color: #F8F8F2">(linked_list, LinkedList):</span></span>
+<span class="line"><span style="color: #F8F8F2">        i </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">0</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">while</span><span style="color: #F8F8F2"> linked_list.behind </span><span style="color: #F92672">is</span><span style="color: #F8F8F2"> </span><span style="color: #F92672">not</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">None</span><span style="color: #F8F8F2">:</span></span>
+<span class="line"><span style="color: #F8F8F2">            </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> i </span><span style="color: #F92672">==</span><span style="color: #F8F8F2"> index:</span></span>
+<span class="line"><span style="color: #F8F8F2">                </span><span style="color: #F92672">break</span></span>
+<span class="line"><span style="color: #F8F8F2">            i </span><span style="color: #F92672">+=</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">1</span></span>
+<span class="line"><span style="color: #F8F8F2">            linked_list </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> linked_list.behind</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> linked_list.behind </span><span style="color: #F92672">is</span><span style="color: #F8F8F2"> </span><span style="color: #F92672">not</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">None</span><span style="color: #F8F8F2">:</span></span>
+<span class="line"><span style="color: #F8F8F2">            node.behind </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> linked_list.behind</span></span>
+<span class="line"><span style="color: #F8F8F2">            linked_list.behind.before </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> node</span></span>
+<span class="line"><span style="color: #F8F8F2">        node.before, linked_list.behind </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> linked_list, node</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color: #66D9EF; font-style: italic">def</span><span style="color: #F8F8F2"> </span><span style="color: #A6E22E">remove</span><span style="color: #F8F8F2">(</span><span style="color: #FD971F; font-style: italic">linked_list</span><span style="color: #F8F8F2">, </span><span style="color: #FD971F; font-style: italic">index</span><span style="color: #F8F8F2">):</span></span>
+<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">isinstance</span><span style="color: #F8F8F2">(linked_list, LinkedList):</span></span>
+<span class="line"><span style="color: #F8F8F2">        i </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">0</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">while</span><span style="color: #F8F8F2"> linked_list.behind </span><span style="color: #F92672">is</span><span style="color: #F8F8F2"> </span><span style="color: #F92672">not</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">None</span><span style="color: #F8F8F2">:</span></span>
+<span class="line"><span style="color: #F8F8F2">            </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> i </span><span style="color: #F92672">==</span><span style="color: #F8F8F2"> index:</span></span>
+<span class="line"><span style="color: #F8F8F2">                </span><span style="color: #F92672">break</span></span>
+<span class="line"><span style="color: #F8F8F2">            i </span><span style="color: #F92672">+=</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">1</span></span>
+<span class="line"><span style="color: #F8F8F2">            linked_list </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> linked_list.behind</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> linked_list.behind </span><span style="color: #F92672">is</span><span style="color: #F8F8F2"> </span><span style="color: #F92672">not</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">None</span><span style="color: #F8F8F2">:</span></span>
+<span class="line"><span style="color: #F8F8F2">            linked_list.behind.before </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> linked_list.before</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> linked_list.before </span><span style="color: #F92672">is</span><span style="color: #F8F8F2"> </span><span style="color: #F92672">not</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">None</span><span style="color: #F8F8F2">:</span></span>
+<span class="line"><span style="color: #F8F8F2">            linked_list.before.behind </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> linked_list.behind</span></span>
+<span class="line"><span style="color: #F8F8F2">        linked_list.behind </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">None</span></span>
+<span class="line"><span style="color: #F8F8F2">        linked_list.before </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">None</span></span>
+<span class="line"><span style="color: #F8F8F2">        linked_list.value </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">None</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color: #66D9EF; font-style: italic">def</span><span style="color: #F8F8F2"> </span><span style="color: #A6E22E">trave</span><span style="color: #F8F8F2">(</span><span style="color: #FD971F; font-style: italic">linked_list</span><span style="color: #F8F8F2">):</span></span>
+<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">isinstance</span><span style="color: #F8F8F2">(linked_list, LinkedList):</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #66D9EF">print</span><span style="color: #F8F8F2">(linked_list)</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> linked_list.behind </span><span style="color: #F92672">is</span><span style="color: #F8F8F2"> </span><span style="color: #F92672">not</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">None</span><span style="color: #F8F8F2">:</span></span>
+<span class="line"><span style="color: #F8F8F2">            trave(linked_list.behind)</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color: #66D9EF; font-style: italic">def</span><span style="color: #F8F8F2"> </span><span style="color: #A6E22E">find</span><span style="color: #F8F8F2">(</span><span style="color: #FD971F; font-style: italic">linked_list</span><span style="color: #F8F8F2">, </span><span style="color: #FD971F; font-style: italic">index</span><span style="color: #F8F8F2">):</span></span>
+<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">isinstance</span><span style="color: #F8F8F2">(linked_list, LinkedList):</span></span>
+<span class="line"><span style="color: #F8F8F2">        i </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">0</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">while</span><span style="color: #F8F8F2"> linked_list.behind </span><span style="color: #F92672">is</span><span style="color: #F8F8F2"> </span><span style="color: #F92672">not</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">None</span><span style="color: #F8F8F2">:</span></span>
+<span class="line"><span style="color: #F8F8F2">            </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> i </span><span style="color: #F92672">==</span><span style="color: #F8F8F2"> index:</span></span>
+<span class="line"><span style="color: #F8F8F2">                </span><span style="color: #F92672">return</span><span style="color: #F8F8F2"> linked_list</span></span>
+<span class="line"><span style="color: #F8F8F2">            i </span><span style="color: #F92672">+=</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">1</span></span>
+<span class="line"><span style="color: #F8F8F2">            linked_list </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> linked_list.behind</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">else</span><span style="color: #F8F8F2">:</span></span>
+<span class="line"><span style="color: #F8F8F2">            </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> i </span><span style="color: #F92672">&lt;</span><span style="color: #F8F8F2"> index:</span></span>
+<span class="line"><span style="color: #F8F8F2">                </span><span style="color: #F92672">raise</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF; font-style: italic">Exception</span><span style="color: #F8F8F2">(</span><span style="color: #AE81FF">404</span><span style="color: #F8F8F2">)</span></span>
+<span class="line"><span style="color: #F8F8F2">            </span><span style="color: #F92672">return</span><span style="color: #F8F8F2"> linked_list</span></span>
+<span class="line"></span></code></pre></div>
+
+  
+
+  
+</article-code>
+<p>以上所有源代码均在<a href="https://github.com/EINDEX/Python-algorithm">Github</a>共享，欢迎提出 issue 或 PR，希望与大家共同进步!</p>
+<hr/>
+<h2 id="参考资料">参考资料</h2>
+<p>Wiki 百科: <a href="https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>、<a href="https://zh.wikipedia.org/wiki/%E6%95%B0%E7%BB%84">数组</a>、<a href="https://zh.wikipedia.org/wiki/%E9%98%9F%E5%88%97">队列</a>、<a href="https://zh.wikipedia.org/wiki/%E9%93%BE%E8%A1%A8#.E5.88.9D.E5.A7.8B.E5.8C.96.E5.92.8C.E9.94.80.E6.AF.81">链表</a></p>
+    </section>
+  </article>
+      <footer class="astro-SZ7XMLTE">  
+  <span class="webring astro-MTZRIXCV"> <a href="https://xn--sr8hvo.ws/%F0%9F%95%90%F0%9F%89%91%F0%9F%88%B6/previous" class="astro-MTZRIXCV">←</a> An IndieWeb Webring 🕸💍 <a href="https://xn--sr8hvo.ws/%F0%9F%95%90%F0%9F%89%91%F0%9F%88%B6/next" class="astro-MTZRIXCV">→</a> </span>
+  <span class="astro-SZ7XMLTE">EINDEX @ 2023</span>
+</footer>
+    </div>
+  
+
+</body></html>

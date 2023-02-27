@@ -1,99 +1,233 @@
-<!doctype html><html charset=utf-8 lang=en><head><script src="https://www.googletagmanager.com/gtag/js?id=G-SR36ZS0R52" async></script><script>window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
+<!DOCTYPE html>
+<html lang="en" class="astro-SCKKX6R4">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <meta name="generator" content="Astro v2.0.15">
+    <title></title>
+    <link rel="webmention" href="https://webmention.io/eindex.me/webmention">
+    <link rel="pingback" href="https://webmention.io/eindex.me/xmlrpc">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/lxgwwenkai-regular.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link href="https://{{cdn}}/prismjs@v1.x/themes/prism.css" rel="stylesheet">
+    <link rel="stylesheet" href="/katex.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="/_astro/gallery.197e1a52.css" />
+<link rel="stylesheet" href="/_astro/_slug_.9be3c881.css" />
+<link rel="stylesheet" href="/_astro/_slug_.8ced6fc2.css" /><script type="module">class o extends HTMLElement{constructor(){super();const e=this.querySelector("button"),t=this.querySelector("div.code-body");e.addEventListener("click",()=>{navigator.clipboard.writeText(t.innerText).then(()=>{console.log("copy successd")})})}}customElements.define("article-code",o);
+</script></head>
+  <body class="astro-SCKKX6R4">
+    <div class="blog astro-SCKKX6R4">
+      <nav class="astro-5BLMO7YK">
+  <span class="astro-5BLMO7YK"><img width="32px" height="32px" src="/images/avatar.png" class="astro-5BLMO7YK"><a href="/" class="astro-5BLMO7YK">EINDEX's Blog</a></span>
+  <ul class="astro-5BLMO7YK">
+    <li class="astro-5BLMO7YK"><a rel="me" href="https://github.com/eindex" class="astro-5BLMO7YK">Github</a></li>
+    <li class="astro-5BLMO7YK"><a rel="me" href="https://twitter.com/@eindex_li" class="astro-5BLMO7YK">Twitter</a></li>
+  </ul>
+</nav>
+      cn<article class="h-entry astro-WMBV4WGB">
+    <span class="series p-category astro-WMBV4WGB"></span>
+    <h1 class="title p-name astro-WMBV4WGB">
+      复式记账工具 Beancount<a class="u-url astro-WMBV4WGB" href="/cnbeancount-introduce"></a>
+    </h1>
+    <time class="astro-WMBV4WGB">2019/11/29</time>
 
-  var page_link = new URL(window.location.href);
-  gtag('js', new Date());
-  gtag('config', 'G-SR36ZS0R52', {
-    traffic_type: page_link.searchParams.get("traffic_type")
-  });
-  gtag('set', {
-    traffic_type: page_link.searchParams.get("traffic_type")
-  })</script><link href=https://eindex.me/cn/feed.xml rel=alternate title=RSS type=application/rss+xml><meta content="IE=edge" http-equiv=X-UA-Compatible><meta content="text/html; charset=utf-8" http-equiv=content-type><meta content="width=device-width,initial-scale=1.0,maximum-scale=1" name=viewport><meta content=EINDEX itemprop=author name=author><title>复式记账工具 Beancount • EINDEX's Blog</title><meta content="复式记账工具 Beancount • EINDEX's Blog" property=og:title><meta charset=utf-8><link href="https://eindex.me/css/index.css?h=b4140d1b8e3196cffd2e47c68ff946d2e5312afa70cfe5c88add4caebf732a9e" rel=stylesheet><style>@-moz-document url-prefix() {
-    .lazy:-moz-loading {
-      visibility: hidden;
-    }
-  }
+    <summary class="p-summary astro-WMBV4WGB"></summary>
 
-  .ieOnly {
-    display: none;
-  }
+    <section class="main e-content astro-WMBV4WGB">
+      <p>本文简单介绍一下复式记账和 Beancount 的使用方法。</p>
+<more></more>
+<h2 id="为什么要记账">为什么要记账</h2>
+<p>记账是理财的第一步，熟话说得好：”你不理财，才不理你。“</p>
+<p>记账可以明确自己每一笔钱花在哪去了，这个月最大的开销是什么，以及对自己的冲动消费、不必要消费能有一个反思。</p>
+<p>我曾使用过很多记账软件如：挖财、随手记、网易有钱、MoneyWiz、MOZE 等，其实记账最大的问题在于很难坚持下来，因为短期来看记账的收益并不高，而从长远来看，账本也能体现经济的健康状况。</p>
+<h2 id="复式记账是什么">复式记账是什么</h2>
+<p>复式记账（Double Entry Bookkeeping）是以资产与权益平衡关系作为记账基础，对每一笔账单，都要以相等的金额在两个相互联系的账户中进行记录。</p>
+<p>原理：
+<code>资产 = 负债 + 所有者权益</code></p>
+<p>复式记账的优点是：</p>
+<ul>
+<li>账户对应关系清楚，可以鲜明的表示各种经济活动的来龙去脉。</li>
+<li>有借必有贷，借贷必相等的记账方式，对于检查账单是否记对非常有帮助。</li>
+</ul>
+<h2 id="何为-beancount">何为 Beancount</h2>
+<p>Beancount 是一个用 Python 实现的开源复式记账软件。</p>
+<p>数据文件基于纯文本，所以不用担心程序出问题，数据没法看懂。</p>
+<p>Beancount（fava）的界面大概是这个样子。
+<img src="media/15676038764861/15676114899083.jpg" alt="-w2638"/>
+<img src="media/15676038764861/15676115071325.jpg" alt="-w1319"/></p>
+<p>Beancount 的优点：</p>
+<ol>
+<li>开源，可以自己写功能。</li>
+<li>数据基于纯文本，自己掌握所有数据，不担心隐私泄露。</li>
+<li>支持各种图标，支持 SQL 查询生成报表。</li>
+<li>支持预算（fava）。</li>
+<li>支持无限账本、无限账户、无限币种。</li>
+<li>可以导入各种账单文件（有些需要写代码支持）。</li>
+<li>可以用 Git、iCloud 等工具来管理账本。</li>
+</ol>
+<p>不仅如此，Beancount 还可以量化年假，产假等等非标准金融标的。</p>
+<p>例如讲公司年假记为一笔收入，从公司账户转入到个人账户，成为资产。使用掉年假，则把年假从个人资产转出到消费即可。这样就相当于把年假消费掉了。而年假的货币单位可以设置成 Day。</p>
+<p>写在 Beancount 里大概是这个样子。</p>
+<article-code class="astro-VKVMCQTA">
+  <div class="code-header astro-VKVMCQTA">
+    <span class="astro-VKVMCQTA">beancount</span><button class="astro-VKVMCQTA">Copy<svg viewBox="0 0 20 20" class="astro-VKVMCQTA" astro-icon="uiw:copy"><path fill="currentColor" d="M6.644 2.983a.252.252 0 0 0-.253.252c0 .139.113.251.253.251h3.713c.14 0 .253-.112.253-.251a.252.252 0 0 0-.253-.252H6.644zm3.713-1.342c.734 0 1.353.49 1.544 1.16l2.175.001c.621.004 1.122.205 1.432.638.266.372.372.85.345 1.387L15.85 17.84c.042.552-.062 1.04-.328 1.445-.312.473-.821.71-1.452.716H3.14c-.76-.03-1.323-.209-1.675-.609-.327-.371-.47-.88-.464-1.5V4.84c-.013-.6.154-1.106.518-1.48.376-.384.932-.554 1.647-.559h1.935c.19-.67.809-1.16 1.543-1.16h3.713zm0 3.187H6.644c-.546 0-1.027-.27-1.317-.684H3.17c-.383.002-.602.07-.682.152-.091.093-.144.252-.138.531v13.07c-.003.325.052.522.13.61.054.061.286.135.685.151h10.9c.2-.002.28-.04.326-.109.091-.138.133-.334.11-.658l.001-13.096c.014-.293-.027-.482-.096-.578-.026-.035-.116-.072-.336-.073h-2.397c-.29.414-.771.684-1.317.684zM17.2 0c.994 0 1.8.801 1.8 1.79v14.082c0 .988-.806 1.79-1.8 1.79h-1.958v-1.343h1.957c.249 0 .45-.2.45-.447V1.789a.449.449 0 0 0-.45-.447H9.643c-.248 0-.45.2-.45.447v.157h-1.35v-.157C7.843.801 8.649 0 9.643 0H17.2zM8.196 11.751c.373 0 .675.3.675.671 0 .37-.302.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h4.051zm4.052-2.684c.372 0 .675.3.675.671 0 .37-.303.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103zm0-2.684c.372 0 .675.3.675.671a.673.673 0 0 1-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103z"/></svg></button>
+  </div>
+  <div class="code-body astro-VKVMCQTA"><code class="language-beancount">2019-04-24 * &quot;CompanyName&quot; &quot;请假一天休息&quot;
+  Assets:Leave                              -1.00 DAY
+  Expenses:Health
 
-  @media all and (-ms-high-contrast: none),
-  (-ms-high-contrast: active) {
-    .ieOnly {
-      display: block;
-    }
-  }</style><link href=https://webmention.io/eindex.me/webmention rel=webmention><link href=https://webmention.io/eindex.me/xmlrpc rel=pingback><script src=https://cdn.jsdelivr.net/npm/iconify-icon@1.0.1/dist/iconify-icon.min.js></script><link href=/favicon-512.png rel=apple-touch-icon sizes=512x512><link href=/favicon-512.png rel=icon sizes=512x512 type=image/png><link href=/favicon-192.png rel=icon sizes=192x192 type=image/png><link href=/manifest.json rel=manifest><meta content=on name=twitter:dnt><meta content=on name=twitter:widgets:csp><meta content=https://eindex.me/cn/posts/beancount-introduce/ property=og:url><meta content="EINDEX's Blog" property=og:site_name><meta content=https://eindex.me/images/avatar.png property=og:image><meta content=summary name=twitter:card><meta content="复式记账工具 Beancount" name=twitter:title><meta content=@eindex_li name=twitter:site><meta content=@eindex_li name=twitter:creator><meta content=https://eindex.me/images/avatar.png name=twitter:image><link href=https://twitter.com/eindex_li rel=me><script type=application/ld+json>
-{
-  "@context": "https://schema.org/",
-  "@type": "BlogPosting",
-  "headline": "复式记账工具 Beancount",
-  "image": "https://eindex.me/images/avatar.png",
+2019-04-01 * &quot;CompanyName&quot; &quot;年假-初始化&quot;
+  Income:Job:CompanyName:Leave
+  Assets:Leave                                 +7.00 DAY
+</code></div>
+
   
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://eindex.me/cn/posts/beancount-introduce/"
-  },
+
   
-  "datePublished": "2019-11-30",
+</article-code>
+<h2 id="基本语法">基本语法</h2>
+<h3 id="基本格式">基本格式</h3>
+<article-code class="astro-VKVMCQTA">
+  <div class="code-header astro-VKVMCQTA">
+    <span class="astro-VKVMCQTA"></span><button class="astro-VKVMCQTA">Copy<svg viewBox="0 0 20 20" class="astro-VKVMCQTA" astro-icon="uiw:copy"><path fill="currentColor" d="M6.644 2.983a.252.252 0 0 0-.253.252c0 .139.113.251.253.251h3.713c.14 0 .253-.112.253-.251a.252.252 0 0 0-.253-.252H6.644zm3.713-1.342c.734 0 1.353.49 1.544 1.16l2.175.001c.621.004 1.122.205 1.432.638.266.372.372.85.345 1.387L15.85 17.84c.042.552-.062 1.04-.328 1.445-.312.473-.821.71-1.452.716H3.14c-.76-.03-1.323-.209-1.675-.609-.327-.371-.47-.88-.464-1.5V4.84c-.013-.6.154-1.106.518-1.48.376-.384.932-.554 1.647-.559h1.935c.19-.67.809-1.16 1.543-1.16h3.713zm0 3.187H6.644c-.546 0-1.027-.27-1.317-.684H3.17c-.383.002-.602.07-.682.152-.091.093-.144.252-.138.531v13.07c-.003.325.052.522.13.61.054.061.286.135.685.151h10.9c.2-.002.28-.04.326-.109.091-.138.133-.334.11-.658l.001-13.096c.014-.293-.027-.482-.096-.578-.026-.035-.116-.072-.336-.073h-2.397c-.29.414-.771.684-1.317.684zM17.2 0c.994 0 1.8.801 1.8 1.79v14.082c0 .988-.806 1.79-1.8 1.79h-1.958v-1.343h1.957c.249 0 .45-.2.45-.447V1.789a.449.449 0 0 0-.45-.447H9.643c-.248 0-.45.2-.45.447v.157h-1.35v-.157C7.843.801 8.649 0 9.643 0H17.2zM8.196 11.751c.373 0 .675.3.675.671 0 .37-.302.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h4.051zm4.052-2.684c.372 0 .675.3.675.671 0 .37-.303.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103zm0-2.684c.372 0 .675.3.675.671a.673.673 0 0 1-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103z"/></svg></button>
+  </div>
+  <div class="code-body astro-VKVMCQTA"><code>YYYY-MM-DD &lt;directive&gt; &lt;arguments...&gt;
+</code></div>
+
   
+
   
-  "author": {
-    "@type": "Person",
-    "name": "EINDEX",
-    "url": "https://eindex.me/about"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "EINDEX's Blog",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://eindex.me/images/avatar.png"
-    }
-  },
-  "keywords": ["algorithm","Beancount"]
-}
-</script><link href=https://cdn.jsdelivr.net/npm/docs-searchbar.js@2.4.1/dist/cdn/docs-searchbar.min.css rel=stylesheet><script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1265138627025369" async crossorigin=anonymous></script><body><div class=all><header><nav class=navbar><div class=avatar><a class=site-link href=https://eindex.me/cn/><img alt=Workflow class=avatar src=https://eindex.me/processed_images/e75389feba7c019600.png></a></div><div class=menus><a href=https://eindex.me/cn/gallery/>相册</a><a href=https://eindex.me/cn/archive/>归档</a></div><div class=switcher><a class="language switch" href=https://eindex.me/><iconify-icon icon=ri:english-input></iconify-icon></a></div></nav></header><div class=content><main><article class=h-entry data-clarity-region=article><section class=header><section class=title-area><a class="series p-category" href=https://eindex.me/cn/series/algorithm/>算法</a><h1 class="title p-name"><a class=u-url href=https://eindex.me/cn/posts/beancount-introduce/>复式记账工具 Beancount</a></h1></section><section class=meta-area><p style="display: none;" class=p-summary>&LTp>本文简单介绍一下复式记账和 Beancount 的使用方法。&LT/p></p><span><iconify-icon icon=ant-design:calendar-outlined></iconify-icon> <time class=dt-published>2019-11-30</time> </span><span><iconify-icon icon=bx:time-five></iconify-icon> 6 mins</span><span style=display:none><iconify-icon icon=mdi:eye-outline></iconify-icon> <span id=pv></span> views</span></section></section><div class="p-author h-card" style="display: none;"><img class="u-logo u-photo" src=https://eindex.me/images/avatar.png><a class="p-nickname p-name u-url" href=https://eindex.me>EINDEX</a><p class=p-note>My goal is make happy.</div><section class="main e-content"><p>本文简单介绍一下复式记账和 Beancount 的使用方法。</p><span id=continue-reading></span><h2 id=wei-shi-yao-yao-ji-zhang>为什么要记账</h2><p>记账是理财的第一步，熟话说得好：”你不理财，才不理你。“<p>记账可以明确自己每一笔钱花在哪去了，这个月最大的开销是什么，以及对自己的冲动消费、不必要消费能有一个反思。<p>我曾使用过很多记账软件如：挖财、随手记、网易有钱、MoneyWiz、MOZE 等，其实记账最大的问题在于很难坚持下来，因为短期来看记账的收益并不高，而从长远来看，账本也能体现经济的健康状况。<h2 id=fu-shi-ji-zhang-shi-shi-yao>复式记账是什么</h2><p>复式记账（Double Entry Bookkeeping）是以资产与权益平衡关系作为记账基础，对每一笔账单，都要以相等的金额在两个相互联系的账户中进行记录。<p>原理： <code>资产 = 负债 + 所有者权益</code><p>复式记账的优点是：<ul><li>账户对应关系清楚，可以鲜明的表示各种经济活动的来龙去脉。<li>有借必有贷，借贷必相等的记账方式，对于检查账单是否记对非常有帮助。</ul><h2 id=he-wei-beancount>何为 Beancount</h2><p>Beancount 是一个用 Python 实现的开源复式记账软件。<p>数据文件基于纯文本，所以不用担心程序出问题，数据没法看懂。<p>Beancount（fava）的界面大概是这个样子。 <img alt=-w2638 src=https://eindex.me/cn/posts/beancount-introduce/media/15676038764861/15676114899083.jpg> <img alt=-w1319 src=https://eindex.me/cn/posts/beancount-introduce/media/15676038764861/15676115071325.jpg><p>Beancount 的优点：<ol><li>开源，可以自己写功能。<li>数据基于纯文本，自己掌握所有数据，不担心隐私泄露。<li>支持各种图标，支持SQL查询生成报表。<li>支持预算（fava）。<li>支持无限账本、无限账户、无限币种。<li>可以导入各种账单文件（有些需要写代码支持）。<li>可以用 Git、iCloud 等工具来管理账本。</ol><p>不仅如此，Beancount 还可以量化年假，产假等等非标准金融标的。<p>例如讲公司年假记为一笔收入，从公司账户转入到个人账户，成为资产。使用掉年假，则把年假从个人资产转出到消费即可。这样就相当于把年假消费掉了。而年假的货币单位可以设置成 Day。<p>写在 Beancount 里大概是这个样子。<pre class=language-beancount data-lang=beancount style=background-color:#272822;color:#f8f8f2;><code class=language-beancount data-lang=beancount><span>2019-04-24 * "CompanyName" "请假一天休息"
-</span><span>  Assets:Leave                              -1.00 DAY
-</span><span>  Expenses:Health
-</span><span>
-</span><span>2019-04-01 * "CompanyName" "年假-初始化"
-</span><span>  Income:Job:CompanyName:Leave
-</span><span>  Assets:Leave                                 +7.00 DAY
-</span></code></pre><h2 id=ji-ben-yu-fa>基本语法</h2><h3 id=ji-ben-ge-shi>基本格式</h3><pre style=background-color:#272822;color:#f8f8f2;><code><span>YYYY-MM-DD &LTdirective> &LTarguments...>
-</span></code></pre><h3 id=chuang-jian-huo-bi>创建货币</h3><pre style=background-color:#272822;color:#f8f8f2;><code><span>option "operating_currency" "CNY"
-</span></code></pre><h3 id=zhang-hu-xiang-guan>账户相关</h3><p>创建账户<pre style=background-color:#272822;color:#f8f8f2;><code><span>1970-01-01 open Assets:Bank:ABC CNY
-</span></code></pre><p>备注账户<pre style=background-color:#272822;color:#f8f8f2;><code><span>1970-01-01 note Assets:Bank:ABC "农行卡"
-</span></code></pre><p>关闭帐户，账户关闭后就可以在现实界面上过滤掉已经关闭的账户。<pre style=background-color:#272822;color:#f8f8f2;><code><span>1970-01-02 close Assets:Bank:ABC
-</span></code></pre><h3 id=jiao-yi>交易</h3><p>这是单笔简单交易的写法，表示我去美食风暴用微信支付吃了个盒饭。<pre style=background-color:#272822;color:#f8f8f2;><code><span>2019-08-02 * "美食风暴" "盒饭"
-</span><span>  Assets:Wechat:EINDEX                                  -18 CNY
-</span><span>  Expenses:Food:Restaurant:Lunch       
-</span></code></pre><h3 id=she-zhi-jie-ge>设置价格</h3><p>可以这是各种“货币”之间的价格转换。如果用上程序员思维，我们就可以实现股票价格跟踪、汇率跟踪等等。来提高账本的准确度。<pre style=background-color:#272822;color:#f8f8f2;><code><span>2019-10-01 price USD 7 CNY
-</span></code></pre><h3 id=yu-e-zi-dong-she-zhi>余额自动设置</h3><p>这是一个偷懒必备功能，下面的 <code>pad</code>，我农行卡自动平账使用<code>Equity:Opening-Balances</code>，明天的 <code>balance</code> 表示在 2019年10月02日时这张卡的余额为4000CNY，如果旧的账单不平就会从<code>Equity:Opening-Balances</code>自动平账。<pre style=background-color:#272822;color:#f8f8f2;><code><span>2019-10-01 pad Assets:Bank:ABC Equity:Opening-Balances
-</span><span>
-</span><span>2019-10-02 balance Assets:Bank:ABC 4000 CNY
-</span></code></pre><p>如果未来要在这个账户过去的账目上做删改，2019年10月1日的余额也会是4000元不变。<h2 id=shi-yong-beancount>使用 Beancount</h2><p>首先需要安装 Python 3，然后安装 beancount、fava。<pre style=background-color:#272822;color:#f8f8f2;><code><span>pip install beancount fava
-</span></code></pre><p><code>fava</code> 是 beancount 的一个 WebUI 实现，可以可视化的看见自己的账本。<h3 id=example>Example</h3><p>官方提供了一个 Beancount 的使用用例。<pre style=background-color:#272822;color:#f8f8f2;><code><span>bean-example > example.bean
-</span><span>fava example.bean
-</span></code></pre><p>然后打开 <code>localhost:5000</code> 就可以在本地体验 Beancount 与 fava 了。<p><img alt=-w1315 src=https://eindex.me/cn/posts/beancount-introduce/media/15676038764861/15676114399432.jpg></section><section class=post-footer><div class=tags><span class=tag><a href=https://eindex.me/cn/tags/beancount/>Beancount</a></span></div></section><section class=backlinks><h3>反向链接</h3><p><a href=https://eindex.me/cn/posts/my-homelab-introduce/>My HomeLab</a></section><hr><section class=webmentions><h2>Response</h2><p class=how-to-send-webmention>Have you written any responses to this article? If so, please send your article or tweet link below. (Making sure to include the link of this article in the content, learn more about webmentions from <a href=https://indieweb.org/Webmention>here</a>.)<form action=https://webmention.io/eindex.me/webmention class=webmention-form method=post><input name=target type=hidden value=https://eindex.me/cn/posts/beancount-introduce/><input placeholder="Your webmention link" name=source><button>Send Webmention</button></form><p class="flex flex-row how-to-send-webmention"><a class=twitter-share-button href=https://twitter.com/intent/tweet>Tweet</a>  and send response.</section></article></main><aside><section class=search><input id=search-bar-input placeholder=Searching... type=search></section><section><h3 class=section-title>Series</h3><p><a href=https://eindex.me/cn/series/algorithm/>算法 (5)</a><p><a href=https://eindex.me/cn/series/review/>年终总结 (2)</a><p><a href=https://eindex.me/cn/series/security/>应用安全 (1)</a><p><a href=https://eindex.me/cn/series/blog-enhance-plan/>博客演进计划 (1)</a></section><section><h3 class=section-title>Links</h3><p><a href=https://github.com/EINDEX rel=me>Github</a><p><a href=https://eindex.me/toolkit/> My Toolkit</a><p><a href=/feed.xml>RSS Feed</a><p><a href=/cn/links>友情链接</a></section><section class=advertisement><h3 class=section-title>Advertisements</h3><ins class="adsbygoogle aside" style="display:inline-block;width: 100%;height:500px" data-ad-client=ca-pub-1265138627025369 data-ad-slot=3472732805></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></section><section class=tags><h3 class=section-title>Tags</h3><div class=tags><a href=https://eindex.me/cn/tags/python/>Python (7)</a>, <a href=https://eindex.me/cn/tags/ending/>Ending (2)</a>, <a href=https://eindex.me/cn/tags/annual-summary/>Annual Summary (2)</a>, <a href=https://eindex.me/cn/tags/webmentions/>Webmentions (1)</a>, <a href=https://eindex.me/cn/tags/umami/>umami (1)</a>, <a href=https://eindex.me/cn/tags/thoughtworks/>Thoughtworks (1)</a>, <a href=https://eindex.me/cn/tags/static-analysis/>Static Analysis (1)</a>, <a href=https://eindex.me/cn/tags/sort/>Sort (1)</a>, <a href=https://eindex.me/cn/tags/semgrep/>Semgrep (1)</a>, <a href=https://eindex.me/cn/tags/self-hosted/>Self-Hosted (1)</a>, <a href=https://eindex.me/cn/tags/security/>Security (1)</a>, <a href=https://eindex.me/cn/tags/search-engine/>Search Engine (1)</a>, <a href=https://eindex.me/cn/tags/sast/>SAST (1)</a>, <a href=https://eindex.me/cn/tags/proxmox-ve/>Proxmox VE (1)</a>, <a href=https://eindex.me/cn/tags/pipenv/>Pipenv (1)</a>, <a href=https://eindex.me/cn/tags/microformats2/>Microformats2 (1)</a>, <a href=https://eindex.me/cn/tags/meilisearch/>meilisearch (1)</a>, <a href=https://eindex.me/cn/tags/linear/>Linear (1)</a>, <a href=https://eindex.me/cn/tags/kmp/>KMP (1)</a>, <a href=https://eindex.me/cn/tags/k3s/>K3S (1)</a>, <a href=https://eindex.me/cn/tags/javascript/>JavaScript (1)</a>, <a href=https://eindex.me/cn/tags/introspection/>Introspection (1)</a>, <a href=https://eindex.me/cn/tags/indie-web/>Indie Web (1)</a>, <a href=https://eindex.me/cn/tags/index/>Index (1)</a>, <a href=https://eindex.me/cn/tags/github-actions/>Github Actions (1)</a>, <a href=https://eindex.me/cn/tags/flyio/>flyio (1)</a>, <a href=https://eindex.me/cn/tags/financial-management/>financial-management (1)</a>, <a href=https://eindex.me/cn/tags/financial-independence/>financial-independence (1)</a>, <a href=https://eindex.me/cn/tags/financial/>financial (1)</a>, <a href=https://eindex.me/cn/tags/etag/>ETag (1)</a>, <a href=https://eindex.me/cn/tags/environment/>Environment (1)</a>, <a href=https://eindex.me/cn/tags/engagement/>Engagement (1)</a>, <a href=https://eindex.me/cn/tags/docker/>Docker (1)</a>, <a href=https://eindex.me/cn/tags/devsecops/>DevSecOps (1)</a>, <a href=https://eindex.me/cn/tags/devops/>DevOps (1)</a>, <a href=https://eindex.me/cn/tags/data-structure/>Data structure (1)</a>, <a href=https://eindex.me/cn/tags/crawler/>Crawler (1)</a>, <a href=https://eindex.me/cn/tags/connectivity/>Connectivity (1)</a>, <a href=https://eindex.me/cn/tags/community/>Community (1)</a>, <a href=https://eindex.me/cn/tags/code-review/>Code Review (1)</a>, <a href=https://eindex.me/cn/tags/ci/>CI (1)</a>, <a href=https://eindex.me/cn/tags/chatgpt/>ChatGPT (1)</a>, <a href=https://eindex.me/cn/tags/cache/>Cache (1)</a>, <a href=https://eindex.me/cn/tags/build-security-in/>Build Security In (1)</a>, <a href=https://eindex.me/cn/tags/best-practices/>Best Practices (1)</a>, <a href=https://eindex.me/cn/tags/beginner-s-guide/>Beginner's Guide (1)</a>, <a href=https://eindex.me/cn/tags/beancount/>Beancount (1)</a>, <a href=https://eindex.me/cn/tags/autoenv/>Autoenv (1)</a>, <a href=https://eindex.me/cn/tags/async/>Async (1)</a>, <a href=https://eindex.me/cn/tags/archlinux/>ArchLinux (1)</a>, <a href=https://eindex.me/cn/tags/after-reading/>After Reading (1)</a></div></section></aside></div><footer class=footer><span class=webring> <a href=https://xn--sr8hvo.ws/%F0%9F%95%90%F0%9F%89%91%F0%9F%88%B6/previous>←</a> An IndieWeb Webring 🕸💍 <a href=https://xn--sr8hvo.ws/%F0%9F%95%90%F0%9F%89%91%F0%9F%88%B6/next>→</a> </span><span>EINDEX @ 2023</span></footer></div></body><script async data-domains=eindex.me data-host-url=https://u.eindex.me data-website-id=692d9153-7341-4370-b652-60df196f2b31 defer src=/js/umami.js></script><script>window.twttr = (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0],
-      t = window.twttr || {};
-    if (d.getElementById(id)) return t;
-    js = d.createElement(s);
-    js.id = id;
-    js.src = "https://platform.twitter.com/widgets.js?omit_script=true";
-    fjs.parentNode.insertBefore(js, fjs);
+</article-code>
+<h3 id="创建货币">创建货币</h3>
+<article-code class="astro-VKVMCQTA">
+  <div class="code-header astro-VKVMCQTA">
+    <span class="astro-VKVMCQTA"></span><button class="astro-VKVMCQTA">Copy<svg viewBox="0 0 20 20" class="astro-VKVMCQTA" astro-icon="uiw:copy"><path fill="currentColor" d="M6.644 2.983a.252.252 0 0 0-.253.252c0 .139.113.251.253.251h3.713c.14 0 .253-.112.253-.251a.252.252 0 0 0-.253-.252H6.644zm3.713-1.342c.734 0 1.353.49 1.544 1.16l2.175.001c.621.004 1.122.205 1.432.638.266.372.372.85.345 1.387L15.85 17.84c.042.552-.062 1.04-.328 1.445-.312.473-.821.71-1.452.716H3.14c-.76-.03-1.323-.209-1.675-.609-.327-.371-.47-.88-.464-1.5V4.84c-.013-.6.154-1.106.518-1.48.376-.384.932-.554 1.647-.559h1.935c.19-.67.809-1.16 1.543-1.16h3.713zm0 3.187H6.644c-.546 0-1.027-.27-1.317-.684H3.17c-.383.002-.602.07-.682.152-.091.093-.144.252-.138.531v13.07c-.003.325.052.522.13.61.054.061.286.135.685.151h10.9c.2-.002.28-.04.326-.109.091-.138.133-.334.11-.658l.001-13.096c.014-.293-.027-.482-.096-.578-.026-.035-.116-.072-.336-.073h-2.397c-.29.414-.771.684-1.317.684zM17.2 0c.994 0 1.8.801 1.8 1.79v14.082c0 .988-.806 1.79-1.8 1.79h-1.958v-1.343h1.957c.249 0 .45-.2.45-.447V1.789a.449.449 0 0 0-.45-.447H9.643c-.248 0-.45.2-.45.447v.157h-1.35v-.157C7.843.801 8.649 0 9.643 0H17.2zM8.196 11.751c.373 0 .675.3.675.671 0 .37-.302.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h4.051zm4.052-2.684c.372 0 .675.3.675.671 0 .37-.303.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103zm0-2.684c.372 0 .675.3.675.671a.673.673 0 0 1-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103z"/></svg></button>
+  </div>
+  <div class="code-body astro-VKVMCQTA"><code>option &quot;operating_currency&quot; &quot;CNY&quot;
+</code></div>
+
   
-    t._e = [];
-    t.ready = function(f) {
-      t._e.push(f);
-    };
+
   
-    return t;
-  }(document, "script", "twitter-wjs"));</script><script src=https://cdn.jsdelivr.net/npm/docs-searchbar.js@2.4.1/dist/cdn/docs-searchbar.min.js></script><script>docsSearchBar({
-    hostUrl: "https://meili.eindex.me",
-    apiKey: "a39cff5442b90bb926f6408b0b08671eee444599e6d9c44c29bd0adae09a4b86",
-    indexUid: "blog",
-    inputSelector: '#search-bar-input',
-    debug: true, // Set debug to true if you want to inspect the dropdown
-  })</script><script async defer src=/js/pv-counter.js></script>
+</article-code>
+<h3 id="账户相关">账户相关</h3>
+<p>创建账户</p>
+<article-code class="astro-VKVMCQTA">
+  <div class="code-header astro-VKVMCQTA">
+    <span class="astro-VKVMCQTA"></span><button class="astro-VKVMCQTA">Copy<svg viewBox="0 0 20 20" class="astro-VKVMCQTA" astro-icon="uiw:copy"><path fill="currentColor" d="M6.644 2.983a.252.252 0 0 0-.253.252c0 .139.113.251.253.251h3.713c.14 0 .253-.112.253-.251a.252.252 0 0 0-.253-.252H6.644zm3.713-1.342c.734 0 1.353.49 1.544 1.16l2.175.001c.621.004 1.122.205 1.432.638.266.372.372.85.345 1.387L15.85 17.84c.042.552-.062 1.04-.328 1.445-.312.473-.821.71-1.452.716H3.14c-.76-.03-1.323-.209-1.675-.609-.327-.371-.47-.88-.464-1.5V4.84c-.013-.6.154-1.106.518-1.48.376-.384.932-.554 1.647-.559h1.935c.19-.67.809-1.16 1.543-1.16h3.713zm0 3.187H6.644c-.546 0-1.027-.27-1.317-.684H3.17c-.383.002-.602.07-.682.152-.091.093-.144.252-.138.531v13.07c-.003.325.052.522.13.61.054.061.286.135.685.151h10.9c.2-.002.28-.04.326-.109.091-.138.133-.334.11-.658l.001-13.096c.014-.293-.027-.482-.096-.578-.026-.035-.116-.072-.336-.073h-2.397c-.29.414-.771.684-1.317.684zM17.2 0c.994 0 1.8.801 1.8 1.79v14.082c0 .988-.806 1.79-1.8 1.79h-1.958v-1.343h1.957c.249 0 .45-.2.45-.447V1.789a.449.449 0 0 0-.45-.447H9.643c-.248 0-.45.2-.45.447v.157h-1.35v-.157C7.843.801 8.649 0 9.643 0H17.2zM8.196 11.751c.373 0 .675.3.675.671 0 .37-.302.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h4.051zm4.052-2.684c.372 0 .675.3.675.671 0 .37-.303.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103zm0-2.684c.372 0 .675.3.675.671a.673.673 0 0 1-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103z"/></svg></button>
+  </div>
+  <div class="code-body astro-VKVMCQTA"><code>1970-01-01 open Assets:Bank:ABC CNY
+</code></div>
+
+  
+
+  
+</article-code>
+<p>备注账户</p>
+<article-code class="astro-VKVMCQTA">
+  <div class="code-header astro-VKVMCQTA">
+    <span class="astro-VKVMCQTA"></span><button class="astro-VKVMCQTA">Copy<svg viewBox="0 0 20 20" class="astro-VKVMCQTA" astro-icon="uiw:copy"><path fill="currentColor" d="M6.644 2.983a.252.252 0 0 0-.253.252c0 .139.113.251.253.251h3.713c.14 0 .253-.112.253-.251a.252.252 0 0 0-.253-.252H6.644zm3.713-1.342c.734 0 1.353.49 1.544 1.16l2.175.001c.621.004 1.122.205 1.432.638.266.372.372.85.345 1.387L15.85 17.84c.042.552-.062 1.04-.328 1.445-.312.473-.821.71-1.452.716H3.14c-.76-.03-1.323-.209-1.675-.609-.327-.371-.47-.88-.464-1.5V4.84c-.013-.6.154-1.106.518-1.48.376-.384.932-.554 1.647-.559h1.935c.19-.67.809-1.16 1.543-1.16h3.713zm0 3.187H6.644c-.546 0-1.027-.27-1.317-.684H3.17c-.383.002-.602.07-.682.152-.091.093-.144.252-.138.531v13.07c-.003.325.052.522.13.61.054.061.286.135.685.151h10.9c.2-.002.28-.04.326-.109.091-.138.133-.334.11-.658l.001-13.096c.014-.293-.027-.482-.096-.578-.026-.035-.116-.072-.336-.073h-2.397c-.29.414-.771.684-1.317.684zM17.2 0c.994 0 1.8.801 1.8 1.79v14.082c0 .988-.806 1.79-1.8 1.79h-1.958v-1.343h1.957c.249 0 .45-.2.45-.447V1.789a.449.449 0 0 0-.45-.447H9.643c-.248 0-.45.2-.45.447v.157h-1.35v-.157C7.843.801 8.649 0 9.643 0H17.2zM8.196 11.751c.373 0 .675.3.675.671 0 .37-.302.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h4.051zm4.052-2.684c.372 0 .675.3.675.671 0 .37-.303.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103zm0-2.684c.372 0 .675.3.675.671a.673.673 0 0 1-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103z"/></svg></button>
+  </div>
+  <div class="code-body astro-VKVMCQTA"><code>1970-01-01 note Assets:Bank:ABC &quot;农行卡&quot;
+</code></div>
+
+  
+
+  
+</article-code>
+<p>关闭帐户，账户关闭后就可以在现实界面上过滤掉已经关闭的账户。</p>
+<article-code class="astro-VKVMCQTA">
+  <div class="code-header astro-VKVMCQTA">
+    <span class="astro-VKVMCQTA"></span><button class="astro-VKVMCQTA">Copy<svg viewBox="0 0 20 20" class="astro-VKVMCQTA" astro-icon="uiw:copy"><path fill="currentColor" d="M6.644 2.983a.252.252 0 0 0-.253.252c0 .139.113.251.253.251h3.713c.14 0 .253-.112.253-.251a.252.252 0 0 0-.253-.252H6.644zm3.713-1.342c.734 0 1.353.49 1.544 1.16l2.175.001c.621.004 1.122.205 1.432.638.266.372.372.85.345 1.387L15.85 17.84c.042.552-.062 1.04-.328 1.445-.312.473-.821.71-1.452.716H3.14c-.76-.03-1.323-.209-1.675-.609-.327-.371-.47-.88-.464-1.5V4.84c-.013-.6.154-1.106.518-1.48.376-.384.932-.554 1.647-.559h1.935c.19-.67.809-1.16 1.543-1.16h3.713zm0 3.187H6.644c-.546 0-1.027-.27-1.317-.684H3.17c-.383.002-.602.07-.682.152-.091.093-.144.252-.138.531v13.07c-.003.325.052.522.13.61.054.061.286.135.685.151h10.9c.2-.002.28-.04.326-.109.091-.138.133-.334.11-.658l.001-13.096c.014-.293-.027-.482-.096-.578-.026-.035-.116-.072-.336-.073h-2.397c-.29.414-.771.684-1.317.684zM17.2 0c.994 0 1.8.801 1.8 1.79v14.082c0 .988-.806 1.79-1.8 1.79h-1.958v-1.343h1.957c.249 0 .45-.2.45-.447V1.789a.449.449 0 0 0-.45-.447H9.643c-.248 0-.45.2-.45.447v.157h-1.35v-.157C7.843.801 8.649 0 9.643 0H17.2zM8.196 11.751c.373 0 .675.3.675.671 0 .37-.302.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h4.051zm4.052-2.684c.372 0 .675.3.675.671 0 .37-.303.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103zm0-2.684c.372 0 .675.3.675.671a.673.673 0 0 1-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103z"/></svg></button>
+  </div>
+  <div class="code-body astro-VKVMCQTA"><code>1970-01-02 close Assets:Bank:ABC
+</code></div>
+
+  
+
+  
+</article-code>
+<h3 id="交易">交易</h3>
+<p>这是单笔简单交易的写法，表示我去美食风暴用微信支付吃了个盒饭。</p>
+<article-code class="astro-VKVMCQTA">
+  <div class="code-header astro-VKVMCQTA">
+    <span class="astro-VKVMCQTA"></span><button class="astro-VKVMCQTA">Copy<svg viewBox="0 0 20 20" class="astro-VKVMCQTA" astro-icon="uiw:copy"><path fill="currentColor" d="M6.644 2.983a.252.252 0 0 0-.253.252c0 .139.113.251.253.251h3.713c.14 0 .253-.112.253-.251a.252.252 0 0 0-.253-.252H6.644zm3.713-1.342c.734 0 1.353.49 1.544 1.16l2.175.001c.621.004 1.122.205 1.432.638.266.372.372.85.345 1.387L15.85 17.84c.042.552-.062 1.04-.328 1.445-.312.473-.821.71-1.452.716H3.14c-.76-.03-1.323-.209-1.675-.609-.327-.371-.47-.88-.464-1.5V4.84c-.013-.6.154-1.106.518-1.48.376-.384.932-.554 1.647-.559h1.935c.19-.67.809-1.16 1.543-1.16h3.713zm0 3.187H6.644c-.546 0-1.027-.27-1.317-.684H3.17c-.383.002-.602.07-.682.152-.091.093-.144.252-.138.531v13.07c-.003.325.052.522.13.61.054.061.286.135.685.151h10.9c.2-.002.28-.04.326-.109.091-.138.133-.334.11-.658l.001-13.096c.014-.293-.027-.482-.096-.578-.026-.035-.116-.072-.336-.073h-2.397c-.29.414-.771.684-1.317.684zM17.2 0c.994 0 1.8.801 1.8 1.79v14.082c0 .988-.806 1.79-1.8 1.79h-1.958v-1.343h1.957c.249 0 .45-.2.45-.447V1.789a.449.449 0 0 0-.45-.447H9.643c-.248 0-.45.2-.45.447v.157h-1.35v-.157C7.843.801 8.649 0 9.643 0H17.2zM8.196 11.751c.373 0 .675.3.675.671 0 .37-.302.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h4.051zm4.052-2.684c.372 0 .675.3.675.671 0 .37-.303.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103zm0-2.684c.372 0 .675.3.675.671a.673.673 0 0 1-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103z"/></svg></button>
+  </div>
+  <div class="code-body astro-VKVMCQTA"><code>2019-08-02 * &quot;美食风暴&quot; &quot;盒饭&quot;
+  Assets:Wechat:EINDEX                                  -18 CNY
+  Expenses:Food:Restaurant:Lunch
+</code></div>
+
+  
+
+  
+</article-code>
+<h3 id="设置价格">设置价格</h3>
+<p>可以这是各种“货币”之间的价格转换。如果用上程序员思维，我们就可以实现股票价格跟踪、汇率跟踪等等。来提高账本的准确度。</p>
+<article-code class="astro-VKVMCQTA">
+  <div class="code-header astro-VKVMCQTA">
+    <span class="astro-VKVMCQTA"></span><button class="astro-VKVMCQTA">Copy<svg viewBox="0 0 20 20" class="astro-VKVMCQTA" astro-icon="uiw:copy"><path fill="currentColor" d="M6.644 2.983a.252.252 0 0 0-.253.252c0 .139.113.251.253.251h3.713c.14 0 .253-.112.253-.251a.252.252 0 0 0-.253-.252H6.644zm3.713-1.342c.734 0 1.353.49 1.544 1.16l2.175.001c.621.004 1.122.205 1.432.638.266.372.372.85.345 1.387L15.85 17.84c.042.552-.062 1.04-.328 1.445-.312.473-.821.71-1.452.716H3.14c-.76-.03-1.323-.209-1.675-.609-.327-.371-.47-.88-.464-1.5V4.84c-.013-.6.154-1.106.518-1.48.376-.384.932-.554 1.647-.559h1.935c.19-.67.809-1.16 1.543-1.16h3.713zm0 3.187H6.644c-.546 0-1.027-.27-1.317-.684H3.17c-.383.002-.602.07-.682.152-.091.093-.144.252-.138.531v13.07c-.003.325.052.522.13.61.054.061.286.135.685.151h10.9c.2-.002.28-.04.326-.109.091-.138.133-.334.11-.658l.001-13.096c.014-.293-.027-.482-.096-.578-.026-.035-.116-.072-.336-.073h-2.397c-.29.414-.771.684-1.317.684zM17.2 0c.994 0 1.8.801 1.8 1.79v14.082c0 .988-.806 1.79-1.8 1.79h-1.958v-1.343h1.957c.249 0 .45-.2.45-.447V1.789a.449.449 0 0 0-.45-.447H9.643c-.248 0-.45.2-.45.447v.157h-1.35v-.157C7.843.801 8.649 0 9.643 0H17.2zM8.196 11.751c.373 0 .675.3.675.671 0 .37-.302.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h4.051zm4.052-2.684c.372 0 .675.3.675.671 0 .37-.303.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103zm0-2.684c.372 0 .675.3.675.671a.673.673 0 0 1-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103z"/></svg></button>
+  </div>
+  <div class="code-body astro-VKVMCQTA"><code>2019-10-01 price USD 7 CNY
+</code></div>
+
+  
+
+  
+</article-code>
+<h3 id="余额自动设置">余额自动设置</h3>
+<p>这是一个偷懒必备功能，下面的 <code>pad</code>，我农行卡自动平账使用<code>Equity:Opening-Balances</code>，明天的 <code>balance</code> 表示在 2019 年 10 月 02 日时这张卡的余额为 4000CNY，如果旧的账单不平就会从<code>Equity:Opening-Balances</code>自动平账。</p>
+<article-code class="astro-VKVMCQTA">
+  <div class="code-header astro-VKVMCQTA">
+    <span class="astro-VKVMCQTA"></span><button class="astro-VKVMCQTA">Copy<svg viewBox="0 0 20 20" class="astro-VKVMCQTA" astro-icon="uiw:copy"><path fill="currentColor" d="M6.644 2.983a.252.252 0 0 0-.253.252c0 .139.113.251.253.251h3.713c.14 0 .253-.112.253-.251a.252.252 0 0 0-.253-.252H6.644zm3.713-1.342c.734 0 1.353.49 1.544 1.16l2.175.001c.621.004 1.122.205 1.432.638.266.372.372.85.345 1.387L15.85 17.84c.042.552-.062 1.04-.328 1.445-.312.473-.821.71-1.452.716H3.14c-.76-.03-1.323-.209-1.675-.609-.327-.371-.47-.88-.464-1.5V4.84c-.013-.6.154-1.106.518-1.48.376-.384.932-.554 1.647-.559h1.935c.19-.67.809-1.16 1.543-1.16h3.713zm0 3.187H6.644c-.546 0-1.027-.27-1.317-.684H3.17c-.383.002-.602.07-.682.152-.091.093-.144.252-.138.531v13.07c-.003.325.052.522.13.61.054.061.286.135.685.151h10.9c.2-.002.28-.04.326-.109.091-.138.133-.334.11-.658l.001-13.096c.014-.293-.027-.482-.096-.578-.026-.035-.116-.072-.336-.073h-2.397c-.29.414-.771.684-1.317.684zM17.2 0c.994 0 1.8.801 1.8 1.79v14.082c0 .988-.806 1.79-1.8 1.79h-1.958v-1.343h1.957c.249 0 .45-.2.45-.447V1.789a.449.449 0 0 0-.45-.447H9.643c-.248 0-.45.2-.45.447v.157h-1.35v-.157C7.843.801 8.649 0 9.643 0H17.2zM8.196 11.751c.373 0 .675.3.675.671 0 .37-.302.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h4.051zm4.052-2.684c.372 0 .675.3.675.671 0 .37-.303.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103zm0-2.684c.372 0 .675.3.675.671a.673.673 0 0 1-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103z"/></svg></button>
+  </div>
+  <div class="code-body astro-VKVMCQTA"><code>2019-10-01 pad Assets:Bank:ABC Equity:Opening-Balances
+
+2019-10-02 balance Assets:Bank:ABC 4000 CNY
+</code></div>
+
+  
+
+  
+</article-code>
+<p>如果未来要在这个账户过去的账目上做删改，2019 年 10 月 1 日的余额也会是 4000 元不变。</p>
+<h2 id="使用-beancount">使用 Beancount</h2>
+<p>首先需要安装 Python 3，然后安装 beancount、fava。</p>
+<article-code class="astro-VKVMCQTA">
+  <div class="code-header astro-VKVMCQTA">
+    <span class="astro-VKVMCQTA"></span><button class="astro-VKVMCQTA">Copy<svg viewBox="0 0 20 20" class="astro-VKVMCQTA" astro-icon="uiw:copy"><path fill="currentColor" d="M6.644 2.983a.252.252 0 0 0-.253.252c0 .139.113.251.253.251h3.713c.14 0 .253-.112.253-.251a.252.252 0 0 0-.253-.252H6.644zm3.713-1.342c.734 0 1.353.49 1.544 1.16l2.175.001c.621.004 1.122.205 1.432.638.266.372.372.85.345 1.387L15.85 17.84c.042.552-.062 1.04-.328 1.445-.312.473-.821.71-1.452.716H3.14c-.76-.03-1.323-.209-1.675-.609-.327-.371-.47-.88-.464-1.5V4.84c-.013-.6.154-1.106.518-1.48.376-.384.932-.554 1.647-.559h1.935c.19-.67.809-1.16 1.543-1.16h3.713zm0 3.187H6.644c-.546 0-1.027-.27-1.317-.684H3.17c-.383.002-.602.07-.682.152-.091.093-.144.252-.138.531v13.07c-.003.325.052.522.13.61.054.061.286.135.685.151h10.9c.2-.002.28-.04.326-.109.091-.138.133-.334.11-.658l.001-13.096c.014-.293-.027-.482-.096-.578-.026-.035-.116-.072-.336-.073h-2.397c-.29.414-.771.684-1.317.684zM17.2 0c.994 0 1.8.801 1.8 1.79v14.082c0 .988-.806 1.79-1.8 1.79h-1.958v-1.343h1.957c.249 0 .45-.2.45-.447V1.789a.449.449 0 0 0-.45-.447H9.643c-.248 0-.45.2-.45.447v.157h-1.35v-.157C7.843.801 8.649 0 9.643 0H17.2zM8.196 11.751c.373 0 .675.3.675.671 0 .37-.302.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h4.051zm4.052-2.684c.372 0 .675.3.675.671 0 .37-.303.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103zm0-2.684c.372 0 .675.3.675.671a.673.673 0 0 1-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103z"/></svg></button>
+  </div>
+  <div class="code-body astro-VKVMCQTA"><code>pip install beancount fava
+</code></div>
+
+  
+
+  
+</article-code>
+<p><code>fava</code> 是 beancount 的一个 WebUI 实现，可以可视化的看见自己的账本。</p>
+<h3 id="example">Example</h3>
+<p>官方提供了一个 Beancount 的使用用例。</p>
+<article-code class="astro-VKVMCQTA">
+  <div class="code-header astro-VKVMCQTA">
+    <span class="astro-VKVMCQTA"></span><button class="astro-VKVMCQTA">Copy<svg viewBox="0 0 20 20" class="astro-VKVMCQTA" astro-icon="uiw:copy"><path fill="currentColor" d="M6.644 2.983a.252.252 0 0 0-.253.252c0 .139.113.251.253.251h3.713c.14 0 .253-.112.253-.251a.252.252 0 0 0-.253-.252H6.644zm3.713-1.342c.734 0 1.353.49 1.544 1.16l2.175.001c.621.004 1.122.205 1.432.638.266.372.372.85.345 1.387L15.85 17.84c.042.552-.062 1.04-.328 1.445-.312.473-.821.71-1.452.716H3.14c-.76-.03-1.323-.209-1.675-.609-.327-.371-.47-.88-.464-1.5V4.84c-.013-.6.154-1.106.518-1.48.376-.384.932-.554 1.647-.559h1.935c.19-.67.809-1.16 1.543-1.16h3.713zm0 3.187H6.644c-.546 0-1.027-.27-1.317-.684H3.17c-.383.002-.602.07-.682.152-.091.093-.144.252-.138.531v13.07c-.003.325.052.522.13.61.054.061.286.135.685.151h10.9c.2-.002.28-.04.326-.109.091-.138.133-.334.11-.658l.001-13.096c.014-.293-.027-.482-.096-.578-.026-.035-.116-.072-.336-.073h-2.397c-.29.414-.771.684-1.317.684zM17.2 0c.994 0 1.8.801 1.8 1.79v14.082c0 .988-.806 1.79-1.8 1.79h-1.958v-1.343h1.957c.249 0 .45-.2.45-.447V1.789a.449.449 0 0 0-.45-.447H9.643c-.248 0-.45.2-.45.447v.157h-1.35v-.157C7.843.801 8.649 0 9.643 0H17.2zM8.196 11.751c.373 0 .675.3.675.671 0 .37-.302.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h4.051zm4.052-2.684c.372 0 .675.3.675.671 0 .37-.303.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103zm0-2.684c.372 0 .675.3.675.671a.673.673 0 0 1-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103z"/></svg></button>
+  </div>
+  <div class="code-body astro-VKVMCQTA"><code>bean-example &gt; example.bean
+fava example.bean
+</code></div>
+
+  
+
+  
+</article-code>
+<p>然后打开 <code>localhost:5000</code> 就可以在本地体验 Beancount 与 fava 了。</p>
+<p><img src="media/15676038764861/15676114399432.jpg" alt="-w1315"/></p>
+    </section>
+  </article>
+      <footer class="astro-SZ7XMLTE">  
+  <span class="webring astro-MTZRIXCV"> <a href="https://xn--sr8hvo.ws/%F0%9F%95%90%F0%9F%89%91%F0%9F%88%B6/previous" class="astro-MTZRIXCV">←</a> An IndieWeb Webring 🕸💍 <a href="https://xn--sr8hvo.ws/%F0%9F%95%90%F0%9F%89%91%F0%9F%88%B6/next" class="astro-MTZRIXCV">→</a> </span>
+  <span class="astro-SZ7XMLTE">EINDEX @ 2023</span>
+</footer>
+    </div>
+  
+
+</body></html>

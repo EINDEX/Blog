@@ -1,135 +1,124 @@
-<!doctype html><html charset=utf-8 lang=en><head><script src="https://www.googletagmanager.com/gtag/js?id=G-SR36ZS0R52" async></script><script>window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
+<!DOCTYPE html>
+<html lang="en" class="astro-SCKKX6R4">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <meta name="generator" content="Astro v2.0.15">
+    <title></title>
+    <link rel="webmention" href="https://webmention.io/eindex.me/webmention">
+    <link rel="pingback" href="https://webmention.io/eindex.me/xmlrpc">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/lxgwwenkai-regular.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link href="https://{{cdn}}/prismjs@v1.x/themes/prism.css" rel="stylesheet">
+    <link rel="stylesheet" href="/katex.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="/_astro/gallery.197e1a52.css" />
+<link rel="stylesheet" href="/_astro/_slug_.9be3c881.css" />
+<link rel="stylesheet" href="/_astro/_slug_.8ced6fc2.css" /><script type="module">class o extends HTMLElement{constructor(){super();const e=this.querySelector("button"),t=this.querySelector("div.code-body");e.addEventListener("click",()=>{navigator.clipboard.writeText(t.innerText).then(()=>{console.log("copy successd")})})}}customElements.define("article-code",o);
+</script></head>
+  <body class="astro-SCKKX6R4">
+    <div class="blog astro-SCKKX6R4">
+      <nav class="astro-5BLMO7YK">
+  <span class="astro-5BLMO7YK"><img width="32px" height="32px" src="/images/avatar.png" class="astro-5BLMO7YK"><a href="/" class="astro-5BLMO7YK">EINDEX's Blog</a></span>
+  <ul class="astro-5BLMO7YK">
+    <li class="astro-5BLMO7YK"><a rel="me" href="https://github.com/eindex" class="astro-5BLMO7YK">Github</a></li>
+    <li class="astro-5BLMO7YK"><a rel="me" href="https://twitter.com/@eindex_li" class="astro-5BLMO7YK">Twitter</a></li>
+  </ul>
+</nav>
+      cn<article class="h-entry astro-WMBV4WGB">
+    <span class="series p-category astro-WMBV4WGB"></span>
+    <h1 class="title p-name astro-WMBV4WGB">
+      Tornado Auto Etag 机制<a class="u-url astro-WMBV4WGB" href="/cntornado-auto-etag"></a>
+    </h1>
+    <time class="astro-WMBV4WGB">2019/04/24</time>
 
-  var page_link = new URL(window.location.href);
-  gtag('js', new Date());
-  gtag('config', 'G-SR36ZS0R52', {
-    traffic_type: page_link.searchParams.get("traffic_type")
-  });
-  gtag('set', {
-    traffic_type: page_link.searchParams.get("traffic_type")
-  })</script><link href=https://eindex.me/cn/feed.xml rel=alternate title=RSS type=application/rss+xml><meta content="IE=edge" http-equiv=X-UA-Compatible><meta content="text/html; charset=utf-8" http-equiv=content-type><meta content="width=device-width,initial-scale=1.0,maximum-scale=1" name=viewport><meta content=EINDEX itemprop=author name=author><title>Tornado Auto Etag 机制 • EINDEX's Blog</title><meta content="Tornado Auto Etag 机制 • EINDEX's Blog" property=og:title><meta charset=utf-8><link href="https://eindex.me/css/index.css?h=b4140d1b8e3196cffd2e47c68ff946d2e5312afa70cfe5c88add4caebf732a9e" rel=stylesheet><style>@-moz-document url-prefix() {
-    .lazy:-moz-loading {
-      visibility: hidden;
-    }
-  }
+    <summary class="p-summary astro-WMBV4WGB"></summary>
 
-  .ieOnly {
-    display: none;
-  }
+    <section class="main e-content astro-WMBV4WGB">
+      <p>为了研究缓存看了 tornado <code>web.py</code> 里的 <code>finish</code> 函数</p>
+<more></more>
+<p>代码如下</p>
+<article-code class="astro-VKVMCQTA">
+  <div class="code-header astro-VKVMCQTA">
+    <span class="astro-VKVMCQTA">python</span><button class="astro-VKVMCQTA">Copy<svg viewBox="0 0 20 20" class="astro-VKVMCQTA" astro-icon="uiw:copy"><path fill="currentColor" d="M6.644 2.983a.252.252 0 0 0-.253.252c0 .139.113.251.253.251h3.713c.14 0 .253-.112.253-.251a.252.252 0 0 0-.253-.252H6.644zm3.713-1.342c.734 0 1.353.49 1.544 1.16l2.175.001c.621.004 1.122.205 1.432.638.266.372.372.85.345 1.387L15.85 17.84c.042.552-.062 1.04-.328 1.445-.312.473-.821.71-1.452.716H3.14c-.76-.03-1.323-.209-1.675-.609-.327-.371-.47-.88-.464-1.5V4.84c-.013-.6.154-1.106.518-1.48.376-.384.932-.554 1.647-.559h1.935c.19-.67.809-1.16 1.543-1.16h3.713zm0 3.187H6.644c-.546 0-1.027-.27-1.317-.684H3.17c-.383.002-.602.07-.682.152-.091.093-.144.252-.138.531v13.07c-.003.325.052.522.13.61.054.061.286.135.685.151h10.9c.2-.002.28-.04.326-.109.091-.138.133-.334.11-.658l.001-13.096c.014-.293-.027-.482-.096-.578-.026-.035-.116-.072-.336-.073h-2.397c-.29.414-.771.684-1.317.684zM17.2 0c.994 0 1.8.801 1.8 1.79v14.082c0 .988-.806 1.79-1.8 1.79h-1.958v-1.343h1.957c.249 0 .45-.2.45-.447V1.789a.449.449 0 0 0-.45-.447H9.643c-.248 0-.45.2-.45.447v.157h-1.35v-.157C7.843.801 8.649 0 9.643 0H17.2zM8.196 11.751c.373 0 .675.3.675.671 0 .37-.302.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h4.051zm4.052-2.684c.372 0 .675.3.675.671 0 .37-.303.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103zm0-2.684c.372 0 .675.3.675.671a.673.673 0 0 1-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103z"/></svg></button>
+  </div>
+  <div class="code-body astro-VKVMCQTA"><pre class="shiki " style="background-color: none" tabindex="0"><code><span class="line"><span style="color: #F8F8F2">    </span><span style="color: #66D9EF; font-style: italic">def</span><span style="color: #F8F8F2"> </span><span style="color: #A6E22E">finish</span><span style="color: #F8F8F2">(</span><span style="color: #FD971F; font-style: italic">self</span><span style="color: #F8F8F2">, </span><span style="color: #FD971F; font-style: italic">chunk</span><span style="color: #F8F8F2">: Union[</span><span style="color: #66D9EF; font-style: italic">str</span><span style="color: #F8F8F2">, </span><span style="color: #66D9EF; font-style: italic">bytes</span><span style="color: #F8F8F2">, </span><span style="color: #66D9EF; font-style: italic">dict</span><span style="color: #F8F8F2">] </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">None</span><span style="color: #F8F8F2">) -&gt; </span><span style="color: #E6DB74">&quot;Future[None]&quot;</span><span style="color: #F8F8F2">:</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #E6DB74">&quot;&quot;&quot;Finishes this response, ending the HTTP request.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #E6DB74">        Passing a ``chunk`` to ``finish()`` is equivalent to passing that</span></span>
+<span class="line"><span style="color: #E6DB74">        chunk to ``write()`` and then calling ``finish()`` with no arguments.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #E6DB74">        Returns a `.Future` which may optionally be awaited to track the sending</span></span>
+<span class="line"><span style="color: #E6DB74">        of the response to the client. This `.Future` resolves when all the response</span></span>
+<span class="line"><span style="color: #E6DB74">        data has been sent, and raises an error if the connection is closed before all</span></span>
+<span class="line"><span style="color: #E6DB74">        data can be sent.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #E6DB74">        .. versionchanged:: 5.1</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #E6DB74">           Now returns a `.Future` instead of ``None``.</span></span>
+<span class="line"><span style="color: #E6DB74">        &quot;&quot;&quot;</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> </span><span style="color: #FD971F">self</span><span style="color: #F8F8F2">._finished:</span></span>
+<span class="line"><span style="color: #F8F8F2">            </span><span style="color: #F92672">raise</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF; font-style: italic">RuntimeError</span><span style="color: #F8F8F2">(</span><span style="color: #E6DB74">&quot;finish() called twice&quot;</span><span style="color: #F8F8F2">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> chunk </span><span style="color: #F92672">is</span><span style="color: #F8F8F2"> </span><span style="color: #F92672">not</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">None</span><span style="color: #F8F8F2">:</span></span>
+<span class="line"><span style="color: #F8F8F2">            </span><span style="color: #FD971F">self</span><span style="color: #F8F8F2">.write(chunk)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #88846F"># Automatically support ETags and add the Content-Length header if</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #88846F"># we have not flushed any content yet.</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> </span><span style="color: #F92672">not</span><span style="color: #F8F8F2"> </span><span style="color: #FD971F">self</span><span style="color: #F8F8F2">._headers_written:</span></span>
+<span class="line"><span style="color: #F8F8F2">            </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> (</span></span>
+<span class="line"><span style="color: #F8F8F2">                </span><span style="color: #FD971F">self</span><span style="color: #F8F8F2">._status_code </span><span style="color: #F92672">==</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">200</span></span>
+<span class="line"><span style="color: #F8F8F2">                </span><span style="color: #F92672">and</span><span style="color: #F8F8F2"> </span><span style="color: #FD971F">self</span><span style="color: #F8F8F2">.request.method </span><span style="color: #F92672">in</span><span style="color: #F8F8F2"> (</span><span style="color: #E6DB74">&quot;GET&quot;</span><span style="color: #F8F8F2">, </span><span style="color: #E6DB74">&quot;HEAD&quot;</span><span style="color: #F8F8F2">)</span></span>
+<span class="line"><span style="color: #F8F8F2">                </span><span style="color: #F92672">and</span><span style="color: #F8F8F2"> </span><span style="color: #E6DB74">&quot;Etag&quot;</span><span style="color: #F8F8F2"> </span><span style="color: #F92672">not</span><span style="color: #F8F8F2"> </span><span style="color: #F92672">in</span><span style="color: #F8F8F2"> </span><span style="color: #FD971F">self</span><span style="color: #F8F8F2">._headers</span></span>
+<span class="line"><span style="color: #F8F8F2">            ):</span></span>
+<span class="line"><span style="color: #F8F8F2">                </span><span style="color: #FD971F">self</span><span style="color: #F8F8F2">.set_etag_header()</span></span>
+<span class="line"><span style="color: #F8F8F2">                </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> </span><span style="color: #FD971F">self</span><span style="color: #F8F8F2">.check_etag_header():</span></span>
+<span class="line"><span style="color: #F8F8F2">                    </span><span style="color: #FD971F">self</span><span style="color: #F8F8F2">._write_buffer </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> []</span></span>
+<span class="line"><span style="color: #F8F8F2">                    </span><span style="color: #FD971F">self</span><span style="color: #F8F8F2">.set_status(</span><span style="color: #AE81FF">304</span><span style="color: #F8F8F2">)</span></span>
+<span class="line"><span style="color: #F8F8F2">            </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> </span><span style="color: #FD971F">self</span><span style="color: #F8F8F2">._status_code </span><span style="color: #F92672">in</span><span style="color: #F8F8F2"> (</span><span style="color: #AE81FF">204</span><span style="color: #F8F8F2">, </span><span style="color: #AE81FF">304</span><span style="color: #F8F8F2">) </span><span style="color: #F92672">or</span><span style="color: #F8F8F2"> (</span></span>
+<span class="line"><span style="color: #F8F8F2">                </span><span style="color: #FD971F">self</span><span style="color: #F8F8F2">._status_code </span><span style="color: #F92672">&gt;=</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">100</span><span style="color: #F8F8F2"> </span><span style="color: #F92672">and</span><span style="color: #F8F8F2"> </span><span style="color: #FD971F">self</span><span style="color: #F8F8F2">._status_code </span><span style="color: #F92672">&lt;</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">200</span></span>
+<span class="line"><span style="color: #F8F8F2">            ):</span></span>
+<span class="line"><span style="color: #F8F8F2">                </span><span style="color: #F92672">assert</span><span style="color: #F8F8F2"> </span><span style="color: #F92672">not</span><span style="color: #F8F8F2"> </span><span style="color: #FD971F">self</span><span style="color: #F8F8F2">._write_buffer, (</span></span>
+<span class="line"><span style="color: #F8F8F2">                    </span><span style="color: #E6DB74">&quot;Cannot send body with </span><span style="color: #AE81FF">%s</span><span style="color: #E6DB74">&quot;</span><span style="color: #F8F8F2"> </span><span style="color: #F92672">%</span><span style="color: #F8F8F2"> </span><span style="color: #FD971F">self</span><span style="color: #F8F8F2">._status_code</span></span>
+<span class="line"><span style="color: #F8F8F2">                )</span></span>
+<span class="line"><span style="color: #F8F8F2">                </span><span style="color: #FD971F">self</span><span style="color: #F8F8F2">._clear_headers_for_304()</span></span>
+<span class="line"><span style="color: #F8F8F2">            </span><span style="color: #F92672">elif</span><span style="color: #F8F8F2"> </span><span style="color: #E6DB74">&quot;Content-Length&quot;</span><span style="color: #F8F8F2"> </span><span style="color: #F92672">not</span><span style="color: #F8F8F2"> </span><span style="color: #F92672">in</span><span style="color: #F8F8F2"> </span><span style="color: #FD971F">self</span><span style="color: #F8F8F2">._headers:</span></span>
+<span class="line"><span style="color: #F8F8F2">                content_length </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">sum</span><span style="color: #F8F8F2">(</span><span style="color: #66D9EF">len</span><span style="color: #F8F8F2">(part) </span><span style="color: #F92672">for</span><span style="color: #F8F8F2"> part </span><span style="color: #F92672">in</span><span style="color: #F8F8F2"> </span><span style="color: #FD971F">self</span><span style="color: #F8F8F2">._write_buffer)</span></span>
+<span class="line"><span style="color: #F8F8F2">                </span><span style="color: #FD971F">self</span><span style="color: #F8F8F2">.set_header(</span><span style="color: #E6DB74">&quot;Content-Length&quot;</span><span style="color: #F8F8F2">, content_length)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">assert</span><span style="color: #F8F8F2"> </span><span style="color: #FD971F">self</span><span style="color: #F8F8F2">.request.connection </span><span style="color: #F92672">is</span><span style="color: #F8F8F2"> </span><span style="color: #F92672">not</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">None</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #88846F"># Now that the request is finished, clear the callback we</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #88846F"># set on the HTTPConnection (which would otherwise prevent the</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #88846F"># garbage collection of the RequestHandler when there</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #88846F"># are keepalive connections)</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #FD971F">self</span><span style="color: #F8F8F2">.request.connection.set_close_callback(</span><span style="color: #AE81FF">None</span><span style="color: #F8F8F2">)  </span><span style="color: #88846F"># type: ignore</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #F8F8F2">        future </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> </span><span style="color: #FD971F">self</span><span style="color: #F8F8F2">.flush(</span><span style="color: #FD971F; font-style: italic">include_footers</span><span style="color: #F92672">=</span><span style="color: #AE81FF">True</span><span style="color: #F8F8F2">)</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #FD971F">self</span><span style="color: #F8F8F2">.request.connection.finish()</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #FD971F">self</span><span style="color: #F8F8F2">._log()</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #FD971F">self</span><span style="color: #F8F8F2">._finished </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">True</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #FD971F">self</span><span style="color: #F8F8F2">.on_finish()</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #FD971F">self</span><span style="color: #F8F8F2">._break_cycles()</span></span>
+<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">return</span><span style="color: #F8F8F2"> future</span></span>
+<span class="line"></span></code></pre></div>
 
-  @media all and (-ms-high-contrast: none),
-  (-ms-high-contrast: active) {
-    .ieOnly {
-      display: block;
-    }
-  }</style><link href=https://webmention.io/eindex.me/webmention rel=webmention><link href=https://webmention.io/eindex.me/xmlrpc rel=pingback><script src=https://cdn.jsdelivr.net/npm/iconify-icon@1.0.1/dist/iconify-icon.min.js></script><link href=/favicon-512.png rel=apple-touch-icon sizes=512x512><link href=/favicon-512.png rel=icon sizes=512x512 type=image/png><link href=/favicon-192.png rel=icon sizes=192x192 type=image/png><link href=/manifest.json rel=manifest><meta content=on name=twitter:dnt><meta content=on name=twitter:widgets:csp><meta content=https://eindex.me/cn/posts/tornado-auto-etag/ property=og:url><meta content="EINDEX's Blog" property=og:site_name><meta content=https://eindex.me/images/avatar.png property=og:image><meta content=summary name=twitter:card><meta content="Tornado Auto Etag 机制" name=twitter:title><meta content=@eindex_li name=twitter:site><meta content=@eindex_li name=twitter:creator><meta content=https://eindex.me/images/avatar.png name=twitter:image><link href=https://twitter.com/eindex_li rel=me><script type=application/ld+json>
-{
-  "@context": "https://schema.org/",
-  "@type": "BlogPosting",
-  "headline": "Tornado Auto Etag 机制",
-  "image": "https://eindex.me/images/avatar.png",
   
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://eindex.me/cn/posts/tornado-auto-etag/"
-  },
+
   
-  "datePublished": "2019-04-24",
+</article-code>
+<p>从代码中可以看出, 满足下面条件的请求:</p>
+<ul>
+<li><code>self._headers_written</code> 为不为<code>True</code></li>
+<li>http status 为 <code>200</code> 的 <code>GET</code>、 <code>HEAD</code> 请求</li>
+<li>同时没有 <code>Etag</code> 在 <code>response header</code> 的情况下</li>
+</ul>
+<p>tornado 会自动计算返回结果的 sha1, 并设置 Etag 若客户端支持 Etag 机制, 正确返回 <code>If-None-Match</code>, 就能节约一波流量, 美滋滋.</p>
+    </section>
+  </article>
+      <footer class="astro-SZ7XMLTE">  
+  <span class="webring astro-MTZRIXCV"> <a href="https://xn--sr8hvo.ws/%F0%9F%95%90%F0%9F%89%91%F0%9F%88%B6/previous" class="astro-MTZRIXCV">←</a> An IndieWeb Webring 🕸💍 <a href="https://xn--sr8hvo.ws/%F0%9F%95%90%F0%9F%89%91%F0%9F%88%B6/next" class="astro-MTZRIXCV">→</a> </span>
+  <span class="astro-SZ7XMLTE">EINDEX @ 2023</span>
+</footer>
+    </div>
   
-  
-  "author": {
-    "@type": "Person",
-    "name": "EINDEX",
-    "url": "https://eindex.me/about"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "EINDEX's Blog",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://eindex.me/images/avatar.png"
-    }
-  },
-  "keywords": ["Python","Cache","ETag"]
-}
-</script><link href=https://cdn.jsdelivr.net/npm/docs-searchbar.js@2.4.1/dist/cdn/docs-searchbar.min.css rel=stylesheet><script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1265138627025369" async crossorigin=anonymous></script><body><div class=all><header><nav class=navbar><div class=avatar><a class=site-link href=https://eindex.me/cn/><img alt=Workflow class=avatar src=https://eindex.me/processed_images/e75389feba7c019600.png></a></div><div class=menus><a href=https://eindex.me/cn/gallery/>相册</a><a href=https://eindex.me/cn/archive/>归档</a></div><div class=switcher><a class="language switch" href=https://eindex.me/><iconify-icon icon=ri:english-input></iconify-icon></a></div></nav></header><div class=content><main><article class=h-entry data-clarity-region=article><section class=header><section class=title-area><h1 class="title p-name"><a class=u-url href=https://eindex.me/cn/posts/tornado-auto-etag/>Tornado Auto Etag 机制</a></h1></section><section class=meta-area><p style="display: none;" class=p-summary>&LTp>为了研究缓存看了 tornado &LTcode>web.py&LT/code> 里的 &LTcode>finish&LT/code> 函数&LT/p></p><span><iconify-icon icon=ant-design:calendar-outlined></iconify-icon> <time class=dt-published>2019-04-24</time> </span><span><iconify-icon icon=bx:time-five></iconify-icon> 2 mins</span><span style=display:none><iconify-icon icon=mdi:eye-outline></iconify-icon> <span id=pv></span> views</span></section></section><div class="p-author h-card" style="display: none;"><img class="u-logo u-photo" src=https://eindex.me/images/avatar.png><a class="p-nickname p-name u-url" href=https://eindex.me>EINDEX</a><p class=p-note>My goal is make happy.</div><section class="main e-content"><p>为了研究缓存看了 tornado <code>web.py</code> 里的 <code>finish</code> 函数</p><span id=continue-reading></span><p>代码如下<pre class=language-python data-lang=python style=background-color:#272822;color:#f8f8f2;><code class=language-python data-lang=python><span>    </span><span style=font-style:italic;color:#f92672;>def </span><span style=color:#a6e22e;>finish</span><span>(</span><span style=font-style:italic;color:#fd971f;>self</span><span>, </span><span style=font-style:italic;color:#fd971f;>chunk</span><span>: Union[</span><span style=font-style:italic;color:#66d9ef;>str</span><span>, </span><span style=font-style:italic;color:#66d9ef;>bytes</span><span>, </span><span style=font-style:italic;color:#66d9ef;>dict</span><span>] </span><span style=color:#f92672;>= </span><span style=color:#ae81ff;>None</span><span>) -> </span><span style=color:#e6db74;>"Future[None]"</span><span>:
-</span><span>        </span><span style=color:#75715e;>"""Finishes this response, ending the HTTP request.
-</span><span style=color:#75715e;>
-</span><span style=color:#75715e;>        Passing a ``chunk`` to ``finish()`` is equivalent to passing that
-</span><span style=color:#75715e;>        chunk to ``write()`` and then calling ``finish()`` with no arguments.
-</span><span style=color:#75715e;>
-</span><span style=color:#75715e;>        Returns a `.Future` which may optionally be awaited to track the sending
-</span><span style=color:#75715e;>        of the response to the client. This `.Future` resolves when all the response
-</span><span style=color:#75715e;>        data has been sent, and raises an error if the connection is closed before all
-</span><span style=color:#75715e;>        data can be sent.
-</span><span style=color:#75715e;>
-</span><span style=color:#75715e;>        .. versionchanged:: 5.1
-</span><span style=color:#75715e;>
-</span><span style=color:#75715e;>           Now returns a `.Future` instead of ``None``.
-</span><span style=color:#75715e;>        """
-</span><span>        </span><span style=color:#f92672;>if </span><span>self._finished:
-</span><span>            </span><span style=color:#f92672;>raise </span><span style=font-style:italic;color:#66d9ef;>RuntimeError</span><span>(</span><span style=color:#e6db74;>"finish() called twice"</span><span>)
-</span><span>
-</span><span>        </span><span style=color:#f92672;>if </span><span>chunk </span><span style=color:#f92672;>is not </span><span style=color:#ae81ff;>None</span><span>:
-</span><span>            self.write(chunk)
-</span><span>
-</span><span>        </span><span style=color:#75715e;># Automatically support ETags and add the Content-Length header if
-</span><span>        </span><span style=color:#75715e;># we have not flushed any content yet.
-</span><span>        </span><span style=color:#f92672;>if not </span><span>self._headers_written:
-</span><span>            </span><span style=color:#f92672;>if </span><span>(
-</span><span>                self._status_code </span><span style=color:#f92672;>== </span><span style=color:#ae81ff;>200
-</span><span>                </span><span style=color:#f92672;>and </span><span>self.request.method </span><span style=color:#f92672;>in </span><span>(</span><span style=color:#e6db74;>"GET"</span><span>, </span><span style=color:#e6db74;>"HEAD"</span><span>)
-</span><span>                </span><span style=color:#f92672;>and </span><span style=color:#e6db74;>"Etag" </span><span style=color:#f92672;>not in </span><span>self._headers
-</span><span>            ):
-</span><span>                self.set_etag_header()
-</span><span>                </span><span style=color:#f92672;>if </span><span>self.check_etag_header():
-</span><span>                    self._write_buffer </span><span style=color:#f92672;>= </span><span>[]
-</span><span>                    self.set_status(</span><span style=color:#ae81ff;>304</span><span>)
-</span><span>            </span><span style=color:#f92672;>if </span><span>self._status_code </span><span style=color:#f92672;>in </span><span>(</span><span style=color:#ae81ff;>204</span><span>, </span><span style=color:#ae81ff;>304</span><span>) </span><span style=color:#f92672;>or </span><span>(
-</span><span>                self._status_code </span><span style=color:#f92672;>>= </span><span style=color:#ae81ff;>100 </span><span style=color:#f92672;>and </span><span>self._status_code </span><span style=color:#f92672;>< </span><span style=color:#ae81ff;>200
-</span><span>            ):
-</span><span>                </span><span style=color:#f92672;>assert not </span><span>self._write_buffer, (
-</span><span>                    </span><span style=color:#e6db74;>"Cannot send body with </span><span style=color:#ae81ff;>%s</span><span style=color:#e6db74;>" </span><span style=color:#f92672;>% </span><span>self._status_code
-</span><span>                )
-</span><span>                self._clear_headers_for_304()
-</span><span>            </span><span style=color:#f92672;>elif </span><span style=color:#e6db74;>"Content-Length" </span><span style=color:#f92672;>not in </span><span>self._headers:
-</span><span>                content_length </span><span style=color:#f92672;>= </span><span style=color:#66d9ef;>sum</span><span>(</span><span style=color:#66d9ef;>len</span><span>(part) </span><span style=color:#f92672;>for </span><span>part </span><span style=color:#f92672;>in </span><span>self._write_buffer)
-</span><span>                self.set_header(</span><span style=color:#e6db74;>"Content-Length"</span><span>, content_length)
-</span><span>
-</span><span>        </span><span style=color:#f92672;>assert </span><span>self.request.connection </span><span style=color:#f92672;>is not </span><span style=color:#ae81ff;>None
-</span><span>        </span><span style=color:#75715e;># Now that the request is finished, clear the callback we
-</span><span>        </span><span style=color:#75715e;># set on the HTTPConnection (which would otherwise prevent the
-</span><span>        </span><span style=color:#75715e;># garbage collection of the RequestHandler when there
-</span><span>        </span><span style=color:#75715e;># are keepalive connections)
-</span><span>        self.request.connection.set_close_callback(</span><span style=color:#ae81ff;>None</span><span>)  </span><span style=color:#75715e;># type: ignore
-</span><span>
-</span><span>        future </span><span style=color:#f92672;>= </span><span>self.flush(</span><span style=font-style:italic;color:#fd971f;>include_footers</span><span style=color:#f92672;>=</span><span style=color:#ae81ff;>True</span><span>)
-</span><span>        self.request.connection.finish()
-</span><span>        self._log()
-</span><span>        self._finished </span><span style=color:#f92672;>= </span><span style=color:#ae81ff;>True
-</span><span>        self.on_finish()
-</span><span>        self._break_cycles()
-</span><span>        </span><span style=color:#f92672;>return </span><span>future
-</span></code></pre><p>从代码中可以看出, 满足下面条件的请求:<ul><li><code>self._headers_written</code> 为不为<code>True</code><li>http status 为 <code>200</code> 的 <code>GET</code>、 <code>HEAD</code> 请求<li>同时没有 <code>Etag</code> 在 <code>response header</code> 的情况下</ul><p>tornado 会自动计算返回结果的 sha1, 并设置 Etag 若客户端支持 Etag 机制, 正确返回 <code>If-None-Match</code>, 就能节约一波流量, 美滋滋.</section><section class=post-footer><div class=tags><span class=tag><a href=https://eindex.me/cn/tags/python/>Python</a></span><span class=tag><a href=https://eindex.me/cn/tags/cache/>Cache</a></span><span class=tag><a href=https://eindex.me/cn/tags/etag/>ETag</a></span></div></section><hr><section class=webmentions><h2>Response</h2><p class=how-to-send-webmention>Have you written any responses to this article? If so, please send your article or tweet link below. (Making sure to include the link of this article in the content, learn more about webmentions from <a href=https://indieweb.org/Webmention>here</a>.)<form action=https://webmention.io/eindex.me/webmention class=webmention-form method=post><input name=target type=hidden value=https://eindex.me/cn/posts/tornado-auto-etag/><input placeholder="Your webmention link" name=source><button>Send Webmention</button></form><p class="flex flex-row how-to-send-webmention"><a class=twitter-share-button href=https://twitter.com/intent/tweet>Tweet</a>  and send response.</section></article></main><aside><section class=search><input id=search-bar-input placeholder=Searching... type=search></section><section><h3 class=section-title>Series</h3><p><a href=https://eindex.me/cn/series/algorithm/>算法 (5)</a><p><a href=https://eindex.me/cn/series/review/>年终总结 (2)</a><p><a href=https://eindex.me/cn/series/security/>应用安全 (1)</a><p><a href=https://eindex.me/cn/series/blog-enhance-plan/>博客演进计划 (1)</a></section><section><h3 class=section-title>Links</h3><p><a href=https://github.com/EINDEX rel=me>Github</a><p><a href=https://eindex.me/toolkit/> My Toolkit</a><p><a href=/feed.xml>RSS Feed</a><p><a href=/cn/links>友情链接</a></section><section class=advertisement><h3 class=section-title>Advertisements</h3><ins class="adsbygoogle aside" style="display:inline-block;width: 100%;height:500px" data-ad-client=ca-pub-1265138627025369 data-ad-slot=3472732805></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></section><section class=tags><h3 class=section-title>Tags</h3><div class=tags><a href=https://eindex.me/cn/tags/python/>Python (7)</a>, <a href=https://eindex.me/cn/tags/ending/>Ending (2)</a>, <a href=https://eindex.me/cn/tags/annual-summary/>Annual Summary (2)</a>, <a href=https://eindex.me/cn/tags/webmentions/>Webmentions (1)</a>, <a href=https://eindex.me/cn/tags/umami/>umami (1)</a>, <a href=https://eindex.me/cn/tags/thoughtworks/>Thoughtworks (1)</a>, <a href=https://eindex.me/cn/tags/static-analysis/>Static Analysis (1)</a>, <a href=https://eindex.me/cn/tags/sort/>Sort (1)</a>, <a href=https://eindex.me/cn/tags/semgrep/>Semgrep (1)</a>, <a href=https://eindex.me/cn/tags/self-hosted/>Self-Hosted (1)</a>, <a href=https://eindex.me/cn/tags/security/>Security (1)</a>, <a href=https://eindex.me/cn/tags/search-engine/>Search Engine (1)</a>, <a href=https://eindex.me/cn/tags/sast/>SAST (1)</a>, <a href=https://eindex.me/cn/tags/proxmox-ve/>Proxmox VE (1)</a>, <a href=https://eindex.me/cn/tags/pipenv/>Pipenv (1)</a>, <a href=https://eindex.me/cn/tags/microformats2/>Microformats2 (1)</a>, <a href=https://eindex.me/cn/tags/meilisearch/>meilisearch (1)</a>, <a href=https://eindex.me/cn/tags/linear/>Linear (1)</a>, <a href=https://eindex.me/cn/tags/kmp/>KMP (1)</a>, <a href=https://eindex.me/cn/tags/k3s/>K3S (1)</a>, <a href=https://eindex.me/cn/tags/javascript/>JavaScript (1)</a>, <a href=https://eindex.me/cn/tags/introspection/>Introspection (1)</a>, <a href=https://eindex.me/cn/tags/indie-web/>Indie Web (1)</a>, <a href=https://eindex.me/cn/tags/index/>Index (1)</a>, <a href=https://eindex.me/cn/tags/github-actions/>Github Actions (1)</a>, <a href=https://eindex.me/cn/tags/flyio/>flyio (1)</a>, <a href=https://eindex.me/cn/tags/financial-management/>financial-management (1)</a>, <a href=https://eindex.me/cn/tags/financial-independence/>financial-independence (1)</a>, <a href=https://eindex.me/cn/tags/financial/>financial (1)</a>, <a href=https://eindex.me/cn/tags/etag/>ETag (1)</a>, <a href=https://eindex.me/cn/tags/environment/>Environment (1)</a>, <a href=https://eindex.me/cn/tags/engagement/>Engagement (1)</a>, <a href=https://eindex.me/cn/tags/docker/>Docker (1)</a>, <a href=https://eindex.me/cn/tags/devsecops/>DevSecOps (1)</a>, <a href=https://eindex.me/cn/tags/devops/>DevOps (1)</a>, <a href=https://eindex.me/cn/tags/data-structure/>Data structure (1)</a>, <a href=https://eindex.me/cn/tags/crawler/>Crawler (1)</a>, <a href=https://eindex.me/cn/tags/connectivity/>Connectivity (1)</a>, <a href=https://eindex.me/cn/tags/community/>Community (1)</a>, <a href=https://eindex.me/cn/tags/code-review/>Code Review (1)</a>, <a href=https://eindex.me/cn/tags/ci/>CI (1)</a>, <a href=https://eindex.me/cn/tags/chatgpt/>ChatGPT (1)</a>, <a href=https://eindex.me/cn/tags/cache/>Cache (1)</a>, <a href=https://eindex.me/cn/tags/build-security-in/>Build Security In (1)</a>, <a href=https://eindex.me/cn/tags/best-practices/>Best Practices (1)</a>, <a href=https://eindex.me/cn/tags/beginner-s-guide/>Beginner's Guide (1)</a>, <a href=https://eindex.me/cn/tags/beancount/>Beancount (1)</a>, <a href=https://eindex.me/cn/tags/autoenv/>Autoenv (1)</a>, <a href=https://eindex.me/cn/tags/async/>Async (1)</a>, <a href=https://eindex.me/cn/tags/archlinux/>ArchLinux (1)</a>, <a href=https://eindex.me/cn/tags/after-reading/>After Reading (1)</a></div></section></aside></div><footer class=footer><span class=webring> <a href=https://xn--sr8hvo.ws/%F0%9F%95%90%F0%9F%89%91%F0%9F%88%B6/previous>←</a> An IndieWeb Webring 🕸💍 <a href=https://xn--sr8hvo.ws/%F0%9F%95%90%F0%9F%89%91%F0%9F%88%B6/next>→</a> </span><span>EINDEX @ 2023</span></footer></div></body><script async data-domains=eindex.me data-host-url=https://u.eindex.me data-website-id=692d9153-7341-4370-b652-60df196f2b31 defer src=/js/umami.js></script><script>window.twttr = (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0],
-      t = window.twttr || {};
-    if (d.getElementById(id)) return t;
-    js = d.createElement(s);
-    js.id = id;
-    js.src = "https://platform.twitter.com/widgets.js?omit_script=true";
-    fjs.parentNode.insertBefore(js, fjs);
-  
-    t._e = [];
-    t.ready = function(f) {
-      t._e.push(f);
-    };
-  
-    return t;
-  }(document, "script", "twitter-wjs"));</script><script src=https://cdn.jsdelivr.net/npm/docs-searchbar.js@2.4.1/dist/cdn/docs-searchbar.min.js></script><script>docsSearchBar({
-    hostUrl: "https://meili.eindex.me",
-    apiKey: "a39cff5442b90bb926f6408b0b08671eee444599e6d9c44c29bd0adae09a4b86",
-    indexUid: "blog",
-    inputSelector: '#search-bar-input',
-    debug: true, // Set debug to true if you want to inspect the dropdown
-  })</script><script async defer src=/js/pv-counter.js></script>
+
+</body></html>
