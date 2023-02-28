@@ -27,8 +27,7 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 ---
 
-<Layout>
-  {locale}
+<Layout title={post.data.title}>
   <article class="h-entry">
     <span class="series p-category"></span>
     <h1 class="title p-name">
