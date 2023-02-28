@@ -9,7 +9,7 @@ const resp = await fetch("https://img.eindex.me/pic/pic_list.json");
 const images = await resp.json();
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Gallery">
   <div class="gallery">
     {
       images.map((image) => (
