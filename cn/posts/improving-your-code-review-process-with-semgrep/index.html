@@ -1,18 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" class="astro-SCKKX6R4">
+<html lang="en">
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="/favicon.ico">
-    <meta name="generator" content="Astro v2.0.15">
+    <meta name="generator" content="Astro v2.1.3">
     <title>用 Semgrep 改进你的代码审查流程</title>
     <link rel="webmention" href="https://webmention.io/eindex.me/webmention">
     <link rel="pingback" href="https://webmention.io/eindex.me/xmlrpc">
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/lxgwwenkai-regular.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link href="https://{{cdn}}/prismjs@v1.x/themes/prism.css" rel="stylesheet">
     <link rel="stylesheet" href="/katex.min.css" crossorigin="anonymous">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SR36ZS0R52"></script>
-<script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SR36ZS0R52"></script><script>
   window.dataLayer = window.dataLayer || [];
   function gtag() {
     dataLayer.push(arguments);
@@ -21,20 +19,28 @@
 
   gtag("config", "G-SR36ZS0R52");
 </script>
-  <link rel="stylesheet" href="/_astro/gallery.197e1a52.css" />
+  <link rel="stylesheet" href="/_astro/gallery.bc4fe863.css" />
+<link rel="stylesheet" href="/_astro/_slug_.eda67c97.css" />
+<link rel="stylesheet" href="/_astro/_slug_.8c5018de.css" />
 <link rel="stylesheet" href="/_astro/_slug_.9be3c881.css" />
-<link rel="stylesheet" href="/_astro/_slug_.8ced6fc2.css" /><script type="module">class o extends HTMLElement{constructor(){super();const e=this.querySelector("button"),t=this.querySelector("div.code-body");e.addEventListener("click",()=>{navigator.clipboard.writeText(t.innerText).then(()=>{console.log("copy successd")})})}}customElements.define("article-code",o);
+<link rel="stylesheet" href="/_astro/_slug_.fe6782dc.css" /><script type="module">class o extends HTMLElement{constructor(){super();const e=this.querySelector("button"),t=this.querySelector("div.code-body");e.addEventListener("click",()=>{navigator.clipboard.writeText(t.innerText).then(()=>{console.log("copy successd")})})}}customElements.define("article-code",o);
 </script></head>
-  <body class="astro-SCKKX6R4">
-    <div class="blog astro-SCKKX6R4">
-      <nav class="astro-5BLMO7YK">
-  <span class="astro-5BLMO7YK"><img width="32px" height="32px" src="/images/avatar.png" class="astro-5BLMO7YK"><a href="/" class="astro-5BLMO7YK">EINDEX's Blog</a></span>
+  <body>
+    <nav class="astro-5BLMO7YK">
+  <span class="astro-5BLMO7YK"><img width="32px" height="32px" src="/images/avatar.png" class="astro-5BLMO7YK"><a href="/" class="astro-5BLMO7YK"><b class="astro-5BLMO7YK">EINDEX</b>'s Blog</a></span>
   <ul class="astro-5BLMO7YK">
-    <li class="astro-5BLMO7YK"><a rel="me" href="https://github.com/eindex" class="astro-5BLMO7YK">Github</a></li>
-    <li class="astro-5BLMO7YK"><a rel="me" href="https://twitter.com/@eindex_li" class="astro-5BLMO7YK">Twitter</a></li>
+    <li class="astro-5BLMO7YK">
+          <a href="/" class="astro-5BLMO7YK">Home</a>
+        </li><li class="astro-5BLMO7YK">
+          <a href="/cn/posts" class="astro-5BLMO7YK">中文博客</a>
+        </li><li class="astro-5BLMO7YK">
+          <a href="/posts" class="astro-5BLMO7YK">Posts</a>
+        </li><li class="astro-5BLMO7YK">
+          <a href="/gallery" class="astro-5BLMO7YK">Gallery</a>
+        </li>
   </ul>
-</nav>
-      <article class="h-entry astro-WMBV4WGB">
+</nav><div class="blog astro-SCKKX6R4">
+    <article class="h-entry astro-WMBV4WGB">
     <span class="series p-category astro-WMBV4WGB"></span>
     <h1 class="title p-name astro-WMBV4WGB">
       用 Semgrep 改进你的代码审查流程<a class="u-url astro-WMBV4WGB" href="/cnimproving-your-code-review-process-with-semgrep"></a>
@@ -135,12 +141,15 @@
 祝您编码愉快！</p>
     </section>
   </article>
-      <footer class="astro-SZ7XMLTE">  
-  <span class="webring astro-MTZRIXCV"> <a href="https://xn--sr8hvo.ws/%F0%9F%95%90%F0%9F%89%91%F0%9F%88%B6/previous" class="astro-MTZRIXCV">←</a> An IndieWeb Webring 🕸💍 <a href="https://xn--sr8hvo.ws/%F0%9F%95%90%F0%9F%89%91%F0%9F%88%B6/next" class="astro-MTZRIXCV">→</a> </span>
+  </div>
+    <footer class="astro-SZ7XMLTE">
+  <span class="webring astro-MTZRIXCV">
+  <a href="https://xn--sr8hvo.ws/%F0%9F%95%90%F0%9F%89%91%F0%9F%88%B6/previous" class="astro-MTZRIXCV">←</a> An IndieWeb Webring 🕸💍 <a href="https://xn--sr8hvo.ws/%F0%9F%95%90%F0%9F%89%91%F0%9F%88%B6/next" class="astro-MTZRIXCV">→</a>
+</span>
   <span class="astro-SZ7XMLTE">EINDEX @ 2023</span>
 </footer>
-    </div>
     <script async defer data-website-id="d963565f-c209-41a4-98d2-faac7625f470" src="https://umami.eindex.me/umami.js"></script>
-  
-
-</body></html>
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;01180ed57cc34c3896e21f5c09a75ef5&quot;}"></script>
+    
+  </body>
+</html>
