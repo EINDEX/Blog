@@ -1,41 +1,49 @@
 ---
 import i18next, { changeLanguage } from "i18next";
-import Layout from "../../layouts/Layout.astro";
 import Img from "@components/Img.astro";
+import EmptyWapper from "@layouts/EmptyWapper.astro";
+import Navbar from "@components/Navbar.astro";
 
 changeLanguage("cn");
 
 const resp = await fetch("https://img.eindex.me/pic/pic_list.json");
 const images = await resp.json();
+const links = [
+    {
+        name: "Home",
+        url: "/",
+    },
+    {
+        name: "\u4E2D\u6587\u535A\u5BA2",
+        url: "/cn/posts",
+    },
+    {
+        name: "Posts",
+        url: "/posts",
+    },
+];
 ---
 
-<Layout title="Gallery">
+<EmptyWapper title="Gallery">
+  <Navbar links={links} />
   <div class="gallery">
     {
       images.map((image) => (
         <img
-          height="200px"
-          width={`${(image.height / 200) * image.width}`}
+          height="300px"
+          width={`${image.width / (image.height / 300)}px`}
           src={`https://img.eindex.me/pic/${image.thumbnail}`}
         />
       ))
     }
   </div>
-</Layout>
+</EmptyWapper>
 
 <style lang="scss">
   .gallery {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    row-gap: 2rem;
-    column-gap: 0.5rem;
-    padding-top: 2rem;
-    justify-content: space-around;
-
+    @apply flex flex-row flex-wrap gap-8 pt-8 justify-around w-full px-4;
     img {
-      border-radius: 0.5rem;
-      box-shadow: 1rem;
+      @apply rounded-lg shadow-lg;
     }
   }
 </style>

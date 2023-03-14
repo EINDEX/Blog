@@ -1,23 +1,15 @@
 ---
 import WebRing from "./WebRing.astro";
-
-
 ---
-<footer>  
+
+<footer>
   <WebRing />
   <span>EINDEX @ {new Date().getFullYear()}</span>
 </footer>
 
-
 <style lang="scss">
   footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    @apply flex items-center flex-col text-sm text-gray-500/80 mt-8;
     padding: 1rem;
-    border-top: 1px solid #e5e5e5;
-    font-size: 0.8rem;
-    color: #999;
-    width: 100%;
   }
 </style>

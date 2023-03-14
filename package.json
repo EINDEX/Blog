@@ -18,10 +18,13 @@
 		"@astrojs/react": "^2.0.2",
 		"@astrojs/rss": "^2.1.1",
 		"@astrojs/sitemap": "^1.0.1",
+		"@astrojs/tailwind": "^3.1.1",
 		"@astrolib/seo": "^0.3.0",
+		"@giscus/react": "^2.2.8",
+		"@tabler/icons-react": "^2.10.0",
 		"@types/react": "^18.0.28",
 		"@types/react-dom": "^18.0.11",
-		"astro": "^2.0.15",
+		"astro": "^2.1.3",
 		"astro-i18next": "^1.0.0-beta.17",
 		"astro-icon": "^0.8.0",
 		"blurhash": "^2.0.5",
@@ -37,7 +40,8 @@
 		"remark-math": "^3.0.1",
 		"remark-toc": "^8.0.1",
 		"sanitize-html": "^2.10.0",
-		"shiki": "^0.14.1"
+		"shiki": "^0.14.1",
+		"tailwindcss": "^3.2.7"
 	},
 	"devDependencies": {
 		"@vite-pwa/astro": "^0.0.4",

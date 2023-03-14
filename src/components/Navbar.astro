@@ -1,16 +1,27 @@
 ---
-
+const { links } = Astro.props;
 ---
+
 <nav>
-  <span><img width="32px" height="32px" src="/images/avatar.png" ><a href="/">EINDEX's Blog</a></span>
+  <span
+    ><img width="32px" height="32px" src="/images/avatar.png" /><a href="/"
+      ><b>EINDEX</b>'s Blog</a
+    ></span
+  >
   <ul>
-    <li><a rel="me" href="https://github.com/eindex">Github</a></li>
-    <li><a rel="me" href="https://twitter.com/@eindex_li">Twitter</a></li>
+    {
+      links.map((link) => (
+        <li>
+          <a href={link.url}>{link.name}</a>
+        </li>
+      ))
+    }
   </ul>
 </nav>
 
 <style lang="scss">
   nav {
+    @apply px-4 pt-4;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -45,7 +56,7 @@
         margin: 0 10px;
         a {
           text-decoration: none;
-          color: var(--text-color)
+          color: var(--text-color);
         }
       }
     }

@@ -22,7 +22,7 @@
   ],
   "allowed_domains": ["eindex.me"],
   "scrap_start_urls": false,
-  "sitemap_urls": ["https://eindex.me/sitemap.xml"],
+  "sitemap_urls": ["https://eindex.me/sitemap-index.xml"],
   "stop_urls": [],
   "selectors": {
     "default": {

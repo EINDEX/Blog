@@ -49,8 +49,6 @@ const { hash, src, width, height, resolutionX, resolutionY, alt } = Astro.props;
         image.style.backgroundColor = `rgb(${bgColor})`;
         image.addEventListener("load", () => {
           console.log("loadding", image.complete);
-          // blur.style.display = "none";
-          // alert(1);
         });
       }
     }
