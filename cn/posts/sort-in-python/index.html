@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cn">
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,height=device-height, initial-scale=1">
     <link rel="icon" href="/favicon.ico">
     <meta name="generator" content="Astro v2.1.3">
     <title>基本排序算法的Python实现</title>
@@ -19,37 +19,48 @@
 
   gtag("config", "G-SR36ZS0R52");
 </script>
-  <link rel="stylesheet" href="/_astro/gallery.bc4fe863.css" />
-<link rel="stylesheet" href="/_astro/_slug_.eda67c97.css" />
-<link rel="stylesheet" href="/_astro/_slug_.8c5018de.css" />
-<link rel="stylesheet" href="/_astro/_slug_.9be3c881.css" />
-<link rel="stylesheet" href="/_astro/_slug_.fe6782dc.css" /><script type="module">class o extends HTMLElement{constructor(){super();const e=this.querySelector("button"),t=this.querySelector("div.code-body");e.addEventListener("click",()=>{navigator.clipboard.writeText(t.innerText).then(()=>{console.log("copy successd")})})}}customElements.define("article-code",o);
-</script></head>
+  <link rel="stylesheet" href="/_astro/_slug_.0627258f.css" />
+<link rel="stylesheet" href="/_astro/index.069256eb.css" />
+<link rel="stylesheet" href="/_astro/_slug_.63ae01c1.css" />
+<link rel="stylesheet" href="/_astro/_slug_.bc9c98d6.css" />
+<link rel="stylesheet" href="/_astro/_slug_.b67f8034.css" /><script type="module" src="/_astro/hoisted.c2e808df.js"></script></head>
   <body>
-    <nav class="astro-5BLMO7YK">
-  <span class="astro-5BLMO7YK"><img width="32px" height="32px" src="/images/avatar.png" class="astro-5BLMO7YK"><a href="/" class="astro-5BLMO7YK"><b class="astro-5BLMO7YK">EINDEX</b>'s Blog</a></span>
-  <ul class="astro-5BLMO7YK">
-    <li class="astro-5BLMO7YK">
-          <a href="/" class="astro-5BLMO7YK">Home</a>
-        </li><li class="astro-5BLMO7YK">
-          <a href="/cn/posts" class="astro-5BLMO7YK">中文博客</a>
-        </li><li class="astro-5BLMO7YK">
-          <a href="/posts" class="astro-5BLMO7YK">Posts</a>
-        </li><li class="astro-5BLMO7YK">
-          <a href="/gallery" class="astro-5BLMO7YK">Gallery</a>
-        </li>
-  </ul>
-</nav><div class="blog astro-SCKKX6R4">
-    <article class="h-entry astro-WMBV4WGB">
+    <nav style="" class="astro-5BLMO7YK">
+  <a class="logo astro-5BLMO7YK" href="/">
+    <img width="32px" height="32px" src="/images/avatar.png" class="astro-5BLMO7YK">
+    <b class="astro-5BLMO7YK">EINDEX</b>'s Blog
+  </a>
+  <button id="navbar-default" data-collapse-toggle="navbar-default" type="button" class="navbar-toggle astro-5BLMO7YK" aria-controls="navbar-default" aria-expanded="false">
+    <span class="sr-only astro-5BLMO7YK">Open main menu</span>
+    <svg class="w-6 h-6 astro-5BLMO7YK" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" class="astro-5BLMO7YK"></path></svg>
+  </button>
+  <div class="menus sm:hidden astro-5BLMO7YK" id="navbar-menus">
+    <ul class="astro-5BLMO7YK">
+      <li class="astro-5BLMO7YK">
+            <a href="/" class="astro-5BLMO7YK">Home</a>
+          </li><li class="astro-5BLMO7YK">
+            <a href="/cn/posts" class="astro-5BLMO7YK">中文博客</a>
+          </li><li class="astro-5BLMO7YK">
+            <a href="/posts" class="astro-5BLMO7YK">Posts</a>
+          </li><li class="astro-5BLMO7YK">
+            <a href="/gallery" class="astro-5BLMO7YK">Gallery</a>
+          </li>
+    </ul>
+  </div>
+</nav><div class="wapper astro-SCKKX6R4">
+    <main class="astro-SCKKX6R4">
+      <article class="h-entry astro-WMBV4WGB">
+    
     <span class="series p-category astro-WMBV4WGB"></span>
     <h1 class="title p-name astro-WMBV4WGB">
       基本排序算法的Python实现<a class="u-url astro-WMBV4WGB" href="/cnsort-in-python"></a>
     </h1>
-    <time class="astro-WMBV4WGB">2017/10/05</time>
+    <div class="post-meta astro-WMBV4WGB">
+        <p class="p-summary astro-WMBV4WGB"></p>
+      <time class="astro-WMBV4WGB">2017/10/05</time>
+    </div>
 
-    <summary class="p-summary astro-WMBV4WGB"></summary>
-
-    <section class="main e-content astro-WMBV4WGB">
+    <section class="main e-content format sm:format-sm lg:format-lg dark:format-invert format-pre:m-0 format-pre:p-2 format-li:list-disc list-disc astro-WMBV4WGB">
       <p>本篇主要实现九(八）大排序算法，分别是冒泡排序，插入排序，选择排序，希尔排序，归并排序，快速排序，堆排序,计数排序。希望大家回顾知识的时候也能从我的这篇文章得到帮助。</p>
 <more></more>
 <p><strong>为了防止误导读者，本文所有概念性内容均截取自对应 Wiki</strong></p>
@@ -65,50 +76,54 @@
 <li>持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。</li>
 </ol>
 <h3 id="代码">代码</h3>
-<article-code class="astro-VKVMCQTA">
+<article-code data-lang="python" class="astro-VKVMCQTA">
   <div class="code-header astro-VKVMCQTA">
     <span class="astro-VKVMCQTA">python</span><button class="astro-VKVMCQTA">Copy<svg viewBox="0 0 20 20" class="astro-VKVMCQTA" astro-icon="uiw:copy"><path fill="currentColor" d="M6.644 2.983a.252.252 0 0 0-.253.252c0 .139.113.251.253.251h3.713c.14 0 .253-.112.253-.251a.252.252 0 0 0-.253-.252H6.644zm3.713-1.342c.734 0 1.353.49 1.544 1.16l2.175.001c.621.004 1.122.205 1.432.638.266.372.372.85.345 1.387L15.85 17.84c.042.552-.062 1.04-.328 1.445-.312.473-.821.71-1.452.716H3.14c-.76-.03-1.323-.209-1.675-.609-.327-.371-.47-.88-.464-1.5V4.84c-.013-.6.154-1.106.518-1.48.376-.384.932-.554 1.647-.559h1.935c.19-.67.809-1.16 1.543-1.16h3.713zm0 3.187H6.644c-.546 0-1.027-.27-1.317-.684H3.17c-.383.002-.602.07-.682.152-.091.093-.144.252-.138.531v13.07c-.003.325.052.522.13.61.054.061.286.135.685.151h10.9c.2-.002.28-.04.326-.109.091-.138.133-.334.11-.658l.001-13.096c.014-.293-.027-.482-.096-.578-.026-.035-.116-.072-.336-.073h-2.397c-.29.414-.771.684-1.317.684zM17.2 0c.994 0 1.8.801 1.8 1.79v14.082c0 .988-.806 1.79-1.8 1.79h-1.958v-1.343h1.957c.249 0 .45-.2.45-.447V1.789a.449.449 0 0 0-.45-.447H9.643c-.248 0-.45.2-.45.447v.157h-1.35v-.157C7.843.801 8.649 0 9.643 0H17.2zM8.196 11.751c.373 0 .675.3.675.671 0 .37-.302.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h4.051zm4.052-2.684c.372 0 .675.3.675.671 0 .37-.303.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103zm0-2.684c.372 0 .675.3.675.671a.673.673 0 0 1-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103z"/></svg></button>
   </div>
-  <div class="code-body astro-VKVMCQTA"><pre class="shiki " style="background-color: none" tabindex="0"><code><span class="line"><span style="color: #66D9EF; font-style: italic">def</span><span style="color: #F8F8F2"> </span><span style="color: #A6E22E">bubble_sort</span><span style="color: #F8F8F2">(</span><span style="color: #FD971F; font-style: italic">list</span><span style="color: #F8F8F2">):</span></span>
-<span class="line"><span style="color: #F8F8F2">    length </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">len</span><span style="color: #F8F8F2">(</span><span style="color: #66D9EF; font-style: italic">list</span><span style="color: #F8F8F2">)</span></span>
-<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #88846F"># 第一级遍历</span></span>
-<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F92672">for</span><span style="color: #F8F8F2"> index </span><span style="color: #F92672">in</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">range</span><span style="color: #F8F8F2">(length):</span></span>
-<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #88846F"># 第二级遍历</span></span>
-<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">for</span><span style="color: #F8F8F2"> j </span><span style="color: #F92672">in</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">range</span><span style="color: #F8F8F2">(</span><span style="color: #AE81FF">1</span><span style="color: #F8F8F2">, length </span><span style="color: #F92672">-</span><span style="color: #F8F8F2"> index):</span></span>
-<span class="line"><span style="color: #F8F8F2">            </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> list[j </span><span style="color: #F92672">-</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">1</span><span style="color: #F8F8F2">] </span><span style="color: #F92672">&gt;</span><span style="color: #F8F8F2"> list[j]:</span></span>
-<span class="line"><span style="color: #F8F8F2">                </span><span style="color: #88846F"># 交换两者数据，这里没用temp是因为python 特性元组。</span></span>
-<span class="line"><span style="color: #F8F8F2">                list[j </span><span style="color: #F92672">-</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">1</span><span style="color: #F8F8F2">], list[j] </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> list[j], list[j </span><span style="color: #F92672">-</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">1</span><span style="color: #F8F8F2">]</span></span>
-<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F92672">return</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF; font-style: italic">list</span></span>
-<span class="line"></span></code></pre></div>
-
-  
-
-  
+  <div class="code-body astro-VKVMCQTA">
+    <pre class="astro-VKVMCQTA"><code class="astro-VKVMCQTA">def bubble_sort(list):
+    length = len(list)
+    # 第一级遍历
+    for index in range(length):
+        # 第二级遍历
+        for j in range(1, length - index):
+            if list[j - 1] &gt; list[j]:
+                # 交换两者数据，这里没用temp是因为python 特性元组。
+                list[j - 1], list[j] = list[j], list[j - 1]
+    return list
+</code></pre>
+  </div>
 </article-code>
+
+
+
+<script src="https://unpkg.com/shiki"></script>
 <p>这种排序其实还可以稍微优化一下，添加一个标记，在排序已完成时，停止排序。</p>
-<article-code class="astro-VKVMCQTA">
+<article-code data-lang="python" class="astro-VKVMCQTA">
   <div class="code-header astro-VKVMCQTA">
     <span class="astro-VKVMCQTA">python</span><button class="astro-VKVMCQTA">Copy<svg viewBox="0 0 20 20" class="astro-VKVMCQTA" astro-icon="uiw:copy"><path fill="currentColor" d="M6.644 2.983a.252.252 0 0 0-.253.252c0 .139.113.251.253.251h3.713c.14 0 .253-.112.253-.251a.252.252 0 0 0-.253-.252H6.644zm3.713-1.342c.734 0 1.353.49 1.544 1.16l2.175.001c.621.004 1.122.205 1.432.638.266.372.372.85.345 1.387L15.85 17.84c.042.552-.062 1.04-.328 1.445-.312.473-.821.71-1.452.716H3.14c-.76-.03-1.323-.209-1.675-.609-.327-.371-.47-.88-.464-1.5V4.84c-.013-.6.154-1.106.518-1.48.376-.384.932-.554 1.647-.559h1.935c.19-.67.809-1.16 1.543-1.16h3.713zm0 3.187H6.644c-.546 0-1.027-.27-1.317-.684H3.17c-.383.002-.602.07-.682.152-.091.093-.144.252-.138.531v13.07c-.003.325.052.522.13.61.054.061.286.135.685.151h10.9c.2-.002.28-.04.326-.109.091-.138.133-.334.11-.658l.001-13.096c.014-.293-.027-.482-.096-.578-.026-.035-.116-.072-.336-.073h-2.397c-.29.414-.771.684-1.317.684zM17.2 0c.994 0 1.8.801 1.8 1.79v14.082c0 .988-.806 1.79-1.8 1.79h-1.958v-1.343h1.957c.249 0 .45-.2.45-.447V1.789a.449.449 0 0 0-.45-.447H9.643c-.248 0-.45.2-.45.447v.157h-1.35v-.157C7.843.801 8.649 0 9.643 0H17.2zM8.196 11.751c.373 0 .675.3.675.671 0 .37-.302.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h4.051zm4.052-2.684c.372 0 .675.3.675.671 0 .37-.303.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103zm0-2.684c.372 0 .675.3.675.671a.673.673 0 0 1-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103z"/></svg></button>
   </div>
-  <div class="code-body astro-VKVMCQTA"><pre class="shiki " style="background-color: none" tabindex="0"><code><span class="line"><span style="color: #66D9EF; font-style: italic">def</span><span style="color: #F8F8F2"> </span><span style="color: #A6E22E">bubble_sort_flag</span><span style="color: #F8F8F2">(</span><span style="color: #FD971F; font-style: italic">list</span><span style="color: #F8F8F2">):</span></span>
-<span class="line"><span style="color: #F8F8F2">    length </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">len</span><span style="color: #F8F8F2">(</span><span style="color: #66D9EF; font-style: italic">list</span><span style="color: #F8F8F2">)</span></span>
-<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F92672">for</span><span style="color: #F8F8F2"> index </span><span style="color: #F92672">in</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">range</span><span style="color: #F8F8F2">(length):</span></span>
-<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #88846F"># 标志位</span></span>
-<span class="line"><span style="color: #F8F8F2">        flag </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">True</span></span>
-<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">for</span><span style="color: #F8F8F2"> j </span><span style="color: #F92672">in</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">range</span><span style="color: #F8F8F2">(</span><span style="color: #AE81FF">1</span><span style="color: #F8F8F2">, length </span><span style="color: #F92672">-</span><span style="color: #F8F8F2"> index):</span></span>
-<span class="line"><span style="color: #F8F8F2">            </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> list[j </span><span style="color: #F92672">-</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">1</span><span style="color: #F8F8F2">] </span><span style="color: #F92672">&gt;</span><span style="color: #F8F8F2"> list[j]:</span></span>
-<span class="line"><span style="color: #F8F8F2">                list[j </span><span style="color: #F92672">-</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">1</span><span style="color: #F8F8F2">], list[j] </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> list[j], list[j </span><span style="color: #F92672">-</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">1</span><span style="color: #F8F8F2">]</span></span>
-<span class="line"><span style="color: #F8F8F2">                flag </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">False</span></span>
-<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> flag:</span></span>
-<span class="line"><span style="color: #F8F8F2">            </span><span style="color: #88846F"># 没有发生交换，直接返回list</span></span>
-<span class="line"><span style="color: #F8F8F2">            </span><span style="color: #F92672">return</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF; font-style: italic">list</span></span>
-<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F92672">return</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF; font-style: italic">list</span></span>
-<span class="line"></span></code></pre></div>
-
-  
-
-  
+  <div class="code-body astro-VKVMCQTA">
+    <pre class="astro-VKVMCQTA"><code class="astro-VKVMCQTA">def bubble_sort_flag(list):
+    length = len(list)
+    for index in range(length):
+        # 标志位
+        flag = True
+        for j in range(1, length - index):
+            if list[j - 1] &gt; list[j]:
+                list[j - 1], list[j] = list[j], list[j - 1]
+                flag = False
+        if flag:
+            # 没有发生交换，直接返回list
+            return list
+    return list
+</code></pre>
+  </div>
 </article-code>
+
+
+
+<script src="https://unpkg.com/shiki"></script>
 <h2 id="选择排序">选择排序</h2>
 <h3 id="原理-1">原理</h3>
 <p>选择排序（Selection sort）是一种简单直观的排序算法。它的工作原理大致是将后面的元素最小元素一个个取出然后按顺序放置。</p>
@@ -119,25 +134,27 @@
 <li>重复第二步，直到所有元素均排序完毕。</li>
 </ol>
 <h3 id="代码-1">代码</h3>
-<article-code class="astro-VKVMCQTA">
+<article-code data-lang="python" class="astro-VKVMCQTA">
   <div class="code-header astro-VKVMCQTA">
     <span class="astro-VKVMCQTA">python</span><button class="astro-VKVMCQTA">Copy<svg viewBox="0 0 20 20" class="astro-VKVMCQTA" astro-icon="uiw:copy"><path fill="currentColor" d="M6.644 2.983a.252.252 0 0 0-.253.252c0 .139.113.251.253.251h3.713c.14 0 .253-.112.253-.251a.252.252 0 0 0-.253-.252H6.644zm3.713-1.342c.734 0 1.353.49 1.544 1.16l2.175.001c.621.004 1.122.205 1.432.638.266.372.372.85.345 1.387L15.85 17.84c.042.552-.062 1.04-.328 1.445-.312.473-.821.71-1.452.716H3.14c-.76-.03-1.323-.209-1.675-.609-.327-.371-.47-.88-.464-1.5V4.84c-.013-.6.154-1.106.518-1.48.376-.384.932-.554 1.647-.559h1.935c.19-.67.809-1.16 1.543-1.16h3.713zm0 3.187H6.644c-.546 0-1.027-.27-1.317-.684H3.17c-.383.002-.602.07-.682.152-.091.093-.144.252-.138.531v13.07c-.003.325.052.522.13.61.054.061.286.135.685.151h10.9c.2-.002.28-.04.326-.109.091-.138.133-.334.11-.658l.001-13.096c.014-.293-.027-.482-.096-.578-.026-.035-.116-.072-.336-.073h-2.397c-.29.414-.771.684-1.317.684zM17.2 0c.994 0 1.8.801 1.8 1.79v14.082c0 .988-.806 1.79-1.8 1.79h-1.958v-1.343h1.957c.249 0 .45-.2.45-.447V1.789a.449.449 0 0 0-.45-.447H9.643c-.248 0-.45.2-.45.447v.157h-1.35v-.157C7.843.801 8.649 0 9.643 0H17.2zM8.196 11.751c.373 0 .675.3.675.671 0 .37-.302.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h4.051zm4.052-2.684c.372 0 .675.3.675.671 0 .37-.303.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103zm0-2.684c.372 0 .675.3.675.671a.673.673 0 0 1-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103z"/></svg></button>
   </div>
-  <div class="code-body astro-VKVMCQTA"><pre class="shiki " style="background-color: none" tabindex="0"><code><span class="line"><span style="color: #66D9EF; font-style: italic">def</span><span style="color: #F8F8F2"> </span><span style="color: #A6E22E">selection_sort</span><span style="color: #F8F8F2">(</span><span style="color: #FD971F; font-style: italic">list</span><span style="color: #F8F8F2">):</span></span>
-<span class="line"><span style="color: #F8F8F2">    n</span><span style="color: #F92672">=</span><span style="color: #66D9EF">len</span><span style="color: #F8F8F2">(</span><span style="color: #66D9EF; font-style: italic">list</span><span style="color: #F8F8F2">)</span></span>
-<span class="line"><span style="color: #F8F8F2">   </span><span style="color: #F92672">for</span><span style="color: #F8F8F2"> i </span><span style="color: #F92672">in</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">range</span><span style="color: #F8F8F2"> (</span><span style="color: #AE81FF">0</span><span style="color: #F8F8F2">,n):</span></span>
-<span class="line"><span style="color: #F8F8F2">       </span><span style="color: #66D9EF">min</span><span style="color: #F8F8F2"> </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> i</span></span>
-<span class="line"><span style="color: #F8F8F2">       </span><span style="color: #F92672">for</span><span style="color: #F8F8F2"> j </span><span style="color: #F92672">in</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">range</span><span style="color: #F8F8F2">(i</span><span style="color: #F92672">+</span><span style="color: #AE81FF">1</span><span style="color: #F8F8F2">,n):</span></span>
-<span class="line"><span style="color: #F8F8F2">           </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> list[j]</span><span style="color: #F92672">&lt;</span><span style="color: #F8F8F2">list[</span><span style="color: #66D9EF">min</span><span style="color: #F8F8F2">]:</span></span>
-<span class="line"><span style="color: #F8F8F2">               </span><span style="color: #66D9EF">min</span><span style="color: #F92672">=</span><span style="color: #F8F8F2">j</span></span>
-<span class="line"><span style="color: #F8F8F2">               list[</span><span style="color: #66D9EF">min</span><span style="color: #F8F8F2">],list[i]</span><span style="color: #F92672">=</span><span style="color: #F8F8F2">list[i],list[</span><span style="color: #66D9EF">min</span><span style="color: #F8F8F2">]</span></span>
-<span class="line"><span style="color: #F8F8F2">   </span><span style="color: #F92672">return</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF; font-style: italic">list</span></span>
-<span class="line"></span></code></pre></div>
-
-  
-
-  
+  <div class="code-body astro-VKVMCQTA">
+    <pre class="astro-VKVMCQTA"><code class="astro-VKVMCQTA">def selection_sort(list):
+    n=len(list)
+   for i in range (0,n):
+       min = i
+       for j in range(i+1,n):
+           if list[j]&lt;list[min]:
+               min=j
+               list[min],list[i]=list[i],list[min]
+   return list
+</code></pre>
+  </div>
 </article-code>
+
+
+
+<script src="https://unpkg.com/shiki"></script>
 <h2 id="插入排序">插入排序</h2>
 <h3 id="原理-2">原理</h3>
 <p>插入排序（Insertion Sort）是一种简单直观的排序算法。它的工作原理是通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。</p>
@@ -151,11 +168,12 @@
 <li>重复步骤 2~5</li>
 </ol>
 <h3 id="代码-2">代码</h3>
-<article-code class="astro-VKVMCQTA">
+<article-code data-lang="Python" class="astro-VKVMCQTA">
   <div class="code-header astro-VKVMCQTA">
     <span class="astro-VKVMCQTA">Python</span><button class="astro-VKVMCQTA">Copy<svg viewBox="0 0 20 20" class="astro-VKVMCQTA" astro-icon="uiw:copy"><path fill="currentColor" d="M6.644 2.983a.252.252 0 0 0-.253.252c0 .139.113.251.253.251h3.713c.14 0 .253-.112.253-.251a.252.252 0 0 0-.253-.252H6.644zm3.713-1.342c.734 0 1.353.49 1.544 1.16l2.175.001c.621.004 1.122.205 1.432.638.266.372.372.85.345 1.387L15.85 17.84c.042.552-.062 1.04-.328 1.445-.312.473-.821.71-1.452.716H3.14c-.76-.03-1.323-.209-1.675-.609-.327-.371-.47-.88-.464-1.5V4.84c-.013-.6.154-1.106.518-1.48.376-.384.932-.554 1.647-.559h1.935c.19-.67.809-1.16 1.543-1.16h3.713zm0 3.187H6.644c-.546 0-1.027-.27-1.317-.684H3.17c-.383.002-.602.07-.682.152-.091.093-.144.252-.138.531v13.07c-.003.325.052.522.13.61.054.061.286.135.685.151h10.9c.2-.002.28-.04.326-.109.091-.138.133-.334.11-.658l.001-13.096c.014-.293-.027-.482-.096-.578-.026-.035-.116-.072-.336-.073h-2.397c-.29.414-.771.684-1.317.684zM17.2 0c.994 0 1.8.801 1.8 1.79v14.082c0 .988-.806 1.79-1.8 1.79h-1.958v-1.343h1.957c.249 0 .45-.2.45-.447V1.789a.449.449 0 0 0-.45-.447H9.643c-.248 0-.45.2-.45.447v.157h-1.35v-.157C7.843.801 8.649 0 9.643 0H17.2zM8.196 11.751c.373 0 .675.3.675.671 0 .37-.302.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h4.051zm4.052-2.684c.372 0 .675.3.675.671 0 .37-.303.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103zm0-2.684c.372 0 .675.3.675.671a.673.673 0 0 1-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103z"/></svg></button>
   </div>
-  <div class="code-body astro-VKVMCQTA"><code class="language-Python">def insert_sort(list):
+  <div class="code-body astro-VKVMCQTA">
+    <pre class="astro-VKVMCQTA"><code class="astro-VKVMCQTA">def insert_sort(list):
     n = len(list)
     for i in range(1, n):
         # 后一个元素和前一个元素比较
@@ -176,12 +194,13 @@
             # 插入元素
             list[index] = temp
     return list
-</code></div>
-
-  
-
-  
+</code></pre>
+  </div>
 </article-code>
+
+
+
+<script src="https://unpkg.com/shiki"></script>
 <h2 id="希尔排序">希尔排序</h2>
 <h3 id="原理-3">原理</h3>
 <p>希尔排序，也称递减增量排序算法，是插入排序的一种更高效的改进版本。希尔排序是非稳定排序算法。
@@ -191,33 +210,35 @@
 <h3 id="步骤-3">步骤</h3>
 <p>每次以一定步长(就是跳过等距的数)进行排序，直至步长为 1.</p>
 <h3 id="代码-3">代码</h3>
-<article-code class="astro-VKVMCQTA">
+<article-code data-lang="python" class="astro-VKVMCQTA">
   <div class="code-header astro-VKVMCQTA">
     <span class="astro-VKVMCQTA">python</span><button class="astro-VKVMCQTA">Copy<svg viewBox="0 0 20 20" class="astro-VKVMCQTA" astro-icon="uiw:copy"><path fill="currentColor" d="M6.644 2.983a.252.252 0 0 0-.253.252c0 .139.113.251.253.251h3.713c.14 0 .253-.112.253-.251a.252.252 0 0 0-.253-.252H6.644zm3.713-1.342c.734 0 1.353.49 1.544 1.16l2.175.001c.621.004 1.122.205 1.432.638.266.372.372.85.345 1.387L15.85 17.84c.042.552-.062 1.04-.328 1.445-.312.473-.821.71-1.452.716H3.14c-.76-.03-1.323-.209-1.675-.609-.327-.371-.47-.88-.464-1.5V4.84c-.013-.6.154-1.106.518-1.48.376-.384.932-.554 1.647-.559h1.935c.19-.67.809-1.16 1.543-1.16h3.713zm0 3.187H6.644c-.546 0-1.027-.27-1.317-.684H3.17c-.383.002-.602.07-.682.152-.091.093-.144.252-.138.531v13.07c-.003.325.052.522.13.61.054.061.286.135.685.151h10.9c.2-.002.28-.04.326-.109.091-.138.133-.334.11-.658l.001-13.096c.014-.293-.027-.482-.096-.578-.026-.035-.116-.072-.336-.073h-2.397c-.29.414-.771.684-1.317.684zM17.2 0c.994 0 1.8.801 1.8 1.79v14.082c0 .988-.806 1.79-1.8 1.79h-1.958v-1.343h1.957c.249 0 .45-.2.45-.447V1.789a.449.449 0 0 0-.45-.447H9.643c-.248 0-.45.2-.45.447v.157h-1.35v-.157C7.843.801 8.649 0 9.643 0H17.2zM8.196 11.751c.373 0 .675.3.675.671 0 .37-.302.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h4.051zm4.052-2.684c.372 0 .675.3.675.671 0 .37-.303.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103zm0-2.684c.372 0 .675.3.675.671a.673.673 0 0 1-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103z"/></svg></button>
   </div>
-  <div class="code-body astro-VKVMCQTA"><pre class="shiki " style="background-color: none" tabindex="0"><code><span class="line"><span style="color: #66D9EF; font-style: italic">def</span><span style="color: #F8F8F2"> </span><span style="color: #A6E22E">shell_sort</span><span style="color: #F8F8F2">(</span><span style="color: #FD971F; font-style: italic">list</span><span style="color: #F8F8F2">):</span></span>
-<span class="line"><span style="color: #F8F8F2">    n </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">len</span><span style="color: #F8F8F2">(</span><span style="color: #66D9EF; font-style: italic">list</span><span style="color: #F8F8F2">)</span></span>
-<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #88846F"># 初始步长</span></span>
-<span class="line"><span style="color: #F8F8F2">    gap </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">round</span><span style="color: #F8F8F2">(n </span><span style="color: #F92672">/</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">2</span><span style="color: #F8F8F2">)</span></span>
-<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F92672">while</span><span style="color: #F8F8F2"> gap </span><span style="color: #F92672">&gt;</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">0</span><span style="color: #F8F8F2">:</span></span>
-<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">for</span><span style="color: #F8F8F2"> i </span><span style="color: #F92672">in</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">range</span><span style="color: #F8F8F2">(gap, n):</span></span>
-<span class="line"><span style="color: #F8F8F2">            </span><span style="color: #88846F"># 每个步长进行插入排序</span></span>
-<span class="line"><span style="color: #F8F8F2">            temp </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> list[i]</span></span>
-<span class="line"><span style="color: #F8F8F2">            j </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> i</span></span>
-<span class="line"><span style="color: #F8F8F2">            </span><span style="color: #88846F"># 插入排序</span></span>
-<span class="line"><span style="color: #F8F8F2">            </span><span style="color: #F92672">while</span><span style="color: #F8F8F2"> j </span><span style="color: #F92672">&gt;=</span><span style="color: #F8F8F2"> gap </span><span style="color: #F92672">and</span><span style="color: #F8F8F2"> list[j </span><span style="color: #F92672">-</span><span style="color: #F8F8F2"> gap] </span><span style="color: #F92672">&gt;</span><span style="color: #F8F8F2"> temp:</span></span>
-<span class="line"><span style="color: #F8F8F2">                list[j] </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> list[j </span><span style="color: #F92672">-</span><span style="color: #F8F8F2"> gap]</span></span>
-<span class="line"><span style="color: #F8F8F2">                j </span><span style="color: #F92672">-=</span><span style="color: #F8F8F2"> gap</span></span>
-<span class="line"><span style="color: #F8F8F2">            list[j] </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> temp</span></span>
-<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #88846F"># 得到新的步长</span></span>
-<span class="line"><span style="color: #F8F8F2">        gap </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">round</span><span style="color: #F8F8F2">(gap </span><span style="color: #F92672">/</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">2</span><span style="color: #F8F8F2">)</span></span>
-<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F92672">return</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF; font-style: italic">list</span></span>
-<span class="line"></span></code></pre></div>
-
-  
-
-  
+  <div class="code-body astro-VKVMCQTA">
+    <pre class="astro-VKVMCQTA"><code class="astro-VKVMCQTA">def shell_sort(list):
+    n = len(list)
+    # 初始步长
+    gap = round(n / 2)
+    while gap &gt; 0:
+        for i in range(gap, n):
+            # 每个步长进行插入排序
+            temp = list[i]
+            j = i
+            # 插入排序
+            while j &gt;= gap and list[j - gap] &gt; temp:
+                list[j] = list[j - gap]
+                j -= gap
+            list[j] = temp
+        # 得到新的步长
+        gap = round(gap / 2)
+    return list
+</code></pre>
+  </div>
 </article-code>
+
+
+
+<script src="https://unpkg.com/shiki"></script>
 
 <blockquote>
 <p>也可以使用<a href="https://zh.wikipedia.org/wiki/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97">斐波那契数列</a>除去 0 和 1 将剩余的数以黄金分区比的两倍的幂进行运算得到的数列。</p>
@@ -239,41 +260,43 @@
 
 <p> 3. 重复步骤 2，直到所有元素排序完毕</p>
 <h3 id="代码-4">代码</h3>
-<article-code class="astro-VKVMCQTA">
+<article-code data-lang="python" class="astro-VKVMCQTA">
   <div class="code-header astro-VKVMCQTA">
     <span class="astro-VKVMCQTA">python</span><button class="astro-VKVMCQTA">Copy<svg viewBox="0 0 20 20" class="astro-VKVMCQTA" astro-icon="uiw:copy"><path fill="currentColor" d="M6.644 2.983a.252.252 0 0 0-.253.252c0 .139.113.251.253.251h3.713c.14 0 .253-.112.253-.251a.252.252 0 0 0-.253-.252H6.644zm3.713-1.342c.734 0 1.353.49 1.544 1.16l2.175.001c.621.004 1.122.205 1.432.638.266.372.372.85.345 1.387L15.85 17.84c.042.552-.062 1.04-.328 1.445-.312.473-.821.71-1.452.716H3.14c-.76-.03-1.323-.209-1.675-.609-.327-.371-.47-.88-.464-1.5V4.84c-.013-.6.154-1.106.518-1.48.376-.384.932-.554 1.647-.559h1.935c.19-.67.809-1.16 1.543-1.16h3.713zm0 3.187H6.644c-.546 0-1.027-.27-1.317-.684H3.17c-.383.002-.602.07-.682.152-.091.093-.144.252-.138.531v13.07c-.003.325.052.522.13.61.054.061.286.135.685.151h10.9c.2-.002.28-.04.326-.109.091-.138.133-.334.11-.658l.001-13.096c.014-.293-.027-.482-.096-.578-.026-.035-.116-.072-.336-.073h-2.397c-.29.414-.771.684-1.317.684zM17.2 0c.994 0 1.8.801 1.8 1.79v14.082c0 .988-.806 1.79-1.8 1.79h-1.958v-1.343h1.957c.249 0 .45-.2.45-.447V1.789a.449.449 0 0 0-.45-.447H9.643c-.248 0-.45.2-.45.447v.157h-1.35v-.157C7.843.801 8.649 0 9.643 0H17.2zM8.196 11.751c.373 0 .675.3.675.671 0 .37-.302.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h4.051zm4.052-2.684c.372 0 .675.3.675.671 0 .37-.303.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103zm0-2.684c.372 0 .675.3.675.671a.673.673 0 0 1-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103z"/></svg></button>
   </div>
-  <div class="code-body astro-VKVMCQTA"><pre class="shiki " style="background-color: none" tabindex="0"><code><span class="line"><span style="color: #88846F"># 递归法</span></span>
-<span class="line"><span style="color: #66D9EF; font-style: italic">def</span><span style="color: #F8F8F2"> </span><span style="color: #A6E22E">merge_sort</span><span style="color: #F8F8F2">(</span><span style="color: #FD971F; font-style: italic">list</span><span style="color: #F8F8F2">):</span></span>
-<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #88846F"># 认为长度不大于1的数列是有序的</span></span>
-<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">len</span><span style="color: #F8F8F2">(</span><span style="color: #66D9EF; font-style: italic">list</span><span style="color: #F8F8F2">) </span><span style="color: #F92672">&lt;=</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">1</span><span style="color: #F8F8F2">:</span></span>
-<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">return</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF; font-style: italic">list</span></span>
-<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #88846F"># 二分列表</span></span>
-<span class="line"><span style="color: #F8F8F2">    middle </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">len</span><span style="color: #F8F8F2">(</span><span style="color: #66D9EF; font-style: italic">list</span><span style="color: #F8F8F2">) </span><span style="color: #F92672">//</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">2</span></span>
-<span class="line"><span style="color: #F8F8F2">    left </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> merge_sort(list[:middle])</span></span>
-<span class="line"><span style="color: #F8F8F2">    right </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> merge_sort(list[middle:])</span></span>
-<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #88846F"># 最后一次合并</span></span>
-<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F92672">return</span><span style="color: #F8F8F2"> merge(left, right)</span></span>
-<span class="line"><span style="color: #88846F"># 合并</span></span>
-<span class="line"><span style="color: #66D9EF; font-style: italic">def</span><span style="color: #F8F8F2"> </span><span style="color: #A6E22E">merge</span><span style="color: #F8F8F2">(</span><span style="color: #FD971F; font-style: italic">left</span><span style="color: #F8F8F2">, </span><span style="color: #FD971F; font-style: italic">right</span><span style="color: #F8F8F2">):</span></span>
-<span class="line"><span style="color: #F8F8F2">    l,r</span><span style="color: #F92672">=</span><span style="color: #AE81FF">0</span><span style="color: #F8F8F2">,</span><span style="color: #AE81FF">0</span></span>
-<span class="line"><span style="color: #F8F8F2">    result</span><span style="color: #F92672">=</span><span style="color: #F8F8F2">[]</span></span>
-<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F92672">while</span><span style="color: #F8F8F2"> l</span><span style="color: #F92672">&lt;</span><span style="color: #66D9EF">len</span><span style="color: #F8F8F2">(left) </span><span style="color: #F92672">and</span><span style="color: #F8F8F2"> r</span><span style="color: #F92672">&lt;</span><span style="color: #66D9EF">len</span><span style="color: #F8F8F2">(right):</span></span>
-<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> left[l] </span><span style="color: #F92672">&lt;</span><span style="color: #F8F8F2">right[r]:</span></span>
-<span class="line"><span style="color: #F8F8F2">            result.append(left[l])</span></span>
-<span class="line"><span style="color: #F8F8F2">            l</span><span style="color: #F92672">+=</span><span style="color: #AE81FF">1</span></span>
-<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">else</span><span style="color: #F8F8F2">:</span></span>
-<span class="line"><span style="color: #F8F8F2">            result.append(right[r])</span></span>
-<span class="line"><span style="color: #F8F8F2">            r </span><span style="color: #F92672">+=</span><span style="color: #AE81FF">1</span></span>
-<span class="line"><span style="color: #F8F8F2">        reslut </span><span style="color: #F92672">+=</span><span style="color: #F8F8F2">left[l:]</span></span>
-<span class="line"><span style="color: #F8F8F2">        result</span><span style="color: #F92672">+=</span><span style="color: #F8F8F2">right[r:]</span></span>
-<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F92672">return</span><span style="color: #F8F8F2"> result</span></span>
-<span class="line"></span></code></pre></div>
-
-  
-
-  
+  <div class="code-body astro-VKVMCQTA">
+    <pre class="astro-VKVMCQTA"><code class="astro-VKVMCQTA"># 递归法
+def merge_sort(list):
+    # 认为长度不大于1的数列是有序的
+    if len(list) &lt;= 1:
+        return list
+    # 二分列表
+    middle = len(list) // 2
+    left = merge_sort(list[:middle])
+    right = merge_sort(list[middle:])
+    # 最后一次合并
+    return merge(left, right)
+# 合并
+def merge(left, right):
+    l,r=0,0
+    result=[]
+    while l&lt;len(left) and r&lt;len(right):
+        if left[l] &lt;right[r]:
+            result.append(left[l])
+            l+=1
+        else:
+            result.append(right[r])
+            r +=1
+        reslut +=left[l:]
+        result+=right[r:]
+    return result
+</code></pre>
+  </div>
 </article-code>
+
+
+
+<script src="https://unpkg.com/shiki"></script>
 <p>鄙人不才，不知归并排序的迭代法如何用 Python 实现，望指教。</p>
 <h2 id="快速排序">快速排序</h2>
 <h3 id="原理-5">原理</h3>
@@ -286,71 +309,77 @@
 </ol>
 <h3 id="代码-5">代码</h3>
 <p>普通版</p>
-<article-code class="astro-VKVMCQTA">
+<article-code data-lang="python" class="astro-VKVMCQTA">
   <div class="code-header astro-VKVMCQTA">
     <span class="astro-VKVMCQTA">python</span><button class="astro-VKVMCQTA">Copy<svg viewBox="0 0 20 20" class="astro-VKVMCQTA" astro-icon="uiw:copy"><path fill="currentColor" d="M6.644 2.983a.252.252 0 0 0-.253.252c0 .139.113.251.253.251h3.713c.14 0 .253-.112.253-.251a.252.252 0 0 0-.253-.252H6.644zm3.713-1.342c.734 0 1.353.49 1.544 1.16l2.175.001c.621.004 1.122.205 1.432.638.266.372.372.85.345 1.387L15.85 17.84c.042.552-.062 1.04-.328 1.445-.312.473-.821.71-1.452.716H3.14c-.76-.03-1.323-.209-1.675-.609-.327-.371-.47-.88-.464-1.5V4.84c-.013-.6.154-1.106.518-1.48.376-.384.932-.554 1.647-.559h1.935c.19-.67.809-1.16 1.543-1.16h3.713zm0 3.187H6.644c-.546 0-1.027-.27-1.317-.684H3.17c-.383.002-.602.07-.682.152-.091.093-.144.252-.138.531v13.07c-.003.325.052.522.13.61.054.061.286.135.685.151h10.9c.2-.002.28-.04.326-.109.091-.138.133-.334.11-.658l.001-13.096c.014-.293-.027-.482-.096-.578-.026-.035-.116-.072-.336-.073h-2.397c-.29.414-.771.684-1.317.684zM17.2 0c.994 0 1.8.801 1.8 1.79v14.082c0 .988-.806 1.79-1.8 1.79h-1.958v-1.343h1.957c.249 0 .45-.2.45-.447V1.789a.449.449 0 0 0-.45-.447H9.643c-.248 0-.45.2-.45.447v.157h-1.35v-.157C7.843.801 8.649 0 9.643 0H17.2zM8.196 11.751c.373 0 .675.3.675.671 0 .37-.302.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h4.051zm4.052-2.684c.372 0 .675.3.675.671 0 .37-.303.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103zm0-2.684c.372 0 .675.3.675.671a.673.673 0 0 1-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103z"/></svg></button>
   </div>
-  <div class="code-body astro-VKVMCQTA"><pre class="shiki " style="background-color: none" tabindex="0"><code><span class="line"><span style="color: #66D9EF; font-style: italic">def</span><span style="color: #F8F8F2"> </span><span style="color: #A6E22E">quick_sort</span><span style="color: #F8F8F2">(</span><span style="color: #FD971F; font-style: italic">list</span><span style="color: #F8F8F2">):</span></span>
-<span class="line"><span style="color: #F8F8F2">    less </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> []</span></span>
-<span class="line"><span style="color: #F8F8F2">    pivotList </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> []</span></span>
-<span class="line"><span style="color: #F8F8F2">    more </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> []</span></span>
-<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #88846F"># 递归出口</span></span>
-<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">len</span><span style="color: #F8F8F2">(</span><span style="color: #66D9EF; font-style: italic">list</span><span style="color: #F8F8F2">) </span><span style="color: #F92672">&lt;=</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">1</span><span style="color: #F8F8F2">:</span></span>
-<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">return</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF; font-style: italic">list</span></span>
-<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F92672">else</span><span style="color: #F8F8F2">:</span></span>
-<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #88846F"># 将第一个值做为基准</span></span>
-<span class="line"><span style="color: #F8F8F2">        pivot </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> list[</span><span style="color: #AE81FF">0</span><span style="color: #F8F8F2">]</span></span>
-<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">for</span><span style="color: #F8F8F2"> i </span><span style="color: #F92672">in</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF; font-style: italic">list</span><span style="color: #F8F8F2">:</span></span>
-<span class="line"><span style="color: #F8F8F2">            </span><span style="color: #88846F"># 将比急转小的值放到less数列</span></span>
-<span class="line"><span style="color: #F8F8F2">            </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> i </span><span style="color: #F92672">&lt;</span><span style="color: #F8F8F2"> pivot:</span></span>
-<span class="line"><span style="color: #F8F8F2">                less.append(i)</span></span>
-<span class="line"><span style="color: #F8F8F2">            </span><span style="color: #88846F"># 将比基准打的值放到more数列</span></span>
-<span class="line"><span style="color: #F8F8F2">            </span><span style="color: #F92672">elif</span><span style="color: #F8F8F2"> i </span><span style="color: #F92672">&gt;</span><span style="color: #F8F8F2"> pivot:</span></span>
-<span class="line"><span style="color: #F8F8F2">                more.append(i)</span></span>
-<span class="line"><span style="color: #F8F8F2">            </span><span style="color: #88846F"># 将和基准相同的值保存在基准数列</span></span>
-<span class="line"><span style="color: #F8F8F2">            </span><span style="color: #F92672">else</span><span style="color: #F8F8F2">:</span></span>
-<span class="line"><span style="color: #F8F8F2">                pivotList.append(i)</span></span>
-<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #88846F"># 对less数列和more数列继续进行排序</span></span>
-<span class="line"><span style="color: #F8F8F2">        less </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> quick_sort(less)</span></span>
-<span class="line"><span style="color: #F8F8F2">        more </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> quick_sort(more)</span></span>
-<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">return</span><span style="color: #F8F8F2"> less </span><span style="color: #F92672">+</span><span style="color: #F8F8F2"> pivotList </span><span style="color: #F92672">+</span><span style="color: #F8F8F2"> more</span></span>
-<span class="line"></span></code></pre></div>
-
-  
-
-  
+  <div class="code-body astro-VKVMCQTA">
+    <pre class="astro-VKVMCQTA"><code class="astro-VKVMCQTA">def quick_sort(list):
+    less = []
+    pivotList = []
+    more = []
+    # 递归出口
+    if len(list) &lt;= 1:
+        return list
+    else:
+        # 将第一个值做为基准
+        pivot = list[0]
+        for i in list:
+            # 将比急转小的值放到less数列
+            if i &lt; pivot:
+                less.append(i)
+            # 将比基准打的值放到more数列
+            elif i &gt; pivot:
+                more.append(i)
+            # 将和基准相同的值保存在基准数列
+            else:
+                pivotList.append(i)
+        # 对less数列和more数列继续进行排序
+        less = quick_sort(less)
+        more = quick_sort(more)
+        return less + pivotList + more
+</code></pre>
+  </div>
 </article-code>
+
+
+
+<script src="https://unpkg.com/shiki"></script>
 <p>咳咳，下面这段代码出自《Python cookbook 第二版》传说中的三行实现 python 快速排序。</p>
-<article-code class="astro-VKVMCQTA">
+<article-code data-lang="python" class="astro-VKVMCQTA">
   <div class="code-header astro-VKVMCQTA">
     <span class="astro-VKVMCQTA">python</span><button class="astro-VKVMCQTA">Copy<svg viewBox="0 0 20 20" class="astro-VKVMCQTA" astro-icon="uiw:copy"><path fill="currentColor" d="M6.644 2.983a.252.252 0 0 0-.253.252c0 .139.113.251.253.251h3.713c.14 0 .253-.112.253-.251a.252.252 0 0 0-.253-.252H6.644zm3.713-1.342c.734 0 1.353.49 1.544 1.16l2.175.001c.621.004 1.122.205 1.432.638.266.372.372.85.345 1.387L15.85 17.84c.042.552-.062 1.04-.328 1.445-.312.473-.821.71-1.452.716H3.14c-.76-.03-1.323-.209-1.675-.609-.327-.371-.47-.88-.464-1.5V4.84c-.013-.6.154-1.106.518-1.48.376-.384.932-.554 1.647-.559h1.935c.19-.67.809-1.16 1.543-1.16h3.713zm0 3.187H6.644c-.546 0-1.027-.27-1.317-.684H3.17c-.383.002-.602.07-.682.152-.091.093-.144.252-.138.531v13.07c-.003.325.052.522.13.61.054.061.286.135.685.151h10.9c.2-.002.28-.04.326-.109.091-.138.133-.334.11-.658l.001-13.096c.014-.293-.027-.482-.096-.578-.026-.035-.116-.072-.336-.073h-2.397c-.29.414-.771.684-1.317.684zM17.2 0c.994 0 1.8.801 1.8 1.79v14.082c0 .988-.806 1.79-1.8 1.79h-1.958v-1.343h1.957c.249 0 .45-.2.45-.447V1.789a.449.449 0 0 0-.45-.447H9.643c-.248 0-.45.2-.45.447v.157h-1.35v-.157C7.843.801 8.649 0 9.643 0H17.2zM8.196 11.751c.373 0 .675.3.675.671 0 .37-.302.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h4.051zm4.052-2.684c.372 0 .675.3.675.671 0 .37-.303.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103zm0-2.684c.372 0 .675.3.675.671a.673.673 0 0 1-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103z"/></svg></button>
   </div>
-  <div class="code-body astro-VKVMCQTA"><pre class="shiki " style="background-color: none" tabindex="0"><code><span class="line"><span style="color: #66D9EF; font-style: italic">def</span><span style="color: #F8F8F2"> </span><span style="color: #A6E22E">qsort</span><span style="color: #F8F8F2">(</span><span style="color: #FD971F; font-style: italic">arr</span><span style="color: #F8F8F2">):</span></span>
-<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">len</span><span style="color: #F8F8F2">(arr) </span><span style="color: #F92672">&lt;=</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">1</span><span style="color: #F8F8F2">:</span></span>
-<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">return</span><span style="color: #F8F8F2"> arr</span></span>
-<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F92672">else</span><span style="color: #F8F8F2">:</span></span>
-<span class="line"><span style="color: #F8F8F2">        pivot </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> arr[</span><span style="color: #AE81FF">0</span><span style="color: #F8F8F2">]</span></span>
-<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">return</span><span style="color: #F8F8F2"> qsort([x </span><span style="color: #F92672">for</span><span style="color: #F8F8F2"> x </span><span style="color: #F92672">in</span><span style="color: #F8F8F2"> arr[</span><span style="color: #AE81FF">1</span><span style="color: #F8F8F2">:] </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> x </span><span style="color: #F92672">&lt;</span><span style="color: #F8F8F2"> pivot]) </span><span style="color: #F92672">+</span><span style="color: #F8F8F2"> \</span></span>
-<span class="line"><span style="color: #F8F8F2">               [pivot] </span><span style="color: #F92672">+</span><span style="color: #F8F8F2"> \</span></span>
-<span class="line"><span style="color: #F8F8F2">               qsort([x </span><span style="color: #F92672">for</span><span style="color: #F8F8F2"> x </span><span style="color: #F92672">in</span><span style="color: #F8F8F2"> arr[</span><span style="color: #AE81FF">1</span><span style="color: #F8F8F2">:] </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> x </span><span style="color: #F92672">&gt;=</span><span style="color: #F8F8F2"> pivot])</span></span>
-<span class="line"></span></code></pre></div>
-
-  
-
-  
+  <div class="code-body astro-VKVMCQTA">
+    <pre class="astro-VKVMCQTA"><code class="astro-VKVMCQTA">def qsort(arr):
+    if len(arr) &lt;= 1:
+        return arr
+    else:
+        pivot = arr[0]
+        return qsort([x for x in arr[1:] if x &lt; pivot]) + \
+               [pivot] + \
+               qsort([x for x in arr[1:] if x &gt;= pivot])
+</code></pre>
+  </div>
 </article-code>
+
+
+
+<script src="https://unpkg.com/shiki"></script>
 <p>当然还有一行语法糖版本:</p>
-<article-code class="astro-VKVMCQTA">
+<article-code data-lang="python" class="astro-VKVMCQTA">
   <div class="code-header astro-VKVMCQTA">
     <span class="astro-VKVMCQTA">python</span><button class="astro-VKVMCQTA">Copy<svg viewBox="0 0 20 20" class="astro-VKVMCQTA" astro-icon="uiw:copy"><path fill="currentColor" d="M6.644 2.983a.252.252 0 0 0-.253.252c0 .139.113.251.253.251h3.713c.14 0 .253-.112.253-.251a.252.252 0 0 0-.253-.252H6.644zm3.713-1.342c.734 0 1.353.49 1.544 1.16l2.175.001c.621.004 1.122.205 1.432.638.266.372.372.85.345 1.387L15.85 17.84c.042.552-.062 1.04-.328 1.445-.312.473-.821.71-1.452.716H3.14c-.76-.03-1.323-.209-1.675-.609-.327-.371-.47-.88-.464-1.5V4.84c-.013-.6.154-1.106.518-1.48.376-.384.932-.554 1.647-.559h1.935c.19-.67.809-1.16 1.543-1.16h3.713zm0 3.187H6.644c-.546 0-1.027-.27-1.317-.684H3.17c-.383.002-.602.07-.682.152-.091.093-.144.252-.138.531v13.07c-.003.325.052.522.13.61.054.061.286.135.685.151h10.9c.2-.002.28-.04.326-.109.091-.138.133-.334.11-.658l.001-13.096c.014-.293-.027-.482-.096-.578-.026-.035-.116-.072-.336-.073h-2.397c-.29.414-.771.684-1.317.684zM17.2 0c.994 0 1.8.801 1.8 1.79v14.082c0 .988-.806 1.79-1.8 1.79h-1.958v-1.343h1.957c.249 0 .45-.2.45-.447V1.789a.449.449 0 0 0-.45-.447H9.643c-.248 0-.45.2-.45.447v.157h-1.35v-.157C7.843.801 8.649 0 9.643 0H17.2zM8.196 11.751c.373 0 .675.3.675.671 0 .37-.302.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h4.051zm4.052-2.684c.372 0 .675.3.675.671 0 .37-.303.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103zm0-2.684c.372 0 .675.3.675.671a.673.673 0 0 1-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103z"/></svg></button>
   </div>
-  <div class="code-body astro-VKVMCQTA"><pre class="shiki " style="background-color: none" tabindex="0"><code><span class="line"><span style="color: #F8F8F2">qs </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF; font-style: italic">lambda</span><span style="color: #F8F8F2"> </span><span style="color: #FD971F; font-style: italic">xs</span><span style="color: #F8F8F2"> : ( (</span><span style="color: #66D9EF">len</span><span style="color: #F8F8F2">(xs) </span><span style="color: #F92672">&lt;=</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">1</span><span style="color: #F8F8F2"> </span><span style="color: #F92672">and</span><span style="color: #F8F8F2"> [xs]) </span><span style="color: #F92672">or</span><span style="color: #F8F8F2"> [ qs( [x </span><span style="color: #F92672">for</span><span style="color: #F8F8F2"> x </span><span style="color: #F92672">in</span><span style="color: #F8F8F2"> xs[</span><span style="color: #AE81FF">1</span><span style="color: #F8F8F2">:] </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> x </span><span style="color: #F92672">&lt;</span><span style="color: #F8F8F2"> xs[</span><span style="color: #AE81FF">0</span><span style="color: #F8F8F2">]] ) </span><span style="color: #F92672">+</span><span style="color: #F8F8F2"> [xs[</span><span style="color: #AE81FF">0</span><span style="color: #F8F8F2">]] </span><span style="color: #F92672">+</span><span style="color: #F8F8F2"> qs( [x </span><span style="color: #F92672">for</span><span style="color: #F8F8F2"> x </span><span style="color: #F92672">in</span><span style="color: #F8F8F2"> xs[</span><span style="color: #AE81FF">1</span><span style="color: #F8F8F2">:] </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> x </span><span style="color: #F92672">&gt;=</span><span style="color: #F8F8F2"> xs[</span><span style="color: #AE81FF">0</span><span style="color: #F8F8F2">]] ) ] )[</span><span style="color: #AE81FF">0</span><span style="color: #F8F8F2">]</span></span>
-<span class="line"></span></code></pre></div>
-
-  
-
-  
+  <div class="code-body astro-VKVMCQTA">
+    <pre class="astro-VKVMCQTA"><code class="astro-VKVMCQTA">qs = lambda xs : ( (len(xs) &lt;= 1 and [xs]) or [ qs( [x for x in xs[1:] if x &lt; xs[0]] ) + [xs[0]] + qs( [x for x in xs[1:] if x &gt;= xs[0]] ) ] )[0]
+</code></pre>
+  </div>
 </article-code>
+
+
+
+<script src="https://unpkg.com/shiki"></script>
 <p>是不是感受到了 Python 的魅力？</p>
 <h2 id="堆排序">堆排序</h2>
 <h3 id="原理-6">原理</h3>
@@ -362,42 +391,44 @@
 <li>堆排序:移除位在第一个数据的根节点，并做最大堆调整的递归运算</li>
 </ol>
 <h3 id="代码-6">代码</h3>
-<article-code class="astro-VKVMCQTA">
+<article-code data-lang="python" class="astro-VKVMCQTA">
   <div class="code-header astro-VKVMCQTA">
     <span class="astro-VKVMCQTA">python</span><button class="astro-VKVMCQTA">Copy<svg viewBox="0 0 20 20" class="astro-VKVMCQTA" astro-icon="uiw:copy"><path fill="currentColor" d="M6.644 2.983a.252.252 0 0 0-.253.252c0 .139.113.251.253.251h3.713c.14 0 .253-.112.253-.251a.252.252 0 0 0-.253-.252H6.644zm3.713-1.342c.734 0 1.353.49 1.544 1.16l2.175.001c.621.004 1.122.205 1.432.638.266.372.372.85.345 1.387L15.85 17.84c.042.552-.062 1.04-.328 1.445-.312.473-.821.71-1.452.716H3.14c-.76-.03-1.323-.209-1.675-.609-.327-.371-.47-.88-.464-1.5V4.84c-.013-.6.154-1.106.518-1.48.376-.384.932-.554 1.647-.559h1.935c.19-.67.809-1.16 1.543-1.16h3.713zm0 3.187H6.644c-.546 0-1.027-.27-1.317-.684H3.17c-.383.002-.602.07-.682.152-.091.093-.144.252-.138.531v13.07c-.003.325.052.522.13.61.054.061.286.135.685.151h10.9c.2-.002.28-.04.326-.109.091-.138.133-.334.11-.658l.001-13.096c.014-.293-.027-.482-.096-.578-.026-.035-.116-.072-.336-.073h-2.397c-.29.414-.771.684-1.317.684zM17.2 0c.994 0 1.8.801 1.8 1.79v14.082c0 .988-.806 1.79-1.8 1.79h-1.958v-1.343h1.957c.249 0 .45-.2.45-.447V1.789a.449.449 0 0 0-.45-.447H9.643c-.248 0-.45.2-.45.447v.157h-1.35v-.157C7.843.801 8.649 0 9.643 0H17.2zM8.196 11.751c.373 0 .675.3.675.671 0 .37-.302.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h4.051zm4.052-2.684c.372 0 .675.3.675.671 0 .37-.303.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103zm0-2.684c.372 0 .675.3.675.671a.673.673 0 0 1-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103z"/></svg></button>
   </div>
-  <div class="code-body astro-VKVMCQTA"><pre class="shiki " style="background-color: none" tabindex="0"><code><span class="line"><span style="color: #66D9EF; font-style: italic">def</span><span style="color: #F8F8F2"> </span><span style="color: #A6E22E">heap_sort</span><span style="color: #F8F8F2">(</span><span style="color: #FD971F; font-style: italic">list</span><span style="color: #F8F8F2">):</span></span>
-<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #88846F"># 创建最大堆</span></span>
-<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F92672">for</span><span style="color: #F8F8F2"> start </span><span style="color: #F92672">in</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">range</span><span style="color: #F8F8F2">((</span><span style="color: #66D9EF">len</span><span style="color: #F8F8F2">(</span><span style="color: #66D9EF; font-style: italic">list</span><span style="color: #F8F8F2">) </span><span style="color: #F92672">-</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">2</span><span style="color: #F8F8F2">) </span><span style="color: #F92672">//</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">2</span><span style="color: #F8F8F2">, </span><span style="color: #F92672">-</span><span style="color: #AE81FF">1</span><span style="color: #F8F8F2">, </span><span style="color: #F92672">-</span><span style="color: #AE81FF">1</span><span style="color: #F8F8F2">):</span></span>
-<span class="line"><span style="color: #F8F8F2">        sift_down(</span><span style="color: #66D9EF; font-style: italic">list</span><span style="color: #F8F8F2">, start, </span><span style="color: #66D9EF">len</span><span style="color: #F8F8F2">(</span><span style="color: #66D9EF; font-style: italic">list</span><span style="color: #F8F8F2">) </span><span style="color: #F92672">-</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">1</span><span style="color: #F8F8F2">)</span></span>
-<span class="line"></span>
-<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #88846F"># 堆排序</span></span>
-<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F92672">for</span><span style="color: #F8F8F2"> end </span><span style="color: #F92672">in</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">range</span><span style="color: #F8F8F2">(</span><span style="color: #66D9EF">len</span><span style="color: #F8F8F2">(</span><span style="color: #66D9EF; font-style: italic">list</span><span style="color: #F8F8F2">) </span><span style="color: #F92672">-</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">1</span><span style="color: #F8F8F2">, </span><span style="color: #AE81FF">0</span><span style="color: #F8F8F2">, </span><span style="color: #F92672">-</span><span style="color: #AE81FF">1</span><span style="color: #F8F8F2">):</span></span>
-<span class="line"><span style="color: #F8F8F2">        list[</span><span style="color: #AE81FF">0</span><span style="color: #F8F8F2">], list[end] </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> list[end], list[</span><span style="color: #AE81FF">0</span><span style="color: #F8F8F2">]</span></span>
-<span class="line"><span style="color: #F8F8F2">        sift_down(</span><span style="color: #66D9EF; font-style: italic">list</span><span style="color: #F8F8F2">, </span><span style="color: #AE81FF">0</span><span style="color: #F8F8F2">, end </span><span style="color: #F92672">-</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">1</span><span style="color: #F8F8F2">)</span></span>
-<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F92672">return</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF; font-style: italic">list</span></span>
-<span class="line"></span>
-<span class="line"></span>
-<span class="line"><span style="color: #88846F"># 最大堆调整</span></span>
-<span class="line"><span style="color: #66D9EF; font-style: italic">def</span><span style="color: #F8F8F2"> </span><span style="color: #A6E22E">sift_down</span><span style="color: #F8F8F2">(</span><span style="color: #FD971F; font-style: italic">lst</span><span style="color: #F8F8F2">, </span><span style="color: #FD971F; font-style: italic">start</span><span style="color: #F8F8F2">, </span><span style="color: #FD971F; font-style: italic">end</span><span style="color: #F8F8F2">):</span></span>
-<span class="line"><span style="color: #F8F8F2">    root </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> start</span></span>
-<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F92672">while</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">True</span><span style="color: #F8F8F2">:</span></span>
-<span class="line"><span style="color: #F8F8F2">        child </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">2</span><span style="color: #F8F8F2"> </span><span style="color: #F92672">*</span><span style="color: #F8F8F2"> root </span><span style="color: #F92672">+</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">1</span></span>
-<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> child </span><span style="color: #F92672">&gt;</span><span style="color: #F8F8F2"> end:</span></span>
-<span class="line"><span style="color: #F8F8F2">            </span><span style="color: #F92672">break</span></span>
-<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> child </span><span style="color: #F92672">+</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">1</span><span style="color: #F8F8F2"> </span><span style="color: #F92672">&lt;=</span><span style="color: #F8F8F2"> end </span><span style="color: #F92672">and</span><span style="color: #F8F8F2"> lst[child] </span><span style="color: #F92672">&lt;</span><span style="color: #F8F8F2"> lst[child </span><span style="color: #F92672">+</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">1</span><span style="color: #F8F8F2">]:</span></span>
-<span class="line"><span style="color: #F8F8F2">            child </span><span style="color: #F92672">+=</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">1</span></span>
-<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> lst[root] </span><span style="color: #F92672">&lt;</span><span style="color: #F8F8F2"> lst[child]:</span></span>
-<span class="line"><span style="color: #F8F8F2">            lst[root], lst[child] </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> lst[child], lst[root]</span></span>
-<span class="line"><span style="color: #F8F8F2">            root </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> child</span></span>
-<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">else</span><span style="color: #F8F8F2">:</span></span>
-<span class="line"><span style="color: #F8F8F2">            </span><span style="color: #F92672">break</span></span>
-<span class="line"></span></code></pre></div>
+  <div class="code-body astro-VKVMCQTA">
+    <pre class="astro-VKVMCQTA"><code class="astro-VKVMCQTA">def heap_sort(list):
+    # 创建最大堆
+    for start in range((len(list) - 2) // 2, -1, -1):
+        sift_down(list, start, len(list) - 1)
 
-  
+    # 堆排序
+    for end in range(len(list) - 1, 0, -1):
+        list[0], list[end] = list[end], list[0]
+        sift_down(list, 0, end - 1)
+    return list
 
-  
+
+# 最大堆调整
+def sift_down(lst, start, end):
+    root = start
+    while True:
+        child = 2 * root + 1
+        if child &gt; end:
+            break
+        if child + 1 &lt;= end and lst[child] &lt; lst[child + 1]:
+            child += 1
+        if lst[root] &lt; lst[child]:
+            lst[root], lst[child] = lst[child], lst[root]
+            root = child
+        else:
+            break
+</code></pre>
+  </div>
 </article-code>
+
+
+
+<script src="https://unpkg.com/shiki"></script>
 <h2 id="计数排序">计数排序</h2>
 <h3 id="原理-7">原理</h3>
 <p>当输入的元素是 n 个 0 到 k 之间的整数时，它的运行时间是 Θ(n + k)。计数排序不是比较排序，排序的速度快于任何比较排序算法。</p>
@@ -410,51 +441,55 @@
 <li>反向填充目标数组：将每个元素 i 放在新数组的第 C(i)项，每放一个元素就将 C(i)减去 1</li>
 </ol>
 <h3 id="代码-7">代码</h3>
-<article-code class="astro-VKVMCQTA">
+<article-code data-lang="python" class="astro-VKVMCQTA">
   <div class="code-header astro-VKVMCQTA">
     <span class="astro-VKVMCQTA">python</span><button class="astro-VKVMCQTA">Copy<svg viewBox="0 0 20 20" class="astro-VKVMCQTA" astro-icon="uiw:copy"><path fill="currentColor" d="M6.644 2.983a.252.252 0 0 0-.253.252c0 .139.113.251.253.251h3.713c.14 0 .253-.112.253-.251a.252.252 0 0 0-.253-.252H6.644zm3.713-1.342c.734 0 1.353.49 1.544 1.16l2.175.001c.621.004 1.122.205 1.432.638.266.372.372.85.345 1.387L15.85 17.84c.042.552-.062 1.04-.328 1.445-.312.473-.821.71-1.452.716H3.14c-.76-.03-1.323-.209-1.675-.609-.327-.371-.47-.88-.464-1.5V4.84c-.013-.6.154-1.106.518-1.48.376-.384.932-.554 1.647-.559h1.935c.19-.67.809-1.16 1.543-1.16h3.713zm0 3.187H6.644c-.546 0-1.027-.27-1.317-.684H3.17c-.383.002-.602.07-.682.152-.091.093-.144.252-.138.531v13.07c-.003.325.052.522.13.61.054.061.286.135.685.151h10.9c.2-.002.28-.04.326-.109.091-.138.133-.334.11-.658l.001-13.096c.014-.293-.027-.482-.096-.578-.026-.035-.116-.072-.336-.073h-2.397c-.29.414-.771.684-1.317.684zM17.2 0c.994 0 1.8.801 1.8 1.79v14.082c0 .988-.806 1.79-1.8 1.79h-1.958v-1.343h1.957c.249 0 .45-.2.45-.447V1.789a.449.449 0 0 0-.45-.447H9.643c-.248 0-.45.2-.45.447v.157h-1.35v-.157C7.843.801 8.649 0 9.643 0H17.2zM8.196 11.751c.373 0 .675.3.675.671 0 .37-.302.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h4.051zm4.052-2.684c.372 0 .675.3.675.671 0 .37-.303.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103zm0-2.684c.372 0 .675.3.675.671a.673.673 0 0 1-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103z"/></svg></button>
   </div>
-  <div class="code-body astro-VKVMCQTA"><pre class="shiki " style="background-color: none" tabindex="0"><code><span class="line"><span style="color: #66D9EF; font-style: italic">def</span><span style="color: #F8F8F2"> </span><span style="color: #A6E22E">count_sort</span><span style="color: #F8F8F2">(</span><span style="color: #FD971F; font-style: italic">list</span><span style="color: #F8F8F2">):</span></span>
-<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #66D9EF">min</span><span style="color: #F8F8F2"> </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">2147483647</span></span>
-<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #66D9EF">max</span><span style="color: #F8F8F2"> </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">0</span></span>
-<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #88846F"># 取得最大值和最小值</span></span>
-<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F92672">for</span><span style="color: #F8F8F2"> x </span><span style="color: #F92672">in</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF; font-style: italic">list</span><span style="color: #F8F8F2">:</span></span>
-<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> x </span><span style="color: #F92672">&lt;</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">min</span><span style="color: #F8F8F2">:</span></span>
-<span class="line"><span style="color: #F8F8F2">            </span><span style="color: #66D9EF">min</span><span style="color: #F8F8F2"> </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> x</span></span>
-<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">if</span><span style="color: #F8F8F2"> x </span><span style="color: #F92672">&gt;</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">max</span><span style="color: #F8F8F2">:</span></span>
-<span class="line"><span style="color: #F8F8F2">            </span><span style="color: #66D9EF">max</span><span style="color: #F8F8F2"> </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> x</span></span>
-<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #88846F"># 创建数组C</span></span>
-<span class="line"><span style="color: #F8F8F2">    count </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> [</span><span style="color: #AE81FF">0</span><span style="color: #F8F8F2">] </span><span style="color: #F92672">*</span><span style="color: #F8F8F2"> (</span><span style="color: #66D9EF">max</span><span style="color: #F8F8F2"> </span><span style="color: #F92672">-</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">min</span><span style="color: #F8F8F2"> </span><span style="color: #F92672">+</span><span style="color: #AE81FF">1</span><span style="color: #F8F8F2">)</span></span>
-<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F92672">for</span><span style="color: #F8F8F2"> index </span><span style="color: #F92672">in</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF; font-style: italic">list</span><span style="color: #F8F8F2">:</span></span>
-<span class="line"><span style="color: #F8F8F2">        count[index </span><span style="color: #F92672">-</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">min</span><span style="color: #F8F8F2">] </span><span style="color: #F92672">+=</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">1</span></span>
-<span class="line"><span style="color: #F8F8F2">    index </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">0</span></span>
-<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #88846F"># 填值</span></span>
-<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F92672">for</span><span style="color: #F8F8F2"> a </span><span style="color: #F92672">in</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">range</span><span style="color: #F8F8F2">(</span><span style="color: #66D9EF">max</span><span style="color: #F8F8F2"> </span><span style="color: #F92672">-</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">min</span><span style="color: #F92672">+</span><span style="color: #AE81FF">1</span><span style="color: #F8F8F2">):</span></span>
-<span class="line"><span style="color: #F8F8F2">        </span><span style="color: #F92672">for</span><span style="color: #F8F8F2"> c </span><span style="color: #F92672">in</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">range</span><span style="color: #F8F8F2">(count[a]):</span></span>
-<span class="line"><span style="color: #F8F8F2">            list[index] </span><span style="color: #F92672">=</span><span style="color: #F8F8F2"> a </span><span style="color: #F92672">+</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF">min</span></span>
-<span class="line"><span style="color: #F8F8F2">            index </span><span style="color: #F92672">+=</span><span style="color: #F8F8F2"> </span><span style="color: #AE81FF">1</span></span>
-<span class="line"><span style="color: #F8F8F2">    </span><span style="color: #F92672">return</span><span style="color: #F8F8F2"> </span><span style="color: #66D9EF; font-style: italic">list</span></span>
-<span class="line"></span></code></pre></div>
-
-  
-
-  
+  <div class="code-body astro-VKVMCQTA">
+    <pre class="astro-VKVMCQTA"><code class="astro-VKVMCQTA">def count_sort(list):
+    min = 2147483647
+    max = 0
+    # 取得最大值和最小值
+    for x in list:
+        if x &lt; min:
+            min = x
+        if x &gt; max:
+            max = x
+    # 创建数组C
+    count = [0] * (max - min +1)
+    for index in list:
+        count[index - min] += 1
+    index = 0
+    # 填值
+    for a in range(max - min+1):
+        for c in range(count[a]):
+            list[index] = a + min
+            index += 1
+    return list
+</code></pre>
+  </div>
 </article-code>
+
+
+
+<script src="https://unpkg.com/shiki"></script>
 <h2 id="第九种排序">第九种排序</h2>
 <p>None？
 当然不会
 自然就是系统自带的</p>
-<article-code class="astro-VKVMCQTA">
+<article-code data-lang="python" class="astro-VKVMCQTA">
   <div class="code-header astro-VKVMCQTA">
     <span class="astro-VKVMCQTA">python</span><button class="astro-VKVMCQTA">Copy<svg viewBox="0 0 20 20" class="astro-VKVMCQTA" astro-icon="uiw:copy"><path fill="currentColor" d="M6.644 2.983a.252.252 0 0 0-.253.252c0 .139.113.251.253.251h3.713c.14 0 .253-.112.253-.251a.252.252 0 0 0-.253-.252H6.644zm3.713-1.342c.734 0 1.353.49 1.544 1.16l2.175.001c.621.004 1.122.205 1.432.638.266.372.372.85.345 1.387L15.85 17.84c.042.552-.062 1.04-.328 1.445-.312.473-.821.71-1.452.716H3.14c-.76-.03-1.323-.209-1.675-.609-.327-.371-.47-.88-.464-1.5V4.84c-.013-.6.154-1.106.518-1.48.376-.384.932-.554 1.647-.559h1.935c.19-.67.809-1.16 1.543-1.16h3.713zm0 3.187H6.644c-.546 0-1.027-.27-1.317-.684H3.17c-.383.002-.602.07-.682.152-.091.093-.144.252-.138.531v13.07c-.003.325.052.522.13.61.054.061.286.135.685.151h10.9c.2-.002.28-.04.326-.109.091-.138.133-.334.11-.658l.001-13.096c.014-.293-.027-.482-.096-.578-.026-.035-.116-.072-.336-.073h-2.397c-.29.414-.771.684-1.317.684zM17.2 0c.994 0 1.8.801 1.8 1.79v14.082c0 .988-.806 1.79-1.8 1.79h-1.958v-1.343h1.957c.249 0 .45-.2.45-.447V1.789a.449.449 0 0 0-.45-.447H9.643c-.248 0-.45.2-.45.447v.157h-1.35v-.157C7.843.801 8.649 0 9.643 0H17.2zM8.196 11.751c.373 0 .675.3.675.671 0 .37-.302.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h4.051zm4.052-2.684c.372 0 .675.3.675.671 0 .37-.303.671-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103zm0-2.684c.372 0 .675.3.675.671a.673.673 0 0 1-.675.671H4.145a.673.673 0 0 1-.676-.67c0-.371.303-.672.676-.672h8.103z"/></svg></button>
   </div>
-  <div class="code-body astro-VKVMCQTA"><pre class="shiki " style="background-color: none" tabindex="0"><code><span class="line"><span style="color: #66D9EF; font-style: italic">list</span><span style="color: #F8F8F2">.sort()</span></span>
-<span class="line"></span></code></pre></div>
-
-  
-
-  
+  <div class="code-body astro-VKVMCQTA">
+    <pre class="astro-VKVMCQTA"><code class="astro-VKVMCQTA">list.sort()
+</code></pre>
+  </div>
 </article-code>
+
+
+
+<script src="https://unpkg.com/shiki"></script>
 <p>以上所有源代码均在<a href="https://github.com/EINDEX/Python-algorithm">Github 共享</a>希望与大家共同进步!</p>
 <hr/>
 <h2 id="参考资料">参考资料</h2>
@@ -467,6 +502,59 @@
 为本文缺漏之处提出建议</p>
     </section>
   </article>
+    </main>
+    <sidebar class="astro-SCKKX6R4">
+      <sidebar class="astro-SSFZSV2F">
+  <div class="profile astro-SSFZSV2F">
+    <img src="/images/avatar.png" class="astro-SSFZSV2F">
+    <p class="contact astro-XMIVUP5A">
+  <a rel="me" class="umami--click--contact-github astro-XMIVUP5A" target="_blank" style="color:#ff79c6" href="https://github.com/eindex"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github astro-XMIVUP5A" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" class="astro-XMIVUP5A"></path>
+      <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" class="astro-XMIVUP5A"></path>
+    </svg></a><a rel="me" class="umami--click--contact-twitter astro-XMIVUP5A" target="_blank" style="color:#1c9cea" href="https://twitter.com/@eindex_li"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter astro-XMIVUP5A" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" class="astro-XMIVUP5A"></path>
+      <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c0 -.249 1.51 -2.772 1.818 -4.013z" class="astro-XMIVUP5A"></path>
+    </svg></a>
+  <a class="umami--click--contact-linkedin astro-XMIVUP5A" rel="me" target="_blank" style="color:#bd93f9" href="https://www.linkedin.com/in/eindex/">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-linkedin astro-XMIVUP5A" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" class="astro-XMIVUP5A"></path>
+      <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" class="astro-XMIVUP5A"></path>
+      <path d="M8 11l0 5" class="astro-XMIVUP5A"></path>
+      <path d="M8 8l0 .01" class="astro-XMIVUP5A"></path>
+      <path d="M12 16l0 -5" class="astro-XMIVUP5A"></path>
+      <path d="M16 16v-3a2 2 0 0 0 -4 0" class="astro-XMIVUP5A"></path>
+    </svg>
+    
+  </a>
+</p>
+  </div>
+
+  <head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docs-searchbar.js@v2.5.0/dist/cdn/docs-searchbar.min.css">
+</head>
+
+<search-box class="astro-Z3BPXO4I">
+  <input id="search" class="w-full astro-Z3BPXO4I" placeholder="Searching...">
+</search-box>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/docs-searchbar.js@v2.5.0/dist/cdn/docs-searchbar.min.js"></script>
+
+<script>
+  docsSearchBar({
+    hostUrl: "https://meili.eindex.me",
+    apiKey: "93c9ac58903de854e42797a1445a83d326bbb7bb5b506740ba55342eb5178b1a",
+    indexUid: "blog",
+    inputSelector: "#search",
+    debug: true,
+    enableDarkMode: "auto",
+  });
+</script>
+
+  
+</sidebar>
+    </sidebar>
   </div>
     <footer class="astro-SZ7XMLTE">
   <span class="webring astro-MTZRIXCV">
@@ -476,6 +564,6 @@
 </footer>
     <script async defer data-website-id="d963565f-c209-41a4-98d2-faac7625f470" src="https://umami.eindex.me/umami.js"></script>
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;01180ed57cc34c3896e21f5c09a75ef5&quot;}"></script>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
   </body>
 </html>
