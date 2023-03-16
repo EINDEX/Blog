@@ -44,6 +44,6 @@ a {
   @apply no-underline;
 }
 
-li {
-  @apply list-none;
+input {
+  @apply rounded-lg shadow-lg px-2;
 }

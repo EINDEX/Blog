@@ -46,7 +46,7 @@ const {title, url, updatedAt, cover, description} = Astro.props;
 </style>
 
 <script>
-    class PostCard extends HTMLElement {
+  class PostCard extends HTMLElement {
     constructor() {
       super();
       this.addEventListener("click", ()=>{window.location.href = this.dataset.url})

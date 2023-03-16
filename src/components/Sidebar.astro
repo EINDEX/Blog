@@ -1,0 +1,29 @@
+---
+import Contact from "./Contact.astro";
+import Profile from "./Profile.astro";
+import SearchBox from "./SearchBox.astro";
+---
+
+<sidebar>
+  <div class="profile">
+    <img src="/images/avatar.png" />
+    <Contact iconOnly={true} />
+  </div>
+
+  <SearchBox />
+
+  <slot />
+</sidebar>
+
+<style lang="scss">
+  sidebar {
+    @apply flex flex-col gap-4 p-4 w-full justify-center items-center mt-4;
+  }
+
+  .profile {
+    @apply flex flex-col justify-between items-center gap-4;
+    img {
+      @apply rounded-lg w-32 h-32;
+    }
+  }
+</style>

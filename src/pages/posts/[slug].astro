@@ -29,17 +29,21 @@ const { Content } = await post.render();
 
 <Layout title={post.data.title} locale={locale}>
   <article class="h-entry">
+    {post.data.cover ? <img src={post.data.cover} /> : <></>}
     <span class="series p-category"></span>
     <h1 class="title p-name">
       {post.data.title}<a class="u-url" href={getLinkViaLocale(locale, slug)}
       ></a>
     </h1>
-    <time>{timeFormat(post.data.date, locale)}</time>
+    <div class="post-meta">
+        <p class="p-summary">{post.data.description}</p>
+      <time>{timeFormat(post.data.date, locale)}</time>
+    </div>
 
-    <summary class="p-summary">{post.data.description}</summary>
-
-    <section class="main e-content">
-      <Content class="" components={{ pre: Code }} />
+    <section
+      class="main e-content format sm:format-sm lg:format-lg dark:format-invert format-pre:m-0 format-pre:p-2 format-li:list-disc list-disc"
+    >
+      <Content components={{ pre: Code }} />
     </section>
   </article>
 </Layout>
@@ -48,21 +52,30 @@ const { Content } = await post.render();
   article {
     @apply flex flex-col w-full gap-4;
 
-    h1 {
+    img {
+      @apply w-full rounded-lg top-8 -z-10;
+    }
+
+
+
+      h1 {
       @apply text-3xl font-bold text-center;
     }
 
-    section.main.e-content {
-      @apply flex flex-col max-w-5xl gap-2 text-base format format-dark columns-2;
+    .post-meta {
+      @apply flex flex-col gap-2;
       color: var(--text-color);
 
-      // h2 {
-      //   @apply text-2xl font-bold text-center;
-      // }
-
-      // h3 {
-      //   @apply text-xl font-bold text-center;
-      // }
+      time {
+        @apply text-right;
+      }
     }
+    section.main.e-content {
+        @apply max-w-full list-disc;
+      color: var(--text-color);
+      background-color: var(--bg-color);
+    }
+    
+  
   }
 </style>

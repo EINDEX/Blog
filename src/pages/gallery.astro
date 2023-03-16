@@ -32,6 +32,7 @@ const links = [
       {
         images.map((image) => (
           <img
+            loading="lazy"
             height={`${image.width / (image.height / 300)}px`}
             width="300px"
             src={`https://img.eindex.me/pic/${image.thumbnail}`}

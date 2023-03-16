@@ -3,65 +3,114 @@ const { links = {}, styles = {} } = Astro.props;
 ---
 
 <nav style={styles}>
-  <span
-    ><img width="32px" height="32px" src="/images/avatar.png" /><a href="/"
-      ><b>EINDEX</b>'s Blog</a
-    ></span
+  <a class="logo" href="/">
+    <img width="32px" height="32px" src="/images/avatar.png" />
+    <b>EINDEX</b>'s Blog
+  </a>
+  <button
+    id="navbar-default"
+    data-collapse-toggle="navbar-default"
+    type="button"
+    class="navbar-toggle"
+    aria-controls="navbar-default"
+    aria-expanded="false"
   >
-  <ul>
-    {
-      links.map((link) => (
-        <li>
-          <a href={link.url}>{link.name}</a>
-        </li>
-      ))
-    }
-  </ul>
+    <span class="sr-only">Open main menu</span>
+    <svg
+      class="w-6 h-6"
+      aria-hidden="true"
+      fill="currentColor"
+      viewBox="0 0 20 20"
+      xmlns="http://www.w3.org/2000/svg"
+      ><path
+        fill-rule="evenodd"
+        d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+        clip-rule="evenodd"></path></svg
+    >
+  </button>
+  <div class="menus sm:hidden" id="navbar-menus">
+    <ul>
+      {
+        links.map((link) => (
+          <li>
+            <a href={link.url}>{link.name}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </nav>
 
 <style lang="scss">
   nav {
-    @apply px-4 pt-4;
-    display: flex;
+    @apply px-4 sm:px-2 pt-4 flex flex-row justify-between flex-wrap items-center;
 
-    flex-direction: row;
-    justify-content: space-between;
-    // make in row center
-    align-items: center;
-    width: 100%;
-    span {
+    .logo {
       display: flex;
       flex-direction: row;
-      gap: 1rem;
+      // gap: 1rem;
       align-items: center;
+      text-decoration: none;
+      color: var(--text-color);
+      font-size: 1.5rem;
+      height: 32px;
 
       img {
+        @apply mr-4;
         border-radius: 20%;
-      }
-      a {
-        text-decoration: none;
-        color: var(--text-color);
-        font-size: 1.5rem;
+        height: 32px;
+        width: 32px;
       }
     }
 
-    ul {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      list-style: none;
-      margin: 0;
-      padding: 0;
+    .navbar-toggle {
+      @apply sm:inline-flex items-center p-1 text-sm text-gray-500 hidden dark:text-gray-400 dark:hover:bg-gray-700;
+    }
 
-      @apply sm:hidden;
+    #navbar-menus {
+      @apply sm:hidden sm:w-full justify-center items-center text-center;
+      ul {
+        @apply flex sm:flex-col sm:text-center sm:w-full  flex-row space-x-8 sm:text-sm  border-0;
 
-      li {
-        margin: 0 10px;
-        a {
-          text-decoration: none;
-          color: var(--text-color);
+        li {
+          margin: 0 10px;
+          a {
+            text-decoration: none;
+            color: var(--text-color);
+          }
         }
       }
     }
   }
 </style>
+
+<script>
+  import { Collapse } from "flowbite";
+  import type { CollapseOptions, CollapseInterface } from "flowbite";
+
+  const $targetEl: HTMLElement = document.getElementById("navbar-menus");
+  const $triggerEl: HTMLElement = document.getElementById("navbar-default");
+
+  const options: CollapseOptions = {
+    onCollapse: () => {
+      console.log("element has been collapsed");
+      $targetEl.className = "menus sm:hidden";
+    },
+    onExpand: () => {
+      console.log("element has been expanded");
+      $targetEl.className =
+        "menus w-full text-center sm:justify-center sm:items-center z-10 sm:p-4 sm:mt-4 sm:border sm:border-gray-100 sm:rounded-lg sm:bg-gray-50 sm:dark:bg-gray-800 sm:dark:border-gray-700";
+    },
+  };
+
+  /*
+   * $targetEl: required
+   * $triggerEl: optional
+   * options: optional
+   */
+  const collapse: CollapseInterface = new Collapse(
+    $targetEl,
+    $triggerEl,
+    options
+  );
+</script>

@@ -10,7 +10,7 @@ export function timeFormat(time: Date, locale: string): string {
   } else {
     return time.toLocaleDateString("en-US", {
       year: "numeric",
-      month: "long",
+      month: "short",
       day: "numeric",
     });
   }
