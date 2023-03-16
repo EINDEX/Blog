@@ -6,6 +6,7 @@ import Navbar from "@components/Navbar.astro";
 
 changeLanguage("en");
 
+const locale = i18next.language;
 const resp = await fetch("https://img.eindex.me/pic/pic_list.json");
 const images = await resp.json();
 const links = [
@@ -24,26 +25,32 @@ const links = [
 ];
 ---
 
-<EmptyWapper title="Gallery">
+<EmptyWapper title="Gallery" locale={locale}>
   <Navbar links={links} />
-  <div class="gallery">
-    {
-      images.map((image) => (
-        <img
-          height="300px"
-          width={`${image.width / (image.height / 300)}px`}
-          src={`https://img.eindex.me/pic/${image.thumbnail}`}
-        />
-      ))
-    }
-  </div>
+  <main>
+    <div class="gallery">
+      {
+        images.map((image) => (
+          <img
+            height={`${image.width / (image.height / 300)}px`}
+            width="300px"
+            src={`https://img.eindex.me/pic/${image.thumbnail}`}
+          />
+        ))
+      }
+    </div>
+  </main>
 </EmptyWapper>
 
 <style lang="scss">
+  main {
+    @apply flex flex-col gap-8 py-8 px-4;
+  }
   .gallery {
-    @apply flex flex-row flex-wrap gap-8 pt-8 justify-around w-full px-4;
+    @apply lg:columns-5 columns-4 md:columns-3 sm:columns-2 self-center;
+
     img {
-      @apply rounded-lg shadow-lg;
+      @apply rounded-lg shadow-lg mb-4;
     }
   }
 </style>

@@ -1,8 +1,8 @@
 ---
-const { links } = Astro.props;
+const { links = {}, styles = {} } = Astro.props;
 ---
 
-<nav>
+<nav style={styles}>
   <span
     ><img width="32px" height="32px" src="/images/avatar.png" /><a href="/"
       ><b>EINDEX</b>'s Blog</a
@@ -23,6 +23,7 @@ const { links } = Astro.props;
   nav {
     @apply px-4 pt-4;
     display: flex;
+
     flex-direction: row;
     justify-content: space-between;
     // make in row center
@@ -51,6 +52,8 @@ const { links } = Astro.props;
       list-style: none;
       margin: 0;
       padding: 0;
+
+      @apply sm:hidden;
 
       li {
         margin: 0 10px;

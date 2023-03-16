@@ -8,6 +8,7 @@ import Contact from "@components/Contact.astro";
 
 changeLanguage("cn");
 
+const locale = i18next.language;
 const projects = [
     {
         name: "Logseq Copilot",
@@ -46,8 +47,8 @@ const maxWidth = showImages.reduce((accumulator, current) => {
 }, 0);
 ---
 
-<EmptyWapper title="EINDEX's Blog">
-  <Navbar links={links} />
+<EmptyWapper title="EINDEX's Blog" locale={locale}>
+  <Navbar links={links} styles={{ position: "absolute", top: 0 }} />
   <main>
     <section class="profile">
       <Profile />
@@ -73,7 +74,7 @@ const maxWidth = showImages.reduce((accumulator, current) => {
       <div class="gallery">
         <div
           style={{
-            maxWidth: `${maxWidth}px`,
+            // maxWidth: `${maxWidth}px`,
           }}
         >
           {
@@ -116,7 +117,6 @@ const maxWidth = showImages.reduce((accumulator, current) => {
 
 <style lang="scss">
   body {
-    display: grid;
     min-height: 100vh;
     place-items: center;
     width: 100%;
@@ -126,7 +126,8 @@ const maxWidth = showImages.reduce((accumulator, current) => {
     @apply flex flex-col w-full h-full gap-8 px-4;
 
     .profile {
-      height: 95vh;
+      @apply py-0 my-0;
+      height: 100vh;
     }
 
     @media screen and (min-height: 768px) {
@@ -182,13 +183,13 @@ const maxWidth = showImages.reduce((accumulator, current) => {
         @apply grid grid-flow-row grid-cols-2 sm:grid-cols-1 gap-4 pt-8;
 
         li {
-          @apply text-xl font-bold;
+          @apply text-xl font-bold list-none;
         }
       }
       .get-in-touch {
-        @apply flex flex-col gap-2;
+        @apply flex flex-col;
         p {
-          @apply text-xl font-bold;
+          @apply text-xl font-bold my-2;
         }
       }
     }

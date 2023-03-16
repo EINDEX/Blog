@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+:root {
+  --bg-color: #f4f4f4;
+  --text-color: #323232;
+  --pre-background-color: #272822;
+  --card-background-color: rgb(243 244 246 / 70%);
+  --label-background-color: #d1d5db;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #323232;
+    --text-color: #dfdfdf;
+    --pre-background-color: #272822;
+    --card-background-color: rgb(17 24 39 / 0.7);
+    --label-background-color: #3f3f46;
+  }
+}
+
+html {
+  font-family: "LXGW WenKai", system-ui, sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+body::-webkit-scrollbar {
+  @apply w-1 bg-none;
+  width: 1px;
+  height: 1px;
+}
+
+body::-webkit-scrollbar-thumb {
+  @apply bg-gray-400 rounded-sm shadow;
+}
+
+a {
+  @apply no-underline;
+}
+
+li {
+  @apply list-none;
+}

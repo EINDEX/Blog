@@ -12,7 +12,9 @@ export function postSortViaUpdated(
   );
 }
 
-export async function getPosts(locale: string) {
+type Post = CollectionEntry<"posts-cn" | "posts-en">[];
+
+export async function getPosts(locale: string): Promise<Post> {
   const posts = await (
     await getCollection("posts-" + locale)
   ).filter((post) => {

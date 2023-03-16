@@ -4,6 +4,7 @@ import { getLastPartOfSlug, getLinkViaLocale } from "@utils/slug";
 import { timeFormat } from "@utils/time";
 import Layout from "@layouts/Layout.astro";
 import { getPosts } from "@utils/posts";
+import PostCard from "@components/PostCard.astro";
 
 changeLanguage("en");
 
@@ -13,19 +14,32 @@ const posts = await getPosts(locale);
 
 <Layout title="Posts">
   <h1>Posts</h1>
-  {
-    posts.map((post) => (
-      <p>
-        <a
-          href={getLinkViaLocale(
+  <div class="posts">
+    {
+      posts.map((post) => (
+        <PostCard
+          title={post.data.title}
+          cover={post.data.cover}
+          url={getLinkViaLocale(
             locale,
             `/posts/${getLastPartOfSlug(post.slug)}`
           )}
-        >
-          {post.data.title}
-        </a>{" "}
-        Updated at {timeFormat(post.data.updated || post.data.date)}
-      </p>
-    ))
-  }
+          updatedAt={timeFormat(post.data.updated || post.data.date, locale)}
+          description={post.data.description}
+        />
+      ))
+    }
+  </div>
+
+  <p slot="sidebar">test 444</p>
 </Layout>
+
+<style lang="scss">
+  h1 {
+    @apply text-4xl font-bold self-center;
+  }
+
+  .posts {
+    @apply flex flex-col gap-4;
+  }
+</style>

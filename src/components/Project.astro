@@ -25,8 +25,10 @@ const { name, logo, url, labels } = Astro.props;
 </a>
 
 <style lang="scss">
-  .project {
-    @apply flex flex-col rounded-lg shadow-xl overflow-hidden w-52 gap-2 pb-4 dark:bg-gray-900/70 bg-gray-100/70;
+  a.project {
+    @apply flex flex-col rounded-lg shadow-xl overflow-hidden w-52 gap-2 pb-4;
+    background-color: var(--card-background-color);
+
     img {
       @apply w-52 h-52;
     }
@@ -38,7 +40,8 @@ const { name, logo, url, labels } = Astro.props;
       @apply flex flex-row flex-wrap text-sm gap-2 justify-center;
 
       span {
-        @apply dark:bg-gray-700 rounded-sm px-2 bg-gray-300;
+        @apply rounded-sm px-2 bg-gray-300 dark:bg-gray-700;
+        background-color: var(--label-background-color);
       }
     }
   }

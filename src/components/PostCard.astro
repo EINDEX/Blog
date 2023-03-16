@@ -1,0 +1,57 @@
+---
+const {title, url, updatedAt, cover, description} = Astro.props;
+---
+
+<post-card class="post-card" data-url={url}>
+  {
+    cover ? <img width="96px" height="96px" class="cover" src={cover} /> :<></>
+  }
+  <div class="post-info">
+  <h2>
+    <a 
+      href={url}
+    >
+    {title}
+    </a>
+    </h2>
+    <p>
+      {description}
+    </p>
+    <time class="updated-at">{updatedAt}</time>
+  </div>
+</post-card>
+
+<style lang="scss">
+  .post-card {
+    @apply flex flex-row sm:flex-col gap-2 overflow-hidden rounded-xl shadow-xl;
+    background-color: var(--card-background-color);
+    a {
+      @apply bg-none;
+    }
+
+    .post-info {
+      @apply flex flex-col px-2 py-2 w-full justify-between;
+      h2 {
+        @apply text-2xl font-bold sm:text-xl;
+      }
+      time {
+        @apply self-end text-sm;
+      }
+    }
+
+    img {
+      @apply object-cover w-96 sm:w-full;
+    }
+  }
+</style>
+
+<script>
+    class PostCard extends HTMLElement {
+    constructor() {
+      super();
+      this.addEventListener("click", ()=>{window.location.href = this.dataset.url})
+    }
+  }
+
+  customElements.define('post-card', PostCard);
+</script>

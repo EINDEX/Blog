@@ -22,6 +22,7 @@
 		"@astrolib/seo": "^0.3.0",
 		"@giscus/react": "^2.2.8",
 		"@tabler/icons-react": "^2.10.0",
+		"@tailwindcss/typography": "^0.5.9",
 		"@types/react": "^18.0.28",
 		"@types/react-dom": "^18.0.11",
 		"astro": "^2.1.3",
@@ -30,6 +31,7 @@
 		"blurhash": "^2.0.5",
 		"bright": "^0.7.0",
 		"fast-blurhash": "^1.1.2",
+		"flowbite": "^1.6.4",
 		"html-entities": "^2.3.3",
 		"i18next": "^22.4.10",
 		"i18next-fs-backend": "^2.1.1",
@@ -47,6 +49,7 @@
 		"@vite-pwa/astro": "^0.0.4",
 		"chokidar": "^3.5.3",
 		"chokidar-cli": "^3.0.0",
+		"flowbite-typography": "^1.0.3",
 		"husky": "^8.0.0",
 		"sass": "^1.58.3"
 	}

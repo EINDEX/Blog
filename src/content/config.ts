@@ -17,6 +17,7 @@ const postSchema = z.object({
   series: z.string().optional(),
   katex: z.boolean().optional(),
   draft: z.boolean().optional(),
+  cover: z.string().optional(),
 });
 
 const pageSchema = z.object({
