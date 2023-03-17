@@ -11,34 +11,34 @@ changeLanguage("en");
 
 const locale = i18next.language;
 const projects = [
-  {
-    name: "Logseq Copilot",
-    labels: ["Browser Extension", "Logseq", "Open Source"],
-    url: "https://logseq-copilot.eindex.me",
-    logo: "/images/logseq-copilot.png",
-    openSource: true,
-  },
-  {
-    name: "Logseq Memos Sync",
-    labels: ["Logseq", "Logseq Plugin", "Memos", "Open Source"],
-    url: "https://github.com/eindex/logseq-memos-sync",
-    logo: "/images/logseq-memos-sync.webp",
-    openSource: true,
-  },
+    {
+        name: "Logseq Copilot",
+        labels: ["Browser Extension", "Logseq", "Open Source"],
+        url: "https://logseq-copilot.eindex.me",
+        logo: "/images/logseq-copilot.png",
+        openSource: true,
+    },
+    {
+        name: "Logseq Memos Sync",
+        labels: ["Logseq", "Logseq Plugin", "Memos", "Open Source"],
+        url: "https://github.com/eindex/logseq-memos-sync",
+        logo: "/images/logseq-memos-sync.webp",
+        openSource: true,
+    },
 ];
 const links = [
-  {
-    name: "\u4E2D\u6587\u535A\u5BA2",
-    url: "/cn/posts",
-  },
-  {
-    name: "Posts",
-    url: "/posts",
-  },
-  {
-    name: "Gallery",
-    url: "/gallery",
-  },
+    {
+        name: "\u4E2D\u6587\u535A\u5BA2",
+        url: "/cn/posts",
+    },
+    {
+        name: "Posts",
+        url: "/posts",
+    },
+    {
+        name: "Gallery",
+        url: "/gallery",
+    },
 ];
 const resp = await fetch("https://img.eindex.me/pic/pic_list.json");
 const images = await resp.json();
