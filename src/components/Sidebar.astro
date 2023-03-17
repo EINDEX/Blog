@@ -6,7 +6,7 @@ import SearchBox from "./SearchBox.astro";
 
 <sidebar>
   <div class="profile">
-    <img src="/images/avatar.png" />
+    <img alt="EINDEX's avatar" src="/images/avatar.png" />
     <Contact iconOnly={true} />
   </div>
 
@@ -17,7 +17,7 @@ import SearchBox from "./SearchBox.astro";
 
 <style lang="scss">
   sidebar {
-    @apply flex flex-col gap-4 p-4 w-full justify-center items-center mt-4;
+    @apply flex flex-col gap-4 p-4 w-full justify-center items-center mt-4 sticky top-8;
   }
 
   .profile {

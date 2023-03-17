@@ -3,6 +3,7 @@ import i18next, { changeLanguage } from "i18next";
 import Img from "@components/Img.astro";
 import EmptyWapper from "@layouts/EmptyWapper.astro";
 import Navbar from "@components/Navbar.astro";
+import SEO from "@components/SEO.astro";
 
 changeLanguage("cn");
 
@@ -25,9 +26,20 @@ const links = [
 ];
 ---
 
-<EmptyWapper title="Gallery" locale={locale}>
+<EmptyWapper
+  title="Gallery"
+  locale={locale}
+  seo={{
+    title: "Gallery",
+    description: "Gallery",
+    keywords: "Gallery",
+    url: "https://eindex.me/gallery",
+    image: "https://img.eindex.me/pic/2021/08/30/20210830100000.jpg",
+  }}
+>
   <Navbar links={links} />
   <main>
+    <h1>Gallery</h1>
     <div class="gallery">
       {
         images.map((image) => (
@@ -46,6 +58,10 @@ const links = [
 <style lang="scss">
   main {
     @apply flex flex-col gap-8 py-8 px-4;
+
+    h1 {
+      @apply text-6xl self-center font-bold py-8;
+    }
   }
   .gallery {
     @apply lg:columns-5 columns-4 md:columns-3 sm:columns-2 self-center;

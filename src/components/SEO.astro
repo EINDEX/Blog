@@ -1,0 +1,61 @@
+---
+type Props = {
+  seo: {
+    title: string;
+    description?: string;
+    keywords?: string;
+    // author: string;
+    image?: string;
+    url: string;
+    date?: Date;
+    updated?: Date;
+    tags?: string[];
+    type?: string;
+    video?: string;
+  };
+};
+const SITE_NAME = "EINDEX's Blog";
+const { seo }: Props = Astro.props;
+
+const url = "https://eindex.me" + seo.url;
+const author = "EINDEX";
+const image = seo.image ? seo.image : "https://eindex.me/images/avatar.png";
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "NewsArticle",
+  headline: seo.title,
+  datePublished: seo.date,
+  dateModified: seo.updated,
+  image: [image],
+  author: [
+    {
+      "@type": "Person",
+      name: "EINDEX",
+      url: "https://eindex.me",
+    },
+  ],
+};
+---
+
+<head>
+  <meta name="description" content={seo.description} />
+  <meta name="keywords" content={seo.keywords} />
+  <meta name="author" content={author} />
+  <meta name="og:url" content={url} />
+  <meta name="og:title" content={seo.title} />
+  <meta name="og:type" content={seo.type ? seo.type : "website"} />
+  <meta name="og:video" content={seo.video} />
+  <meta name="og:description" content={seo.description} />
+  <meta name="og:site_name" content={SITE_NAME} />
+  <meta name="og:locale" content="en" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@eindex_li" />
+  <meta name="twitter:creator" content="@eindex_li" />
+  <meta name="twitter:title" content={seo.title} />
+  <meta name="twitter:description" content={seo.description} />
+  <meta name="og:image" content={image} />
+  <meta name="og:image:alt" content={seo.title} />
+  <meta name="twitter:image" content={image} />
+  <meta name="twitter:image:alt" content={seo.title} />
+  <script type="application/ld+json" set:html={schema}></script>
+</head>

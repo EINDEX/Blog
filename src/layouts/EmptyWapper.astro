@@ -3,6 +3,7 @@ import Footer from "@components/Footer.astro";
 import GA4 from "@components/analytics/ga4.astro";
 import Umami from "@components/analytics/umami.astro";
 import Cloudflare from "@components/analytics/Cloudflare.astro";
+import SEO from "@components/SEO.astro";
 import "../base.scss";
 
 export interface Props {
@@ -10,7 +11,7 @@ export interface Props {
   locale: string;
 }
 
-const { title, locale } = Astro.props;
+const { title, locale, seo={} } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -34,6 +35,7 @@ const { title, locale } = Astro.props;
     />
     <link rel="stylesheet" href="/katex.min.css" crossorigin="anonymous" />
     <GA4 />
+    <SEO seo={seo} />
   </head>
   <body>
     <slot />

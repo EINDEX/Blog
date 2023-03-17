@@ -13,7 +13,7 @@ const links = [
     url: "/",
   },
   {
-    name: "中文博客",
+    name: "\u4E2D\u6587\u535A\u5BA2",
     url: "/cn/posts",
   },
   {
@@ -25,10 +25,10 @@ const links = [
     url: "/gallery",
   },
 ];
-const { title, locale } = Astro.props;
+const { title, locale, seo={} } = Astro.props;
 ---
 
-<EmptyWapper title={title} locale={locale}>
+<EmptyWapper title={title} locale={locale} seo={seo}>
   <Navbar links={links} />
   <div class="wapper">
     <main>

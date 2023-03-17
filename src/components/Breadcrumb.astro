@@ -1,0 +1,21 @@
+---
+const { breadcrumb } = Astro.props;
+---
+
+<ol vocab="https://schema.org/" typeof="BreadcrumbList">
+  {
+    breadcrumb.map((item, position) => {
+      return (
+        <>
+          <li property="itemListElement" typeof="ListItem">
+            <a property="item" typeof="WebPage" href={item.url}>
+              <span property="name">{item.name}</span>
+            </a>
+            <meta property="position" content={position} />
+          </li>
+          {position < breadcrumb.length - 1 && "·"}
+        </>
+      );
+    })
+  }
+</ol>

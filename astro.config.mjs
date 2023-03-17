@@ -10,14 +10,10 @@ import tailwind from "@astrojs/tailwind";
 
 // import cloudflare from "@astrojs/cloudflare";
 
-// https://astro.build/config
 import react from "@astrojs/react";
 
-// https://astro.build/config
-
-// https://astro.build/config
 export default defineConfig({
-  site: "https://beta.eindex.me",
+  site: "https://eindex.me",
   integrations: [
     AstroPWA(),
     astroI18next(),

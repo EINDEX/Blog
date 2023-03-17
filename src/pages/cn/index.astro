@@ -5,6 +5,7 @@ import Navbar from "@components/Navbar.astro";
 import Project from "@components/Project.astro";
 import Profile from "@components/Profile.astro";
 import Contact from "@components/Contact.astro";
+import { getLinkViaLocale } from "@utils/slug";
 
 changeLanguage("cn");
 
@@ -42,12 +43,14 @@ const links = [
 const resp = await fetch("https://img.eindex.me/pic/pic_list.json");
 const images = await resp.json();
 const showImages = images.slice(0, 7);
-const maxWidth = showImages.reduce((accumulator, current) => {
-    return accumulator + current.width / (current.height / 300);
-}, 0);
 ---
 
-<EmptyWapper title="EINDEX's Blog" locale={locale}>
+<EmptyWapper title="EINDEX's Blog" locale={locale} seo={{
+  title: "EINDEX's Blog",
+  description: "This is EINDEX's Blog, I am a security researcher and a developer. Here is my blog.",
+  image: "https://eindex.me/images/avatar.png",
+  url: getLinkViaLocale(locale, "/"),
+}}>
   <Navbar links={links} styles={{ position: "absolute", top: 0 }} />
   <main>
     <section class="profile">
@@ -72,11 +75,7 @@ const maxWidth = showImages.reduce((accumulator, current) => {
     <section>
       <h2>Gallery</h2>
       <div class="gallery">
-        <div
-          style={{
-            // maxWidth: `${maxWidth}px`,
-          }}
-        >
+        <div>
           {
             showImages.map((image, index) => (
               <img

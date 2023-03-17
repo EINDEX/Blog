@@ -5,6 +5,7 @@ import { timeFormat } from "@utils/time";
 import Layout from "@layouts/Layout.astro";
 import { getPosts } from "@utils/posts";
 import PostCard from "@components/PostCard.astro";
+import Breadcrumb from "@components/Breadcrumb.astro";
 
 changeLanguage("en");
 
@@ -12,7 +13,16 @@ const locale = i18next.language;
 const posts = await getPosts(locale);
 ---
 
-<Layout title="Posts">
+<Layout
+  title="Posts"
+  locale={locale}
+  seo={{
+    title: "Posts",
+    description: "Posts",
+    image: "https://eindex.me/images/avatar.png",
+    url: getLinkViaLocale(locale, "/posts"),
+  }}
+>
   <h1>Posts</h1>
   <div class="posts">
     {
@@ -31,7 +41,7 @@ const posts = await getPosts(locale);
     }
   </div>
 
-  <p slot="sidebar">test 444</p>
+  <p slot="sidebar"></p>
 </Layout>
 
 <style lang="scss">

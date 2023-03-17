@@ -6,6 +6,8 @@ import Layout from "@layouts/Layout.astro";
 import { getPosts } from "@utils/posts";
 import { timeFormat } from "@utils/time";
 import Code from "@components/Code.astro";
+import SEO from "@components/SEO.astro";
+import Breadcrumb from "@components/Breadcrumb.astro";
 
 changeLanguage("cn");
 
@@ -27,19 +29,38 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 ---
 
-<Layout title={post.data.title} locale={locale}>
+
+<Layout title={post.data.title} locale={locale} seo={
+  {
+        title: post.data.title,
+        description: post.data.description,
+        image: post.data.cover,
+        url: getLinkViaLocale(locale, `/posts/${slug}`),
+        date: post.data.date,
+        updated: post.data.updated,
+        tags: post.data.tags,
+      }
+}>
+<Breadcrumb
+  breadcrumb={[
+    {
+      url: getLinkViaLocale(locale, `/posts`),
+      name: "Posts",
+    },
+  ]}
+  />
   <article class="h-entry">
-    {post.data.cover ? <img src={post.data.cover} /> : <></>}
+    {post.data.cover ? <img alt={post.data.title} src={post.data.cover} /> : <></>}
     <span class="series p-category"></span>
     <h1 class="title p-name">
-      {post.data.title}<a class="u-url" href={getLinkViaLocale(locale, slug)}
+      {post.data.title}<a class="u-url" href={getLinkViaLocale(locale, `/posts/${slug}`)}
       ></a>
     </h1>
     <div class="post-meta">
         <p class="p-summary">{post.data.description}</p>
       <time>{timeFormat(post.data.date, locale)}</time>
     </div>
-
+    <hr/>
     <section
       class="main e-content format sm:format-sm lg:format-lg dark:format-invert format-pre:m-0 format-pre:p-2 format-li:list-disc list-disc"
     >
@@ -55,10 +76,7 @@ const { Content } = await post.render();
     img {
       @apply w-full rounded-lg top-8 -z-10;
     }
-
-
-
-      h1 {
+    h1 {
       @apply text-3xl font-bold text-center;
     }
 
