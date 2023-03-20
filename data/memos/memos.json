@@ -34,5 +34,17 @@
     "updatedTs": 1671430535,
     "createdTs": 1671430535,
     "content": "在#flyio 上构建了#meilisearch 和#umami 分析系统。这些都运行在免费额度中。"
+  },
+  "139": {
+    "id": 139,
+    "updatedTs": 1679320752,
+    "createdTs": 1679320729,
+    "content": "把博客用 #Astro 重建了，既有 #Memos 集成，又支持 #MDX ，还有好看的新样式，还可以很方便的静态化，构建速度比 #NextJS 快一点点，同时还能写 React 组件。就差多写一点博客文章了。"
+  },
+  "140": {
+    "id": 140,
+    "updatedTs": 1679320735,
+    "createdTs": 1679320735,
+    "content": "Use #Astro rebuild my blog system, now I build the lovely style, Integrate with #Memos, support SSG, build speed a little faster than #NextJS and it also support React components. Hope I can take more time on blog articles."
   }
 }
