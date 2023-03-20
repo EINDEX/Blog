@@ -12,9 +12,7 @@ changeLanguage("en");
 const parser = new MarkdownIt();
 const locale = i18next.language;
 const thoughts = await getThoughts(locale);
-const groupedThoughts = _.groupBy(thoughts, (t) =>
-  timeFormat(t.data.date, locale)
-);
+const groupedThoughts = _.groupBy(thoughts, (t) => timeFormat(t.data.date, locale));
 ---
 
 <Layout
