@@ -1,11 +1,12 @@
-const axios = require("axios");
-const fs = require("fs-extra");
-const path = require("node:path");
+import axios from "axios";
+import process from "process";
+import path from "path";
+import fs from "fs-extra";
 
 const prePage = 20;
 const domain = 'eindex.me';
 const token = process.env.WEBMENTION_TOKEN
-const webmentionsPath = "webmentions/"
+const webmentionsPath = "data/webmentions/"
 const webMentionsFolder = webmentionsPath + "data/" 
 const sinceIDPath = webmentionsPath + "since_id"
 
@@ -80,7 +81,7 @@ const fetchAllMentions = async(domain, token) => {
 const mentionProcess = async (mention) => {
     const id = mention['wm-id']
     const target = new URL(mention['wm-target'])
-    const pathname = target.pathname.replace(/^\/(cn)?/,"").replace(/\/$/,"")
+    const pathname = target.pathname.replace(/^\/(zh\/)?/,"").replace(/\/$/,"")
     const filepath = `${webMentionsFolder}${pathname}.json`
     
     console.log(`process ${id} to ${filepath}`)

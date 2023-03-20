@@ -23,3 +23,5 @@ pnpm-debug.log*
 
 src/pages/cn/**/*.astro
 src/pages/zh/**/*.astro
+
+.envrc
