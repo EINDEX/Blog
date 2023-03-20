@@ -19,20 +19,24 @@ const posts = await getPosts(locale);
     url: "/posts",
   }}
 >
-  <h1>Posts</h1>
-  <div class="posts">
-    {posts.map((post) => <PostCard locale={locale} post={post} />)}
-  </div>
+  <article>
+    <h1>Posts</h1>
+    <div class="posts">
+      {posts.map((post) => <PostCard locale={locale} post={post} />)}
+    </div>
 
-  <p slot="sidebar"></p>
+    <p slot="sidebar"></p>
+  </article>
 </Layout>
 
 <style lang="scss">
-  h1 {
-    @apply text-4xl font-bold self-center;
-  }
+  article {
+    h1 {
+      @apply text-4xl font-bold self-center;
+    }
 
-  .posts {
-    @apply flex flex-col gap-4;
+    .posts {
+      @apply flex flex-col gap-4;
+    }
   }
 </style>

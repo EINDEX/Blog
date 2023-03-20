@@ -12,7 +12,9 @@ changeLanguage("en");
 const parser = new MarkdownIt();
 const locale = i18next.language;
 const thoughts = await getThoughts(locale);
-const groupedThoughts = _.groupBy(thoughts, (t) => timeFormat(t.data.date, locale));
+const groupedThoughts = _.groupBy(thoughts, (t) =>
+  timeFormat(t.data.date, locale)
+);
 ---
 
 <Layout
@@ -24,6 +26,7 @@ const groupedThoughts = _.groupBy(thoughts, (t) => timeFormat(t.data.date, local
     url: "/thoughts",
   }}
 >
+  <h1>{t("thoughts")}</h1>
   <div class="thoughts">
     {
       Object.keys(groupedThoughts).map((date) => (
@@ -49,6 +52,9 @@ const groupedThoughts = _.groupBy(thoughts, (t) => timeFormat(t.data.date, local
 </Layout>
 
 <style lang="scss">
+  h1 {
+    @apply text-4xl font-bold text-center;
+  }
   .thoughts {
     @apply w-full flex flex-col gap-4 px-4 divide-y divide-gray-200;
 
