@@ -1,2 +1,13 @@
-/.well-known/nostr.json*
+/
+    X-Content-Type-Options: nosniff
+    Referrer-Policy: no-referrer
+
+/.well-known
     Access-Control-Allow-Origin: *
+
+/images/avatar.png
+    Access-Control-Allow-Origin: *
+
+https://blog-2j7.pages.dev/*
+  X-Robots-Tag: noindex
+

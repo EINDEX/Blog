@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,height=device-height, initial-scale=1">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="generator" content="Astro v2.1.3">
+    <title>倒排索引</title>
+    <link rel="webmention" href="https://webmention.io/eindex.me/webmention">
+    <link rel="pingback" href="https://webmention.io/eindex.me/xmlrpc">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/lxgwwenkai-regular.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="/katex.min.css" crossorigin="anonymous">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SR36ZS0R52"></script><script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "G-SR36ZS0R52");
+</script>
+    <head>
+  <meta name="description">
+  <meta name="keywords" content="Index,Search Engine">
+  <meta name="author" content="EINDEX">
+  <meta name="og:url" content="/zhhttps://eindex.me/posts/inverted-index">
+  <meta name="og:title" content="倒排索引">
+  <meta name="og:type" content="website">
+  <meta name="og:video">
+  <meta name="og:description">
+  <meta name="og:site_name" content="EINDEX's Blog">
+  <meta name="og:locale" content="en">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@eindex_li">
+  <meta name="twitter:creator" content="@eindex_li">
+  <meta name="twitter:title" content="倒排索引">
+  <meta name="twitter:description">
+  <meta name="og:image" content="https://eindex.me/images/avatar.png">
+  <meta name="og:image:alt" content="倒排索引">
+  <meta name="twitter:image" content="https://eindex.me/images/avatar.png">
+  <meta name="twitter:image:alt" content="倒排索引">
+  <script type="application/ld+json">[object Object]</script>
+<link rel="stylesheet" href="/_astro/index.069256eb.css" />
+<link rel="stylesheet" href="/_astro/archive.2b441402.css" />
+<link rel="stylesheet" href="/_astro/archive.427758d5.css" />
+<link rel="stylesheet" href="/_astro/_slug_.8e1d6f42.css" />
+<link rel="stylesheet" href="/_astro/_slug_.6ca7f0aa.css" />
+<link rel="stylesheet" href="/_astro/index.1ccc6e4c.css" /><script type="module" src="/_astro/hoisted.c2e808df.js"></script></head>
+  </head>
+  <body>
+    <style>astro-island,astro-slot{display:contents}</style><script>(self.Astro=self.Astro||{}).load=a=>{(async()=>await(await a())())()},window.dispatchEvent(new Event("astro:load"));var l;{const c={0:t=>t,1:t=>JSON.parse(t,o),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(JSON.parse(t,o)),5:t=>new Set(JSON.parse(t,o)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(JSON.parse(t)),9:t=>new Uint16Array(JSON.parse(t)),10:t=>new Uint32Array(JSON.parse(t))},o=(t,s)=>{if(t===""||!Array.isArray(s))return s;const[e,n]=s;return e in c?c[e](n):void 0};customElements.get("astro-island")||customElements.define("astro-island",(l=class extends HTMLElement{constructor(){super(...arguments);this.hydrate=()=>{if(!this.hydrator||this.parentElement&&this.parentElement.closest("astro-island[ssr]"))return;const s=this.querySelectorAll("astro-slot"),e={},n=this.querySelectorAll("template[data-astro-template]");for(const r of n){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(const r of s){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("name")||"default"]=r.innerHTML)}const a=this.hasAttribute("props")?JSON.parse(this.getAttribute("props"),o):{};this.hydrator(this)(this.Component,a,e,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),window.removeEventListener("astro:hydrate",this.hydrate),window.dispatchEvent(new CustomEvent("astro:hydrate"))}}connectedCallback(){!this.hasAttribute("await-children")||this.firstChild?this.childrenConnectedCallback():new MutationObserver((s,e)=>{e.disconnect(),this.childrenConnectedCallback()}).observe(this,{childList:!0})}async childrenConnectedCallback(){window.addEventListener("astro:hydrate",this.hydrate);let s=this.getAttribute("before-hydration-url");s&&await import(s),this.start()}start(){const s=JSON.parse(this.getAttribute("opts")),e=this.getAttribute("client");if(Astro[e]===void 0){window.addEventListener(`astro:${e}`,()=>this.start(),{once:!0});return}Astro[e](async()=>{const n=this.getAttribute("renderer-url"),[a,{default:r}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),i=this.getAttribute("component-export")||"default";if(!i.includes("."))this.Component=a[i];else{this.Component=a;for(const d of i.split("."))this.Component=this.Component[d]}return this.hydrator=r,this.hydrate},s,this)}attributeChangedCallback(){this.hydrator&&this.hydrate()}},l.observedAttributes=["props"],l))}</script><nav style="" class="astro-POUAFZUC">
+  <a class="logo astro-POUAFZUC" href="/zh/">
+    <img width="32px" height="32px" src="/images/avatar.png" class="astro-POUAFZUC">
+    <b class="astro-POUAFZUC">EINDEX</b>'s Blog
+  </a>
+  <button id="navbar-default" data-collapse-toggle="navbar-default" type="button" class="navbar-toggle astro-POUAFZUC" aria-controls="navbar-default" aria-expanded="false">
+    <span class="sr-only astro-POUAFZUC">Open main menu</span>
+    <svg class="w-6 h-6 astro-POUAFZUC" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" class="astro-POUAFZUC"></path></svg>
+  </button>
+  <div class="menus sm:hidden astro-POUAFZUC" id="navbar-menus">
+    <ul class="astro-POUAFZUC">
+      <li class="astro-POUAFZUC">
+            <a class="umami--click--posts astro-POUAFZUC" href="/zh/posts">
+              博客
+            </a>
+          </li><li class="astro-POUAFZUC">
+            <a class="umami--click--thoughts astro-POUAFZUC" href="/zh/thoughts">
+              想法
+            </a>
+          </li><li class="astro-POUAFZUC">
+            <a class="umami--click--gallery astro-POUAFZUC" href="/zh/gallery">
+              相册
+            </a>
+          </li>
+    </ul>
+    <select onchange="location = this.value;" class="language-selector rounded-lg shadow-lg dark:bg-black astro-POUAFZUC">
+  <option value="/zh/posts/inverted-index" selected="true">
+          🇨🇳 ZH
+        </option><option value="/posts/inverted-index">
+          🇺🇸 EN
+        </option>
+</select>
+  </div>
+</nav><div class="wapper astro-SCKKX6R4">
+    <main class="astro-SCKKX6R4">
+      <ol vocab="https://schema.org/" typeof="BreadcrumbList">
+  <li property="itemListElement" typeof="ListItem">
+            <a property="item" typeof="WebPage" href="/zh/posts">
+              <span property="name">博客</span>
+            </a>
+            <meta property="position" content="0">
+          </li>
+</ol><article class="h-entry astro-A3YE2TM6">
+    
+    <span class="series p-category astro-A3YE2TM6"></span>
+    <h1 class="title p-name astro-A3YE2TM6">
+      倒排索引<a class="u-url astro-A3YE2TM6" href="/zh/posts/inverted-index"></a>
+    </h1>
+    <div class="post-meta astro-A3YE2TM6">
+        <p class="p-summary astro-A3YE2TM6"></p>
+      <time class="astro-A3YE2TM6">8/27/2019</time>
+    </div>
+    <hr class="astro-A3YE2TM6">
+    <div class="labels astro-PJKAKWPS">
+  <a class="tag astro-PJKAKWPS" href="/zh/tags/index">
+          Index
+        </a><a class="tag astro-PJKAKWPS" href="/zh/tags/search-engine">
+          Search Engine
+        </a>
+</div>
+    <section class="main e-content format sm:format-sm lg:format-lg dark:format-invert format-pre:m-0 format-pre:p-2 format-li:list-disc list-disc astro-A3YE2TM6">
+      <p>世界上最伟大的互联网产品,说是搜索引擎,绝对没有别的产品可以替代,尤其是伟大的先在市场占用率最高的搜索引擎,Google Search.</p>
+<p>还有很多差一大截的,比如 Bing, Yahoo 和 YANDEX.</p>
+<more></more>
+<h2 id="什么是搜索引擎">什么是搜索引擎</h2>
+<p>所谓搜索引擎，就是根据用户需求与一定算法，运用特定策略从互联网检索出制定信息反馈给用户的一门检索技术。</p>
+<p>搜索引擎技术的核心模块一般包括爬虫、索引、检索和排序等，同时可添加其他一系列辅助模块，以为用户创造更好的网络使用环境。</p>
+<h2 id="搜索引擎干了些什么">搜索引擎干了些什么</h2>
+<p>简单的说搜索引擎从网络上爬取网页,然后对网页信息进行提取,构建正排索引,然后分析网页内容,建立倒排文件.</p>
+<p>接下来我将依次介绍 正排索引、 倒排索引 等知识点.</p>
+<h2 id="正排索引">正排索引</h2>
+<p>正排索引通常是
+id-document 的键值对</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>id</th><th>name</th><th>context</th><th>eng_context</th></tr></thead><tbody><tr><td>1</td><td>小明</td><td>今天吃了 3 个包子</td><td>today eating 3 baozi</td></tr><tr><td>2</td><td>小仓</td><td>最后一天看了一本书</td><td>read a book last day</td></tr><tr><td>3</td><td>仓颉</td><td>去年造了个新华字典</td><td>make a xinhua dictionary last year</td></tr></tbody></table>
+<h2 id="倒排索引">倒排索引</h2>
+<p>倒排索引是关键词到 id 列表的映射关系.</p>
+<p>倒排索引里面左边的列叫做 term , 里面存储的通常是一个关键词;
+右边的列叫做 posting list,里面存储的是文档的 id.</p>
+<p>左侧的一列一起叫做 term dictionary.</p>
+<p>首先上面有每个 document 有 3 个 field , 所以会创建 3 个倒排索引.</p>
+<p>如果使用默认的英文分词器,那么表格会创建的索引大概是下面这个样子:</p>
+<p>name index:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>term</th><th>posting list</th></tr></thead><tbody><tr><td>小</td><td>[1, 2]</td></tr><tr><td>仓</td><td>[2, 3]</td></tr><tr><td>明</td><td>[1]</td></tr><tr><td>颉</td><td>[3]</td></tr></tbody></table>
+<p>context index:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>term</th><th>posting list</th></tr></thead><tbody><tr><td>个</td><td>[1, 3]</td></tr><tr><td>了</td><td>[1, 2, 3]</td></tr><tr><td>今</td><td>[1]</td></tr><tr><td>…</td><td>…</td></tr></tbody></table>
+<p>eng_context index:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>term</th><th>posting list</th></tr></thead><tbody><tr><td>last</td><td>[2, 3]</td></tr><tr><td>a</td><td>[2, 3]</td></tr><tr><td>dictionary</td><td>[3]</td></tr><tr><td>…</td><td>…</td></tr></tbody></table>
+<hr/>
+<p>读到这里想来你也会有些许疑问?</p>
+<ul>
+<li>比 MySQL Index 的优势在哪?</li>
+<li>当有 1 亿 Term 时如何高效查询?</li>
+<li>联合查询怎么办?</li>
+<li>相关度排序?</li>
+</ul>
+<h2 id="term-index">Term index</h2>
+<p>假象一下我们现在有 1 亿个 term, 那么这个 trem dictionary 会占多少内存呢?
+假设每个 trem 占用内存 6 byte, 那么亿个大约占用 0.6 GB, 那么如果是一个非常复杂的文档, 岂不是内存不够用?
+而且为什么搜索引擎的速度远远快于 MySQL 的索引速度?</p>
+<p>首先 Trem Index 实际上是一种字典树(前缀树), 可以将 term dictionary 里的内容组成树状结构.
+下图会是一个普通的字典树.
+<img src="media/15669198838069/15673442795943.jpg" alt=""/></p>
+<p>而 Term Index 的 Value 就是 Term 在磁盘中的位置.</p>
+<p>而且 Trem Index 通常会被缓存到内存中, 再加上优秀的树结构, 所以查询速度极快, 字典树的数据结构优势, 使体积远小于 term dictonary.</p>
+<p>快于 MySQL 的主要原因是, 减少了访问磁盘的次数.MySQL 的 B+树会在磁盘中多次读写不同位置, 而使用 term index , 则只会在匹配到 term 时进行一次磁盘访问.</p>
+<h2 id="联合查询">联合查询</h2>
+<p>如何进行索引的联合查询, 当程序获得多个 Posting list 那么程序需要从 list 中进行多次交集并集操作.如何减少这些操作呢?</p>
+<p>通常有两个解决方案.</p>
+<ul>
+<li>bitset</li>
+<li>跳表</li>
+</ul>
+<p>可以自己去看一下相关的工作原理。</p>
+<h2 id="end">END</h2>
+<p>想必看完之后，你也对倒排索引工作原理有一定的了解了吧。感谢阅读！</p>
+    </section>
+  </article><commants class="comments">
+  <astro-island uid="Z2amzsm" component-url="/_astro/react.f6daaf8e.js" component-export="default" renderer-url="/_astro/client.38423ee9.js" props="{&quot;id&quot;:[0,&quot;comments&quot;],&quot;repo&quot;:[0,&quot;eindex/blog&quot;],&quot;repoId&quot;:[0,&quot;R_kgDOGWb6Yg&quot;],&quot;category&quot;:[0,&quot;General&quot;],&quot;categoryId&quot;:[0,&quot;DIC_kwDOGWb6Ys4CAKn-&quot;],&quot;mapping&quot;:[0,&quot;specific&quot;],&quot;term&quot;:[0,&quot;/posts/inverted-index&quot;],&quot;reactionsEnabled&quot;:[0,&quot;1&quot;],&quot;emitMetadata&quot;:[0,&quot;1&quot;],&quot;inputPosition&quot;:[0,&quot;top&quot;],&quot;theme&quot;:[0,&quot;preferred_color_scheme&quot;],&quot;lang&quot;:[0,&quot;zh&quot;],&quot;loading&quot;:[0,&quot;lazy&quot;]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Giscus&quot;,&quot;value&quot;:true}"></astro-island>
+</commants>
+    </main>
+    <sidebar class="astro-SCKKX6R4">
+      <sidebar class="astro-KST5LCDJ">
+  <div class="profile astro-KST5LCDJ">
+    <img alt="EINDEX's avatar" src="/images/avatar.png" class="astro-KST5LCDJ">
+    <span class="name astro-KST5LCDJ">EINDEX</span>
+    <p class="contact astro-XMIVUP5A">
+  <a rel="me" class="umami--click--contact-github astro-XMIVUP5A" target="_blank" style="color:#ff79c6" href="https://github.com/eindex"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github astro-XMIVUP5A" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" class="astro-XMIVUP5A"></path>
+      <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" class="astro-XMIVUP5A"></path>
+    </svg></a><a rel="me" class="umami--click--contact-twitter astro-XMIVUP5A" target="_blank" style="color:#1c9cea" href="https://twitter.com/@eindex_li"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter astro-XMIVUP5A" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" class="astro-XMIVUP5A"></path>
+      <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c0 -.249 1.51 -2.772 1.818 -4.013z" class="astro-XMIVUP5A"></path>
+    </svg></a>
+  <a class="umami--click--contact-linkedin astro-XMIVUP5A" rel="me" target="_blank" style="color:#bd93f9" href="https://www.linkedin.com/in/eindex/">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-linkedin astro-XMIVUP5A" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" class="astro-XMIVUP5A"></path>
+      <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" class="astro-XMIVUP5A"></path>
+      <path d="M8 11l0 5" class="astro-XMIVUP5A"></path>
+      <path d="M8 8l0 .01" class="astro-XMIVUP5A"></path>
+      <path d="M12 16l0 -5" class="astro-XMIVUP5A"></path>
+      <path d="M16 16v-3a2 2 0 0 0 -4 0" class="astro-XMIVUP5A"></path>
+    </svg>
+    
+  </a>
+</p>
+  </div>
+
+  <head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docs-searchbar.js@v2.5.0/dist/cdn/docs-searchbar.min.css">
+</head>
+
+<search-box class="astro-Z3BPXO4I">
+  <input id="search" class="w-full astro-Z3BPXO4I" placeholder="Searching...">
+</search-box>
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/docs-searchbar.js@v2.5.0/dist/cdn/docs-searchbar.min.js"></script>
+
+<script>
+  docsSearchBar({
+    hostUrl: "https://meili.eindex.me",
+    apiKey: "93c9ac58903de854e42797a1445a83d326bbb7bb5b506740ba55342eb5178b1a",
+    indexUid: "blog",
+    inputSelector: "#search",
+    enableDarkMode: "auto",
+  });
+</script>
+
+  
+</sidebar>
+    </sidebar>
+  </div>
+    <footer class="astro-CH5YBYKL">
+  <span class="webring astro-MTZRIXCV">
+  <a href="https://xn--sr8hvo.ws/%F0%9F%95%90%F0%9F%89%91%F0%9F%88%B6/previous" class="astro-MTZRIXCV">←</a> An IndieWeb Webring 🕸💍 <a href="https://xn--sr8hvo.ws/%F0%9F%95%90%F0%9F%89%91%F0%9F%88%B6/next" class="astro-MTZRIXCV">→</a>
+</span>
+  <span class="astro-CH5YBYKL">EINDEX @ 2023</span>
+</footer>
+    <script async defer data-website-id="d963565f-c209-41a4-98d2-faac7625f470" src="https://umami.eindex.me/umami.js"></script>
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;01180ed57cc34c3896e21f5c09a75ef5&quot;}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
+  </body>
+</html>
