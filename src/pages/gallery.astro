@@ -1,7 +1,7 @@
 ---
-import i18next, { changeLanguage } from "i18next";
+import i18next, { changeLanguage, t } from "i18next";
 import EmptyWapper from "@layouts/EmptyWapper.astro";
-import Navbar from "@components/Navbar.astro";
+import Navbar from "@components/layouts/Navbar.astro";
 import { getLinkViaLocale } from "@utils/slug";
 
 changeLanguage("en");
@@ -11,34 +11,33 @@ const resp = await fetch("https://img.eindex.me/pic/pic_list.json");
 const images = await resp.json();
 const links = [
     {
-        name: "Home",
+        name: "home",
         url: "/",
     },
     {
-        name: "\u4E2D\u6587\u535A\u5BA2",
-        url: "/cn/posts",
+        name: "posts",
+        url: "/posts",
     },
     {
-        name: "Posts",
-        url: "/posts",
+        name: "thoughts",
+        url: "/thoughts",
     },
 ];
 ---
 
 <EmptyWapper
-  title="Gallery"
-  locale={locale}
+  title={t("gallery")}
   seo={{
-    title: "Gallery",
+    title: t("gallery"),
     description: "Gallery",
-    keywords: "Gallery",
+    keywords: t("gallery"),
     url: getLinkViaLocale(locale, "/gallery"),
     image: `https://img.eindex.me/pic/${images[0].thumbnail}`,
   }}
 >
   <Navbar links={links} />
   <main>
-    <h1>Gallery</h1>
+    <h1>{t("gallery")}</h1>
     <div class="gallery">
       {
         images.map((image) => (

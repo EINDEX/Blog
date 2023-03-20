@@ -1,3 +1,7 @@
 {
-    "test": "测试"
+    "posts": "博客",
+    "archive": "归档",
+    "gallery": "相册",
+    "thoughts": "想法",
+    "home": "主页"
 }

@@ -1,35 +1,17 @@
 ---
-import Navbar from "@components/Navbar.astro";
-import Sidebar from "@components/Sidebar.astro";
+import Navbar from "@components/layouts/Navbar.astro";
+import Sidebar from "@components/layouts/Sidebar.astro";
 import EmptyWapper from "./EmptyWapper.astro";
 
 export interface Props {
   title: string;
-  locale: string;
+  seo?: any;
 }
-const links = [
-  {
-    name: "Home",
-    url: "/",
-  },
-  {
-    name: "\u4E2D\u6587\u535A\u5BA2",
-    url: "/cn/posts",
-  },
-  {
-    name: "Posts",
-    url: "/posts",
-  },
-  {
-    name: "Gallery",
-    url: "/gallery",
-  },
-];
-const { title, locale, seo = {} } = Astro.props;
+const { title, seo = {} } = Astro.props;
 ---
 
-<EmptyWapper title={title} locale={locale} seo={seo}>
-  <Navbar links={links} />
+<EmptyWapper title={title} seo={seo}>
+  <Navbar />
   <div class="wapper">
     <main>
       <slot />
@@ -62,4 +44,3 @@ const { title, locale, seo = {} } = Astro.props;
     @apply flex flex-row gap-4 justify-center w-full mt-8 px-4 sm:px-2 min-h-full;
   }
 </style>
-

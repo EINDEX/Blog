@@ -1,17 +1,19 @@
 ---
-import Footer from "@components/Footer.astro";
+import Footer from "@components/layouts/Footer.astro";
 import GA4 from "@components/analytics/ga4.astro";
 import Umami from "@components/analytics/umami.astro";
 import Cloudflare from "@components/analytics/Cloudflare.astro";
 import SEO from "@components/SEO.astro";
 import "../base.scss";
+import i18next from "i18next";
 
+const locale = i18next.language;
 export interface Props {
   title: string;
-  locale: string;
+  seo?: any;
 }
 
-const { title, locale, seo={} } = Astro.props;
+const { title, seo = {} } = Astro.props;
 ---
 
 <!DOCTYPE html>

@@ -1,3 +1,7 @@
 {
-    "test": "test"
+    "posts": "Posts",
+    "archive": "Archive",
+    "gallery": "Gallery",
+    "thoughts": "Thoughts",
+    "home": "Home"
 }

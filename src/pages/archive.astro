@@ -2,7 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import { getPosts } from "@utils/posts";
 import { timeFormat } from "@utils/time";
-import i18next, { changeLanguage } from "i18next";
+import i18next, { changeLanguage, t } from "i18next";
 import _ from "lodash";
 
 changeLanguage("en");
@@ -15,9 +15,9 @@ const sortedPostGroupKeys = Object.keys(groupedPosts).sort((a, b) => {
 });
 ---
 
-<Layout locale={locale} title="Archive">
+<Layout title={t("archive")}>
   <article>
-    <h1>Archive</h1>
+    <h1>{t("archive")}</h1>
     <section>
       <div class="posts">
         {
@@ -28,7 +28,7 @@ const sortedPostGroupKeys = Object.keys(groupedPosts).sort((a, b) => {
                 {groupedPosts[month].map((post) => (
                   <li>
                     <a
-                      class="thought e-content p-summary"
+                      class="post"
                       href={`/posts/${post.data.slug}`}
                     >
                       {post.data.title}

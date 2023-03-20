@@ -8,6 +8,7 @@ import { timeFormat } from "@utils/time";
 import Code from "@components/Code.astro";
 import Breadcrumb from "@components/Breadcrumb.astro";
 import Comments from "@components/Comments.astro";
+import Tags from "@components/Tags.astro";
 
 changeLanguage("en");
 
@@ -30,12 +31,12 @@ const { Content } = await post.render();
 ---
 
 
-<Layout title={post.data.title} locale={locale} seo={
+<Layout title={post.data.title} seo={
   {
         title: post.data.title,
         description: post.data.description,
         image: post.data.cover,
-        url: getLinkViaLocale(locale, `/posts/${slug}`),
+        url: `/posts/${slug}`,
         date: post.data.date,
         updated: post.data.updated,
         keywords: post.data.tags,
@@ -44,8 +45,8 @@ const { Content } = await post.render();
 <Breadcrumb
   breadcrumb={[
     {
-      url: getLinkViaLocale(locale, `/posts`),
-      name: "Posts",
+      url:  `/posts`,
+      name: "posts",
     },
   ]}
   />
@@ -61,6 +62,7 @@ const { Content } = await post.render();
       <time>{timeFormat(post.data.date, locale)}</time>
     </div>
     <hr/>
+    <Tags tags={post.data.tags}></Tags>
     <section
       class="main e-content format sm:format-sm lg:format-lg dark:format-invert format-pre:m-0 format-pre:p-2 format-li:list-disc list-disc"
     >

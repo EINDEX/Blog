@@ -1,10 +1,13 @@
 ---
+import { getLinkViaLocale } from "@utils/slug";
+import i18next, { t } from "i18next";
+
+const locale = i18next.language;
 type Props = {
   seo: {
     title: string;
     description?: string;
     keywords?: string;
-    // author: string;
     image?: string;
     url: string;
     date?: Date;
@@ -17,7 +20,7 @@ type Props = {
 const SITE_NAME = "EINDEX's Blog";
 const { seo }: Props = Astro.props;
 
-const url = "https://eindex.me" + seo.url;
+const url = getLinkViaLocale(locale, Astro.site.origin + seo.url);
 const author = "EINDEX";
 const image = seo.image ? seo.image : "https://eindex.me/images/avatar.png";
 const schema = {
@@ -31,7 +34,7 @@ const schema = {
     {
       "@type": "Person",
       name: "EINDEX",
-      url: "https://eindex.me",
+      url: Astro.site.origin,
     },
   ],
 };

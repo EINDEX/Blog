@@ -1,11 +1,9 @@
 ---
 import { CollectionEntry } from "astro:content";
-import i18next, { changeLanguage } from "i18next";
-import { getLastPartOfSlug, getLinkViaLocale } from "@utils/slug";
+import i18next, { changeLanguage, t } from "i18next";
 import Layout from "@layouts/Layout.astro";
 import { getThoughts } from "@utils/posts";
 import { timeFormat } from "@utils/time";
-import Code from "@components/Code.astro";
 import Breadcrumb from "@components/Breadcrumb.astro";
 import Comments from "@components/Comments.astro";
 import Tags from "@components/Tags.astro";
@@ -31,11 +29,10 @@ const { Content } = await thought.render();
 
 <Layout
   title={thought.data.title}
-  locale={locale}
   seo={{
     title: thought.data.title,
     description: thought.body,
-    url: getLinkViaLocale(locale, `/thoughts/${slug}`),
+    url: `/thoughts/${slug}`,
     date: thought.data.date,
     updated: thought.data.updated,
     keywords: thought.data.tags,
@@ -44,14 +41,14 @@ const { Content } = await thought.render();
   <Breadcrumb
     breadcrumb={[
       {
-        url: getLinkViaLocale(locale, `/thoughts`),
-        name: "Thoughts",
+        url: `/thoughts`,
+        name: "thoughts",
       },
     ]}
   />
   <article class="h-entry">
     <span class="series p-category"></span>
-    <h1 class="series p-category">Thoughts</h1>
+    <h1 class="series p-category">{t("thoughts")}</h1>
     <div class="post-meta">
       <time>{timeFormat(thought.data.date, locale)}</time>
     </div>

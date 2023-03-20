@@ -21,6 +21,7 @@ const postSchema = z.object({
 });
 
 const thoughtSchema = z.object({
+  title: z.string().optional(),
   date: z.string().transform((str) => new Date(str)),
   updated: z
     .string()

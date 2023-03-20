@@ -1,4 +1,9 @@
 ---
+import i18next, { t } from "i18next";
+import { getLinkViaLocale } from "@utils/slug";
+
+const locale = i18next.language;
+
 const { breadcrumb } = Astro.props;
 ---
 
@@ -8,8 +13,12 @@ const { breadcrumb } = Astro.props;
       return (
         <>
           <li property="itemListElement" typeof="ListItem">
-            <a property="item" typeof="WebPage" href={item.url}>
-              <span property="name">{item.name}</span>
+            <a
+              property="item"
+              typeof="WebPage"
+              href={getLinkViaLocale(locale, item.url)}
+            >
+              <span property="name">{t(item.name)}</span>
             </a>
             <meta property="position" content={position} />
           </li>

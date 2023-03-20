@@ -1,5 +1,14 @@
 ---
-const { links = {}, styles = {} } = Astro.props;
+import i18next, { t, } from "i18next";
+import { getLinkViaLocale } from "@utils/slug";
+
+const defaultLinks = [
+  { name: "home", url: "/" },
+  { name: "posts", url: "/posts" },
+  { name: "gallery", url: "/gallery" },
+  { name: "thoughts", url: "/thoughts" },
+];
+const { links = defaultLinks, styles = {}, locale = i18next.language } = Astro.props;
 ---
 
 <nav style={styles}>
@@ -33,8 +42,8 @@ const { links = {}, styles = {} } = Astro.props;
       {
         links.map((link) => (
           <li>
-            <a class={`umami--click--${link.name}`} href={link.url}>
-              {link.name}
+            <a class={`umami--click--${link.name}`} href={getLinkViaLocale(locale,link.url)}>
+              {t(link.name)}
             </a>
           </li>
         ))

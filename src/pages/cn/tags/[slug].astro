@@ -8,6 +8,7 @@ import { timeFormat } from "@utils/time";
 import _ from "lodash";
 import MarkdownIt from "markdown-it";
 import { getLinkViaLocale } from "@utils/slug";
+import Breadcrumb from "@components/Breadcrumb.astro";
 
 changeLanguage("cn");
 
@@ -28,7 +29,15 @@ const { posts, thoughts, projects } = await getAllByTag(locale, tag);
 const groupedThoughts = _.groupBy(thoughts, (t) => timeFormat(t.data.date, locale));
 ---
 
-<Layout locale={locale} title={tag}>
+<Layout title={tag}>
+  <Breadcrumb
+  breadcrumb={[
+    {
+      url:  `/tags`,
+      name: "tags",
+    },
+  ]}
+  />
   <article>
     <h1>{tag}</h1>
     {projects.length === 0? <></>:

@@ -13,13 +13,12 @@ const allTags = await getAllTags(locale);
 ---
 
 <Layout
-  locale={locale}
   title="Tags"
   seo={{
     title: "Tags",
     description: "Tags",
     image: "https://eindex.me/images/avatar.png",
-    url: getLinkViaLocale(locale, "/tags"),
+    url: "/tags",
   }}
 >
   <h1>Tags</h1>

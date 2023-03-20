@@ -1,7 +1,7 @@
 ---
 import EmptyWapper from "@layouts/EmptyWapper.astro";
 import i18next, { changeLanguage } from "i18next";
-import Navbar from "@components/Navbar.astro";
+import Navbar from "@components/layouts/Navbar.astro";
 import Project from "@components/Project.astro";
 import Profile from "@components/Profile.astro";
 import Contact from "@components/Contact.astro";
@@ -12,20 +12,6 @@ changeLanguage("cn");
 
 const locale = i18next.language;
 const projects = await getAllProjects(locale);
-const links = [
-    {
-        name: "\u4E2D\u6587\u535A\u5BA2",
-        url: "/cn/posts",
-    },
-    {
-        name: "Posts",
-        url: "/posts",
-    },
-    {
-        name: "Gallery",
-        url: "/gallery",
-    },
-];
 const resp = await fetch("https://img.eindex.me/pic/pic_list.json");
 const images = await resp.json();
 const showImages = images.slice(0, 7);
@@ -33,7 +19,6 @@ const showImages = images.slice(0, 7);
 
 <EmptyWapper
   title="EINDEX's Blog"
-  locale={locale}
   seo={{
     title: "EINDEX's Blog",
     description:
@@ -42,7 +27,7 @@ const showImages = images.slice(0, 7);
     url: getLinkViaLocale(locale, "/"),
   }}
 >
-  <Navbar links={links} styles={{ position: "absolute", top: 0 }} />
+  <Navbar styles={{ position: "absolute", top: 0 }} />
   <main>
     <section class="profile">
       <Profile />

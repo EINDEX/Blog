@@ -49,7 +49,7 @@ module.exports = {
       }),
     },
     screens: {
-      md: { min: "640px", max: "1200px" },
+      md: { min: "640px", max: "1023px" },
       sm: { max: "640px" },
       lg: { min: "1690px" },
     },
