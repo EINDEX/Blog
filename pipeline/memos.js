@@ -49,6 +49,7 @@ const makeThoughts = async (memo) => {
 date: "${dateFormat(memo.createdTs)}"
 updated: "${dateFormat(memo.updatedTs)}"
 tags: ${JSON.stringify(fetchTags(memo.content))}
+draft: false
 ---
 
 ${contentFormat(memo.content)}
