@@ -5,8 +5,8 @@ import { getLinkViaLocale } from "@utils/slug";
 const defaultLinks = [
   { name: "home", url: "/" },
   { name: "posts", url: "/posts" },
-  { name: "gallery", url: "/gallery" },
   { name: "thoughts", url: "/thoughts" },
+  { name: "gallery", url: "/gallery" },
 ];
 const { links = defaultLinks, styles = {}, locale = i18next.language } = Astro.props;
 ---

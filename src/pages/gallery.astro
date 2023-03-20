@@ -9,20 +9,6 @@ changeLanguage("en");
 const locale = i18next.language;
 const resp = await fetch("https://img.eindex.me/pic/pic_list.json");
 const images = await resp.json();
-const links = [
-    {
-        name: "home",
-        url: "/",
-    },
-    {
-        name: "posts",
-        url: "/posts",
-    },
-    {
-        name: "thoughts",
-        url: "/thoughts",
-    },
-];
 ---
 
 <EmptyWapper
@@ -31,11 +17,11 @@ const links = [
     title: t("gallery"),
     description: "Gallery",
     keywords: t("gallery"),
-    url: getLinkViaLocale(locale, "/gallery"),
+    url: "/gallery",
     image: `https://img.eindex.me/pic/${images[0].thumbnail}`,
   }}
 >
-  <Navbar links={links} />
+  <Navbar/>
   <main>
     <h1>{t("gallery")}</h1>
     <div class="gallery">
