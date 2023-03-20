@@ -22,3 +22,4 @@ pnpm-debug.log*
 .vscode
 
 src/pages/cn/**/*.astro
+src/pages/zh/**/*.astro

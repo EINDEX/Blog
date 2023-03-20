@@ -6,6 +6,7 @@ import SearchBox from "@components/SearchBox.astro";
 <sidebar>
   <div class="profile">
     <img alt="EINDEX's avatar" src="/images/avatar.png" />
+    <span class="name">EINDEX</span>
     <Contact iconOnly={true} />
   </div>
 
@@ -21,6 +22,10 @@ import SearchBox from "@components/SearchBox.astro";
 
   .profile {
     @apply flex flex-col justify-between items-center gap-4;
+
+    .name {
+      @apply text-2xl font-bold;
+    }
     img {
       @apply rounded-lg w-32 h-32;
     }

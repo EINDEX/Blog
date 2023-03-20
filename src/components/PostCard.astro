@@ -11,7 +11,7 @@ const {post} = Astro.props;
 
 const updatedAt = post.data.updated || post.data.date;
 
-const url = getLinkViaLocale(locale, `posts/${getLastPartOfSlug(post.slug)}`);
+const url = getLinkViaLocale(locale, `/posts/${getLastPartOfSlug(post.slug)}`);
 ---
 
 <post-card class="post-card" data-url={url}>

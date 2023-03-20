@@ -7,6 +7,7 @@ import { timeFormat } from "@utils/time";
 import Breadcrumb from "@components/Breadcrumb.astro";
 import Comments from "@components/Comments.astro";
 import Tags from "@components/Tags.astro";
+import { getLinkViaLocale } from "@utils/slug";
 
 changeLanguage("en");
 
@@ -16,12 +17,12 @@ export async function getStaticPaths() {
     const thoughts = await getThoughts(locale);
     return thoughts.map((thought) => {
         return {
-            params: { slug: thought.slug },
+            params: { slug: getLinkViaLocale(locale, thought.slug) },
             props: { thought },
         };
     });
 }
-type Props = CollectionEntry<`thoughts-cn` | `thoughts-en`>;
+type Props = CollectionEntry<`thoughts`>;
 const { slug } = Astro.params;
 const { thought } = Astro.props;
 const { Content } = await thought.render();

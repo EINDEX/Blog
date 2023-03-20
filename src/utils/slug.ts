@@ -4,14 +4,14 @@ export function getLastPartOfSlug(slug: string): string {
 }
 
 export function getLinkViaLocale(locale: string, slug: string): string {
+  const slugWithOutLocale = slug.replace(`/${locale}`, "");
   if (locale === "en") {
-    return slug;
+    return `${slugWithOutLocale}`;
   } else {
-    return `/${locale}${slug}`;
+    return `/${locale}${slugWithOutLocale}`;
   }
 }
 
-
 export const tagSlug = (tag: string) => {
   return tag.toLowerCase().replace(/ /g, "-");
-}
+};

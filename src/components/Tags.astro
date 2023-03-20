@@ -1,16 +1,18 @@
 ---
 import { tagSlug } from "@utils/slug";
+import { getLinkViaLocale } from "@utils/slug";
+import i18next from "i18next";
+
+const locale = i18next.language;
 
 const { tags } = Astro.props;
-
-
 ---
 
 <div class="labels">
   {
     tags.map((tag) => {
       return (
-        <a class="tag" href={`/tags/${tagSlug(tag)}`}>
+        <a class="tag" href={getLinkViaLocale(locale, `/tags/${tagSlug(tag)}`)}>
           {tag}
         </a>
       );

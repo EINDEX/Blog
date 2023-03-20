@@ -1,18 +1,20 @@
 ---
-import i18next, { t, } from "i18next";
+import i18next, { t } from "i18next";
 import { getLinkViaLocale } from "@utils/slug";
+import { LanguageSelector } from "astro-i18next/components";
+
+const locale = i18next.language;
 
 const defaultLinks = [
-  { name: "home", url: "/" },
   { name: "posts", url: "/posts" },
   { name: "thoughts", url: "/thoughts" },
   { name: "gallery", url: "/gallery" },
 ];
-const { links = defaultLinks, styles = {}, locale = i18next.language } = Astro.props;
+const { links = defaultLinks, styles = {} } = Astro.props;
 ---
 
 <nav style={styles}>
-  <a class="logo" href="/">
+  <a class="logo" href={getLinkViaLocale(locale, "/")}>
     <img width="32px" height="32px" src="/images/avatar.png" />
     <b>EINDEX</b>'s Blog
   </a>
@@ -42,32 +44,36 @@ const { links = defaultLinks, styles = {}, locale = i18next.language } = Astro.p
       {
         links.map((link) => (
           <li>
-            <a class={`umami--click--${link.name}`} href={getLinkViaLocale(locale,link.url)}>
+            <a
+              class={`umami--click--${link.name}`}
+              href={getLinkViaLocale(locale, link.url)}
+            >
               {t(link.name)}
             </a>
           </li>
         ))
       }
     </ul>
+    <LanguageSelector
+      showFlag={true}
+      languageMapping={{ en: "EN", zh: "ZH" }}
+      class="language-selector rounded-lg shadow-lg dark:bg-black"
+    />
   </div>
 </nav>
 
 <style lang="scss">
   nav {
-    @apply px-4 sm:px-2 pt-4 flex flex-row w-full justify-between flex-wrap items-center;
+    @apply px-4 sm:px-2 pt-2 flex flex-row w-full justify-between flex-wrap items-center;
 
     .logo {
-      display: flex;
-      flex-direction: row;
-      // gap: 1rem;
-      align-items: center;
+      @apply flex flex-row items-center h-8 py-1;
       text-decoration: none;
       color: var(--text-color);
       font-size: 1.5rem;
-      height: 32px;
 
       img {
-        @apply mr-4;
+        @apply mr-4 rounded-lg;
         border-radius: 20%;
         height: 32px;
         width: 32px;
@@ -79,13 +85,19 @@ const { links = defaultLinks, styles = {}, locale = i18next.language } = Astro.p
     }
 
     #navbar-menus {
-      @apply sm:hidden sm:w-full justify-center items-center text-center;
+      @apply flex gap-4 sm:hidden sm:w-full justify-center items-center text-center;
+
+      language-selector {
+        @apply hidden sm:inline-flex rounded-lg shadow-lg dark:bg-black;
+        background-color: var(--card-background-color);
+      }
+
       ul {
-        @apply flex sm:flex-col sm:text-center sm:w-full  flex-row space-x-8 sm:text-sm  border-0;
+        @apply flex sm:flex-col sm:text-center sm:w-full flex-row gap-4 sm:text-sm  border-0;
 
         li {
-          margin: 0 10px;
           a {
+            @apply px-2 py-2;
             text-decoration: none;
             color: var(--text-color);
           }
