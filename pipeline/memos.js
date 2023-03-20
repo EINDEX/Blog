@@ -42,7 +42,7 @@ const fetchTags = (content) => {
 const makeThoughts = async (memo) => {
   const chineseRegex = /[\u4e00-\u9fa5]/;
   const findChinese = chineseRegex.exec(memo.content);
-  const filename = `src/content/thoughts-${findChinese ? "cn" : "en"}/${
+  const filename = `src/content/thoughts/${findChinese ? "zh" : "en"}/${
     memo.id
   }.md`;
   const template = `---
