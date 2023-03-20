@@ -1,0 +1,76 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { getThoughts } from "@utils/posts";
+import i18next, { changeLanguage, t } from "i18next";
+import { getLinkViaLocale } from "@utils/slug";
+import MarkdownIt from "markdown-it";
+import { timeFormat } from "@utils/time";
+import _ from "lodash";
+
+changeLanguage("en");
+
+const parser = new MarkdownIt();
+const locale = i18next.language;
+const thoughts = await getThoughts(locale);
+const groupedThoughts = _.groupBy(thoughts, (t) => timeFormat(t.data.date, locale));
+---
+
+<Layout
+  locale={locale}
+  title="Thoughts"
+  seo={{
+    title: "Thoughts",
+    description: "Thoughts",
+    image: "https://eindex.me/images/avatar.png",
+    url: getLinkViaLocale(locale, "/thoughts"),
+  }}
+>
+  <div class="thoughts">
+    {
+      Object.keys(groupedThoughts).map((date) => (
+        <>
+          <div class="thoughts-in-day">
+            <time>{date}</time>
+            {groupedThoughts[date].map((t) => (
+              <article>
+                <p
+                  class="thought e-content p-summary"
+                  set:html={parser.render(t.body)}
+                />
+                <a href={getLinkViaLocale(locale, `/thoughts/${t.slug}`)}>
+                  Comments
+                </a>
+              </article>
+            ))}
+          </div>
+        </>
+      ))
+    }
+  </div>
+</Layout>
+
+<style lang="scss">
+  .thoughts {
+    @apply w-full flex flex-col gap-4 px-4 divide-y divide-gray-200;
+
+    .thoughts-in-day {
+      @apply flex flex-col gap-4 pt-4;
+
+      article {
+        @apply flex flex-col gap-2  ml-4;
+
+        p {
+          a {
+            @apply underline;
+          }
+        }
+        a {
+          @apply self-end no-underline;
+        }
+      }
+    }
+    a {
+      @apply underline;
+    }
+  }
+</style>

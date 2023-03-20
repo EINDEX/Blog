@@ -33,7 +33,9 @@ const { links = {}, styles = {} } = Astro.props;
       {
         links.map((link) => (
           <li>
-            <a href={link.url}>{link.name}</a>
+            <a class={`umami--click--${link.name}`} href={link.url}>
+              {link.name}
+            </a>
           </li>
         ))
       }

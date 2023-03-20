@@ -1,0 +1,55 @@
+---
+import Layout from "@layouts/Layout.astro";
+import i18next, { changeLanguage, t } from "i18next";
+import { getLinkViaLocale } from "@utils/slug";
+import _ from "lodash";
+import Tags from "@components/Tags.astro";
+import { getAllTags } from "@utils/tags";
+
+changeLanguage("en");
+
+const locale = i18next.language;
+const allTags = await getAllTags(locale);
+---
+
+<Layout
+  locale={locale}
+  title="Tags"
+  seo={{
+    title: "Tags",
+    description: "Tags",
+    image: "https://eindex.me/images/avatar.png",
+    url: getLinkViaLocale(locale, "/tags"),
+  }}
+>
+  <h1>Tags</h1>
+  <div class="tags">
+    <Tags tags={allTags} />
+  </div>
+</Layout>
+
+<style lang="scss">
+  .thoughts {
+    @apply w-full flex flex-col gap-4 px-4 divide-y divide-gray-200;
+
+    .thoughts-in-day {
+      @apply flex flex-col gap-4 pt-4;
+
+      article {
+        @apply flex flex-col gap-2  ml-4;
+
+        p {
+          a {
+            @apply underline;
+          }
+        }
+        a {
+          @apply self-end no-underline;
+        }
+      }
+    }
+    a {
+      @apply underline;
+    }
+  }
+</style>

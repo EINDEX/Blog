@@ -1,7 +1,6 @@
 import { CollectionEntry, getCollection } from "astro:content";
-import { timeFormat } from "./time";
 
-export function postSortViaUpdated(
+export function sortViaUpdated(
   a: CollectionEntry<"posts-cn" | "posts-en">,
   b: CollectionEntry<"posts-cn" | "posts-en">,
   asc: boolean = false
@@ -20,5 +19,42 @@ export async function getPosts(locale: string): Promise<Post> {
   ).filter((post) => {
     return post.data.draft !== true || import.meta.env.MODE === "development";
   });
-  return posts.sort((a, b) => postSortViaUpdated(a, b, false));
+  return posts.sort((a, b) => sortViaUpdated(a, b, false));
+}
+
+
+export async function getThoughts(locale: string): Promise<Post> {
+  const thoughts = await (
+    await getCollection("thoughts-" + locale)
+  ).filter((thought) => {
+    return thought.data.draft !== true || import.meta.env.MODE === "development";
+  });
+  return thoughts.sort((a, b) => sortViaUpdated(a, b, false));
+}
+
+type project = {
+  name: string;
+  logo: string;
+  url: string;
+  labels: string[];
+  openSource: boolean;
+};
+
+export const getAllProjects = async (locale: string): Promise<project[]> => {
+  return [
+    {
+        name: "Logseq Copilot",
+        labels: ["Browser Extension", "Logseq", "Open Source"],
+        url: "https://logseq-copilot.eindex.me",
+        logo: "/images/logseq-copilot.png",
+        openSource: true,
+    },
+    {
+        name: "Logseq Memos Sync",
+        labels: ["Logseq", "Logseq Plugin", "Memos", "Open Source"],
+        url: "https://github.com/eindex/logseq-memos-sync",
+        logo: "/images/logseq-memos-sync.webp",
+        openSource: true,
+    },
+];
 }

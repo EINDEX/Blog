@@ -1,13 +1,13 @@
 ---
-import { CollectionEntry, getCollection } from "astro:content";
+import { CollectionEntry } from "astro:content";
 import i18next, { changeLanguage } from "i18next";
 import { getLastPartOfSlug, getLinkViaLocale } from "@utils/slug";
 import Layout from "@layouts/Layout.astro";
 import { getPosts } from "@utils/posts";
 import { timeFormat } from "@utils/time";
 import Code from "@components/Code.astro";
-import SEO from "@components/SEO.astro";
 import Breadcrumb from "@components/Breadcrumb.astro";
+import Comments from "@components/Comments.astro";
 
 changeLanguage("en");
 
@@ -38,7 +38,7 @@ const { Content } = await post.render();
         url: getLinkViaLocale(locale, `/posts/${slug}`),
         date: post.data.date,
         updated: post.data.updated,
-        tags: post.data.tags,
+        keywords: post.data.tags,
       }
 }>
 <Breadcrumb
@@ -67,6 +67,8 @@ const { Content } = await post.render();
       <Content components={{ pre: Code }} />
     </section>
   </article>
+
+  <Comments locale={locale} slug={`/posts/${slug}`} />
 </Layout>
 
 <style lang="scss">
@@ -97,3 +99,6 @@ const { Content } = await post.render();
   
   }
 </style>
+
+
+

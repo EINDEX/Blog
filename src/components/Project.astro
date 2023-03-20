@@ -1,4 +1,5 @@
 ---
+import Tags from "@components/Tags.astro";
 type project = {
   name: string;
   logo: string;
@@ -9,40 +10,35 @@ type project = {
 const { name, logo, url, labels } = Astro.props;
 ---
 
-<a
-  href={url}
-  target="_blank"
-  class={`project umami--click--project-${name
-    .toLowerCase()
-    .trim()
-    .replaceAll(" ", "-")}`}
->
-  <img src={logo} />
-  <span class="name">{name}</span>
-  <div class="labels">
-    {labels.map((label) => <span>{label}</span>)}
-  </div>
-</a>
+<div class="project">
+  <a
+    href={url}
+    target="_blank"
+    class={`umami--click--project-${name
+      .toLowerCase()
+      .trim()
+      .replaceAll(" ", "-")}`}
+  >
+    <img src={logo} />
+    <span class="name">{name}</span>
+    <Tags tags={labels} />
+  </a>
+</div>
 
 <style lang="scss">
-  a.project {
+  .project {
     @apply flex flex-col rounded-lg shadow-xl overflow-hidden w-52 gap-2 pb-4;
     background-color: var(--card-background-color);
+
+    a {
+      @apply text-center;
+    }
 
     img {
       @apply w-52 h-52;
     }
     .name {
       @apply text-xl font-bold self-center;
-    }
-
-    .labels {
-      @apply flex flex-row flex-wrap text-sm gap-2 justify-center;
-
-      span {
-        @apply rounded-sm px-2 bg-gray-300 dark:bg-gray-700;
-        background-color: var(--label-background-color);
-      }
     }
   }
 </style>

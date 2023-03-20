@@ -10,3 +10,8 @@ export function getLinkViaLocale(locale: string, slug: string): string {
     return `/${locale}${slug}`;
   }
 }
+
+
+export const tagSlug = (tag: string) => {
+  return tag.toLowerCase().replace(/ /g, "-");
+}

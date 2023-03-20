@@ -1,9 +1,8 @@
 ---
 import i18next, { changeLanguage } from "i18next";
-import Img from "@components/Img.astro";
 import EmptyWapper from "@layouts/EmptyWapper.astro";
 import Navbar from "@components/Navbar.astro";
-import SEO from "@components/SEO.astro";
+import { getLinkViaLocale } from "@utils/slug";
 
 changeLanguage("en");
 
@@ -33,8 +32,8 @@ const links = [
     title: "Gallery",
     description: "Gallery",
     keywords: "Gallery",
-    url: "https://eindex.me/gallery",
-    image: "https://img.eindex.me/pic/2021/08/30/20210830100000.jpg",
+    url: getLinkViaLocale(locale, "/gallery"),
+    image: `https://img.eindex.me/pic/${images[0].thumbnail}`,
   }}
 >
   <Navbar links={links} />

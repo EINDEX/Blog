@@ -1,0 +1,30 @@
+---
+import { tagSlug } from "@utils/slug";
+
+const { tags } = Astro.props;
+
+
+---
+
+<div class="labels">
+  {
+    tags.map((tag) => {
+      return (
+        <a class="tag" href={`/tags/${tagSlug(tag)}`}>
+          {tag}
+        </a>
+      );
+    })
+  }
+</div>
+
+<style lang="scss">
+  .labels {
+    @apply flex flex-row flex-wrap text-sm gap-2 justify-center;
+
+    .tag {
+      @apply rounded-sm px-2 bg-gray-300 dark:bg-gray-700;
+      background-color: var(--label-background-color);
+    }
+  }
+</style>

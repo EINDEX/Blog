@@ -1,0 +1,110 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { tagSlug } from "@utils/slug";
+import { getAllByTag, getAllTags } from "@utils/tags";
+import i18next, { changeLanguage } from "i18next";
+import Project from "@components/Project.astro";
+import { timeFormat } from "@utils/time";
+import _ from "lodash";
+import MarkdownIt from "markdown-it";
+import { getLinkViaLocale } from "@utils/slug";
+
+changeLanguage("cn");
+
+const locale = i18next.language;
+const parser = MarkdownIt();
+export async function getStaticPaths() {
+    const locale = i18next.language;
+    const allTags = await getAllTags(locale);
+    return allTags.map((tag) => {
+        return {
+            params: { slug: tagSlug(tag) },
+            props: { tag },
+        };
+    });
+}
+const { tag } = Astro.props;
+const { posts, thoughts, projects } = await getAllByTag(locale, tag);
+const groupedThoughts = _.groupBy(thoughts, (t) => timeFormat(t.data.date, locale));
+---
+
+<Layout locale={locale} title={tag}>
+  <article>
+    <h1>{tag}</h1>
+    {projects.length === 0? <></>:
+      <section>
+        <h2>Projects</h2>
+        <div class="projects">
+          {projects.map((project) => (
+            <Project
+              name={project.name}
+              labels={project.labels}
+              url={project.url}
+              logo={project.logo}
+            />
+          ))}
+        </div>
+      </section>}
+
+{posts.length === 0? <></>:
+  <section>
+    <h2>Posts</h2>
+    <div class="projects">
+      {
+          posts.map((post) => {
+            return (
+              <li>
+                <a href={getLinkViaLocale(locale, `/posts/${post.slug}`)}>
+                  {post.data.title}
+                </a>
+              </li>
+            );
+          })
+        }
+    </div>
+  </section>}
+  {thoughts.length === 0? <></>:
+    <section>
+      <h2>Thoughts</h2>
+      <div class="thoughts">
+        {
+          Object.keys(groupedThoughts).map((date) => (
+            <>
+              <div class="thoughts-in-day">
+                <time>{date}</time>
+                {groupedThoughts[date].map((t) => (
+                  <article>
+                    <p
+                      class="thought e-content p-summary"
+                      set:html={parser.render(t.body)}
+                    />
+                    <a href={getLinkViaLocale(locale, `/thoughts/${t.slug}`)}>
+                      Comments
+                    </a>
+                  </article>
+                ))}
+              </div>
+            </>
+          ))
+        }
+      </div>
+    </section>}
+  </article>
+</Layout>
+
+<style lang="scss">
+  article {
+    @apply min-w-full w-full flex flex-col gap-2;
+
+    h1 {
+      @apply text-4xl font-bold self-center text-center my-8;
+    }
+
+    h2 {
+      @apply text-2xl font-bold text-center my-4;
+    }
+    .projects {
+      @apply flex flex-row flex-wrap gap-2 items-center justify-center;
+    }
+  }
+</style>

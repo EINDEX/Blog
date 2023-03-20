@@ -1,17 +1,32 @@
 // retune time format YYYY-mm-DD when locale is cn
 // retune time format May Day, yyyy when locale is en
-export function timeFormat(time: Date, locale: string): string {
-  if (locale === "cn") {
-    return time.toLocaleDateString("zh-CN", {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-    });
+
+const formatTable = {
+  cn: { year: "numeric", month: "2-digit", day: "2-digit" },
+  en: { year: "numeric", month: "short", day: "numeric" },
+  "cn-no-day": { year: "numeric", month: "2-digit" },
+  "en-no-day": { year: "numeric", month: "short" },
+};
+
+const localeToTime = {
+  cn: "zh-CN",
+  en: "en-US",
+};
+
+export function timeFormat(
+  time: Date,
+  locale: string,
+  withDay: boolean = true
+): string {
+  if (withDay === false) {
+    return time.toLocaleDateString(
+      localeToTime[locale],
+      formatTable[`${locale}-no-day`]
+    );
   } else {
-    return time.toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    });
+    return time.toLocaleDateString(
+      localeToTime[locale],
+      formatTable[`${locale}`]
+    );
   }
 }

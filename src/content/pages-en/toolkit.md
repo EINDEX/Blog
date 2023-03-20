@@ -5,13 +5,7 @@ updated: 2022-12-21T17:36:15+08:00
 description: "This page about my toolkits."
 draft: false
 template: posts/page.html
-taxonomies:
-    tags: []
-    series: []
-extra:
-    posse: 
-        twitter: false
-        mastodon: false
+tags: []
 ---
 
 This page list my toolkits, which I am using and love.

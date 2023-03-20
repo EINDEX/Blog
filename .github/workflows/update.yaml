@@ -21,22 +21,10 @@ jobs:
     - name: Setup Node
       uses: actions/setup-node@v3
       with:
-        node-version: '16'
-        
-    - name: Get npm cache directory
-      id: npm-cache-dir
-      run: |
-        echo "dir=$(npm config get cache)" >> $GITHUB_OUTPUT
+        node-version: '18'
+        cache: 'npm'
 
-    - uses: actions/cache@v3
-      id: npm-cache # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
-      with:
-        path: ${{ steps.npm-cache-dir.outputs.dir }}
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-
-    - name: Fetch npm packages
+    - name: install package
       run: npm ci
 
     - name: Update webmentions
@@ -48,7 +36,6 @@ jobs:
       run: node pipeline/memos.js
       env:
         MEMOS_URL: ${{ secrets.MEMOS_URL }}
-        MEMOS_OPEN_ID: ${{ secrets.MEMOS_OPEN_ID }}
 
     - name: Check repo change
       run: echo "change=$(git status -u -s | wc -l | awk '{printf($1)}' )" >> $GITHUB_OUTPUT

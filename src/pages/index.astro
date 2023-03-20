@@ -6,26 +6,12 @@ import Project from "@components/Project.astro";
 import Profile from "@components/Profile.astro";
 import Contact from "@components/Contact.astro";
 import { getLinkViaLocale } from "@utils/slug";
+import { getAllProjects } from "@utils/posts";
 
 changeLanguage("en");
 
 const locale = i18next.language;
-const projects = [
-    {
-        name: "Logseq Copilot",
-        labels: ["Browser Extension", "Logseq", "Open Source"],
-        url: "https://logseq-copilot.eindex.me",
-        logo: "/images/logseq-copilot.png",
-        openSource: true,
-    },
-    {
-        name: "Logseq Memos Sync",
-        labels: ["Logseq", "Logseq Plugin", "Memos", "Open Source"],
-        url: "https://github.com/eindex/logseq-memos-sync",
-        logo: "/images/logseq-memos-sync.webp",
-        openSource: true,
-    },
-];
+const projects = await getAllProjects(locale);
 const links = [
     {
         name: "\u4E2D\u6587\u535A\u5BA2",
@@ -45,12 +31,17 @@ const images = await resp.json();
 const showImages = images.slice(0, 7);
 ---
 
-<EmptyWapper title="EINDEX's Blog" locale={locale} seo={{
-  title: "EINDEX's Blog",
-  description: "This is EINDEX's Blog, I am a security researcher and a developer. Here is my blog.",
-  image: "https://eindex.me/images/avatar.png",
-  url: getLinkViaLocale(locale, "/"),
-}}>
+<EmptyWapper
+  title="EINDEX's Blog"
+  locale={locale}
+  seo={{
+    title: "EINDEX's Blog",
+    description:
+      "This is EINDEX's Blog, I am a security researcher and a developer. Here is my blog.",
+    image: "https://eindex.me/images/avatar.png",
+    url: getLinkViaLocale(locale, "/"),
+  }}
+>
   <Navbar links={links} styles={{ position: "absolute", top: 0 }} />
   <main>
     <section class="profile">

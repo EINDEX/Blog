@@ -20,6 +20,16 @@ const postSchema = z.object({
   cover: z.string().optional(),
 });
 
+const thoughtSchema = z.object({
+  date: z.string().transform((str) => new Date(str)),
+  updated: z
+    .string()
+    .transform((str) => new Date(str))
+    .optional(),
+  description: z.string().optional(),
+  tags: z.array(z.string()).optional(),
+});
+
 const pageSchema = z.object({
   title: z.string(),
 });
@@ -32,20 +42,20 @@ const postsCN = defineCollection({
   schema: postSchema,
 });
 
-const thoughts = defineCollection({
-  schema: postSchema,
-});
-
-const thoughtsCN = defineCollection({
-  schema: postSchema,
-});
-
 const pages = defineCollection({
   schema: pageSchema,
 });
 
 const pagesCN = defineCollection({
   schema: pageSchema,
+});
+
+const thoughts = defineCollection({
+  schema: thoughtSchema,
+});
+
+const thoughtsCN = defineCollection({
+  schema: thoughtSchema,
 });
 
 export const collections = {
