@@ -21,7 +21,7 @@
 </script>
     <head>
   <meta name="description" content="了解如何加入 Webmentions 社区，提高你的博客与其他网站及其用户的互动性和参与度。">
-  <meta name="keywords">
+  <meta name="keywords" content="Webmentions,Community,Beginner's Guide,Indie Web,Microformats2,Engagement,Connectivity,Github Actions,JavaScript">
   <meta name="author" content="EINDEX">
   <meta name="og:url" content="https://eindex.me/cn/posts/webmentions">
   <meta name="og:title" content="加入 Webmentions 社区: 新手指导">
@@ -40,14 +40,14 @@
   <meta name="twitter:image" content="https://eindex.me/images/avatar.png">
   <meta name="twitter:image:alt" content="加入 Webmentions 社区: 新手指导">
   <script type="application/ld+json">[object Object]</script>
-<link rel="stylesheet" href="/_astro/_slug_.69b1bf75.css" />
+<link rel="stylesheet" href="/_astro/archive.b46f5e8f.css" />
 <link rel="stylesheet" href="/_astro/index.069256eb.css" />
-<link rel="stylesheet" href="/_astro/_slug_.6d1f44d6.css" />
-<link rel="stylesheet" href="/_astro/_slug_.dc630398.css" />
-<link rel="stylesheet" href="/_astro/_slug_.b67f8034.css" /><script type="module" src="/_astro/hoisted.c2e808df.js"></script></head>
+<link rel="stylesheet" href="/_astro/archive.9da1f251.css" />
+<link rel="stylesheet" href="/_astro/_slug_.b67f8034.css" />
+<link rel="stylesheet" href="/_astro/_slug_.dc630398.css" /><script type="module" src="/_astro/hoisted.c2e808df.js"></script></head>
   </head>
   <body>
-    <nav style="" class="astro-5BLMO7YK">
+    <style>astro-island,astro-slot{display:contents}</style><script>(self.Astro=self.Astro||{}).load=a=>{(async()=>await(await a())())()},window.dispatchEvent(new Event("astro:load"));var l;{const c={0:t=>t,1:t=>JSON.parse(t,o),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(JSON.parse(t,o)),5:t=>new Set(JSON.parse(t,o)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(JSON.parse(t)),9:t=>new Uint16Array(JSON.parse(t)),10:t=>new Uint32Array(JSON.parse(t))},o=(t,s)=>{if(t===""||!Array.isArray(s))return s;const[e,n]=s;return e in c?c[e](n):void 0};customElements.get("astro-island")||customElements.define("astro-island",(l=class extends HTMLElement{constructor(){super(...arguments);this.hydrate=()=>{if(!this.hydrator||this.parentElement&&this.parentElement.closest("astro-island[ssr]"))return;const s=this.querySelectorAll("astro-slot"),e={},n=this.querySelectorAll("template[data-astro-template]");for(const r of n){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(const r of s){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("name")||"default"]=r.innerHTML)}const a=this.hasAttribute("props")?JSON.parse(this.getAttribute("props"),o):{};this.hydrator(this)(this.Component,a,e,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),window.removeEventListener("astro:hydrate",this.hydrate),window.dispatchEvent(new CustomEvent("astro:hydrate"))}}connectedCallback(){!this.hasAttribute("await-children")||this.firstChild?this.childrenConnectedCallback():new MutationObserver((s,e)=>{e.disconnect(),this.childrenConnectedCallback()}).observe(this,{childList:!0})}async childrenConnectedCallback(){window.addEventListener("astro:hydrate",this.hydrate);let s=this.getAttribute("before-hydration-url");s&&await import(s),this.start()}start(){const s=JSON.parse(this.getAttribute("opts")),e=this.getAttribute("client");if(Astro[e]===void 0){window.addEventListener(`astro:${e}`,()=>this.start(),{once:!0});return}Astro[e](async()=>{const n=this.getAttribute("renderer-url"),[a,{default:r}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),i=this.getAttribute("component-export")||"default";if(!i.includes("."))this.Component=a[i];else{this.Component=a;for(const d of i.split("."))this.Component=this.Component[d]}return this.hydrator=r,this.hydrate},s,this)}attributeChangedCallback(){this.hydrator&&this.hydrate()}},l.observedAttributes=["props"],l))}</script><nav style="" class="astro-5BLMO7YK">
   <a class="logo astro-5BLMO7YK" href="/">
     <img width="32px" height="32px" src="/images/avatar.png" class="astro-5BLMO7YK">
     <b class="astro-5BLMO7YK">EINDEX</b>'s Blog
@@ -59,13 +59,21 @@
   <div class="menus sm:hidden astro-5BLMO7YK" id="navbar-menus">
     <ul class="astro-5BLMO7YK">
       <li class="astro-5BLMO7YK">
-            <a href="/" class="astro-5BLMO7YK">Home</a>
+            <a class="umami--click--Home astro-5BLMO7YK" href="/">
+              Home
+            </a>
           </li><li class="astro-5BLMO7YK">
-            <a href="/cn/posts" class="astro-5BLMO7YK">中文博客</a>
+            <a class="umami--click--中文博客 astro-5BLMO7YK" href="/cn/posts">
+              中文博客
+            </a>
           </li><li class="astro-5BLMO7YK">
-            <a href="/posts" class="astro-5BLMO7YK">Posts</a>
+            <a class="umami--click--Posts astro-5BLMO7YK" href="/posts">
+              Posts
+            </a>
           </li><li class="astro-5BLMO7YK">
-            <a href="/gallery" class="astro-5BLMO7YK">Gallery</a>
+            <a class="umami--click--Gallery astro-5BLMO7YK" href="/gallery">
+              Gallery
+            </a>
           </li>
     </ul>
   </div>
@@ -172,7 +180,9 @@ fetch_webmentions:
 <h2 id="总结">总结</h2>
 <p>在这个初学者指南中，我们已经介绍了加入 Webmentions 社区和在网站上实施 Webmentions 的步骤。按照这些步骤，你可以加入 Webmentions 社区，并开始享受与其他网站及其用户进行更多互动和参与性交流的好处。虽然加入 Webmentions 社区需要一些挑战和资源，但对许多网站所有者来说，潜在的好处可能超过了挑战。</p>
     </section>
-  </article>
+  </article><commants class="comments">
+  <astro-island uid="ZlINKW" component-url="/_astro/react.f6daaf8e.js" component-export="default" renderer-url="/_astro/client.38423ee9.js" props="{&quot;id&quot;:[0,&quot;comments&quot;],&quot;repo&quot;:[0,&quot;eindex/blog&quot;],&quot;repoId&quot;:[0,&quot;R_kgDOGWb6Yg&quot;],&quot;category&quot;:[0,&quot;General&quot;],&quot;categoryId&quot;:[0,&quot;DIC_kwDOGWb6Ys4CAKn-&quot;],&quot;mapping&quot;:[0,&quot;specific&quot;],&quot;term&quot;:[0,&quot;/posts/webmentions&quot;],&quot;reactionsEnabled&quot;:[0,&quot;1&quot;],&quot;emitMetadata&quot;:[0,&quot;1&quot;],&quot;inputPosition&quot;:[0,&quot;top&quot;],&quot;theme&quot;:[0,&quot;preferred_color_scheme&quot;],&quot;lang&quot;:[0,&quot;zh-CN&quot;],&quot;loading&quot;:[0,&quot;lazy&quot;]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Giscus&quot;,&quot;value&quot;:true}"></astro-island>
+</commants>
     </main>
     <sidebar class="astro-SCKKX6R4">
       <sidebar class="astro-SSFZSV2F">
