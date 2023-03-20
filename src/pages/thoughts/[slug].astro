@@ -7,7 +7,7 @@ import { timeFormat } from "@utils/time";
 import Breadcrumb from "@components/Breadcrumb.astro";
 import Comments from "@components/Comments.astro";
 import Tags from "@components/Tags.astro";
-import { getLinkViaLocale } from "@utils/slug";
+import { getLastPartOfSlug } from "@utils/slug";
 
 changeLanguage("en");
 
@@ -16,8 +16,9 @@ export async function getStaticPaths() {
     const locale = i18next.language;
     const thoughts = await getThoughts(locale);
     return thoughts.map((thought) => {
+        const slug = getLastPartOfSlug(thought.slug);
         return {
-            params: { slug: getLinkViaLocale(locale, thought.slug) },
+            params: { slug: slug },
             props: { thought },
         };
     });
@@ -29,9 +30,9 @@ const { Content } = await thought.render();
 ---
 
 <Layout
-  title={thought.data.title}
+  title={t("thoughts")}
   seo={{
-    title: thought.data.title,
+    title: t("thoughts"),
     description: thought.body,
     url: `/thoughts/${slug}`,
     date: thought.data.date,
