@@ -1,8 +1,11 @@
 import rss from "@astrojs/rss";
-import { getCollection } from "astro:content";
+import { getPosts } from "@utils/posts";
+import { getLinkViaLocale, getLastPartOfSlug } from "@utils/slug";
+
+const locale = "zh";
 
 export async function get(context) {
-  const posts = await getCollection("posts-cn");
+  const posts = await getPosts(locale);
 
   return rss({
     // `<title>` field in output xml
@@ -18,12 +21,12 @@ export async function get(context) {
       return {
         title: post.data.title,
         description: post.data.description,
-        link: post.slug,
+        link: getLinkViaLocale(locale, getLastPartOfSlug(post.slug)),
         pubDate: post.data.date || post.data.updated,
       };
     }),
 
     // (optional) inject custom xml
-    customData: `<language>zh</language>`,
+    customData: `<language>en</language>`,
   });
 }
