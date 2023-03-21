@@ -1,0 +1,9 @@
+---
+const { pssoes } = Astro.props;
+---
+
+{
+  pssoes.map((pssoe) => {
+    return <a rel="syndication" class="u-syndication" href={pssoe} />;
+  })
+}

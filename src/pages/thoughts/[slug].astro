@@ -51,8 +51,9 @@ const { Content } = await thought.render();
   <article class="h-entry">
     <span class="series p-category"></span>
     <h1 class="series p-category">{t("thoughts")}</h1>
+    <a rel="author" style="display: none;" class="p-author h-card" href="/">EINDEX</a>
     <div class="post-meta">
-      <time>{timeFormat(thought.data.date, locale)}</time>
+      <time class="dt-published" datetime={thought.data.date.toISOString()} >{timeFormat(thought.data.date, locale)}</time>
     </div>
     <section
       class="main title p-name e-content p-summary format sm:format-sm lg:format-lg dark:format-invert format-pre:m-0 format-pre:p-2 format-li:list-disc list-disc"

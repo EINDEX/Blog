@@ -53,6 +53,7 @@ const { Content } = await post.render();
   />
   <article class="h-entry">
     {post.data.cover ? <img alt={post.data.title} src={post.data.cover} /> : <></>}
+    <a rel="author" style="display: none;" class="p-author h-card" href="/">EINDEX</a>
     <span class="series p-category"></span>
     <h1 class="title p-name">
       {post.data.title}<a class="u-url" href={getLinkViaLocale(locale, `/posts/${slug}`)}
@@ -60,7 +61,7 @@ const { Content } = await post.render();
     </h1>
     <div class="post-meta">
         <p class="p-summary">{post.data.description}</p>
-      <time>{timeFormat(post.data.date, locale)}</time>
+      <time class="dt-published" datetime={post.data.date.toISOString()} >{timeFormat(post.data.date, locale)}</time>
     </div>
     <hr/>
     <Tags tags={post.data.tags}></Tags>

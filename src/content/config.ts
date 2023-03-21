@@ -18,6 +18,7 @@ const postSchema = z.object({
   katex: z.boolean().optional(),
   draft: z.boolean().optional().default(false),
   cover: z.string().optional(),
+  pssoes: z.array(z.string()).optional().default([]),
 });
 
 const thoughtSchema = z.object({
@@ -30,6 +31,7 @@ const thoughtSchema = z.object({
   description: z.string().optional(),
   draft: z.boolean().optional().default(true),
   tags: z.array(z.string()).optional(),
+  pssoes: z.array(z.string()).optional().default([]),
 });
 
 const newsletterSchema = z.object({
@@ -45,6 +47,7 @@ const newsletterSchema = z.object({
   katex: z.boolean().optional(),
   draft: z.boolean().optional().default(false),
   cover: z.string().optional(),
+  pssoes: z.array(z.string()).optional().default([]),
 });
 
 const pageSchema = z.object({
