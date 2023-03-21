@@ -13,15 +13,15 @@ changeLanguage("en");
 
 const locale = i18next.language;
 export async function getStaticPaths() {
-    const locale = i18next.language;
-    const thoughts = await getThoughts(locale);
-    return thoughts.map((thought) => {
-        const slug = getLastPartOfSlug(thought.slug);
-        return {
-            params: { slug: slug },
-            props: { thought },
-        };
-    });
+  const locale = i18next.language;
+  const thoughts = await getThoughts(locale);
+  return thoughts.map((thought) => {
+    const slug = getLastPartOfSlug(thought.slug);
+    return {
+      params: { slug: slug },
+      props: { thought },
+    };
+  });
 }
 type Props = CollectionEntry<`thoughts`>;
 const { slug } = Astro.params;
@@ -85,7 +85,7 @@ const { Content } = await thought.render();
       }
     }
     section.main.e-content {
-      @apply max-w-full list-disc text-justify;
+      @apply max-w-full list-disc;
       color: var(--text-color);
       background-color: var(--bg-color);
     }
