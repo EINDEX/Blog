@@ -7,13 +7,13 @@ import Profile from "@components/Profile.astro";
 import Contact from "@components/Contact.astro";
 import { getLinkViaLocale } from "@utils/slug";
 import { getAllProjects } from "@utils/posts";
+import { getGalleryData } from "@utils/dataReader";
 
 changeLanguage("en");
 
 const locale = i18next.language;
 const projects = await getAllProjects(locale);
-const resp = await fetch("https://img.eindex.me/pic/pic_list.json");
-const images = await resp.json();
+const images = await getGalleryData();
 const showImages = images.slice(0, 7);
 ---
 

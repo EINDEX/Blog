@@ -2,13 +2,11 @@
 import i18next, { changeLanguage, t } from "i18next";
 import EmptyWapper from "@layouts/EmptyWapper.astro";
 import Navbar from "@components/layouts/Navbar.astro";
-import { getLinkViaLocale } from "@utils/slug";
+import { getGalleryData } from "@utils/dataReader";
 
 changeLanguage("en");
 
-const locale = i18next.language;
-const resp = await fetch("https://img.eindex.me/pic/pic_list.json");
-const images = await resp.json();
+const images = await getGalleryData();
 ---
 
 <EmptyWapper
@@ -21,7 +19,7 @@ const images = await resp.json();
     image: `https://img.eindex.me/pic/${images[0].thumbnail}`,
   }}
 >
-  <Navbar/>
+  <Navbar />
   <main>
     <h1>{t("gallery")}</h1>
     <div class="gallery">
