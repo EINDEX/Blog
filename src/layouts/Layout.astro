@@ -3,7 +3,6 @@ import Navbar from "@components/layouts/Navbar.astro";
 import Sidebar from "@components/layouts/Sidebar.astro";
 import EmptyWapper from "./EmptyWapper.astro";
 
-
 export interface Props {
   title: string;
   seo?: any;
@@ -39,7 +38,7 @@ const { title, seo = {} } = Astro.props;
   }
 
   sidebar {
-    @apply sm:hidden max-w-xs w-1/4;
+    @apply sm:hidden md:hidden max-w-xs w-1/4;
   }
   .wapper {
     @apply flex flex-row gap-4 justify-center w-full mt-8 px-4 sm:px-2 min-h-full;
