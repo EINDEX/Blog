@@ -9,6 +9,7 @@ import Code from "@components/mdx/Code.astro";
 import Breadcrumb from "@components/Breadcrumb.astro";
 import Comments from "@components/Comments.astro";
 import Tags from "@components/Tags.astro";
+import WMComments from "@components/webmentions/WMComments.astro";
 
 changeLanguage("en");
 
@@ -69,8 +70,7 @@ const { Content } = await post.render();
       <Content components={{ pre: Code }} />
     </section>
   </article>
-
-  <Comments locale={locale} slug={`/posts/${slug}`} />
+  <Comments slug={`/posts/${slug}`} />
 </Layout>
 
 <style lang="scss">
@@ -100,6 +100,8 @@ const { Content } = await post.render();
     
   
   }
+
+
 </style>
 
 

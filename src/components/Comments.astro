@@ -1,10 +1,17 @@
 ---
 import Giscus from "@giscus/react";
+import WMComments from "./webmentions/WMComments.astro";
+import i18next from "i18next";
 
-const { slug, locale } = Astro.props;
+const locale = i18next.language;
+
+const { slug } = Astro.props;
 ---
 
-<commants class="comments">
+<hr />
+<div class="comments">
+  <h2>Comments</h2>
+  <WMComments slug={slug} />
   <Giscus
     client:load
     id="comments"
@@ -21,4 +28,13 @@ const { slug, locale } = Astro.props;
     lang={locale == "cn" ? "zh-CN" : locale}
     loading="lazy"
   />
-</commants>
+</div>
+
+<style lang="scss">
+  .comments {
+    @apply flex flex-col;
+  }
+  h2 {
+    @apply text-2xl font-bold;
+  }
+</style>

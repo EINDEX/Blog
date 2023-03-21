@@ -56,12 +56,6 @@ const updateSinceID = (mentions, sinceID) => {
     return newSinceID
 }
 
-const minSinceID = (mentions, sinceID) => {
-    let newSinceID = sinceID;
-    mentions.forEach((mention)=>{newSinceID=Math.min(newSinceID, mention['wm-id'])})
-    return newSinceID
-}
-
 const fetchAllMentions = async(domain, token) => {
     const sinceID = await readSinceID()
     let newMenionts = []

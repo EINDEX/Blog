@@ -1,0 +1,173 @@
+---
+import { timeFormat } from "@utils/time";
+import fs from "fs-extra";
+import i18next from "i18next";
+
+const locale = i18next.language;
+
+const { slug } = Astro.props;
+
+let webmentions = [];
+try {
+  webmentions = await fs.readJSONSync(`data/webmentions/data${slug}.json`);
+} catch (error) {}
+const webmentionsKeys = Object.keys(webmentions);
+
+webmentionsKeys.sort();
+---
+
+<div class="reactions">
+  {
+    webmentionsKeys.map((id) => {
+      const property = webmentions[id]["wm-property"];
+      if (
+        property !== "like-of" &&
+        property !== "repost-of" &&
+        property !== "bookmark-of"
+      ) {
+        return;
+      }
+      return (
+        <div class={`wm-reaction wm-${property}`} id={`wm-${id}`}>
+          <div class="header">
+            <div class="avatar">
+              <a href={webmentions[id].url}>
+                <img
+                  title={`${webmentions[id].author.name} ${property}`}
+                  alt={`${webmentions[id].author.name} ${property}`}
+                  width="32px"
+                  height="32px"
+                  src={webmentions[id].author.photo}
+                />
+              </a>
+              <span class={`icon wm-${property}-icon`} />
+            </div>
+          </div>
+        </div>
+      );
+    })
+  }
+</div>
+
+<div class="comments">
+  {
+    webmentionsKeys.map((id) => {
+      if (webmentions[id]["wm-property"] !== "in-reply-to") {
+        return;
+      }
+      return (
+        <div class="wm-mention-of" id={`wm-${id}`}>
+          <div class="header">
+            <div class="avatar">
+              <img
+                width="32px"
+                height="32px"
+                src={webmentions[id].author.photo}
+              />
+              <a href={webmentions[id].author.url}>
+                <p>{webmentions[id].author.name}</p>
+              </a>
+            </div>
+            <time>
+              {timeFormat(new Date(webmentions[id].published), locale)}
+            </time>
+          </div>
+          <div class="content">{webmentions[id].content.text}</div>
+          <div class="footer">
+            <a href={webmentions[id].url}>Go</a>
+          </div>
+        </div>
+      );
+    })
+  }
+</div>
+
+<div class="mentions">
+  {
+    webmentionsKeys.map((id) => {
+      if (webmentions[id]["wm-property"] !== "mention-of") {
+        return;
+      }
+      return (
+        <div class="wm-mention-of" id={`wm-${id}`}>
+          <div class="header">
+            <div class="avatar">
+              <img
+                width="32px"
+                height="32px"
+                src={webmentions[id].author.photo}
+              />
+              <a href={webmentions[id].author.url}>
+                <p>{webmentions[id].author.name}</p>
+              </a>
+            </div>
+            <time>
+              {timeFormat(new Date(webmentions[id].published), locale)}
+            </time>
+          </div>
+          <div class="content">{webmentions[id].content.text}</div>
+          <div class="footer">
+            <a href={webmentions[id].url}>Go</a>
+          </div>
+        </div>
+      );
+    })
+  }
+</div>
+
+<style lang="scss">
+  .reactions {
+    @apply flex flex-row flex-wrap justify-center gap-1;
+  }
+  .mentions,
+  .comments {
+    @apply flex flex-col divide-y divide-gray-500;
+  }
+  .wm-mention-of {
+    @apply flex flex-col gap-4 pt-4 pb-2;
+  }
+  .header {
+    @apply flex flex-row justify-between items-center;
+  }
+  .avatar {
+    @apply flex flex-row items-center gap-2;
+    img {
+      @apply w-8 h-8 rounded-full;
+    }
+  }
+  time {
+    @apply text-xs text-gray-500 justify-end;
+  }
+  .content {
+    @apply px-2;
+  }
+  .footer {
+    @apply flex flex-row justify-end items-center gap-4;
+    a {
+      @apply text-sm underline text-gray-500;
+    }
+  }
+
+  .icon {
+    @apply text-sm text-gray-500 absolute top-0 right-0;
+  }
+
+  .wm-reaction {
+    @apply relative;
+  }
+
+  .wm-like-of-icon::before {
+    content: "❤️";
+  }
+  .wm-repost-of-icon::before {
+    content: "🔄";
+  }
+  .wm-bookmark-of-icon::before {
+    content: "🔖";
+  }
+  .wm-mention-of-icon::before {
+    content: "💭";
+  }
+</style>
+
+<style lang="scss" is:global></style>
