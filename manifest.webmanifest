@@ -1,1 +1,1 @@
-{"name":"blog-astro","short_name":"blog-astro","start_url":"/","display":"standalone","background_color":"#ffffff","lang":"en","scope":"/"}
+{"name":"EINDEX's Blog","short_name":"EINDEX's Blog","start_url":"/","display":"standalone","background_color":"#FFFFFF","lang":"en","scope":"/","description":"EINDEX's Blog, share my thoughts and visions.","icons":[{"src":"/favicon-192.png","sizes":"192x192","type":"image/png"},{"src":"/favicon-512.png","sizes":"512x512","type":"image/png"}],"theme_color":"#FFFFFF","prefer_related_applications":false}
