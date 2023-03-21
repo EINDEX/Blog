@@ -6,6 +6,7 @@ import Cloudflare from "@components/analytics/Cloudflare.astro";
 import SEO from "@components/SEO.astro";
 import "../base.scss";
 import i18next from "i18next";
+import Webpushier from "@components/push/Webpushier.astro";
 
 const locale = i18next.language;
 export interface Props {
@@ -36,8 +37,9 @@ const { title, seo = {} } = Astro.props;
       onload="this.onload=null;this.rel='stylesheet'"
     />
     <link rel="stylesheet" href="/katex.min.css" crossorigin="anonymous" />
-    <GA4 />
     <SEO seo={seo} />
+    <GA4 />
+    <Webpushier />
   </head>
   <body>
     <slot />
