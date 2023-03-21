@@ -60,5 +60,5 @@ const schema = {
   <meta name="og:image:alt" content={seo.title} />
   <meta name="twitter:image" content={image} />
   <meta name="twitter:image:alt" content={seo.title} />
-  <script type="application/ld+json" set:html={schema}></script>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
 </head>
