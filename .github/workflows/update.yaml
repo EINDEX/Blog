@@ -28,6 +28,9 @@ jobs:
       run: npm ci
 
     - name: Update webmentions
+      run: node pipeline/cache-pics.js
+
+    - name: Update webmentions
       run: node pipeline/webmentions.js
       env:
         WEBMENTION_TOKEN: ${{ secrets.WEBMENTION_TOKEN }}

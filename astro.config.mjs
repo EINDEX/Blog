@@ -7,6 +7,7 @@ import remarkMath from "remark-math";
 import sitemap from "@astrojs/sitemap";
 import AstroPWA from "@vite-pwa/astro";
 import tailwind from "@astrojs/tailwind";
+import image from "@astrojs/image";
 
 // import cloudflare from "@astrojs/cloudflare";
 
@@ -16,8 +17,8 @@ export default defineConfig({
   site: "https://eindex.me",
   integrations: [
     AstroPWA({
-      base: '/',
-      scope: '/',
+      base: "/",
+      scope: "/",
       injectRegister: "auto",
       registerType: "autoUpdate",
       workbox: { navigateFallback: "/404" },
@@ -44,6 +45,7 @@ export default defineConfig({
       },
     }),
     astroI18next(),
+    image(),
     sitemap(),
     mdx({
       syntaxHighlight: "false",

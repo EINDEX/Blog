@@ -9,7 +9,7 @@ import Code from "@components/mdx/Code.astro";
 import Breadcrumb from "@components/Breadcrumb.astro";
 import Comments from "@components/Comments.astro";
 import Tags from "@components/Tags.astro";
-import WMComments from "@components/webmentions/WMComments.astro";
+import { Picture } from "@astrojs/image/components";
 
 changeLanguage("en");
 
@@ -52,8 +52,8 @@ const { Content } = await post.render();
   ]}
   />
   <article class="h-entry">
-    {post.data.cover ? <img alt={post.data.title} src={post.data.cover} /> : <></>}
-    <a rel="author" style="display: none;" class="p-author h-card" href="/">EINDEX</a>
+    {post.data.cover ? <img class="u-photo" alt={post.data.title} src={post.data.cover} /> : <></>}
+    <a rel="author" style="display: none;" class="p-author h-card" href="/"><img class="u-photo" src="/avatar.png" />EINDEX</a>
     <span class="series p-category"></span>
     <h1 class="title p-name">
       {post.data.title}<a class="u-url" href={getLinkViaLocale(locale, `/posts/${slug}`)}

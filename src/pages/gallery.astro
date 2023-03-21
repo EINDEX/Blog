@@ -3,6 +3,7 @@ import i18next, { changeLanguage, t } from "i18next";
 import EmptyWapper from "@layouts/EmptyWapper.astro";
 import Navbar from "@components/layouts/Navbar.astro";
 import { getGalleryData } from "@utils/dataReader";
+import { Image } from "@astrojs/image/components";
 
 changeLanguage("en");
 
@@ -26,6 +27,7 @@ const images = await getGalleryData();
       {
         images.map((image) => (
           <img
+            class="image"
             loading="lazy"
             height={`${image.width / (image.height / 300)}px`}
             width="300px"
@@ -47,8 +49,9 @@ const images = await getGalleryData();
   }
   .gallery {
     @apply lg:columns-5 columns-4 md:columns-3 sm:columns-2 self-center;
+    max-width: 1564px;
 
-    img {
+    .image {
       @apply rounded-lg shadow-lg mb-4;
     }
   }

@@ -55,6 +55,7 @@ const showImages = images.slice(0, 7);
           {
             showImages.map((image, index) => (
               <img
+                loading="lazy"
                 class={`image-${index % 5}`}
                 height="300px"
                 width={`${image.width / (image.height / 300)}px`}
