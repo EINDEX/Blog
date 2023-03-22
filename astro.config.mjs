@@ -19,9 +19,7 @@ export default defineConfig({
     AstroPWA({
       base: "/",
       scope: "/",
-      injectRegister: "auto",
       registerType: "autoUpdate",
-      workbox: { navigateFallback: "/404" },
       manifest: {
         name: "EINDEX's Blog",
         short_name: "EINDEX's Blog",

@@ -6,7 +6,6 @@ const memosFilePath = "data/memos/memos.json";
 
 const getMemos = async () => {
   try {
-    console.log(process.env.MEMOS_URL)
     const resp = await axios.get(process.env.MEMOS_URL, {
       params: {
         visiable: "PUBLIC",
@@ -31,7 +30,11 @@ const dateFormat = (timestamp) => {
 };
 
 const contentFormat = (content) => {
-  return content.replace(/#(\w+) /g, "[#$1](/tags/$1) ");
+  return content
+    .replace(/#(\w+) /g, "[#$1](/tags/$1) ")
+    .replace(/]\(\/tags\/.*\)/g, function (match) {
+      return match.toLowerCase();
+    });
 };
 
 const fetchTags = (content) => {
