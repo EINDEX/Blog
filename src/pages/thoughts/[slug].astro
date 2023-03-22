@@ -7,7 +7,7 @@ import { timeFormat } from "@utils/time";
 import Breadcrumb from "@components/Breadcrumb.astro";
 import Comments from "@components/Comments.astro";
 import Tags from "@components/Tags.astro";
-import { getLastPartOfSlug } from "@utils/slug";
+import { getLastPartOfSlug, getLinkViaLocale } from "@utils/slug";
 import ReplyA from "@components/webmentions/ReplyA.astro";
 
 changeLanguage("en");
@@ -50,8 +50,8 @@ const { Content } = await thought.render();
     ]}
   />
   <article class="h-entry">
-    <span class="series p-category"></span>
     <h1 class="series p-category">{t("thoughts")}</h1>
+    <a class="u-url" href={getLinkViaLocale(locale, `/thoughts/${slug}`)}></a>
     <a rel="author" style="display: none;" class="p-author h-card" href="/"
       ><img class="u-photo" src="/images/avatar.png" />EINDEX</a
     >
