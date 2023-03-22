@@ -9,6 +9,7 @@ import Code from "@components/mdx/Code.astro";
 import Breadcrumb from "@components/Breadcrumb.astro";
 import Comments from "@components/Comments.astro";
 import Tags from "@components/Tags.astro";
+import MentionA from "@components/webmentions/MentionA.astro";
 
 changeLanguage("en");
 
@@ -72,7 +73,7 @@ const { Content } = await post.render();
     <section
       class="main e-content format sm:format-sm lg:format-lg dark:format-invert format-pre:m-0 format-pre:p-2 format-li:list-disc list-disc"
     >
-      <Content components={{ pre: Code }} />
+      <Content components={{ pre: Code, a: MentionA, link: MentionA }} />
     </section>
   </article>
   <Comments slug={`/posts/${slug}`} />
