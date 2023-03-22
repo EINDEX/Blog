@@ -1,0 +1,1 @@
+import"./Navbar.astro_astro_type_script_index_0_lang.bb5149b6.js";class t extends HTMLElement{constructor(){super(),this.addEventListener("click",()=>{window.location.href=this.dataset.url})}}customElements.define("post-card",t);
