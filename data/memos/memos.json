@@ -46,5 +46,11 @@
     "updatedTs": 1679320735,
     "createdTs": 1679320735,
     "content": "Use #Astro rebuild my blog system, now I build the lovely style, Integrate with #Memos, support SSG, build speed a little faster than #NextJS and it also support React components. Hope I can take more time on blog articles."
+  },
+  "142": {
+    "id": 142,
+    "updatedTs": 1679458000,
+    "createdTs": 1679457851,
+    "content": "<a class=\"u-reply-to\" href=\"https://geekplux.com/posts/webmention\" ></a>\nWelcome to [webmentions](https://eindex.me/posts/webmentions)."
   }
 }
