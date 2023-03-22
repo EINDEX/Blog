@@ -13,14 +13,14 @@ const { title, seo = {} } = Astro.props;
 <EmptyWapper title={title} seo={seo}>
   <Navbar />
   <div class="wapper">
-    <main>
-      <slot />
-    </main>
     <sidebar>
       <Sidebar>
         <slot name="sidebar" />
       </Sidebar>
     </sidebar>
+    <main>
+      <slot />
+    </main>
   </div>
 </EmptyWapper>
 
@@ -38,9 +38,9 @@ const { title, seo = {} } = Astro.props;
   }
 
   sidebar {
-    @apply sm:hidden md:hidden max-w-xs w-1/4;
+    @apply sm:hidden md:hidden max-w-xs w-1/4 h-fit;
   }
   .wapper {
-    @apply flex flex-row gap-4 justify-center w-full mt-8 px-4 sm:px-2 min-h-full;
+    @apply flex flex-row-reverse gap-4 justify-center w-full mt-8 px-4 sm:px-2 min-h-full;
   }
 </style>

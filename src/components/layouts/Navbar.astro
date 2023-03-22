@@ -15,7 +15,7 @@ const { links = defaultLinks, styles = {} } = Astro.props;
 
 <nav style={styles}>
   <a class="logo" href={getLinkViaLocale(locale, "/")}>
-    <img alt="EINDEX's Blog" src={"/images/avatar.webp"} width={32} height={32} />
+    <img alt="EINDEX's Blog" loading="lazy" src={"/images/avatar.webp"} width={32} height={32} />
     <b>EINDEX</b>'s Blog
   </a>
   <button

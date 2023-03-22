@@ -3,9 +3,15 @@ import Contact from "@components/Contact.astro";
 import SearchBox from "@components/SearchBox.astro";
 ---
 
-<sidebar>
-  <div class="profile">
-    <img alt="EINDEX's avatar" src={"/images/avatar.webp"} width={128} height={128} />
+<div class="sidebar">
+  <div class="profile p-author h-card">
+    <img
+      alt="EINDEX's avatar"
+      loading="lazy"
+      src={"/images/avatar.webp"}
+      width={128}
+      height={128}
+    />
     <span class="name"
       ><a rel="author" class="p-author h-card" href="/">EINDEX</a></span
     >
@@ -15,10 +21,10 @@ import SearchBox from "@components/SearchBox.astro";
   <SearchBox />
 
   <slot />
-</sidebar>
+</div>
 
 <style lang="scss">
-  sidebar {
+  .sidebar {
     @apply flex flex-col gap-4 p-4 w-full justify-center items-center mt-4 sticky top-8;
   }
 

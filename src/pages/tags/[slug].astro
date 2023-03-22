@@ -7,7 +7,7 @@ import Project from "@components/Project.astro";
 import { timeFormat } from "@utils/time";
 import _ from "lodash";
 import MarkdownIt from "markdown-it";
-import { getLinkViaLocale } from "@utils/slug";
+import { getLinkViaLocale, getLastPartOfSlug } from "@utils/slug";
 import Breadcrumb from "@components/Breadcrumb.astro";
 
 changeLanguage("en");
@@ -63,7 +63,7 @@ const groupedThoughts = _.groupBy(thoughts, (t) => timeFormat(t.data.date, local
           posts.map((post) => {
             return (
               <li>
-                <a href={getLinkViaLocale(locale, `/posts/${post.slug}`)}>
+                <a href={getLinkViaLocale(locale, `/posts/${getLastPartOfSlug(post.slug)}`)}>
                   {post.data.title}
                 </a>
               </li>
@@ -87,7 +87,7 @@ const groupedThoughts = _.groupBy(thoughts, (t) => timeFormat(t.data.date, local
                       class="thought e-content p-summary"
                       set:html={parser.render(t.body)}
                     />
-                    <a href={getLinkViaLocale(locale, `/thoughts/${t.slug}`)}>
+                    <a href={getLinkViaLocale(locale, `/thoughts/${getLastPartOfSlug(t.slug)}`)}>
                       Comments
                     </a>
                   </article>
