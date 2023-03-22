@@ -14,15 +14,15 @@ changeLanguage("en");
 
 const locale = i18next.language;
 export async function getStaticPaths() {
-  const locale = i18next.language;
-  const thoughts = await getThoughts(locale);
-  return thoughts.map((thought) => {
-    const slug = getLastPartOfSlug(thought.slug);
-    return {
-      params: { slug: slug },
-      props: { thought },
-    };
-  });
+    const locale = i18next.language;
+    const thoughts = await getThoughts(locale);
+    return thoughts.map((thought) => {
+        const slug = getLastPartOfSlug(thought.slug);
+        return {
+            params: { slug: slug },
+            props: { thought },
+        };
+    });
 }
 type Props = CollectionEntry<`thoughts`>;
 const { slug } = Astro.params;
