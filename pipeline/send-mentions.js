@@ -1,70 +1,52 @@
-const axios = require("axios");
-const fs = require("fs-extra");
-const parser = require('xml2json');
+import fs from "fs-extra";
+import parser from "xml2json";
+import Webmention from "@remy/webmention";
 
-const webMentionAppAPI = "https://webmention.app/check/"
-const token = process.env.WEBMENTION_APP_TOKEN
-const localSite = "webmentions/sitemap_cache.json"
-const buildedSitemap = "public/sitemap.xml"
+const localSite = "data/webmentions/sitemap_cache.json";
+const feeds = [
+  "dist/feed.xml",
+  "dist/zh/feed.xml",
+  "dist/thoughts/feed.xml",
+  "dist/zh/thoughts/feed.xml",
+];
 
-const loadSiteMap = async () => {
-    return JSON.parse(parser.toJson(await fs.readFileSync(buildedSitemap, {encoding: "utf-8"}))).urlset.url
-}
+const wm = new Webmention({ limit: 20, send: true });
 
-const loadLocalCache = async () => {
-    try {
-        return await fs.readJSONSync(localSite)
-    } catch (error) {
-        return {}
-    }
-}
-
-const saveLocalCache = async (data) => {
-    try {
-        await fs.writeJSONSync(localSite, data, {spaces: 2})
-    } catch (error) {
-
-    }
-}
+const loadFeeds = async () => {
+  const data = [];
+  for (const feed of feeds) {
+    const rss = JSON.parse(parser.toJson(fs.readFileSync(feed)));
+    rss.rss.channel.item.forEach((item) => {
+      data.push({
+        loc: item.link,
+        pubDate: item.pubDate,
+      });
+    });
+  }
+  return data;
+};
 
 const sendMention = async (url) => {
-    try {
-        const resp = await axios.post(webMentionAppAPI, null, {
-            params: {
-                token: token,
-                url: url,
-            }
-        })
-        console.log("success send:", url, resp.data)
-        return true
-    } catch (error) {
-        console.log('failed to send:', url)
-        return false
-    }
-}
+  try {
+    wm.fetch(url);
+    console.log("sent:", url)
+    return true;
+  } catch (error) {
+    console.log("failed to send:", url);
+    return false;
+  }
+};
 
 const main = async () => {
-    const data = await loadLocalCache()
-    const urls = await loadSiteMap()
-    for(const url of urls) {
-        let sendFlag = false
-        if (data.hasOwnProperty(url.loc)) {
-            if (data[url.loc].lastmod !== url.lastmod || url.lastmod === undefined) {
-                sendFlag = true
-            }
-        } else {
-            sendFlag = true
-        }
-        if(!sendFlag) {
-            continue
-        }
+  const data = await loadFeeds();
+  const now = new Date();
+  const recentlyUpdate = data.filter(
+    (item) => now - new Date(item.pubDate) < 84600 * 1000
+  );
 
-        if (await sendMention(url.loc)) {
-            data[url.loc] = url
-        }
-    }
-    await saveLocalCache(data)
-}
+  for (const url of recentlyUpdate) {
+    await sendMention(url.loc);
+  }
+};
 
-
-main()
+main();

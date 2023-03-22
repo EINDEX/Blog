@@ -21,12 +21,12 @@ export async function get(context) {
       return {
         title: post.data.title,
         description: post.data.description,
-        link: getLinkViaLocale(locale, getLastPartOfSlug(post.slug)),
-        pubDate: post.data.date || post.data.updated,
+        link: getLinkViaLocale(locale, "posts/" + getLastPartOfSlug(post.slug)),
+        pubDate: post.data.updated || post.data.date,
       };
     }),
 
     // (optional) inject custom xml
-    customData: `<language>en</language>`,
+    customData: `<language>${locale}</language>`,
   });
 }

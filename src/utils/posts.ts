@@ -31,12 +31,7 @@ export async function getThoughts(
   const thoughts = await (
     await getCollection("thoughts")
   )
-    .filter((thought) => thought.slug.startsWith(locale))
-    .filter((thought) => {
-      return (
-        thought.data.draft !== true || import.meta.env.MODE === "development"
-      );
-    });
+    .filter((thought) => thought.slug.startsWith(locale));
   return thoughts.sort((a, b) => sortViaUpdated(a, b, false));
 }
 

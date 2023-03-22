@@ -1,11 +1,11 @@
 import rss from "@astrojs/rss";
-import { getPosts } from "@utils/posts";
+import { getThoughts } from "@utils/posts";
 import { getLinkViaLocale, getLastPartOfSlug } from "@utils/slug";
 
-const locale = "en";
+const locale = "zh";
 
 export async function get(context) {
-  const posts = await getPosts(locale);
+  const thoughts = await getThoughts(locale);
 
   return rss({
     // `<title>` field in output xml
@@ -17,12 +17,12 @@ export async function get(context) {
     site: context.site,
     // Array of `<item>`s in output xml
     // See "Generating items" section for examples using content collections and glob imports
-    items: posts.map((post) => {
+    items: thoughts.map((thought) => {
       return {
-        title: post.data.title,
-        description: post.data.description,
-        link: getLinkViaLocale(locale, "posts/" + getLastPartOfSlug(post.slug)),
-        pubDate:  post.data.updated || post.data.date,
+        title: thought.body,
+        description: thought.body,
+        link: getLinkViaLocale(locale, "thoughts/" + getLastPartOfSlug(thought.slug)),
+        pubDate: thought.data.updated || thought.data.date,
       };
     }),
 
