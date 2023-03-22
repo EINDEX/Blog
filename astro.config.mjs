@@ -7,7 +7,6 @@ import remarkMath from "remark-math";
 import sitemap from "@astrojs/sitemap";
 import AstroPWA from "@vite-pwa/astro";
 import tailwind from "@astrojs/tailwind";
-import image from "@astrojs/image";
 
 // import cloudflare from "@astrojs/cloudflare";
 
@@ -19,7 +18,7 @@ export default defineConfig({
     AstroPWA({
       base: "/",
       scope: "/",
-      registerType: "autoUpdate",
+      injectRegister: "auto",
       manifest: {
         name: "EINDEX's Blog",
         short_name: "EINDEX's Blog",
@@ -43,7 +42,6 @@ export default defineConfig({
       },
     }),
     astroI18next(),
-    image(),
     sitemap(),
     mdx({
       syntaxHighlight: "false",

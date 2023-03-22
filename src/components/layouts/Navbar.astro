@@ -2,8 +2,6 @@
 import i18next, { t } from "i18next";
 import { getLinkViaLocale } from "@utils/slug";
 import { LanguageSelector } from "astro-i18next/components";
-import avatar from "../../assets/avatar.png";
-import { Image } from "@astrojs/image/components";
 
 const locale = i18next.language;
 
@@ -17,7 +15,7 @@ const { links = defaultLinks, styles = {} } = Astro.props;
 
 <nav style={styles}>
   <a class="logo" href={getLinkViaLocale(locale, "/")}>
-    <Image alt="EINDEX's Blog" src={avatar} width={32} height={32} />
+    <img alt="EINDEX's Blog" src={"/images/avatar.webp"} width={32} height={32} />
     <b>EINDEX</b>'s Blog
   </a>
   <button

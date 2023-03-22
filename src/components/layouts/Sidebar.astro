@@ -1,13 +1,11 @@
 ---
 import Contact from "@components/Contact.astro";
 import SearchBox from "@components/SearchBox.astro";
-import { Image } from "@astrojs/image/components";
-import avatar from "../../assets/avatar.png";
 ---
 
 <sidebar>
   <div class="profile">
-    <Image alt="EINDEX's avatar" src={avatar} width={128} height={128} />
+    <img alt="EINDEX's avatar" src={"/images/avatar.webp"} width={128} height={128} />
     <span class="name"
       ><a rel="author" class="p-author h-card" href="/">EINDEX</a></span
     >
