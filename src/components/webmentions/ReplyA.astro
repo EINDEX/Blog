@@ -4,14 +4,10 @@ const props = Astro.props;
 
 {
   props.href.startsWith(Astro.site.origin) || props.href.startsWith("/") ? (
-    <a {...props}>
-      <slot />
-    </a>
+    <a {...props}><slot /></a>
   ) : (
     <blockquote>
-      <a class="u-in-reply-to" {...props}>
-        <slot />
-      </a>
+      <a class="u-in-reply-to" {...props}><slot /></a>
     </blockquote>
   )
 }

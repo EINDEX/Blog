@@ -35,6 +35,8 @@ jobs:
       env:
         WEBMENTION_TOKEN: ${{ secrets.WEBMENTION_TOKEN }}
 
+
+
     - name: fetch memos
       run: node pipeline/memos.js
       env:

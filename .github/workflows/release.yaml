@@ -72,3 +72,6 @@ jobs:
           -e MEILISEARCH_API_KEY=$API_KEY \
           -v $PWD:/blog \
           getmeili/docs-scraper:latest pipenv run ./docs_scraper /blog/meili.json
+
+    - name: Send webmentions
+      run: node pipeline/send-mentions.js

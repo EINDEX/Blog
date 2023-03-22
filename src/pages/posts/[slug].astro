@@ -52,7 +52,12 @@ const { Content } = await post.render();
   />
   <article class="h-entry">
     {post.data.cover ? <img class="u-photo" alt={post.data.title} src={post.data.cover} /> : <></>}
-    <a rel="author" style="display: none;" class="p-author h-card" href="/"><img class="u-photo" src="/images/avatar.png" />EINDEX</a>
+    <div style="display: none;" class="u-author h-card">
+      <a class="u-url" href="/">EINDEX</a><img
+        class="u-photo"
+        src="https://eindex.me/images/avatar.webp"
+      />
+    </div>
     {post.data.section || <span class="series p-category">{t(post.data.section)}</span>}
     <h1 class="title p-name">
       {post.data.title}<a class="u-url" href={getLinkViaLocale(locale, `/posts/${slug}`)}

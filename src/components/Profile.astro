@@ -2,8 +2,15 @@
 import Contact from "./Contact.astro";
 ---
 
-<div class="profile">
-  <img alt="EINDEX's avatar" src={"/images/avatar.webp"} width={128} height={128} />
+<div class="profile h-card">
+  <img
+    class="u-photo"
+    alt="EINDEX's avatar"
+    src={"/images/avatar.webp"}
+    width={128}
+    height={128}
+  />
+  <a class="u-url p-name" href="/" style={{ display: "none" }}>EINDEX</a>
   <h1>
     <div class="typewrite">
       <span class="wrap">EINDEX's Blog</span>

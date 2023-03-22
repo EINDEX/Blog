@@ -14,15 +14,15 @@ changeLanguage("en");
 
 const locale = i18next.language;
 export async function getStaticPaths() {
-  const locale = i18next.language;
-  const thoughts = await getThoughts(locale);
-  return thoughts.map((thought) => {
-    const slug = getLastPartOfSlug(thought.slug);
-    return {
-      params: { slug: slug },
-      props: { thought },
-    };
-  });
+    const locale = i18next.language;
+    const thoughts = await getThoughts(locale);
+    return thoughts.map((thought) => {
+        const slug = getLastPartOfSlug(thought.slug);
+        return {
+            params: { slug: slug },
+            props: { thought },
+        };
+    });
 }
 type Props = CollectionEntry<`thoughts`>;
 const { slug } = Astro.params;
@@ -52,23 +52,29 @@ const { Content } = await thought.render();
   <article class="h-entry">
     <h1 class="series p-name p-category">{t("thoughts")}</h1>
     <a class="u-url" href={getLinkViaLocale(locale, `/thoughts/${slug}`)}></a>
-    <a
-      rel="author"
-      style="display: none;"
-      class="p-author h-card"
-      href="https://eindex.me/"
-      ><img
+    <div style="display: none;" class="u-author h-card">
+      <a class="u-url" href="/">EINDEX</a><img
         class="u-photo"
-        src="https://eindex.me/images/avatar.png"
-      />EINDEX</a
-    >
+        src="https://eindex.me/images/avatar.webp"
+      />
+    </div>
     <div class="post-meta">
-      <time class="dt-updated" datetime={thought.data.updated.toISOString()}
+      <time
+        class="dt-updated"
+        datetime={thought.data.updated
+          .toISOString()
+          .replace(/\.\d\d\dZ/, "+00:00")}
         >{timeFormat(thought.data.updated, locale)}</time
       >
-      <time class="dt-published" datetime={thought.data.date.toISOString()}
+      <time
+        class="dt-published"
+        datetime={thought.data.date
+          .toISOString()
+          .replace(/\.\d\d\dZ/, "+00:00")}></time>
+      <time
+        class="dt-deleted"
+        datetime={new Date().toISOString().replace(/\.\d\d\dZ/, "+00:00")}
       ></time>
-      <time class="dt-deleted" datetime={new Date().toISOString()}></time>
     </div>
     <section
       class="main title e-content p-summary format sm:format-sm lg:format-lg dark:format-invert format-pre:m-0 format-pre:p-2 format-li:list-disc list-disc"
