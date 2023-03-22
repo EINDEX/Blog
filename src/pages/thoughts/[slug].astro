@@ -71,13 +71,10 @@ const { Content } = await thought.render();
         datetime={thought.data.date
           .toISOString()
           .replace(/\.\d\d\dZ/, "+00:00")}></time>
-      <time
-        class="dt-deleted"
-        datetime={new Date().toISOString().replace(/\.\d\d\dZ/, "+00:00")}
-      ></time>
+    
     </div>
     <section
-      class="main title p-content format sm:format-sm lg:format-lg dark:format-invert format-pre:m-0 format-pre:p-2 format-li:list-disc list-disc"
+      class="main title e-content format sm:format-sm lg:format-lg dark:format-invert format-pre:m-0 format-pre:p-2 format-li:list-disc list-disc"
     >
       <Content components={{ a: ReplyA, link: ReplyA }} />
     </section>
