@@ -18,11 +18,10 @@ export default defineConfig({
     AstroPWA({
       base: "/",
       scope: "/",
-      injectRegister: "auto",
+      registerType: "autoUpdate",
       manifest: {
         name: "EINDEX's Blog",
         short_name: "EINDEX's Blog",
-        description: "EINDEX's Blog, share my thoughts and visions.",
         icons: [
           {
             src: "/favicon-192.png",
@@ -39,6 +38,10 @@ export default defineConfig({
         background_color: "#323232",
         display: "standalone",
         prefer_related_applications: false,
+      },
+      workbox: {
+        navigateFallback: "/404",
+        globPatterns: ["**/*.{css,js,html,svg,png,ico,txt}"],
       },
     }),
     astroI18next(),
