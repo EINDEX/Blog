@@ -8,20 +8,21 @@ import Breadcrumb from "@components/Breadcrumb.astro";
 import Comments from "@components/Comments.astro";
 import Tags from "@components/Tags.astro";
 import { getLastPartOfSlug } from "@utils/slug";
+import ReplyA from "@components/webmentions/ReplyA.astro";
 
 changeLanguage("en");
 
 const locale = i18next.language;
 export async function getStaticPaths() {
-    const locale = i18next.language;
-    const thoughts = await getThoughts(locale);
-    return thoughts.map((thought) => {
-        const slug = getLastPartOfSlug(thought.slug);
-        return {
-            params: { slug: slug },
-            props: { thought },
-        };
-    });
+  const locale = i18next.language;
+  const thoughts = await getThoughts(locale);
+  return thoughts.map((thought) => {
+    const slug = getLastPartOfSlug(thought.slug);
+    return {
+      params: { slug: slug },
+      props: { thought },
+    };
+  });
 }
 type Props = CollectionEntry<`thoughts`>;
 const { slug } = Astro.params;
@@ -51,14 +52,18 @@ const { Content } = await thought.render();
   <article class="h-entry">
     <span class="series p-category"></span>
     <h1 class="series p-category">{t("thoughts")}</h1>
-    <a rel="author" style="display: none;" class="p-author h-card" href="/"><img class="u-photo" src="/images/avatar.png" />EINDEX</a>
+    <a rel="author" style="display: none;" class="p-author h-card" href="/"
+      ><img class="u-photo" src="/images/avatar.png" />EINDEX</a
+    >
     <div class="post-meta">
-      <time class="dt-published" datetime={thought.data.date.toISOString()} >{timeFormat(thought.data.date, locale)}</time>
+      <time class="dt-published" datetime={thought.data.date.toISOString()}
+        >{timeFormat(thought.data.date, locale)}</time
+      >
     </div>
     <section
       class="main title p-name e-content p-summary format sm:format-sm lg:format-lg dark:format-invert format-pre:m-0 format-pre:p-2 format-li:list-disc list-disc"
     >
-      <Content />
+      <Content components={{ a: ReplyA, link: ReplyA }} />
     </section>
     <Tags tags={thought.data.tags} />
   </article>

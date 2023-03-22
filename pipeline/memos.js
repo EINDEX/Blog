@@ -47,7 +47,7 @@ const makeThoughts = async (memo) => {
   const findChinese = chineseRegex.exec(memo.content);
   const filename = `src/content/thoughts/${findChinese ? "zh" : "en"}/${
     memo.id
-  }.md`;
+  }.mdx`;
   const template = `---
 date: "${dateFormat(memo.createdTs)}"
 updated: "${dateFormat(memo.updatedTs)}"

@@ -9,12 +9,13 @@ import _ from "lodash";
 
 changeLanguage("en");
 
-const parser = new MarkdownIt();
+const parser = new MarkdownIt({ html: true });
 const locale = i18next.language;
 const thoughts = await getThoughts(locale);
-const groupedThoughts = _.groupBy(thoughts, (t) => timeFormat(t.data.date, locale));
+const groupedThoughts = _.groupBy(thoughts, (t) =>
+  timeFormat(t.data.date, locale)
+);
 ---
-
 <Layout
   title="Thoughts"
   seo={{

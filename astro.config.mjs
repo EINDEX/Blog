@@ -12,7 +12,7 @@ import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
 
 export default defineConfig({
-  site: "https://staging.eindex.me",
+  site: "https://eindex.me",
   integrations: [
     // AstroPWA({
     //   base: "/",
