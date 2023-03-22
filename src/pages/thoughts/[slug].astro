@@ -14,15 +14,15 @@ changeLanguage("en");
 
 const locale = i18next.language;
 export async function getStaticPaths() {
-    const locale = i18next.language;
-    const thoughts = await getThoughts(locale);
-    return thoughts.map((thought) => {
-        const slug = getLastPartOfSlug(thought.slug);
-        return {
-            params: { slug: slug },
-            props: { thought },
-        };
-    });
+  const locale = i18next.language;
+  const thoughts = await getThoughts(locale);
+  return thoughts.map((thought) => {
+    const slug = getLastPartOfSlug(thought.slug);
+    return {
+      params: { slug: slug },
+      props: { thought },
+    };
+  });
 }
 type Props = CollectionEntry<`thoughts`>;
 const { slug } = Astro.params;
@@ -50,18 +50,28 @@ const { Content } = await thought.render();
     ]}
   />
   <article class="h-entry">
-    <h1 class="series p-category">{t("thoughts")}</h1>
+    <h1 class="series p-name p-category">{t("thoughts")}</h1>
     <a class="u-url" href={getLinkViaLocale(locale, `/thoughts/${slug}`)}></a>
-    <a rel="author" style="display: none;" class="p-author h-card" href="/"
-      ><img class="u-photo" src="/images/avatar.png" />EINDEX</a
+    <a
+      rel="author"
+      style="display: none;"
+      class="p-author h-card"
+      href="https://eindex.me/"
+      ><img
+        class="u-photo"
+        src="https://eindex.me/images/avatar.png"
+      />EINDEX</a
     >
     <div class="post-meta">
-      <time class="dt-published" datetime={thought.data.date.toISOString()}
-        >{timeFormat(thought.data.date, locale)}</time
+      <time class="dt-updated" datetime={thought.data.updated.toISOString()}
+        >{timeFormat(thought.data.updated, locale)}</time
       >
+      <time class="dt-published" datetime={thought.data.date.toISOString()}
+      ></time>
+      <time class="dt-deleted" datetime={new Date().toISOString()}></time>
     </div>
     <section
-      class="main title p-name e-content p-summary format sm:format-sm lg:format-lg dark:format-invert format-pre:m-0 format-pre:p-2 format-li:list-disc list-disc"
+      class="main title e-content p-summary format sm:format-sm lg:format-lg dark:format-invert format-pre:m-0 format-pre:p-2 format-li:list-disc list-disc"
     >
       <Content components={{ a: ReplyA, link: ReplyA }} />
     </section>
