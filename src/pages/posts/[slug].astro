@@ -10,6 +10,7 @@ import Breadcrumb from "@components/Breadcrumb.astro";
 import Comments from "@components/Comments.astro";
 import Tags from "@components/Tags.astro";
 import MentionA from "@components/webmentions/MentionA.astro";
+import InvisableAuthor from "@components/webmentions/InvisableAuthor.astro";
 
 changeLanguage("en");
 
@@ -53,12 +54,7 @@ const { Content } = await post.render();
   />
   <article class="h-entry">
     {post.data.cover ? <img class="u-photo" alt={post.data.title} src={post.data.cover} /> : <></>}
-    <div style="display: none;" class="u-author h-card">
-      <a class="u-url" href="/">EINDEX</a><img
-        class="u-photo"
-        src="https://eindex.me/images/avatar.webp"
-      />
-    </div>
+    <InvisableAuthor />
     {post.data.section || <span class="series p-category">{t(post.data.section)}</span>}
     <h1 class="title p-name">
       {post.data.title}<a class="u-url" href={getLinkViaLocale(locale, `/posts/${slug}`)}

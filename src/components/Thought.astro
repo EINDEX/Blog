@@ -1,0 +1,74 @@
+---
+import i18next, { t } from "i18next";
+import { getLinkViaLocale } from "@utils/slug";
+import { timeFormat } from "@utils/time";
+import ReplyA from "@components/webmentions/ReplyA.astro";
+import InvisableAuthor from "@components/webmentions/InvisableAuthor.astro";
+import Tags from "@components/Tags.astro";
+
+const locale = i18next.language;
+
+const { thought, slug, showDate = true } = Astro.props;
+const { Content } = await thought.render();
+---
+
+<article class="h-entry">
+  <!-- <h1 class="series p-name p-category">{t("thoughts")}</h1> -->
+  <a class="u-url" href={getLinkViaLocale(locale, `/thoughts/${slug}`)}></a>
+  <InvisableAuthor />
+  <div class="post-meta">
+    <time
+      class="dt-updated"
+      datetime={thought.data.updated
+        .toISOString()
+        .replace(/\.\d\d\dZ/, "+00:00")}
+      >{showDate && timeFormat(thought.data.updated, locale)}</time
+    >
+    <time
+      class="dt-published"
+      datetime={thought.data.date.toISOString().replace(/\.\d\d\dZ/, "+00:00")}
+    ></time>
+  </div>
+  <section
+    class="main title e-content format sm:format-sm lg:format-lg dark:format-invert format-pre:m-0 format-pre:p-2 format-li:list-disc list-disc"
+  >
+    <Content components={{ a: ReplyA, link: ReplyA }} />
+  </section>
+  <Tags tags={thought.data.tags} />
+</article>
+
+<style lang="scss">
+  article {
+    @apply flex flex-col w-full;
+
+    img {
+      @apply w-full rounded-lg top-8 -z-10;
+    }
+    h1 {
+      @apply text-3xl font-bold text-center;
+    }
+
+    .post-meta {
+      @apply flex flex-col;
+      color: var(--text-color);
+
+      time {
+        @apply text-left;
+      }
+    }
+    section.main.e-content {
+      @apply max-w-full list-disc;
+      color: var(--text-color);
+      background-color: var(--bg-color);
+    }
+
+    .labels {
+      @apply flex flex-row flex-wrap text-sm gap-2 justify-center;
+
+      .tag {
+        @apply rounded-sm px-2 bg-gray-300 dark:bg-gray-700;
+        background-color: var(--label-background-color);
+      }
+    }
+  }
+</style>
