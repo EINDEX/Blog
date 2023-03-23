@@ -2,37 +2,36 @@
 import { CollectionEntry } from "astro:content";
 import i18next, { changeLanguage, t } from "i18next";
 import Layout from "@layouts/Layout.astro";
-import { getThoughts } from "@utils/posts";
+import { getThoughts, getSummary } from "@utils/posts";
 import Breadcrumb from "@components/Breadcrumb.astro";
 import Comments from "@components/Comments.astro";
-import { getLastPartOfSlug, getLinkViaLocale } from "@utils/slug";
+import { getLastPartOfSlug } from "@utils/slug";
 import Thought from "@components/Thought.astro";
 
 changeLanguage("en");
 
 const locale = i18next.language;
 export async function getStaticPaths() {
-    const locale = i18next.language;
-    const thoughts = await getThoughts(locale);
-    return thoughts.map((thought) => {
-        const slug = getLastPartOfSlug(thought.slug);
-        return {
-            params: { slug: slug },
-            props: { thought },
-        };
-    });
+  const locale = i18next.language;
+  const thoughts = await getThoughts(locale);
+  return thoughts.map((thought) => {
+    const slug = getLastPartOfSlug(thought.slug);
+    return {
+      params: { slug: slug },
+      props: { thought },
+    };
+  });
 }
 type Props = CollectionEntry<`thoughts`>;
 const { slug } = Astro.params;
 const { thought } = Astro.props;
-const { Content } = await thought.render();
 ---
 
 <Layout
   title={t("thoughts")}
   seo={{
     title: t("thoughts"),
-    description: thought.body,
+    description: getSummary(locale, thought.body),
     url: `/thoughts/${slug}`,
     date: thought.data.date,
     updated: thought.data.updated,
@@ -47,14 +46,19 @@ const { Content } = await thought.render();
       },
     ]}
   />
-  <h1 class="series p-name p-category">{t("thoughts")}</h1>
-  <Thought thought={thought} slug={slug} />
-
-  <Comments locale={locale} slug={`/thoughts/${slug}`} />
+  <div class="thought-content">
+    <h1 class="series p-name p-category">{t("thoughts")}</h1>
+    <Thought thought={thought} slug={`/thoughts/${slug}`} />
+    <Comments locale={locale} slug={`/thoughts/${slug}`} />
+  </div>
 </Layout>
 
 <style lang="scss">
   h1 {
     @apply text-3xl font-bold text-center;
+  }
+
+  .thought-content {
+    @apply max-w-xl self-center;
   }
 </style>

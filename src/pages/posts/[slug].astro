@@ -3,7 +3,7 @@ import { CollectionEntry } from "astro:content";
 import i18next, { changeLanguage, t } from "i18next";
 import { getLastPartOfSlug, getLinkViaLocale } from "@utils/slug";
 import Layout from "@layouts/Layout.astro";
-import { getPosts } from "@utils/posts";
+import { getPosts, getSummary } from "@utils/posts";
 import { timeFormat } from "@utils/time";
 import Code from "@components/mdx/Code.astro";
 import Breadcrumb from "@components/Breadcrumb.astro";
@@ -36,7 +36,7 @@ const { Content } = await post.render();
 <Layout title={post.data.title} seo={
   {
         title: post.data.title,
-        description: post.data.description,
+        description: post.data.description || getSummary(locale, post.body),
         image: post.data.cover,
         url: `/posts/${slug}`,
         date: post.data.date,
@@ -67,7 +67,7 @@ const { Content } = await post.render();
     <hr/>
     <Tags tags={post.data.tags}></Tags>
     <section
-      class="main e-content format sm:format-sm lg:format-lg dark:format-invert format-pre:m-0 format-pre:p-2 format-li:list-disc list-disc"
+      class="main e-content format dark:format-invert format-pre:m-0 format-pre:p-2 format-li:list-disc list-disc"
     >
       <Content components={{ pre: Code, a: MentionA, link: MentionA }} />
     </section>

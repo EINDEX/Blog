@@ -1,8 +1,14 @@
 import { CollectionEntry, getCollection } from "astro:content";
 
 export function sortViaUpdated(
-  a: CollectionEntry<"posts"> | CollectionEntry<"thoughts"> | CollectionEntry<"newsletter">,
-  b: CollectionEntry<"posts"> | CollectionEntry<"thoughts"> | CollectionEntry<"newsletter">,
+  a:
+    | CollectionEntry<"posts">
+    | CollectionEntry<"thoughts">
+    | CollectionEntry<"newsletter">,
+  b:
+    | CollectionEntry<"posts">
+    | CollectionEntry<"thoughts">
+    | CollectionEntry<"newsletter">,
   asc: boolean = false
 ) {
   return (
@@ -30,8 +36,7 @@ export async function getThoughts(
 ): Promise<CollectionEntry<"thoughts">[]> {
   const thoughts = await (
     await getCollection("thoughts")
-  )
-    .filter((thought) => thought.slug.startsWith(locale));
+  ).filter((thought) => thought.slug.startsWith(locale));
   return thoughts.sort((a, b) => sortViaUpdated(a, b, false));
 }
 
@@ -60,4 +65,16 @@ export const getAllProjects = async (locale: string): Promise<project[]> => {
       openSource: true,
     },
   ];
+};
+
+export const getSummary = (locale: string, content: string) => {
+  if (content.length <= 100) {
+    return content;
+  }
+  if (locale === "en") {
+    const cutOff = content.slice(200, 250).indexOf(" ");
+    return content.substring(0, cutOff + 200) + " ...";
+  } else {
+    return content.substring(0, 120) + " ...";
+  }
 };

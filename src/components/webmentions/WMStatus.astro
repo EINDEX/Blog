@@ -1,0 +1,114 @@
+---
+import _ from "lodash";
+import fs from "fs-extra";
+
+import i18next from "i18next";
+import { getLinkViaLocale } from "@utils/slug";
+const locale = i18next.language;
+
+const slug = getLinkViaLocale(locale, Astro.props.slug);
+
+let webmentions = [];
+try {
+  webmentions = await fs.readJSONSync(`data/webmentions/data${slug}.json`);
+} catch (error) {}
+const groupByMentions = _.groupBy(webmentions, "wm-property");
+const likeCount = groupByMentions["like-of"]?.length || 0;
+const commentsCount = groupByMentions["in-reply-to"]?.length || 0;
+const bookmarkCount = groupByMentions["bookmark-of"]?.length || 0;
+const repostCount =
+  groupByMentions["repost-of"]?.length ||
+  0 + groupByMentions["mention-of"]?.length ||
+  0;
+---
+
+<div class="wm-status">
+  <a href={`${slug}/#comments`}
+    ><svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="icon icon-tabler icon-tabler-message-circle"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      stroke-width="2"
+      stroke="currentColor"
+      fill="none"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path
+        d="M3 20l1.3 -3.9c-2.324 -3.437 -1.426 -7.872 2.1 -10.374c3.526 -2.501 8.59 -2.296 11.845 .48c3.255 2.777 3.695 7.266 1.029 10.501c-2.666 3.235 -7.615 4.215 -11.574 2.293l-4.7 1"
+      ></path>
+    </svg>{commentsCount || ""}</a
+  >
+  <a href={`${slug}/#comments`}
+    ><svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="icon icon-tabler icon-tabler-heart"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      stroke-width="2"
+      stroke="currentColor"
+      fill="none"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path
+        d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"
+      ></path>
+    </svg>{likeCount || ""}</a
+  >
+  <a href={`${slug}/#comments`}
+    ><svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="icon icon-tabler icon-tabler-bookmark"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      stroke-width="2"
+      stroke="currentColor"
+      fill="none"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M9 4h6a2 2 0 0 1 2 2v14l-5 -3l-5 3v-14a2 2 0 0 1 2 -2"></path>
+    </svg>{bookmarkCount || ""}</a
+  >
+  <a href={`${slug}/#comments`}
+    ><svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="icon icon-tabler icon-tabler-switch-horizontal"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      stroke-width="2"
+      stroke="currentColor"
+      fill="none"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M16 3l4 4l-4 4"></path>
+      <path d="M10 7l10 0"></path>
+      <path d="M8 13l-4 4l4 4"></path>
+      <path d="M4 17l9 0"></path>
+    </svg>{repostCount || ""}</a
+  >
+</div>
+
+<style lang="scss">
+  .wm-status {
+    @apply flex items-center justify-evenly gap-2;
+
+    a {
+      .icon {
+        @apply w-4 h-4;
+      }
+      @apply flex flex-row gap-2 min-w-fit text-sm justify-center items-center;
+    }
+  }
+</style>

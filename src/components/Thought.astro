@@ -4,7 +4,7 @@ import { getLinkViaLocale } from "@utils/slug";
 import { timeFormat } from "@utils/time";
 import ReplyA from "@components/webmentions/ReplyA.astro";
 import InvisableAuthor from "@components/webmentions/InvisableAuthor.astro";
-import Tags from "@components/Tags.astro";
+import WMStatus from "@components/webmentions/WMStatus.astro";
 
 const locale = i18next.language;
 
@@ -13,33 +13,31 @@ const { Content } = await thought.render();
 ---
 
 <article class="h-entry">
-  <!-- <h1 class="series p-name p-category">{t("thoughts")}</h1> -->
-  <a class="u-url" href={getLinkViaLocale(locale, `/thoughts/${slug}`)}></a>
   <InvisableAuthor />
   <div class="post-meta">
+    <a class="u-url" href={getLinkViaLocale(locale, `/thoughts/${slug}`)}>
     <time
       class="dt-updated"
       datetime={thought.data.updated
-        .toISOString()
-        .replace(/\.\d\d\dZ/, "+00:00")}
+        .toISOString()}
       >{showDate && timeFormat(thought.data.updated, locale)}</time
     >
     <time
       class="dt-published"
-      datetime={thought.data.date.toISOString().replace(/\.\d\d\dZ/, "+00:00")}
-    ></time>
+      datetime={thought.data.date.toISOString()}
+    ></time></a>
   </div>
   <section
     class="main title e-content format sm:format-sm lg:format-lg dark:format-invert format-pre:m-0 format-pre:p-2 format-li:list-disc list-disc"
   >
     <Content components={{ a: ReplyA, link: ReplyA }} />
   </section>
-  <Tags tags={thought.data.tags} />
+  <WMStatus slug={slug} />
 </article>
 
 <style lang="scss">
   article {
-    @apply flex flex-col w-full;
+    @apply flex flex-col max-w-full;
 
     img {
       @apply w-full rounded-lg top-8 -z-10;
@@ -57,7 +55,7 @@ const { Content } = await thought.render();
       }
     }
     section.main.e-content {
-      @apply max-w-full list-disc;
+      @apply list-disc mb-2 max-w-full;
       color: var(--text-color);
       background-color: var(--bg-color);
     }
