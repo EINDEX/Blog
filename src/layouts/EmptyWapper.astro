@@ -8,6 +8,7 @@ import "../base.scss";
 import i18next from "i18next";
 import Webpushier from "@components/push/Webpushier.astro";
 import { getLinkViaLocale } from "@utils/slug";
+import GoogleAdsHead from "@components/google-ads/head.astro";
 
 const locale = i18next.language;
 export interface Props {
@@ -60,6 +61,7 @@ const { title, seo = {} } = Astro.props;
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.11.0/tabler-icons.min.css"
     />
+    <GoogleAdsHead />
   </head>
   <body>
     <slot />
