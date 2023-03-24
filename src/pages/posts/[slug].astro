@@ -11,6 +11,7 @@ import Comments from "@components/Comments.astro";
 import Tags from "@components/Tags.astro";
 import MentionA from "@components/webmentions/MentionA.astro";
 import InvisableAuthor from "@components/webmentions/InvisableAuthor.astro";
+import WMStatus from "@components/webmentions/WMStatus.astro";
 
 changeLanguage("en");
 
@@ -71,6 +72,7 @@ const { Content } = await post.render();
     >
       <Content components={{ pre: Code, a: MentionA, link: MentionA }} />
     </section>
+    <WMStatus slug={`/posts/${slug}`} />
   </article>
   <Comments slug={`/posts/${slug}`} />
 </Layout>

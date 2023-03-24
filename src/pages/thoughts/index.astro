@@ -3,11 +3,9 @@ import Layout from "@layouts/Layout.astro";
 import { getThoughts } from "@utils/posts";
 import i18next, { changeLanguage, t } from "i18next";
 import { getLinkViaLocale, getLastPartOfSlug } from "@utils/slug";
-import MarkdownIt from "markdown-it";
 import { timeFormat } from "@utils/time";
 import _ from "lodash";
 import Thought from "@components/Thought.astro";
-import WMStatus from "@components/webmentions/WMStatus.astro";
 
 changeLanguage("en");
 
@@ -55,10 +53,10 @@ const groupedThoughts = _.groupBy(thoughts, (t) =>
     @apply text-4xl font-bold text-center;
   }
   .thoughts {
-    @apply max-w-xl flex flex-col gap-4 divide-y self-center divide-gray-200;
+    @apply max-w-xl flex flex-col gap-2 divide-y self-center divide-gray-200;
 
     .thoughts-in-day {
-      @apply flex flex-col gap-4 pt-4;
+      @apply flex flex-col gap-2 pt-4;
 
       article {
         @apply flex flex-col gap-2  ml-4;
