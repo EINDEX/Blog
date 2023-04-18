@@ -6,6 +6,8 @@ const { iconOnly = false } = Astro.props;
   <a
     rel="me"
     class="umami--click--contact-github"
+    data-umami-event="Contact Github"
+    data-umami-event-name="Github"
     target="_blank"
     style={{ color: "#ff79c6" }}
     href="https://github.com/eindex"
@@ -28,7 +30,8 @@ const { iconOnly = false } = Astro.props;
     </svg>{!iconOnly ? "Github" : ""}</a
   ><a
     rel="me"
-    class="umami--click--contact-twitter"
+    data-umami-event="Contact Twitter"
+    data-umami-event-name="Twitter"
     target="_blank"
     style={{ color: "#1c9cea" }}
     href="https://twitter.com/@eindex_li"
@@ -51,7 +54,8 @@ const { iconOnly = false } = Astro.props;
     </svg>{!iconOnly ? "Twitter" : ""}</a
   >
   <a
-    class="umami--click--contact-linkedin"
+    data-umami-event="Contact LinkedIn"
+    data-umami-event-name="LinkedIn"
     rel="me"
     target="_blank"
     style={{ color: "#bd93f9" }}

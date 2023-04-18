@@ -14,7 +14,7 @@ const { name, logo, url, labels } = Astro.props;
   <a
     href={url}
     target="_blank"
-    class={`umami--click--project-${name
+    data-umami-event={`project-${name
       .toLowerCase()
       .trim()
       .replaceAll(" ", "-")}`}

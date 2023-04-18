@@ -45,7 +45,8 @@ const { links = defaultLinks, styles = {} } = Astro.props;
         links.map((link) => (
           <li>
             <a
-              class={`umami--click--${link.name}`}
+              data-umami-event={`Menu ${link.name}`}
+              data-umami-event-name={`${link.name}`}
               href={getLinkViaLocale(locale, link.url)}
             >
               {t(link.name)}
