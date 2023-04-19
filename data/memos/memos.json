@@ -64,5 +64,11 @@
     "updatedTs": 1681367568,
     "createdTs": 1681367568,
     "content": "[In Praise of Top Down Programming](https://www.i-programmer.info/professional-programmer/i-programmer/3864-in-praise-of-top-down-.html)\nI like top down too, always using this method to problem solving and programming, that can easy start from 0 to 1, but it may leading to problem which not have any solution yet, but already put effort on above level, that will making a issue.\n\nSo my suctions are flow the top down design, found the MVP scope, spike all leafs, start with most hard to archive one. \nThat way can making me avoid wast time."
+  },
+  "183": {
+    "id": 183,
+    "updatedTs": 1681897588,
+    "createdTs": 1681897588,
+    "content": "今年做了两个开源小工具，加上这个博客从 Zola 到 Astro 的翻新，主要目的其实是为了学习 #NodeJS ，顺便看一下做点产品玩玩。\n\n没想到昨天在 BuyMyCoffee 收到了 5$ 的赞助，真的让我很欣喜。我人生的第一笔赞助就来了。\n\n我觉得一个实用的产品，首先就要想清楚要解决什么问题，而不是随便拍脑袋去弄一些看起来很高级的玩意。实际上大多数用户并不关心你产品的技术实现，代码是不是优美。用户只在乎能不能提供价值，节省时间。"
   }
 }
