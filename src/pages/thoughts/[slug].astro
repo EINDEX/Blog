@@ -48,7 +48,7 @@ const { thought } = Astro.props;
   />
   <div class="thought-content">
     <h1 class="series p-name p-category">{t("thoughts")}</h1>
-    <Thought thought={thought} slug={`/thoughts/${slug}`} />
+    <Thought thought={thought} slug={`/thoughts/${slug}`} slugPage={true}/>
     <Comments locale={locale} slug={`/thoughts/${slug}`} />
   </div>
 </Layout>

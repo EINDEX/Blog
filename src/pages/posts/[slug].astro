@@ -55,6 +55,7 @@ const { Content } = await post.render();
   />
   <article class="h-entry">
     {post.data.cover ? <img class="u-photo" alt={post.data.title} src={post.data.cover} /> : <></>}
+    <a href="https://brid.gy/publish/mastodon"></a>
     <InvisableAuthor />
     {post.data.section || <span class="series p-category">{t(post.data.section)}</span>}
     <h1 class="title p-name">
