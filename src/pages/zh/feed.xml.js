@@ -21,7 +21,7 @@ export async function get(context) {
       return {
         title: post.data.title,
         description: post.data.description,
-        link: getLinkViaLocale(locale, "posts/" + getLastPartOfSlug(post.slug)),
+        link: getLinkViaLocale(locale, "/posts/" + getLastPartOfSlug(post.slug)),
         pubDate: post.data.updated || post.data.date,
       };
     }),

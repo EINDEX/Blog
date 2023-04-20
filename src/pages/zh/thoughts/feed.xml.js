@@ -21,7 +21,7 @@ export async function get(context) {
       return {
         title: thought.body,
         description: thought.body,
-        link: getLinkViaLocale(locale, "thoughts/" + getLastPartOfSlug(thought.slug)),
+        link: getLinkViaLocale(locale, "/thoughts/" + getLastPartOfSlug(thought.slug)),
         pubDate: thought.data.updated || thought.data.date,
       };
     }),
