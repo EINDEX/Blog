@@ -11,11 +11,11 @@
       "selectors_key": "thoughts"
     },
     {
-      "url": "https://eindex.me/cn/posts",
+      "url": "https://eindex.me/zh/posts",
       "page_rank": 5
     },
     {
-      "url": "https://eindex.me/cn/thoughts",
+      "url": "https://eindex.me/zh/thoughts",
       "page_rank": 5,
       "selectors_key": "thoughts"
     }
