@@ -2,7 +2,6 @@ import fs from "fs-extra";
 import parser from "xml2json";
 import Webmention from "@remy/webmention";
 
-const localSite = "data/webmentions/sitemap_cache.json";
 const feeds = [
   "dist/feed.xml",
   "dist/zh/feed.xml",
