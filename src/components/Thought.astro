@@ -26,7 +26,7 @@ const { Content } = await thought.render();
   <section
     class="main title e-content format sm:format-sm lg:format-lg dark:format-invert format-pre:m-0 format-pre:p-2 format-li:list-disc list-disc"
   >
-    {slugPage && <><a href="https://brid.gy/publish/mastodon"></a><a class="u-bridgy-fed" href="https://fed.brid.gy/"></a></>}
+    {slugPage && <><a class="u-bridgy-fed" href="https://fed.brid.gy/"></a></>}
     <Content components={{ a: ReplyA, link: ReplyA }} />
   </section>
   <WMStatus slug={slug} />
