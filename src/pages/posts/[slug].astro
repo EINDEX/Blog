@@ -55,8 +55,6 @@ const { Content } = await post.render();
   />
   <article class="h-entry">
     {post.data.cover ? <img class="u-photo" alt={post.data.title} src={post.data.cover} /> : <></>}
-    <a href="https://brid.gy/publish/mastodon"></a>
-    <a class="u-bridgy-fed" href="https://fed.brid.gy/"></a>
     <InvisableAuthor />
     {post.data.section || <span class="series p-category">{t(post.data.section)}</span>}
     <h1 class="title p-name">
@@ -72,6 +70,8 @@ const { Content } = await post.render();
     <section
       class="main e-content format dark:format-invert format-pre:m-0 format-pre:p-2 format-li:list-disc list-disc"
     >
+      <a href="https://brid.gy/publish/mastodon"></a>
+      <a class="u-bridgy-fed" href="https://fed.brid.gy/"></a>
       <Content components={{ pre: Code, a: MentionA, link: MentionA }} />
     </section>
     <WMStatus slug={`/posts/${slug}`} />
