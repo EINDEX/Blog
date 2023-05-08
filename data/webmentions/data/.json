@@ -16,5 +16,77 @@
     "like-of": "https://eindex.me/",
     "wm-property": "like-of",
     "wm-private": false
+  },
+  "1672087": {
+    "type": "entry",
+    "author": {
+      "type": "card",
+      "name": "EINDEX",
+      "photo": "https://webmention.io/avatar/social.eindex.me/32f7077727d2e8dd1c9aae828dff26734c5789d155a1822bebf4fb7568517988.png",
+      "url": "https://social.eindex.me/@eindex"
+    },
+    "url": "https://social.eindex.me/users/eindex#followed-https://eindex.me/",
+    "published": null,
+    "wm-received": "2023-05-08T09:36:02Z",
+    "wm-id": 1672087,
+    "wm-source": "https://fed.brid.gy/render?id=https%3A%2F%2Fsocial.eindex.me%2F237400d5-2028-45fa-ba19-d6189eb5e3a0",
+    "wm-target": "https://eindex.me/",
+    "mention-of": "https://eindex.me/",
+    "wm-property": "mention-of",
+    "wm-private": false
+  },
+  "1672089": {
+    "type": "entry",
+    "author": {
+      "type": "card",
+      "name": "EINDEX",
+      "photo": "https://webmention.io/avatar/social.eindex.me/32f7077727d2e8dd1c9aae828dff26734c5789d155a1822bebf4fb7568517988.png",
+      "url": "https://social.eindex.me/@eindex"
+    },
+    "url": "https://social.eindex.me/users/eindex#followed-https://eindex.me/",
+    "published": null,
+    "wm-received": "2023-05-08T10:02:57Z",
+    "wm-id": 1672089,
+    "wm-source": "https://fed.brid.gy/render?id=https%3A%2F%2Fsocial.eindex.me%2F67b5b18e-bff8-4286-b5bd-8ce4a524d037",
+    "wm-target": "https://eindex.me/",
+    "mention-of": "https://eindex.me/",
+    "wm-property": "mention-of",
+    "wm-private": false
+  },
+  "1672093": {
+    "type": "entry",
+    "author": {
+      "type": "card",
+      "name": "EINDEX",
+      "photo": "https://webmention.io/avatar/files.mastodon.social/e2d809897c2c8736163e391a0a3f5e0db103f3794f30b34a8c37d134493cac7c.png",
+      "url": "https://mastodon.social/@eindex"
+    },
+    "url": "https://mastodon.social/users/eindex#followed-https://eindex.me/",
+    "published": null,
+    "wm-received": "2023-05-08T10:10:41Z",
+    "wm-id": 1672093,
+    "wm-source": "https://fed.brid.gy/render?id=https%3A%2F%2Fmastodon.social%2F4c9630a9-ecf5-46f8-ac6c-2a3f679c5f73",
+    "wm-target": "https://eindex.me/",
+    "mention-of": "https://eindex.me/",
+    "wm-property": "mention-of",
+    "wm-private": false
+  },
+  "1672101": {
+    "type": "entry",
+    "author": {
+      "type": "card",
+      "name": "EINDEX",
+      "photo": "https://webmention.io/avatar/files.mastodon.social/e2d809897c2c8736163e391a0a3f5e0db103f3794f30b34a8c37d134493cac7c.png",
+      "url": "https://mastodon.social/@eindex"
+    },
+    "url": "https://mastodon.social/users/eindex#followed-https://eindex.me/",
+    "published": null,
+    "wm-received": "2023-05-08T10:59:34Z",
+    "wm-id": 1672101,
+    "wm-source": "https://fed.brid.gy/render?id=https%3A%2F%2Fmastodon.social%2F48346504-fad5-426c-bc8e-620e1a22e6b5",
+    "wm-target": "https://eindex.me/",
+    "mention-of": "https://eindex.me/",
+    "wm-property": "mention-of",
+    "wm-private": false
   }
 }
