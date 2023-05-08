@@ -88,5 +88,23 @@
     "mention-of": "https://eindex.me/",
     "wm-property": "mention-of",
     "wm-private": false
+  },
+  "1672124": {
+    "type": "entry",
+    "author": {
+      "type": "card",
+      "name": "EINDEX",
+      "photo": "https://webmention.io/avatar/media.cmx.edu.kg/f3be9db28ac42041fc3342f52c7d06545c15969a66e70af69dab36417f58f517.png",
+      "url": "https://m.cmx.im/@eindex"
+    },
+    "url": "https://m.cmx.im/users/eindex#followed-https://eindex.me/",
+    "published": null,
+    "wm-received": "2023-05-08T13:07:49Z",
+    "wm-id": 1672124,
+    "wm-source": "https://fed.brid.gy/render?id=https%3A%2F%2Fm.cmx.im%2F8807c7b2-f0f8-4de7-95f2-b3174839889b",
+    "wm-target": "https://eindex.me/",
+    "mention-of": "https://eindex.me/",
+    "wm-property": "mention-of",
+    "wm-private": false
   }
 }
