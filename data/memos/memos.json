@@ -82,5 +82,11 @@
     "updatedTs": 1684397983,
     "createdTs": 1684397983,
     "content": "Now Logseq Copilot have 100 star at Github./"
+  },
+  "207": {
+    "id": 207,
+    "updatedTs": 1685596573,
+    "createdTs": 1685596573,
+    "content": "刚才发现一个项目用的是 `docker compose` 而不是 `docker-compose`，正准备写PR改成 `docker-compose` 的时候查了一下，发现 [Migrate to Compose V2 | Docker Documentation](https://docs.docker.com/compose/migrate/)，原来在 v2 compose 是 docker 的一个 plugin 了，所以我才是被时代淘汰了的那个 😂。"
   }
 }
