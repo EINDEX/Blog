@@ -1,0 +1,81 @@
+---
+import { timeFormat } from "@utils/time";
+import Tags from "./Tags.astro";
+import {getLinkViaLocale, getLastPartOfSlug} from "@utils/slug";
+import i18next,  {t} from "i18next"
+import { getSummary } from "@utils/posts";
+
+
+const locale = i18next.language;
+
+const {newsletter} = Astro.props;
+
+const updatedAt = newsletter.data.updated || newsletter.data.date;
+
+const url = getLinkViaLocale(locale, `/newsletters/${getLastPartOfSlug(newsletter.slug)}`);
+---
+
+<newsletter-card class="newsletter-card" data-url={url}>
+  {
+    newsletter.data.cover ? <img width="96px" height="96px" class="cover" src={newsletter.data.cover} /> :<></>
+  }
+  <div class="newsletter-info">
+    {newsletter.data.series ?<span class="series">{t(`series:${newsletter.data.series}`)}</span>:<></>}
+  <h2>
+    <a 
+      href={url}
+    >
+    {newsletter.data.title}
+    </a>
+    </h2>
+    <p>
+      {newsletter.data.description || getSummary(locale, newsletter.body)}
+    </p>
+    <div class="newsletter-info-footer">
+      <Tags tags={newsletter.data.tags.slice(0, 3)}></Tags>
+      <time class="updated-at">{timeFormat(updatedAt, locale)}</time>
+    </div>
+  </div>
+</newsletter-card>
+
+<style lang="scss">
+  .newsletter-card {
+    @apply flex flex-col gap-2 overflow-hidden rounded-xl shadow-xl;
+    background-color: var(--card-background-color);
+    a {
+      @apply bg-none;
+    }
+
+    .newsletter-info {
+      @apply flex flex-col px-2 py-2 w-full justify-between;
+
+      .series {
+        @apply text-center;
+      }
+      h2 {
+        @apply text-2xl font-bold sm:text-xl;
+      }
+      time {
+        @apply self-end text-sm min-w-fit;
+      }
+      .newsletter-info-footer {
+        @apply flex flex-row sm:flex-col justify-between pt-2;
+      }
+    }
+
+    img {
+      @apply object-cover w-full aspect-[5/2];
+    }
+  }
+</style>
+
+<script>
+  class newsletterCard extends HTMLElement {
+    constructor() {
+      super();
+      this.addEventListener("click", ()=>{window.location.href = this.dataset.url})
+    }
+  }
+
+  customElements.define('newsletter-card', newsletterCard);
+</script>

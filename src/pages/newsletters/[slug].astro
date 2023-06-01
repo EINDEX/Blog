@@ -1,0 +1,110 @@
+---
+import { CollectionEntry } from "astro:content";
+import i18next, { changeLanguage, t } from "i18next";
+import { getLastPartOfSlug, getLinkViaLocale } from "@utils/slug";
+import Layout from "@layouts/Layout.astro";
+import { getNewsletters, getSummary } from "@utils/posts";
+import { timeFormat } from "@utils/time";
+import Code from "@components/mdx/Code.astro";
+import Breadcrumb from "@components/Breadcrumb.astro";
+import Comments from "@components/Comments.astro";
+import Tags from "@components/Tags.astro";
+import MentionA from "@components/webmentions/MentionA.astro";
+import InvisableAuthor from "@components/webmentions/InvisableAuthor.astro";
+import WMStatus from "@components/webmentions/WMStatus.astro";
+
+changeLanguage("en");
+
+const locale = i18next.language;
+export async function getStaticPaths() {
+    const locale = i18next.language;
+    const newsletters = await getNewsletters(locale);
+    return newsletters.map((newsletter) => {
+        const slug = getLastPartOfSlug(newsletter.slug);
+        return {
+            params: { slug: slug },
+            props: { newsletter },
+        };
+    });
+}
+type Props = CollectionEntry<`newsletters`>;
+const { slug } = Astro.params;
+const { newsletter } = Astro.props;
+const { Content } = await newsletter.render();
+---
+
+
+<Layout title={newsletter.data.title} seo={
+  {
+        title: newsletter.data.title,
+        description: newsletter.data.description || getSummary(locale, newsletter.body),
+        image: newsletter.data.cover,
+        url: `/newsletters/${slug}`,
+        date: newsletter.data.date,
+        updated: newsletter.data.updated,
+        keywords: newsletter.data.tags,
+      }
+}>
+<Breadcrumb
+  breadcrumb={[
+    {
+      url:  `/newsletters`,
+      name: "newsletters",
+    },
+  ]}
+  />
+  <article class="h-entry">
+    {newsletter.data.cover ? <img class="u-photo" alt={newsletter.data.title} src={newsletter.data.cover} /> : <></>}
+    <InvisableAuthor />
+    {newsletter.data.section || <span class="series p-category">{t(newsletter.data.section)}</span>}
+    <h1 class="title p-name">
+      {newsletter.data.title}<a class="u-url" href={getLinkViaLocale(locale, `/newsletters/${slug}`)}
+      ></a>
+    </h1>
+    <div class="newsletter-meta">
+        <p class="p-summary">{newsletter.data.description}</p>
+      <time class="dt-published" datetime={newsletter.data.date.toISOString()} >{timeFormat(newsletter.data.date, locale)}</time>
+    </div>
+    <hr/>
+    <Tags tags={newsletter.data.tags}></Tags>
+    <section
+      class="main e-content format dark:format-invert format-pre:m-0 format-pre:p-2 format-li:list-disc list-disc"
+    >
+      <a class="u-bridgy-fed" href="https://fed.brid.gy/"></a>
+      <Content components={{a: MentionA, link: MentionA }} />
+    </section>
+    <WMStatus slug={`/newsletters/${slug}`} />
+  </article>
+  <Comments slug={`/newsletters/${slug}`} />
+</Layout>
+
+<style lang="scss">
+  article {
+    @apply flex flex-col w-full gap-4;
+
+    img {
+      @apply w-full rounded-lg top-8 -z-10;
+    }
+    h1 {
+      @apply text-3xl font-bold text-center;
+    }
+
+    .newsletter-meta {
+      @apply flex flex-col gap-2;
+      color: var(--text-color);
+
+      time {
+        @apply text-right;
+      }
+    }
+    section.main.e-content {
+      @apply max-w-full list-disc;
+      color: var(--text-color);
+      background-color: var(--bg-color);
+    }
+    
+  
+  }
+
+
+</style>

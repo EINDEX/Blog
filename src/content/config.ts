@@ -13,7 +13,7 @@ const postSchema = z.object({
     .transform((str) => new Date(str))
     .optional(),
   description: z.string().optional(),
-  tags: z.array(z.string()).optional(),
+  tags: z.array(z.string()).optional().default([]),
   series: z.string().optional(),
   katex: z.boolean().optional(),
   draft: z.boolean().optional().default(false),
@@ -30,7 +30,7 @@ const thoughtSchema = z.object({
     .optional(),
   description: z.string().optional(),
   draft: z.boolean().optional().default(true),
-  tags: z.array(z.string()).optional(),
+  tags: z.array(z.string()).optional().default([]),
   pssoes: z.array(z.string()).optional().default([]),
 });
 
@@ -42,7 +42,7 @@ const newsletterSchema = z.object({
     .transform((str) => new Date(str))
     .optional(),
   description: z.string().optional(),
-  tags: z.array(z.string()).optional(),
+  tags: z.array(z.string()).optional().default([]),
   series: z.string().optional(),
   katex: z.boolean().optional(),
   draft: z.boolean().optional().default(false),

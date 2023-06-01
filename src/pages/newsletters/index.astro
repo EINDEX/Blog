@@ -1,0 +1,38 @@
+---
+import i18next, { changeLanguage, t } from "i18next";
+import Layout from "@layouts/Layout.astro";
+import { getNewsletters } from "@utils/posts";
+import NewletterCard from "@components/NewletterCard.astro";
+
+changeLanguage("en");
+
+const locale = i18next.language;
+const newsletters = await getNewsletters(locale);
+---
+
+<Layout
+  title={t("newsletters")}
+  seo={{
+    title: t("newsletters"),
+    description: t("newsletters"),
+    image: "https://eindex.me/images/avatar.png",
+    url: "/newsletters",
+  }}
+>
+  <h1 class="title">{t("newsletters")}</h1>
+  <div class="newsletters">
+    {newsletters.map((newsletter) => <NewletterCard locale={locale} newsletter={newsletter} />)}
+  </div>
+
+  <p slot="sidebar"></p>
+</Layout>
+
+<style lang="scss">
+  .title {
+    @apply text-4xl font-bold text-center;
+  }
+
+  .newsletters {
+    @apply flex flex-col gap-4 pt-4;
+  }
+</style>

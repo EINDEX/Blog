@@ -4,11 +4,11 @@ export function sortViaUpdated(
   a:
     | CollectionEntry<"posts">
     | CollectionEntry<"thoughts">
-    | CollectionEntry<"newsletter">,
+    | CollectionEntry<"newsletters">,
   b:
     | CollectionEntry<"posts">
     | CollectionEntry<"thoughts">
-    | CollectionEntry<"newsletter">,
+    | CollectionEntry<"newsletters">,
   asc: boolean = false
 ) {
   return (
@@ -24,9 +24,6 @@ export async function getPosts(
     await getCollection("posts")
   )
     .filter((post) => post.slug.startsWith(locale))
-    .filter((post) => {
-      return post.data.draft !== true || import.meta.env.MODE === "development";
-    });
 
   return posts.sort((a, b) => sortViaUpdated(a, b, false));
 }
@@ -38,6 +35,19 @@ export async function getThoughts(
     await getCollection("thoughts")
   ).filter((thought) => thought.slug.startsWith(locale));
   return thoughts.sort((a, b) => sortViaUpdated(a, b, false));
+}
+
+export async function getNewsletters(
+  locale: string
+): Promise<CollectionEntry<"newsletters">[]> {
+  const newsletters = await (
+    await getCollection("newsletters")
+  )
+    .filter((post) => post.slug.startsWith(locale))
+  if (newsletters.length == 0) {
+    return []
+  }
+  return newsletters.sort((a, b) => sortViaUpdated(a, b, false));
 }
 
 type project = {

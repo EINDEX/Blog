@@ -7,6 +7,8 @@ const feeds = [
   "dist/zh/feed.xml",
   "dist/thoughts/feed.xml",
   "dist/zh/thoughts/feed.xml",
+  "dist/newsletters/feed.xml",
+  "dist/zh/newsletters/feed.xml",
 ];
 
 const wm = new Webmention({ limit: 20, send: true });
