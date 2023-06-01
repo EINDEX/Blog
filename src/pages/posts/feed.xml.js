@@ -1,28 +1,28 @@
 import rss from "@astrojs/rss";
-import { getThoughts } from "@utils/posts";
+import { getPosts } from "@utils/posts";
 import { getLinkViaLocale, getLastPartOfSlug } from "@utils/slug";
 
-const locale = "zh";
+const locale = "en";
 
 export async function get(context) {
-  const thoughts = await getThoughts(locale);
+  const posts = await getPosts(locale);
 
   return rss({
     // `<title>` field in output xml
-    title: "EINDEX's Thoughts",
+    title: "EINDEX's Posts",
     // `<description>` field in output xml
-    description: "EINDEX's Thoughts",
+    description: "EINDEX's Posts",
     // Pull in your project "site" from the endpoint context
     // https://docs.astro.build/en/reference/api-reference/#contextsite
     site: context.site,
     // Array of `<item>`s in output xml
     // See "Generating items" section for examples using content collections and glob imports
-    items: thoughts.map((thought) => {
+    items: posts.map((post) => {
       return {
-        title: thought.body,
-        description: thought.body,
-        link: getLinkViaLocale(locale, "/thoughts/" + getLastPartOfSlug(thought.slug)),
-        pubDate: thought.data.updated || thought.data.date,
+        title: post.data.title,
+        description: post.data.description,
+        link: getLinkViaLocale(locale, "/posts/" + getLastPartOfSlug(post.slug)),
+        pubDate:  post.data.updated || post.data.date,
       };
     }),
 
