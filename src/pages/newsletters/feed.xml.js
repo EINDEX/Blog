@@ -17,12 +17,12 @@ export async function get(context) {
     site: context.site,
     // Array of `<item>`s in output xml
     // See "Generating items" section for examples using content collections and glob imports
-    items: newsletter.map((thought) => {
+    items: newsletter.map((newsletter) => {
       return {
-        title: thought.body,
-        description: thought.body,
-        link: getLinkViaLocale(locale, "/newsletters/" + getLastPartOfSlug(thought.slug)),
-        pubDate: thought.data.updated || thought.data.date,
+        title: newsletter.data.title,
+        description: newsletter.data.description,
+        link: getLinkViaLocale(locale, "/newsletters/" + getLastPartOfSlug(newsletter.slug)),
+        pubDate: newsletter.data.updated || newsletter.data.date,
       };
     }),
 

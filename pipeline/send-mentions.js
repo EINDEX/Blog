@@ -17,12 +17,24 @@ const loadFeeds = async () => {
   const data = [];
   for (const feed of feeds) {
     const rss = JSON.parse(parser.toJson(fs.readFileSync(feed)));
-    rss.rss.channel.item.forEach((item) => {
-      data.push({
-        loc: item.link,
-        pubDate: item.pubDate,
+    if(!!!rss.rss.channel.hasOwnProperty('item')){
+       continue
+    };
+
+    if (Array.isArray(rss.rss.channel.item)) {
+      rss.rss.channel.item.forEach((item) => {
+        data.push({
+          loc: item.link,
+          pubDate: item.pubDate,
+        });
       });
-    });
+    } else {
+      data.push({
+        loc: rss.rss.channel.item.link,
+        pubDate: rss.rss.channel.item.pubDate,
+      })
+    }
+    
   }
   return data;
 };
