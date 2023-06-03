@@ -24,7 +24,9 @@ export async function getPosts(
     await getCollection("posts")
   )
     .filter((post) => post.slug.startsWith(locale))
-
+    .filter((post) => {
+      return post.data.draft !== true || import.meta.env.MODE === "development";
+    });
   return posts.sort((a, b) => sortViaUpdated(a, b, false));
 }
 
@@ -44,8 +46,11 @@ export async function getNewsletters(
     await getCollection("newsletters")
   )
     .filter((post) => post.slug.startsWith(locale))
+    .filter((post) => {
+      return post.data.draft !== true || import.meta.env.MODE === "development";
+    });
   if (newsletters.length == 0) {
-    return []
+    return [];
   }
   return newsletters.sort((a, b) => sortViaUpdated(a, b, false));
 }
