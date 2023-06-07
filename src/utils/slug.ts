@@ -4,7 +4,7 @@ export function getLastPartOfSlug(slug: string): string {
 }
 
 export function getLinkViaLocale(locale: string, slug: string): string {
-  const slugWithOutLocale = slug.replace(`/${locale}`, "");
+  const slugWithOutLocale = slug.replace(`/${locale}/`, "/");
   if (locale === "en") {
     return `${slugWithOutLocale}`;
   } else {

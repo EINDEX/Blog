@@ -29,7 +29,14 @@ const dateFormat = (timestamp) => {
   return new Date(timestamp * 1000).toISOString();
 };
 
-const contentFormat = (content) => {
+const contentFormat = (content, language) => {
+  if (language === "zh") {
+    return content
+    .replace(/#(\w+) /g, "[#$1](/zh/tags/$1) ")
+    .replace(/]\(\/tags\/.*\)/g, function (match) {
+      return match.toLowerCase();
+    });
+  }
   return content
     .replace(/#(\w+) /g, "[#$1](/tags/$1) ")
     .replace(/]\(\/tags\/.*\)/g, function (match) {
@@ -45,7 +52,8 @@ const fetchTags = (content) => {
 const makeThoughts = async (memo) => {
   const chineseRegex = /[\u4e00-\u9fa5]/;
   const findChinese = chineseRegex.exec(memo.content);
-  const filename = `src/content/thoughts/${findChinese ? "zh" : "en"}/${
+  const language = findChinese ? "zh" : "en";
+  const filename = `src/content/thoughts/${language}/${
     memo.id
   }.mdx`;
   const template = `---
@@ -55,7 +63,7 @@ tags: ${JSON.stringify(fetchTags(memo.content))}
 draft: false
 ---
 
-${contentFormat(memo.content)}
+${contentFormat(memo.content, language)}
 `;
   await fs.writeFileSync(filename, template);
   console.log("add/update", filename);
