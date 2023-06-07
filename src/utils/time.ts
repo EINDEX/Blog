@@ -2,14 +2,14 @@
 // retune time format May Day, yyyy when locale is en
 
 const formatTable = {
-  cn: { year: "numeric", month: "2-digit", day: "2-digit" },
+  zh: { year: "numeric", month: "2-digit", day: "2-digit" },
   en: { year: "numeric", month: "short", day: "numeric" },
-  "cn-no-day": { year: "numeric", month: "2-digit" },
+  "zh-no-day": { year: "numeric", month: "2-digit" },
   "en-no-day": { year: "numeric", month: "short" },
 };
 
 const localeToTime = {
-  cn: "zh-CN",
+  zh: "zh-CN",
   en: "en-US",
 };
 
