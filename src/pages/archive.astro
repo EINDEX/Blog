@@ -1,6 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import { getPosts } from "@utils/posts";
+import { getLastPartOfSlug, getLinkViaLocale } from "@utils/slug";
 import { timeFormat } from "@utils/time";
 import i18next, { changeLanguage, t } from "i18next";
 import _ from "lodash";
@@ -23,13 +24,18 @@ const sortedPostGroupKeys = Object.keys(groupedPosts).sort((a, b) => {
         {
           sortedPostGroupKeys.map((month) => (
             <div class="posts-in-month">
-              <h2>{month}</h2>
+              <h2>
+                {timeFormat(groupedPosts[month][0].data.date, locale, false)}
+              </h2>
               <ul>
                 {groupedPosts[month].map((post) => (
                   <li>
                     <a
                       class="post"
-                      href={`/posts/${post.data.slug}`}
+                      href={getLinkViaLocale(
+                        locale,
+                        `/posts/${getLastPartOfSlug(post.slug)}`
+                      )}
                     >
                       {post.data.title}
                     </a>
