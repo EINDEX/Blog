@@ -9,7 +9,7 @@ import Code from "@components/mdx/Code.astro";
 import Breadcrumb from "@components/Breadcrumb.astro";
 import Comments from "@components/Comments.astro";
 import Tags from "@components/Tags.astro";
-import MentionA from "@components/webmentions/MentionA.astro";
+import A from "@components/webmentions/A.astro";
 import InvisableAuthor from "@components/webmentions/InvisableAuthor.astro";
 import WMStatus from "@components/webmentions/WMStatus.astro";
 
@@ -71,7 +71,7 @@ const { Content } = await newsletter.render();
       class="main e-content format dark:format-invert format-pre:m-0 format-pre:p-2 format-li:list-disc list-disc"
     >
       <a class="u-bridgy-fed" href="https://fed.brid.gy/"></a>
-      <Content components={{a: MentionA, link: MentionA }} />
+      <Content components={{a: A, link: A }} />
     </section>
     <WMStatus slug={`/newsletters/${slug}`} />
   </article>

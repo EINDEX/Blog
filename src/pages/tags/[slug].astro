@@ -6,14 +6,13 @@ import i18next, { changeLanguage } from "i18next";
 import Project from "@components/Project.astro";
 import { timeFormat } from "@utils/time";
 import _ from "lodash";
-import MarkdownIt from "markdown-it";
 import { getLinkViaLocale, getLastPartOfSlug } from "@utils/slug";
 import Breadcrumb from "@components/Breadcrumb.astro";
+import Thought from "@components/Thought.astro";
 
 changeLanguage("en");
 
 const locale = i18next.language;
-const parser = MarkdownIt();
 export async function getStaticPaths() {
     const locale = i18next.language;
     const allTags = await getAllTags(locale);
@@ -80,17 +79,14 @@ const groupedThoughts = _.groupBy(thoughts, (t) => timeFormat(t.data.date, local
           Object.keys(groupedThoughts).map((date) => (
             <>
               <div class="thoughts-in-day">
-                <time>{date}</time>
                 {groupedThoughts[date].map((t) => (
-                  <article>
-                    <p
-                      class="thought e-content p-summary"
-                      set:html={parser.render(t.body)}
-                    />
-                    <a href={getLinkViaLocale(locale, `/thoughts/${getLastPartOfSlug(t.slug)}`)}>
-                      Comments
-                    </a>
-                  </article>
+                  <Thought
+                    thought={t}
+                    slug={getLinkViaLocale(
+                      locale,
+                      `/thoughts/${getLastPartOfSlug(t.slug)}`
+                    )}
+                  />
                 ))}
               </div>
             </>

@@ -1,0 +1,32 @@
+---
+const props = Astro.props;
+const text = await Astro.slots.render("default")
+
+function mentionType(text: string) : string {
+  if (text.startsWith("(reply)")) {
+    return "u-in-reply-to";
+  } else if (text.startsWith("(like)")) {
+    return "u-like-of";
+  } else if (text.startsWith("(repost)")) {
+    return "u-repost-of";
+  } else if (text.startsWith("(bookmark)")) {
+    return "u-bookmark-of";
+  } else {
+    return "u-mention-of";
+  }
+}
+
+function cleanUp(text: string) : string  {
+  return text.replace(/\(reply\)|\(like\)|\(repost\)|\(bookmark\)/, "").trim();
+}
+
+---
+
+{
+  props.href.startsWith(Astro.site.origin) || props.href.startsWith("/") ? (
+    // same site
+    <a {...props}>{text}</a>
+  ) : ( 
+    <a class={mentionType(text)} {...props}>{cleanUp(text)}</a>
+  )
+}
