@@ -1,11 +1,13 @@
 ---
+title: 青甘大环线
 slug: qinggan-trip-2023
+description: 
 series: 
 tags:
   - trip
 cover: 
-published: true
-publishedAt: 2023-09-15T18:00:00
+draft: false
+date: 2023-09-15T18:00:00
 ---
 
 
