@@ -32,7 +32,7 @@ const url = getLinkViaLocale(locale, `/posts/${getLastPartOfSlug(post.slug)}`);
       {post.data.description || getSummary(locale, post.body)}
     </p>
     <div class="post-info-footer">
-      <Tags tags={post.data.tags.slice(0, 3)}></Tags>
+      <Tags tags={post.data.tags && post.data.tags.slice(0, 3)}></Tags>
       <time class="updated-at">{timeFormat(updatedAt, locale)}</time>
     </div>
   </div>

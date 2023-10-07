@@ -46,12 +46,13 @@ export default defineConfig({
     astroI18next(),
     sitemap(),
     mdx({
-      syntaxHighlight: "false",
+      syntaxHighlight: "shiki",
       shikiConfig: {
         theme: "dracula",
       },
       remarkPlugins: [remarkMath, remarkToc],
       rehypePlugins: [rehypeKatex],
+      gfm: true,
     }),
     react(),
     tailwind({ config: { applyBaseStyles: false } }),

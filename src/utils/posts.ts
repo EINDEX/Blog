@@ -3,17 +3,15 @@ import { CollectionEntry, getCollection } from "astro:content";
 export function sortViaUpdated(
   a:
     | CollectionEntry<"posts">
-    | CollectionEntry<"thoughts">
-    | CollectionEntry<"newsletters">,
+    | CollectionEntry<"thoughts">,
   b:
     | CollectionEntry<"posts">
-    | CollectionEntry<"thoughts">
-    | CollectionEntry<"newsletters">,
+    | CollectionEntry<"thoughts">,
   asc: boolean = false
 ) {
   return (
     (asc ? 1 : -1) *
-    ((a.data.updated || a.data.date) - (b.data.updated || b.data.date))
+    ((a.data.date - b.data.date))
   );
 }
 
@@ -21,12 +19,10 @@ export async function getPosts(
   locale: string
 ): Promise<CollectionEntry<"posts">[]> {
   const posts = await (
-    await getCollection("posts")
+    await getCollection("posts", ({data, id })=> {
+      return id.startsWith(locale) && (data.draft !== true || import.meta.env.MODE === "development")
+    })
   )
-    .filter((post) => post.slug.startsWith(locale))
-    .filter((post) => {
-      return post.data.draft !== true || import.meta.env.MODE === "development";
-    });
   return posts.sort((a, b) => sortViaUpdated(a, b, false));
 }
 
@@ -37,22 +33,6 @@ export async function getThoughts(
     await getCollection("thoughts")
   ).filter((thought) => thought.slug.startsWith(locale));
   return thoughts.sort((a, b) => sortViaUpdated(a, b, false));
-}
-
-export async function getNewsletters(
-  locale: string
-): Promise<CollectionEntry<"newsletters">[]> {
-  const newsletters = await (
-    await getCollection("newsletters")
-  )
-    .filter((post) => post.slug.startsWith(locale))
-    .filter((post) => {
-      return post.data.draft !== true || import.meta.env.MODE === "development";
-    });
-  if (newsletters.length == 0) {
-    return [];
-  }
-  return newsletters.sort((a, b) => sortViaUpdated(a, b, false));
 }
 
 type project = {
