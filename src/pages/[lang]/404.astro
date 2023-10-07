@@ -2,12 +2,12 @@
 import Layout from "@layouts/Layout.astro";
 import { getPosts } from "@utils/posts";
 import { timeFormat } from "@utils/time";
-import i18next, { changeLanguage, t } from "i18next";
 import _ from "lodash";
 
-changeLanguage("en");
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
 
-const locale = i18next.language;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <Layout title={t("404")}>

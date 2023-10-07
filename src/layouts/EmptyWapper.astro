@@ -5,12 +5,15 @@ import Umami from "@components/analytics/umami.astro";
 import Cloudflare from "@components/analytics/Cloudflare.astro";
 import SEO from "@components/SEO.astro";
 import "../base.scss";
-import i18next from "i18next";
 import Webpushier from "@components/push/Webpushier.astro";
 import { getLinkViaLocale } from "@utils/slug";
 import GoogleAdsHead from "@components/google-ads/head.astro";
 
-const locale = i18next.language;
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const locale = lang;
 export interface Props {
   title: string;
   seo?: any;
@@ -19,7 +22,7 @@ export interface Props {
 const { title, seo = {} } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang={locale}>
   <head>
     <meta charset="UTF-8" />
@@ -41,12 +44,6 @@ const { title, seo = {} } = Astro.props;
     <link rel="mask-icon" href="/maskable-icon.png" color="#323232" />
     <link rel="webmention" href="https://webmention.io/eindex.me/webmention" />
     <link rel="pingback" href="https://webmention.io/eindex.me/xmlrpc" />
-    <link
-      rel="preload"
-      href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/lxgwwenkai-regular.css"
-      as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
-    />
     <link
       rel="alternate"
       type="application/rss+xml"
@@ -72,5 +69,29 @@ const { title, seo = {} } = Astro.props;
       is:inline
       src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"
     ></script>
+  </body>
+</html>
+      is:inline
+      src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"
+    ></script>
+  </body>
+</html>
+      is:inline
+      src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"
+    ></>
+  </body>
+</html>
+</html>
+    <Cloudflare />
+    <script
+      is:inline
+      src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"
+    ></script>
+  </body>
+</html>
+      src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"
+    ></script>
+  </body>
+</html>
   </body>
 </html>

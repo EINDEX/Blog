@@ -1,14 +1,14 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import i18next, { changeLanguage, t } from "i18next";
 import _ from "lodash";
 import Tags from "@components/Tags.astro";
 import { getAllTags } from "@utils/tags";
 
-changeLanguage("en");
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
 
-const locale = i18next.language;
-const allTags = await getAllTags(locale);
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const allTags = await getAllTags(lang);
 ---
 
 <Layout

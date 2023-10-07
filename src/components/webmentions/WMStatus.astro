@@ -2,11 +2,13 @@
 import _ from "lodash";
 import fs from "fs-extra";
 
-import i18next from "i18next";
 import { getLinkViaLocale } from "@utils/slug";
-const locale = i18next.language;
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
 
-const slug = getLinkViaLocale(locale, Astro.props.slug);
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const slug = getLinkViaLocale(lang, Astro.props.slug);
 
 let webmentions = [];
 try {

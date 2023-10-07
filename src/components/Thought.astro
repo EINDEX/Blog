@@ -1,12 +1,15 @@
 ---
-import i18next, { t } from "i18next";
+
 import { getLinkViaLocale } from "@utils/slug";
 import { timeFormat } from "@utils/time";
 import A from "@components/webmentions/A.astro";
 import InvisableAuthor from "@components/webmentions/InvisableAuthor.astro";
 import WMStatus from "@components/webmentions/WMStatus.astro";
 
-const locale = i18next.language;
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const { thought, slug, showDate = true, slugPage=false } = Astro.props;
 const { Content } = await thought.render();
@@ -15,9 +18,9 @@ const { Content } = await thought.render();
 <article class="h-entry">
   <InvisableAuthor />
   <div class="thought-meta">
-    <a class="u-url" href={getLinkViaLocale(locale, slug)}>
+    <a class="u-url" href={getLinkViaLocale(lang, slug)}>
       <time class="dt-updated" datetime={thought.data.updated.toISOString()}
-        >{showDate && timeFormat(thought.data.updated, locale)}</time
+        >{showDate && timeFormat(thought.data.updated, lang)}</time
       >
       <time class="dt-published" datetime={thought.data.date.toISOString()}
       ></time></a

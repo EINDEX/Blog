@@ -2,17 +2,17 @@
 import { timeFormat } from "@utils/time";
 import Tags from "./Tags.astro";
 import {getLinkViaLocale, getLastPartOfSlug} from "@utils/slug";
-import i18next,  {t} from "i18next"
 import { getSummary } from "@utils/posts";
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
 
-
-const locale = i18next.language;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const {post} = Astro.props;
 
 const updatedAt = post.data.updated || post.data.date;
 
-const url = getLinkViaLocale(locale, `/posts/${getLastPartOfSlug(post.slug)}`);
+const url = getLinkViaLocale(lang, `/posts/${getLastPartOfSlug(post.slug)}`);
 ---
 
 <post-card class="post-card" data-url={url}>
@@ -29,11 +29,11 @@ const url = getLinkViaLocale(locale, `/posts/${getLastPartOfSlug(post.slug)}`);
     </a>
     </h2>
     <p>
-      {post.data.description || getSummary(locale, post.body)}
+      {post.data.description || getSummary(lang, post.body)}
     </p>
     <div class="post-info-footer">
       <Tags tags={post.data.tags && post.data.tags.slice(0, 3)}></Tags>
-      <time class="updated-at">{timeFormat(updatedAt, locale)}</time>
+      <time class="updated-at">{timeFormat(updatedAt, lang)}</time>
     </div>
   </div>
 </post-card>

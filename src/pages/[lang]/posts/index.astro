@@ -1,13 +1,14 @@
 ---
-import i18next, { changeLanguage, t } from "i18next";
+
 import Layout from "@layouts/Layout.astro";
 import { getPosts } from "@utils/posts";
 import PostCard from "@components/PostCard.astro";
 
-changeLanguage("en");
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
 
-const locale = i18next.language;
-const posts = await getPosts(locale);
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const posts = await getPosts(lang);
 ---
 
 <Layout
@@ -21,7 +22,7 @@ const posts = await getPosts(locale);
 >
   <h1 class="title">{t("posts")}</h1>
   <div class="posts">
-    {posts.map((post) => <PostCard locale={locale} post={post} />)}
+    {posts.map((post) => <PostCard locale={lang} post={post} />)}
   </div>
 
   <p slot="sidebar"></p>

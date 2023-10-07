@@ -1,8 +1,9 @@
 ---
-import i18next, { t } from "i18next";
 import { getLinkViaLocale } from "@utils/slug";
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
 
-const locale = i18next.language;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const { breadcrumb } = Astro.props;
 ---
@@ -16,7 +17,7 @@ const { breadcrumb } = Astro.props;
             <a
               property="item"
               typeof="WebPage"
-              href={getLinkViaLocale(locale, item.url)}
+              href={getLinkViaLocale(lang, item.url)}
             >
               <span property="name">{t(item.name)}</span>
             </a>

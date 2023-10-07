@@ -1,6 +1,5 @@
 ---
 import { CollectionEntry } from "astro:content";
-import i18next, { changeLanguage, t } from "i18next";
 import { getLastPartOfSlug, getLinkViaLocale } from "@utils/slug";
 import Layout from "@layouts/Layout.astro";
 import { getPosts, getSummary } from "@utils/posts";
@@ -13,11 +12,14 @@ import A from "@components/webmentions/A.astro";
 import InvisableAuthor from "@components/webmentions/InvisableAuthor.astro";
 import WMStatus from "@components/webmentions/WMStatus.astro";
 
-changeLanguage("en");
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
 
-const locale = i18next.language;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const locale = lang;
 export async function getStaticPaths() {
-    const locale = i18next.language;
+    const locale = lang;
     const posts = await getPosts(locale);
     return posts.map((post) => {
         const slug = getLastPartOfSlug(post.slug);

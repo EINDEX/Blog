@@ -7,11 +7,16 @@ const blog = defineCollection({
 
 const postSchema = z.object({
   title: z.string(),
-  date: z.date().transform((str) => new Date(str)),
+  date: z
+    .date()
+    .or(z.string())
+    .transform((str) => new Date(str)),
   updated: z
-    .date().nullable()
-    .transform((str) => new Date(str))
-    .optional(),
+    .date()
+    .or(z.string())
+    .optional()
+    .nullable()
+    .transform((str) => new Date(str)),
   description: z.string().nullable().optional(),
   tags: z.array(z.string()).nullable().optional().default([]),
   series: z.string().nullable().optional(),
@@ -49,7 +54,6 @@ const pages = defineCollection({
 const thoughts = defineCollection({
   schema: thoughtSchema,
 });
-
 
 export const collections = {
   posts: posts,

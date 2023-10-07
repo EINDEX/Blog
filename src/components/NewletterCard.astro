@@ -2,17 +2,19 @@
 import { timeFormat } from "@utils/time";
 import Tags from "./Tags.astro";
 import {getLinkViaLocale, getLastPartOfSlug} from "@utils/slug";
-import i18next,  {t} from "i18next"
+
 import { getSummary } from "@utils/posts";
 
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
 
-const locale = i18next.language;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const {newsletter} = Astro.props;
 
 const updatedAt = newsletter.data.updated || newsletter.data.date;
 
-const url = getLinkViaLocale(locale, `/newsletters/${getLastPartOfSlug(newsletter.slug)}`);
+const url = getLinkViaLocale(lang, `/newsletters/${getLastPartOfSlug(newsletter.slug)}`);
 ---
 
 <newsletter-card class="newsletter-card" data-url={url}>
@@ -29,11 +31,11 @@ const url = getLinkViaLocale(locale, `/newsletters/${getLastPartOfSlug(newslette
     </a>
     </h2>
     <p>
-      {newsletter.data.description || getSummary(locale, newsletter.body)}
+      {newsletter.data.description || getSummary(lang, newsletter.body)}
     </p>
     <div class="newsletter-info-footer">
       <Tags tags={newsletter.data.tags.slice(0, 3)}></Tags>
-      <time class="updated-at">{timeFormat(updatedAt, locale)}</time>
+      <time class="updated-at">{timeFormat(updatedAt, lang)}</time>
     </div>
   </div>
 </newsletter-card>

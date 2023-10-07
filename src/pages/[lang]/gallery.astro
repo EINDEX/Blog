@@ -1,11 +1,13 @@
 ---
-import i18next, { changeLanguage, t } from "i18next";
 import EmptyWapper from "@layouts/EmptyWapper.astro";
 import Navbar from "@components/layouts/Navbar.astro";
 import { getGalleryData } from "@utils/dataReader";
 import { Image } from "@astrojs/image/components";
 
-changeLanguage("en");
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const images = await getGalleryData();
 ---

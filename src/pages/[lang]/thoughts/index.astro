@@ -1,15 +1,18 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import { getThoughts } from "@utils/posts";
-import i18next, { changeLanguage, t } from "i18next";
+
 import { getLinkViaLocale, getLastPartOfSlug } from "@utils/slug";
 import { timeFormat } from "@utils/time";
 import _ from "lodash";
 import Thought from "@components/Thought.astro";
 
-changeLanguage("en");
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
 
-const locale = i18next.language;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const locale = lang;
 const thoughts = await getThoughts(locale);
 const groupedThoughts = _.groupBy(thoughts, (t) => timeFormat(t.data.date, locale));
 ---

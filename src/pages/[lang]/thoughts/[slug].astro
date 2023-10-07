@@ -1,6 +1,5 @@
 ---
 import { CollectionEntry } from "astro:content";
-import i18next, { changeLanguage, t } from "i18next";
 import Layout from "@layouts/Layout.astro";
 import { getThoughts, getSummary } from "@utils/posts";
 import Breadcrumb from "@components/Breadcrumb.astro";
@@ -8,11 +7,14 @@ import Comments from "@components/Comments.astro";
 import { getLastPartOfSlug } from "@utils/slug";
 import Thought from "@components/Thought.astro";
 
-changeLanguage("en");
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
 
-const locale = i18next.language;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const locale = lang;
 export async function getStaticPaths() {
-    const locale = i18next.language;
+    const locale = lang;
     const thoughts = await getThoughts(locale);
     return thoughts.map((thought) => {
         const slug = getLastPartOfSlug(thought.slug);

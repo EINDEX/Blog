@@ -3,12 +3,15 @@ import Layout from "@layouts/Layout.astro";
 import { getPosts } from "@utils/posts";
 import { getLastPartOfSlug, getLinkViaLocale } from "@utils/slug";
 import { timeFormat } from "@utils/time";
-import i18next, { changeLanguage, t } from "i18next";
+
 import _ from "lodash";
 
-changeLanguage("en");
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
 
-const locale = i18next.language;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const locale = lang;
 const posts = await getPosts(locale);
 const groupedPosts = _.groupBy(posts, (post) => timeFormat(post.data.date, locale, false));
 const sortedPostGroupKeys = Object.keys(groupedPosts).sort((a, b) => {

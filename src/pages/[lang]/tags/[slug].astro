@@ -2,19 +2,20 @@
 import Layout from "@layouts/Layout.astro";
 import { tagSlug } from "@utils/slug";
 import { getAllByTag, getAllTags } from "@utils/tags";
-import i18next, { changeLanguage } from "i18next";
 import Project from "@components/Project.astro";
 import { timeFormat } from "@utils/time";
 import _ from "lodash";
 import { getLinkViaLocale, getLastPartOfSlug } from "@utils/slug";
 import Breadcrumb from "@components/Breadcrumb.astro";
 import Thought from "@components/Thought.astro";
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
 
-changeLanguage("en");
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
-const locale = i18next.language;
+const locale = lang;
 export async function getStaticPaths() {
-    const locale = i18next.language;
+    const locale = lang;
     const allTags = await getAllTags(locale);
     return allTags.map((tag) => {
         return {

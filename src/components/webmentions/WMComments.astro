@@ -1,9 +1,10 @@
 ---
 import { timeFormat } from "@utils/time";
 import fs from "fs-extra";
-import i18next from "i18next";
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
 
-const locale = i18next.language;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const { slug } = Astro.props;
 
@@ -69,7 +70,7 @@ webmentionsKeys.sort();
               </a>
             </div>
             <time>
-              {timeFormat(new Date(webmentions[id].published), locale)}
+              {timeFormat(new Date(webmentions[id].published), lang)}
             </time>
           </div>
           <div class="content">{webmentions[id].content.text}</div>
@@ -102,7 +103,7 @@ webmentionsKeys.sort();
               </a>
             </div>
             <time>
-              {timeFormat(new Date(webmentions[id].published), locale)}
+              {timeFormat(new Date(webmentions[id].published), lang)}
             </time>
           </div>
           <div class="content">{webmentions[id].content.text}</div>

@@ -1,8 +1,9 @@
 ---
 import { getLinkViaLocale } from "@utils/slug";
-import i18next, { t } from "i18next";
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
 
-const locale = i18next.language;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 type Props = {
   seo: {
     title: string;
@@ -20,7 +21,7 @@ type Props = {
 const SITE_NAME = "EINDEX's Blog";
 const { seo }: Props = Astro.props;
 
-const url = getLinkViaLocale(locale, Astro.site.origin + seo.url);
+const url = getLinkViaLocale(lang, Astro.site.origin + seo.url);
 const author = "EINDEX";
 const image = seo.image ? seo.image : "https://eindex.me/images/avatar.png";
 const schema = {

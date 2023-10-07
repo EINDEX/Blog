@@ -7,13 +7,19 @@ import Contact from "@components/Contact.astro";
 import { getLinkViaLocale } from "@utils/slug";
 import { getAllProjects } from "@utils/posts";
 import { getGalleryData } from "@utils/dataReader";
+import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+
+export const prerender = true;
+
+export function getStaticPaths() {
+  return [{ params: { lang: "en" } }, { params: { lang: "zh" } }];
+}
 
 
-import { getLangFromUrl, useTranslations } from "@i18n/utils";
+const { lang } = Astro.params;
 
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
-const projects = await getAllProjects(lang);
+const locale = lang;
+const projects = await getAllProjects(locale);
 const images = await getGalleryData();
 const showImages = images.slice(0, 7);
 ---
@@ -25,7 +31,7 @@ const showImages = images.slice(0, 7);
     description:
       "This is EINDEX's Blog, I am a security researcher and a developer. Here is my blog.",
     image: "https://eindex.me/images/avatar.png",
-    url: getLinkViaLocale(lang, "/"),
+    url: getLinkViaLocale(locale, "/"),
   }}
 >
   <Navbar styles={{ position: "absolute", top: 0 }} />

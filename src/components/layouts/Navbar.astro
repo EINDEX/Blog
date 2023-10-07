@@ -1,9 +1,10 @@
 ---
-import i18next, { t } from "i18next";
 import { getLinkViaLocale } from "@utils/slug";
-import { LanguageSelector } from "astro-i18next/components";
 
-const locale = i18next.language;
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const defaultLinks = [
   { name: "posts", url: "/posts" },
@@ -15,7 +16,7 @@ const { links = defaultLinks, styles = {} } = Astro.props;
 ---
 
 <nav style={styles}>
-  <a class="logo" href={getLinkViaLocale(locale, "/")}>
+  <a class="logo" href={getLinkViaLocale(lang, "/")}>
     <img alt="EINDEX's Blog" loading="lazy" src={"/images/avatar.webp"} width={32} height={32} />
     <b>EINDEX</b>'s Blog
   </a>
@@ -48,7 +49,7 @@ const { links = defaultLinks, styles = {} } = Astro.props;
             <a
               data-umami-event={`Menu ${link.name}`}
               data-umami-event-name={`${link.name}`}
-              href={getLinkViaLocale(locale, link.url)}
+              href={getLinkViaLocale(lang, link.url)}
             >
               {t(link.name)}
             </a>
@@ -56,11 +57,11 @@ const { links = defaultLinks, styles = {} } = Astro.props;
         ))
       }
     </ul>
-    <LanguageSelector
+    <!-- <LanguageSelector
       showFlag={true}
       languageMapping={{ en: "English", zh: "中文" }}
       class="language-selector rounded-lg shadow-lg dark:bg-black"
-    />
+    /> -->
   </div>
 </nav>
 
