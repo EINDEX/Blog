@@ -1,37 +1,41 @@
-import { CollectionEntry, getCollection } from "astro:content";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 
 export function sortViaUpdated(
-  a:
-    | CollectionEntry<"posts">
-    | CollectionEntry<"thoughts">,
-  b:
-    | CollectionEntry<"posts">
-    | CollectionEntry<"thoughts">,
+  a: CollectionEntry<"posts"> | CollectionEntry<"thoughts">,
+  b: CollectionEntry<"posts"> | CollectionEntry<"thoughts">,
   asc: boolean = false
 ) {
-  return (
-    (asc ? 1 : -1) *
-    ((a.data.date - b.data.date))
-  );
+  return (asc ? 1 : -1) * (a.data.date.getTime() - b.data.date.getTime());
 }
 
 export async function getPosts(
-  locale: string
+  locale?: string
 ): Promise<CollectionEntry<"posts">[]> {
-  const posts = await (
-    await getCollection("posts", ({data, id })=> {
-      return id.startsWith(locale) && (data.draft !== true || import.meta.env.MODE === "development")
-    })
-  )
+  const posts = await getCollection("posts", ({ data, id }) => {
+    let flag = true;
+    if (locale) {
+      flag = id.startsWith(locale);
+    }
+    return (
+      flag && (data.draft !== true || import.meta.env.MODE === "development")
+    );
+  });
   return posts.sort((a, b) => sortViaUpdated(a, b, false));
 }
 
 export async function getThoughts(
-  locale: string
+  locale?: string
 ): Promise<CollectionEntry<"thoughts">[]> {
-  const thoughts = await (
-    await getCollection("thoughts")
-  ).filter((thought) => thought.slug.startsWith(locale));
+  const thoughts = await getCollection("thoughts", ({ data, id }) => {
+    let flag = true;
+    if (locale) {
+      flag = id.startsWith(locale);
+    }
+    return (
+      flag && (data.draft !== true || import.meta.env.MODE === "development")
+    );
+  });
   return thoughts.sort((a, b) => sortViaUpdated(a, b, false));
 }
 

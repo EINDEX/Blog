@@ -1,47 +1,46 @@
 ---
-import { CollectionEntry } from "astro:content";
-import { getLastPartOfSlug, getLinkViaLocale } from "@utils/slug";
+import { getLastPartOfSlug, getLocaleFromSlug } from "@utils/slug";
 import Layout from "@layouts/Layout.astro";
 import { getPosts, getSummary } from "@utils/posts";
 import { timeFormat } from "@utils/time";
-import Code from "@components/mdx/Code.astro";
 import Breadcrumb from "@components/Breadcrumb.astro";
 import Comments from "@components/Comments.astro";
 import Tags from "@components/Tags.astro";
 import A from "@components/webmentions/A.astro";
 import InvisableAuthor from "@components/webmentions/InvisableAuthor.astro";
-import WMStatus from "@components/webmentions/WMStatus.astro";
+import { Image } from "astro:assets";
+import { useTranslations } from "@i18n/utils";
 
-import { getLangFromUrl, useTranslations } from "@i18n/utils";
+export const prerender = true;
 
-const lang = getLangFromUrl(Astro.url);
+const { lang } = Astro.params;
 const t = useTranslations(lang);
 
-const locale = lang;
 export async function getStaticPaths() {
-    const locale = lang;
-    const posts = await getPosts(locale);
+    const posts = await getPosts();
     return posts.map((post) => {
         const slug = getLastPartOfSlug(post.slug);
+        const locale = getLocaleFromSlug(post.id);
         return {
-            params: { slug: slug },
+            params: { slug: slug, lang: locale},
             props: { post },
         };
     });
 }
-type Props = CollectionEntry<`posts`>;
-const { slug } = Astro.params;
+
+const url = Astro.url;
 const { post } = Astro.props;
-const { Content } = await post.render();
+const { Content, remarkPluginFrontmatter } = await post.render();
+
 ---
 
 
 <Layout title={post.data.title} seo={
   {
         title: post.data.title,
-        description: post.data.description || getSummary(locale, post.body),
+        description: post.data.description || getSummary(lang, post.body),
         image: post.data.cover,
-        url: `/posts/${slug}`,
+        url: url,
         date: post.data.date,
         updated: post.data.updated,
         keywords: post.data.tags,
@@ -60,25 +59,27 @@ const { Content } = await post.render();
     <InvisableAuthor />
     {post.data.section || <span class="series p-category">{t(post.data.section)}</span>}
     <h1 class="title p-name">
-      {post.data.title}<a class="u-url" href={getLinkViaLocale(locale, `/posts/${slug}`)}
+      {post.data.title}<a class="u-url" href={url}
       ></a>
     </h1>
     <div class="post-meta">
+       <!-- {remarkPluginFrontmatter.minutesRead} -->
         <p class="p-summary">{post.data.description}</p>
-      <time class="dt-published" datetime={post.data.date.toISOString()} >{timeFormat(post.data.date, locale)}</time>
+      <time class="dt-published" datetime={post.data.date.toISOString()} >{timeFormat(post.data.date, lang)}</time>
     </div>
     <hr/>
     <Tags tags={post.data.tags}></Tags>
     <section
-      class="main e-content format dark:format-invert format-pre:m-0 format-pre:p-2 format-li:list-disc list-disc"
+      class="main e-content prose dark:prose-invert"
     >
       <a class="u-bridgy-fed" href="https://fed.brid.gy/"></a>
-      <Content components={{ pre: Code, a: A, link: A }} />
+      <Content class="raw" components={{ a: A, link: A, img: Image }} />
     </section>
-    <WMStatus slug={`/posts/${slug}`} />
+    <!-- <WMStatus slug={url} /> -->
   </article>
-  <Comments slug={`/posts/${slug}`} />
+  <Comments slug={url} />
 </Layout>
+
 
 <style lang="scss">
   article {
@@ -99,17 +100,23 @@ const { Content } = await post.render();
         @apply text-right;
       }
     }
-    section.main.e-content {
-      @apply max-w-full list-disc;
+    section.main {
+      @apply max-w-full;
       color: var(--text-color);
       background-color: var(--bg-color);
     }
-    
-  
+
   }
 
 
 </style>
 
+<style lang="scss" is:global>
+  section.main.e-content {
+    iframe {
+      @apply w-full;
+    }
+  }
+</style>
 
 

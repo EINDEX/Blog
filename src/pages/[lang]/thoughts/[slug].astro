@@ -1,39 +1,39 @@
 ---
-import { CollectionEntry } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import { getThoughts, getSummary } from "@utils/posts";
 import Breadcrumb from "@components/Breadcrumb.astro";
 import Comments from "@components/Comments.astro";
-import { getLastPartOfSlug } from "@utils/slug";
+import { getLastPartOfSlug, getLocaleFromSlug } from "@utils/slug";
 import Thought from "@components/Thought.astro";
 
+export const prerender = true;
 import { getLangFromUrl, useTranslations } from "@i18n/utils";
 
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
-
-const locale = lang;
 export async function getStaticPaths() {
-    const locale = lang;
-    const thoughts = await getThoughts(locale);
-    return thoughts.map((thought) => {
-        const slug = getLastPartOfSlug(thought.slug);
-        return {
-            params: { slug: slug },
-            props: { thought },
-        };
-    });
+  const thoughts = await getThoughts();
+  return thoughts.map((thought) => {
+    const slug = getLastPartOfSlug(thought.slug);
+    const lang = getLocaleFromSlug(thought.slug);
+    return {
+      params: { slug: slug, lang: lang },
+      props: { thought },
+    };
+  });
 }
+
 type Props = CollectionEntry<`thoughts`>;
-const { slug } = Astro.params;
+const { slug, lang } = Astro.params;
+const t = useTranslations(lang);
 const { thought } = Astro.props;
+const { Content, remarkPluginFrontmatter } = await thought.render();
 ---
 
 <Layout
-  title={t("thoughts")}
+  title={t("common.thoughts")}
   seo={{
-    title: t("thoughts"),
-    description: getSummary(locale, thought.body),
+    title: t("common.thoughts"),
+    description: getSummary(lang, thought.body),
     url: `/thoughts/${slug}`,
     date: thought.data.date,
     updated: thought.data.updated,
@@ -49,9 +49,9 @@ const { thought } = Astro.props;
     ]}
   />
   <div class="thought-content">
-    <h1 class="series p-category">{t("thoughts")}</h1>
-    <Thought thought={thought} slug={`/thoughts/${slug}`} slugPage={true}/>
-    <Comments locale={locale} slug={`/thoughts/${slug}`} />
+    <h1 class="series p-category">{t("common.thoughts")}</h1>
+    <Thought thought={thought} slug={`/thoughts/${slug}`} slugPage={true} />
+    <Comments locale={lang} slug={`/thoughts/${slug}`} />
   </div>
 </Layout>
 

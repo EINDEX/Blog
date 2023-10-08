@@ -1,23 +1,19 @@
 ---
 import Navbar from "@components/layouts/Navbar.astro";
-import Sidebar from "@components/layouts/Sidebar.astro";
 import EmptyWapper from "./EmptyWapper.astro";
 
 export interface Props {
   title: string;
   seo?: any;
 }
+
+const { lang } = Astro.params;
 const { title, seo = {} } = Astro.props;
 ---
 
 <EmptyWapper title={title} seo={seo}>
   <Navbar />
   <div class="wapper">
-    <sidebar>
-      <Sidebar>
-        <slot name="sidebar" />
-      </Sidebar>
-    </sidebar>
     <main>
       <slot />
     </main>
@@ -29,8 +25,15 @@ const { title, seo = {} } = Astro.props;
     @apply flex flex-col h-full max-w-xl w-full;
 
     code {
-      font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-        DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+      font-family:
+        Menlo,
+        Monaco,
+        Lucida Console,
+        Liberation Mono,
+        DejaVu Sans Mono,
+        Bitstream Vera Sans Mono,
+        Courier New,
+        monospace;
     }
     a {
       color: var(--text-color);

@@ -21,18 +21,23 @@ const postSchema = z.object({
   tags: z.array(z.string()).nullable().optional().default([]),
   series: z.string().nullable().optional(),
   katex: z.boolean().optional(),
-  draft: z.boolean().nullable().optional().default(false),
+  draft: z.boolean().nullable().optional().default(true),
   cover: z.string().nullable().optional(),
   pssoes: z.array(z.string()).optional().default([]),
 });
 
 const thoughtSchema = z.object({
   title: z.string().optional(),
-  date: z.string().transform((str) => new Date(str)),
+  date: z
+    .date()
+    .or(z.string())
+    .transform((str) => new Date(str)),
   updated: z
-    .string()
-    .transform((str) => new Date(str))
-    .optional(),
+    .date()
+    .or(z.string())
+    .optional()
+    .nullable()
+    .transform((str) => new Date(str)),
   description: z.string().optional(),
   draft: z.boolean().optional().default(true),
   tags: z.array(z.string()).optional().default([]),
@@ -44,6 +49,7 @@ const pageSchema = z.object({
 });
 
 const posts = defineCollection({
+  // type: "content",
   schema: postSchema,
 });
 
@@ -52,6 +58,7 @@ const pages = defineCollection({
 });
 
 const thoughts = defineCollection({
+  // type: "content",
   schema: thoughtSchema,
 });
 

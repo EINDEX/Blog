@@ -1,5 +1,4 @@
 ---
-
 import { getLinkViaLocale } from "@utils/slug";
 import { timeFormat } from "@utils/time";
 import A from "@components/webmentions/A.astro";
@@ -11,7 +10,7 @@ import { getLangFromUrl, useTranslations } from "@i18n/utils";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const { thought, slug, showDate = true, slugPage=false } = Astro.props;
+const { thought, slug, showDate = true, slugPage = false } = Astro.props;
 const { Content } = await thought.render();
 ---
 
@@ -29,10 +28,16 @@ const { Content } = await thought.render();
   <section
     class="main title e-content format sm:format-sm lg:format-lg dark:format-invert format-pre:m-0 format-pre:p-2 format-li:list-disc list-disc"
   >
-    {slugPage && <><a class="u-bridgy-fed" href="https://fed.brid.gy/"></a></>}
+    {
+      slugPage && (
+        <>
+          <a class="u-bridgy-fed" href="https://fed.brid.gy/" />
+        </>
+      )
+    }
     <Content components={{ a: A, link: A }} />
   </section>
-  <WMStatus slug={slug} />
+  <!-- <WMStatus slug={slug} /> -->
 </article>
 
 <style lang="scss">

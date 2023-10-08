@@ -13,18 +13,18 @@ const images = await getGalleryData();
 ---
 
 <EmptyWapper
-  title={t("gallery")}
+  title={t("common.gallery")}
   seo={{
-    title: t("gallery"),
+    title: t("common.gallery"),
     description: "Gallery",
-    keywords: t("gallery"),
+    keywords: t("common.gallery"),
     url: "/gallery",
     image: `https://img.eindex.me/pic/${images[0].thumbnail}`,
   }}
 >
   <Navbar />
   <main>
-    <h1>{t("gallery")}</h1>
+    <h1>{t("common.gallery")}</h1>
     <div class="gallery">
       {
         images.map((image) => (

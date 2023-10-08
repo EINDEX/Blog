@@ -1,4 +1,5 @@
 ---
+import '@fontsource-variable/bitter';
 import { getLinkViaLocale } from "@utils/slug";
 
 import { getLangFromUrl, useTranslations } from "@i18n/utils";
@@ -9,7 +10,6 @@ const t = useTranslations(lang);
 const defaultLinks = [
   { name: "posts", url: "/posts" },
   { name: "thoughts", url: "/thoughts" },
-  { name: "newsletters", url: "/newsletters"},
   { name: "gallery", url: "/gallery" },
 ];
 const { links = defaultLinks, styles = {} } = Astro.props;
@@ -51,7 +51,7 @@ const { links = defaultLinks, styles = {} } = Astro.props;
               data-umami-event-name={`${link.name}`}
               href={getLinkViaLocale(lang, link.url)}
             >
-              {t(link.name)}
+              {t("common."+link.name)}
             </a>
           </li>
         ))
@@ -71,6 +71,7 @@ const { links = defaultLinks, styles = {} } = Astro.props;
 
     .logo {
       @apply flex flex-row items-center h-8 py-1;
+      font-family: "Bitter Variable", serif;
       text-decoration: none;
       color: var(--text-color);
       font-size: 1.5rem;
@@ -111,32 +112,32 @@ const { links = defaultLinks, styles = {} } = Astro.props;
 </style>
 
 <script>
-  import { Collapse } from "flowbite";
-  import type { CollapseOptions, CollapseInterface } from "flowbite";
+  // import { Collapse } from "flowbite";
+  // import type { CollapseOptions, CollapseInterface } from "flowbite";
 
-  const $targetEl: HTMLElement = document.getElementById("navbar-menus");
-  const $triggerEl: HTMLElement = document.getElementById("navbar-default");
+  // const $targetEl: HTMLElement = document.getElementById("navbar-menus");
+  // const $triggerEl: HTMLElement = document.getElementById("navbar-default");
 
-  const options: CollapseOptions = {
-    onCollapse: () => {
-      console.log("element has been collapsed");
-      $targetEl.className = "menus sm:hidden";
-    },
-    onExpand: () => {
-      console.log("element has been expanded");
-      $targetEl.className =
-        "menus w-full text-center sm:justify-center sm:items-center z-10 sm:p-4 sm:mt-4 sm:border sm:border-gray-100 sm:rounded-lg sm:bg-gray-50 sm:dark:bg-gray-800 sm:dark:border-gray-700";
-    },
-  };
+  // const options: CollapseOptions = {
+  //   onCollapse: () => {
+  //     console.log("element has been collapsed");
+  //     $targetEl.className = "menus sm:hidden";
+  //   },
+  //   onExpand: () => {
+  //     console.log("element has been expanded");
+  //     $targetEl.className =
+  //       "menus w-full text-center sm:justify-center sm:items-center z-10 sm:p-4 sm:mt-4 sm:border sm:border-gray-100 sm:rounded-lg sm:bg-gray-50 sm:dark:bg-gray-800 sm:dark:border-gray-700";
+  //   },
+  // };
 
-  /*
-   * $targetEl: required
-   * $triggerEl: optional
-   * options: optional
-   */
-  const collapse: CollapseInterface = new Collapse(
-    $targetEl,
-    $triggerEl,
-    options
-  );
+  // /*
+  //  * $targetEl: required
+  //  * $triggerEl: optional
+  //  * options: optional
+  //  */
+  // const collapse: CollapseInterface = new Collapse(
+  //   $targetEl,
+  //   $triggerEl,
+  //   options
+  // );
 </script>

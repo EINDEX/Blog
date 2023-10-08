@@ -14,7 +14,9 @@ const t = useTranslations(lang);
 
 const locale = lang;
 const thoughts = await getThoughts(locale);
-const groupedThoughts = _.groupBy(thoughts, (t) => timeFormat(t.data.date, locale));
+const groupedThoughts = _.groupBy(thoughts, (t) =>
+  timeFormat(t.data.date, locale)
+);
 ---
 
 <Layout
@@ -27,7 +29,7 @@ const groupedThoughts = _.groupBy(thoughts, (t) => timeFormat(t.data.date, local
     url: "/thoughts",
   }}
 >
-  <h1>{t("thoughts")}</h1>
+  <h1>{t("common.thoughts")}</h1>
   <div class="thoughts">
     {
       Object.keys(groupedThoughts).map((date) => (

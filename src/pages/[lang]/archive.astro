@@ -13,15 +13,17 @@ const t = useTranslations(lang);
 
 const locale = lang;
 const posts = await getPosts(locale);
-const groupedPosts = _.groupBy(posts, (post) => timeFormat(post.data.date, locale, false));
+const groupedPosts = _.groupBy(posts, (post) =>
+  timeFormat(post.data.date, locale, false)
+);
 const sortedPostGroupKeys = Object.keys(groupedPosts).sort((a, b) => {
-    return groupedPosts[a][0].data.date < groupedPosts[b][0].data.date ? 1 : -1;
+  return groupedPosts[a][0].data.date < groupedPosts[b][0].data.date ? 1 : -1;
 });
 ---
 
-<Layout title={t("archive")}>
+<Layout title={t("common.archive")}>
   <article>
-    <h1>{t("archive")}</h1>
+    <h1>{t("common.archive")}</h1>
     <section>
       <div class="posts">
         {

@@ -4,6 +4,7 @@ import Tags from "./Tags.astro";
 import {getLinkViaLocale, getLastPartOfSlug} from "@utils/slug";
 import { getSummary } from "@utils/posts";
 import { getLangFromUrl, useTranslations } from "@i18n/utils";
+import { Image } from 'astro:assets';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -12,15 +13,15 @@ const {post} = Astro.props;
 
 const updatedAt = post.data.updated || post.data.date;
 
-const url = getLinkViaLocale(lang, `/posts/${getLastPartOfSlug(post.slug)}`);
+const url = getLinkViaLocale(lang, `/${lang}/posts/${getLastPartOfSlug(post.slug)}`);
 ---
 
 <post-card class="post-card" data-url={url}>
   {
-    post.data.cover ? <img width="96px" height="96px" class="cover" src={post.data.cover} /> :<></>
+    post.data.cover && <Image alt={post.data.title} width="96" height="96" class="cover" src={post.data.cover} decoding="async" loading="lazy" />
   }
   <div class="post-info">
-    {post.data.series ?<span class="series">{t(`series:${post.data.series}`)}</span>:<></>}
+    {post.data.series ?<span class="series">{t(`series.${post.data.series}`)}</span>:<></>}
   <h2>
     <a 
       href={url}

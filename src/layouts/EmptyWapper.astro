@@ -8,7 +8,9 @@ import "../base.scss";
 import Webpushier from "@components/push/Webpushier.astro";
 import { getLinkViaLocale } from "@utils/slug";
 import GoogleAdsHead from "@components/google-ads/head.astro";
-
+import "@fontsource-variable/noto-sans-sc";
+import "@fontsource-variable/inter";
+import "@fontsource-variable/bitter";
 import { getLangFromUrl, useTranslations } from "@i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
@@ -20,6 +22,7 @@ export interface Props {
 }
 
 const { title, seo = {} } = Astro.props;
+
 ---
 
 <!doctype html>
@@ -59,6 +62,18 @@ const { title, seo = {} } = Astro.props;
       href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.11.0/tabler-icons.min.css"
     />
     <GoogleAdsHead />
+    { lang === "zh" ?   <style is:global>
+      :root {
+        --font-sans: "Noto Sans SC Variable", sans,  system-ui;
+        --font-serif: "Noto Sans SC Variable", sans-serif,  system-ui;
+      }
+    </style> :  <style is:global>
+      :root {
+        --font-sans: "Inter Variable", sans, system-ui;
+        --font-serif: "Bitter Variable", sans-serif, system-ui;
+      }
+    </style> }
+  
   </head>
   <body>
     <slot />
@@ -69,29 +84,5 @@ const { title, seo = {} } = Astro.props;
       is:inline
       src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"
     ></script>
-  </body>
-</html>
-      is:inline
-      src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"
-    ></script>
-  </body>
-</html>
-      is:inline
-      src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"
-    ></>
-  </body>
-</html>
-</html>
-    <Cloudflare />
-    <script
-      is:inline
-      src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"
-    ></script>
-  </body>
-</html>
-      src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"
-    ></script>
-  </body>
-</html>
   </body>
 </html>

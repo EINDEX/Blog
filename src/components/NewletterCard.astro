@@ -22,7 +22,7 @@ const url = getLinkViaLocale(lang, `/newsletters/${getLastPartOfSlug(newsletter.
     newsletter.data.cover ? <img width="96px" height="96px" class="cover" src={newsletter.data.cover} /> :<></>
   }
   <div class="newsletter-info">
-    {newsletter.data.series ?<span class="series">{t(`series:${newsletter.data.series}`)}</span>:<></>}
+    {newsletter.data.series ?<span class="series">{t(`series.${newsletter.data.series}`)}</span>:<></>}
   <h2>
     <a 
       href={url}
