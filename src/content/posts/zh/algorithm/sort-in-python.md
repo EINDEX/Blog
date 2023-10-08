@@ -101,7 +101,7 @@ def selection_sort(list):
 
 ### 代码
 
-```Python
+```python
 def insert_sort(list):
     n = len(list)
     for i in range(1, n):
