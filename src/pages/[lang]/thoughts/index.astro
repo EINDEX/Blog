@@ -7,15 +7,21 @@ import { timeFormat } from "@utils/time";
 import _ from "lodash";
 import Thought from "@components/Thought.astro";
 
-import { getLangFromUrl, useTranslations } from "@i18n/utils";
+import { useTranslations } from "@i18n/utils";
 
-const lang = getLangFromUrl(Astro.url);
+export const prerender = true;
+
+export function getStaticPaths() {
+  return [{ params: { lang: "en" } }, { params: { lang: "zh" } }];
+}
+
+const { lang } = Astro.params;
+
 const t = useTranslations(lang);
 
-const locale = lang;
-const thoughts = await getThoughts(locale);
+const thoughts = await getThoughts(lang);
 const groupedThoughts = _.groupBy(thoughts, (t) =>
-  timeFormat(t.data.date, locale)
+  timeFormat(t.data.date, lang)
 );
 ---
 
@@ -39,7 +45,7 @@ const groupedThoughts = _.groupBy(thoughts, (t) =>
               <Thought
                 thought={t}
                 slug={getLinkViaLocale(
-                  locale,
+                  lang,
                   `/thoughts/${getLastPartOfSlug(t.slug)}`
                 )}
               />

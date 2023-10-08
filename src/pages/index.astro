@@ -6,7 +6,7 @@ import Profile from "@components/Profile.astro";
 import Contact from "@components/Contact.astro";
 import { getLinkViaLocale } from "@utils/slug";
 import { getAllProjects } from "@utils/posts";
-import { getGalleryData } from "@utils/dataReader";
+
 
 
 import { getLangFromUrl, useTranslations } from "@i18n/utils";
@@ -14,7 +14,8 @@ import { getLangFromUrl, useTranslations } from "@i18n/utils";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const projects = await getAllProjects(lang);
-const images = await getGalleryData();
+const resp = await fetch("https://img.eindex.me/pic/pic_list.json");
+const images = await resp.json();
 const showImages = images.slice(0, 7);
 ---
 

@@ -22,7 +22,6 @@
 		"@fontsource-variable/inter": "^5.0.13",
 		"@fontsource-variable/noto-sans-sc": "^5.0.3",
 		"@fontsource/noto-serif-sc": "^5.0.7",
-		"@tabler/icons-react": "^2.38.0",
 		"@tabler/icons-webfont": "^2.38.0",
 		"@tailwindcss/typography": "^0.5.10",
 		"astro": "^3.2.3",

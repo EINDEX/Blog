@@ -22,7 +22,7 @@ on:
 
 jobs:
   release:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}-release
 
@@ -33,13 +33,13 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: '18'
-        cache: 'npm'
+        cache: 'yarn'
 
     - name: install package
-      run: npm ci
+      run: yarn
 
     - name: build site
-      run: npm run build
+      run: yarn build
         
     - name: Publish to Cloudflare Pages
       uses: cloudflare/pages-action@1
@@ -50,19 +50,19 @@ jobs:
         directory: dist
         gitHubToken: ${{ secrets.GITHUB_TOKEN }}
         
-    - run: sleep 60
+    # - run: sleep 60
 
-    - name: Send webmentions
-      run: node pipeline/send-mentions.js
+    # - name: Send webmentions
+    #   run: node pipeline/send-mentions.js
 
-    - name: Run scraper
-      env:
-        HOST_URL: ${{ secrets.MEILISEARCH_HOST_URL }}
-        API_KEY: ${{ secrets.MEILISEARCH_API_KEY }}
-        CONFIG_FILE_PATH: meili.json
-      run: |
-        docker run -t --rm \
-          -e MEILISEARCH_HOST_URL=$HOST_URL \
-          -e MEILISEARCH_API_KEY=$API_KEY \
-          -v $PWD:/blog \
-          getmeili/docs-scraper:latest pipenv run ./docs_scraper /blog/meili.json
+    # - name: Run scraper
+    #   env:
+    #     HOST_URL: ${{ secrets.MEILISEARCH_HOST_URL }}
+    #     API_KEY: ${{ secrets.MEILISEARCH_API_KEY }}
+    #     CONFIG_FILE_PATH: meili.json
+    #   run: |
+    #     docker run -t --rm \
+    #       -e MEILISEARCH_HOST_URL=$HOST_URL \
+    #       -e MEILISEARCH_API_KEY=$API_KEY \
+    #       -v $PWD:/blog \
+    #       getmeili/docs-scraper:latest pipenv run ./docs_scraper /blog/meili.json

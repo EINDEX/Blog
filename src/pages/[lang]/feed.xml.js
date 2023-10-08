@@ -31,11 +31,12 @@ export async function GET(context) {
       const item = {
         title: post.data.title,
         pubDate: post.data.date,
-        description: post.data.description,
+        description: post.data.description || "",
         content: sanitizeHtml(parser.render(post.body)),
         author: "EINDEX",
         link: `${locale}/posts/${getLastPartOfSlug(post.slug)}/`,
       };
+      
       item.categories = [];
       if (post.data.series) {
         item.categories = [t(`series.${post.data.series}`)];

@@ -1,15 +1,21 @@
 ---
 import EmptyWapper from "@layouts/EmptyWapper.astro";
 import Navbar from "@components/layouts/Navbar.astro";
-import { getGalleryData } from "@utils/dataReader";
-import { Image } from "@astrojs/image/components";
 
-import { getLangFromUrl, useTranslations } from "@i18n/utils";
+import {useTranslations } from "@i18n/utils";
 
-const lang = getLangFromUrl(Astro.url);
+export const prerender = true;
+
+export function getStaticPaths() {
+  return [{ params: { lang: "en" } }, { params: { lang: "zh" } }];
+}
+
+const { lang } = Astro.params;
+
 const t = useTranslations(lang);
 
-const images = await getGalleryData();
+const resp = await fetch("https://img.eindex.me/pic/pic_list.json");
+const images = await resp.json();
 ---
 
 <EmptyWapper

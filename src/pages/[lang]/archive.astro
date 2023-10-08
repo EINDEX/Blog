@@ -8,11 +8,19 @@ import _ from "lodash";
 
 import { getLangFromUrl, useTranslations } from "@i18n/utils";
 
-const lang = getLangFromUrl(Astro.url);
+export const prerender = true;
+
+export function getStaticPaths() {
+  return [{ params: { lang: "en" } }, { params: { lang: "zh" } }];
+}
+
+const { lang } = Astro.params;
+
 const t = useTranslations(lang);
 
 const locale = lang;
-const posts = await getPosts(locale);
+
+const posts = await getPosts(lang);
 const groupedPosts = _.groupBy(posts, (post) =>
   timeFormat(post.data.date, locale, false)
 );

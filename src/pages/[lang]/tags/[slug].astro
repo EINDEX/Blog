@@ -10,23 +10,29 @@ import Breadcrumb from "@components/Breadcrumb.astro";
 import Thought from "@components/Thought.astro";
 import { getLangFromUrl, useTranslations } from "@i18n/utils";
 
-const lang = getLangFromUrl(Astro.url);
+export const prerender = true;
+const {lang} = Astro.params;
 const t = useTranslations(lang);
 
-const locale = lang;
 export async function getStaticPaths() {
-    const locale = lang;
-    const allTags = await getAllTags(locale);
+    
+    const allTags = await getAllTags();
     return allTags.map((tag) => {
         return {
-            params: { slug: tagSlug(tag) },
+            params: { slug: tagSlug(tag), lang: 'zh' },
             props: { tag },
         };
-    });
+    }).concat(
+    allTags.map((tag) => {
+        return {
+            params: { slug: tagSlug(tag), lang: 'en' },
+            props: { tag },
+        };
+    }))
 }
 const { tag } = Astro.props;
-const { posts, thoughts, projects } = await getAllByTag(locale, tag);
-const groupedThoughts = _.groupBy(thoughts, (t) => timeFormat(t.data.date, locale));
+const { posts, thoughts } = await getAllByTag(lang, tag);
+const groupedThoughts = _.groupBy(thoughts, (t) => timeFormat(t.data.date, lang));
 ---
 
 <Layout title={tag}>
@@ -40,20 +46,6 @@ const groupedThoughts = _.groupBy(thoughts, (t) => timeFormat(t.data.date, local
   />
   <article>
     <h1>{tag}</h1>
-    {projects.length === 0? <></>:
-      <section>
-        <h2>Projects</h2>
-        <div class="projects">
-          {projects.map((project) => (
-            <Project
-              name={project.name}
-              labels={project.labels}
-              url={project.url}
-              logo={project.logo}
-            />
-          ))}
-        </div>
-      </section>}
 
 {posts.length === 0? <></>:
   <section>
@@ -63,7 +55,7 @@ const groupedThoughts = _.groupBy(thoughts, (t) => timeFormat(t.data.date, local
           posts.map((post) => {
             return (
               <li>
-                <a href={getLinkViaLocale(locale, `/posts/${getLastPartOfSlug(post.slug)}`)}>
+                <a href={getLinkViaLocale(lang, `/posts/${getLastPartOfSlug(post.slug)}`)}>
                   {post.data.title}
                 </a>
               </li>
@@ -84,7 +76,7 @@ const groupedThoughts = _.groupBy(thoughts, (t) => timeFormat(t.data.date, local
                   <Thought
                     thought={t}
                     slug={getLinkViaLocale(
-                      locale,
+                      lang,
                       `/thoughts/${getLastPartOfSlug(t.slug)}`
                     )}
                   />

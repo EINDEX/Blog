@@ -10,6 +10,7 @@ import cloudflare from "@astrojs/cloudflare";
 
 export default defineConfig({
   site: "https://eindex.me",
+  // platform: "node",
   markdown: {
     syntaxHighlight: "shiki",
     shikiConfig: {
@@ -21,14 +22,16 @@ export default defineConfig({
     gfm: true,
   },
   integrations: [
-    sitemap(),
+    // sitemap(),
     tailwind({ config: { applyBaseStyles: false } }),
     mdx(),
   ],
   strictNullChecks: true,
 
   output: "server",
-  adapter: cloudflare({ mode: "directory" }),
+  adapter: cloudflare({
+    mode: "advanced",
+  }),
 
   vite: {
     build: {
