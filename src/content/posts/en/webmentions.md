@@ -60,7 +60,7 @@ To join the webmentions community and start receiving notifications when other w
    ```
 
 By following these steps, you can join the webmentions community and start enjoying the benefits of more interactive and engaging communication with other websites and their users.
-
+e
 ## Why join the webmentions community?
 
 There are many potential benefits to joining the webmentions community and implementing webmentions on your website. Some of the potential benefits include:
