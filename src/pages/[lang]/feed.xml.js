@@ -36,7 +36,7 @@ export async function GET(context) {
         author: "EINDEX",
         link: `${locale}/posts/${getLastPartOfSlug(post.slug)}/`,
       };
-      
+
       item.categories = [];
       if (post.data.series) {
         item.categories = [t(`series.${post.data.series}`)];

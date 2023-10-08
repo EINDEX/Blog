@@ -1,7 +1,6 @@
 ---
-import '@fontsource-variable/bitter';
+import "@fontsource-variable/bitter";
 import { getLinkViaLocale } from "@utils/slug";
-
 import { getLangFromUrl, useTranslations } from "@i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
@@ -17,7 +16,13 @@ const { links = defaultLinks, styles = {} } = Astro.props;
 
 <nav style={styles}>
   <a class="logo" href={getLinkViaLocale(lang, "/")}>
-    <img alt="EINDEX's Blog" loading="lazy" src={"/images/avatar.webp"} width={32} height={32} />
+    <img
+      alt="EINDEX's Blog"
+      loading="lazy"
+      src={"/images/avatar.webp"}
+      width={32}
+      height={32}
+    />
     <b>EINDEX</b>'s Blog
   </a>
   <button
@@ -51,17 +56,12 @@ const { links = defaultLinks, styles = {} } = Astro.props;
               data-umami-event-name={`${link.name}`}
               href={getLinkViaLocale(lang, link.url)}
             >
-              {t("common."+link.name)}
+              {t("common." + link.name)}
             </a>
           </li>
         ))
       }
     </ul>
-    <!-- <LanguageSelector
-      showFlag={true}
-      languageMapping={{ en: "English", zh: "中文" }}
-      class="language-selector rounded-lg shadow-lg dark:bg-black"
-    /> -->
   </div>
 </nav>
 
@@ -110,34 +110,3 @@ const { links = defaultLinks, styles = {} } = Astro.props;
     }
   }
 </style>
-
-<script>
-  // import { Collapse } from "flowbite";
-  // import type { CollapseOptions, CollapseInterface } from "flowbite";
-
-  // const $targetEl: HTMLElement = document.getElementById("navbar-menus");
-  // const $triggerEl: HTMLElement = document.getElementById("navbar-default");
-
-  // const options: CollapseOptions = {
-  //   onCollapse: () => {
-  //     console.log("element has been collapsed");
-  //     $targetEl.className = "menus sm:hidden";
-  //   },
-  //   onExpand: () => {
-  //     console.log("element has been expanded");
-  //     $targetEl.className =
-  //       "menus w-full text-center sm:justify-center sm:items-center z-10 sm:p-4 sm:mt-4 sm:border sm:border-gray-100 sm:rounded-lg sm:bg-gray-50 sm:dark:bg-gray-800 sm:dark:border-gray-700";
-  //   },
-  // };
-
-  // /*
-  //  * $targetEl: required
-  //  * $triggerEl: optional
-  //  * options: optional
-  //  */
-  // const collapse: CollapseInterface = new Collapse(
-  //   $targetEl,
-  //   $triggerEl,
-  //   options
-  // );
-</script>

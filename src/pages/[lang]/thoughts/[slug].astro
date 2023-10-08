@@ -7,6 +7,7 @@ import Comments from "@components/Comments.astro";
 import { getLastPartOfSlug, getLocaleFromSlug } from "@utils/slug";
 import Thought from "@components/Thought.astro";
 
+
 export const prerender = true;
 import { getLangFromUrl, useTranslations } from "@i18n/utils";
 
@@ -26,7 +27,7 @@ type Props = CollectionEntry<`thoughts`>;
 const { slug, lang } = Astro.params;
 const t = useTranslations(lang);
 const { thought } = Astro.props;
-const { Content, remarkPluginFrontmatter } = await thought.render();
+// const { Content, remarkPluginFrontmatter } = await thought.render();
 ---
 
 <Layout

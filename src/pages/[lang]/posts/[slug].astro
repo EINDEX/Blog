@@ -7,7 +7,7 @@ import Breadcrumb from "@components/Breadcrumb.astro";
 import Comments from "@components/Comments.astro";
 import Tags from "@components/Tags.astro";
 import A from "@components/webmentions/A.astro";
-import InvisableAuthor from "@components/webmentions/InvisableAuthor.astro";
+import Author from "@components/Author.astro";
 import { Image } from "astro:assets";
 import { useTranslations } from "@i18n/utils";
 
@@ -56,16 +56,17 @@ const { Content, remarkPluginFrontmatter } = await post.render();
   />
   <article class="h-entry">
     {post.data.cover ? <img class="u-photo" alt={post.data.title} src={post.data.cover} /> : <></>}
-    <InvisableAuthor />
     {post.data.section || <span class="series p-category">{t(post.data.section)}</span>}
     <h1 class="title p-name">
       {post.data.title}<a class="u-url" href={url}
       ></a>
     </h1>
     <div class="post-meta">
-       <!-- {remarkPluginFrontmatter.minutesRead} -->
-        <p class="p-summary">{post.data.description}</p>
-      <time class="dt-published" datetime={post.data.date.toISOString()} >{timeFormat(post.data.date, lang)}</time>
+      <p class="p-summary">{post.data.description}</p>
+      <div> 
+        <Author />
+        <time class="dt-published" datetime={post.data.date.toISOString()} >{timeFormat(post.data.date, lang)}</time>
+      </div>
     </div>
     <hr/>
     <Tags tags={post.data.tags}></Tags>
@@ -98,6 +99,9 @@ const { Content, remarkPluginFrontmatter } = await post.render();
 
       time {
         @apply text-right;
+      }
+      div {
+        @apply flex items-center justify-between;
       }
     }
     section.main {

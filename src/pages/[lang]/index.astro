@@ -13,7 +13,6 @@ export function getStaticPaths() {
   return [{ params: { lang: "en" } }, { params: { lang: "zh" } }];
 }
 
-
 const { lang } = Astro.params;
 
 const locale = lang;
@@ -110,6 +109,7 @@ const showImages = images.slice(0, 7);
     .profile {
       @apply py-0 my-0;
       height: 100vh;
+      max-height: 700px;
     }
 
     @media screen and (min-height: 768px) {
@@ -124,7 +124,7 @@ const showImages = images.slice(0, 7);
       height: fit-content;
 
       h2 {
-        @apply self-center justify-center text-6xl font-bold italic;
+        @apply self-center justify-center text-6xl italic;
       }
 
       .projects {
@@ -165,13 +165,13 @@ const showImages = images.slice(0, 7);
         @apply grid grid-flow-row grid-cols-2 sm:grid-cols-1 gap-4 pt-8;
 
         li {
-          @apply text-xl font-bold list-none;
+          @apply text-xl list-none;
         }
       }
       .get-in-touch {
         @apply flex flex-col;
         p {
-          @apply text-xl font-bold my-2;
+          @apply text-xl my-2;
         }
       }
     }
