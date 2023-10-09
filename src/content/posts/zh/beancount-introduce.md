@@ -1,11 +1,12 @@
 ---
-title: "复式记账工具 Beancount"
+title: 复式记账工具 Beancount
 date: 2019-11-30T00:00:00+08:00
 draft: false
-template: "posts/page.html"
-tags: [Beancount]
-
+template: posts/page.html
+tags:
+  - Beancount
 series: algorithm
+slug: beancount-introduce
 ---
 
 本文简单介绍一下复式记账和 Beancount 的使用方法。

@@ -1,11 +1,14 @@
 ---
-title: "倒排索引"
+title: 倒排索引
 date: 2019-08-27T12:31:56+08:00
 draft: false
-template: "posts/page.html"
-tags: [Index, Search Engine]
-
+template: posts/page.html
+tags:
+  - Index
+  - Search
+  - Engine
 series: algorithm
+slug: inverted-index
 ---
 
 世界上最伟大的互联网产品,说是搜索引擎,绝对没有别的产品可以替代,尤其是伟大的先在市场占用率最高的搜索引擎,Google Search.

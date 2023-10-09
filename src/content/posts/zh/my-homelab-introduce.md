@@ -1,10 +1,16 @@
 ---
-title: "My HomeLab"
+title: My HomeLab
 date: 2022-05-15T23:39:46+08:00
 updated: 2023-01-03T17:40:23+08:00
 draft: false
 latex: false
-tags: [K3S, Proxmox VE, Self-Hosted, Docker]
+tags:
+  - K3S
+  - Proxmox
+  - VE
+  - Self-Hosted
+  - Docker
+slug: my-homelab-introduce
 ---
 
 这篇文章将会介绍一下我的 HomeLab。

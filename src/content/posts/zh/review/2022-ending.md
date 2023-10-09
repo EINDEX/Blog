@@ -1,12 +1,15 @@
 ---
-title: "2022 Ending"
+title: 2022 Ending
 date: 2023-01-03T09:52:29+08:00
 draft: false
 latex: false
-template: "posts/page.html"
-tags: [Ending, "Annual Summary"]
-
-series: "review"
+template: posts/page.html
+tags:
+  - Ending
+  - Annual
+  - Summary
+series: review
+slug: 2022-ending
 ---
 
 ## 2022

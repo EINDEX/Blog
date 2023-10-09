@@ -1,9 +1,11 @@
 ---
-title: "Thoughtworks 一月"
+title: Thoughtworks 一月
 date: 2017-10-05T14:34:54+08:00
 draft: false
-template: "posts/page.html"
-tags: [Thoughtworks]
+template: posts/page.html
+tags:
+  - Thoughtworks
+slug: thoughtworks-one-month
 ---
 
 距离加入 Thoughtworks 已有一个月。

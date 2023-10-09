@@ -1,12 +1,15 @@
 ---
-title: "2021 Ending"
+title: 2021 Ending
 date: 2021-12-29T14:08:01+08:00
 draft: false
 latex: false
-template: "posts/page.html"
-tags: [Ending, "Annual Summary"]
-
-series: "review"
+template: posts/page.html
+tags:
+  - Ending
+  - Annual
+  - Summary
+series: review
+slug: 2021-ending
 ---
 
 2021 年就要过去了，分享一下我今年都干了些什么事请。

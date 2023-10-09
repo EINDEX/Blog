@@ -4,18 +4,20 @@ date: 2022-11-06T17:44:50+08:00
 updated: 2022-12-05T23:48:50+08:00
 description: " A protocol to notify webpages about links, likes, or comments. Enables better communication on the internet."
 tags:
-  [
-    "Webmentions",
-    "Community",
-    "Beginner's Guide",
-    "Indie Web",
-    "Microformats2",
-    "Engagement",
-    "Connectivity",
-    "Github Actions",
-    "JavaScript",
-  ]
+  - Webmentions
+  - Community
+  - Beginner's
+  - Guide
+  - Indie
+  - Web
+  - Microformats2
+  - Engagement
+  - Connectivity
+  - Github
+  - Actions
+  - JavaScript
 series: blog-enhance-plan
+slug: webmentions
 ---
 
 Recently I came across [Now, I'm in IndieWeb?](https://www.owenyoung.com/en/blog/indieweb/) and learned about webmentions. I found the concept very interesting and decided to join the webmentions community for my blog.

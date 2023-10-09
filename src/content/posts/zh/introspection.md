@@ -1,10 +1,12 @@
 ---
-title: "反躬自问"
+title: 反躬自问
 date: 2022-05-02T17:13:36+08:00
 draft: false
 latex: false
-template: "posts/page.html"
-tags: [Introspection]
+template: posts/page.html
+tags:
+  - Introspection
+slug: introspection
 ---
 
 ## 缘起

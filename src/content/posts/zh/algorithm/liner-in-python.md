@@ -1,11 +1,15 @@
 ---
-title: "基本线性数据结构的Python实现"
+title: 基本线性数据结构的Python实现
 date: 2017-10-05T14:33:39+08:00
 draft: false
-template: "posts/page.html"
-tags: [Python, Data structure, Linear]
-
+template: posts/page.html
+tags:
+  - Python
+  - Data
+  - structure
+  - Linear
 series: algorithm
+slug: liner-in-python
 ---
 
 本篇主要实现四种数据结构，分别是数组、堆栈、队列、链表。我不知道我为什么要用 Python 来干 C 干的事情，总之 Python 就是可以干。
