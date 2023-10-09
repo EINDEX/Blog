@@ -9,7 +9,6 @@ tags:
   - Annual
   - Summary
 series: review
-slug: 2022-ending
 ---
 
 ## 2022

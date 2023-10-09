@@ -8,7 +8,6 @@ tags:
   - Search
   - Engine
 series: algorithm
-slug: inverted-index
 ---
 
 世界上最伟大的互联网产品,说是搜索引擎,绝对没有别的产品可以替代,尤其是伟大的先在市场占用率最高的搜索引擎,Google Search.

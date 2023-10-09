@@ -6,7 +6,6 @@ author:
 tags:
   - After
   - Reading
-slug: 1984-after-reading
 ---
 
 这本书看了很久了，下面这句话一直环绕在我脑中，始终不能忘记。

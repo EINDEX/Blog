@@ -1,6 +1,5 @@
 ---
 title: Passwordless Auth
-slug: passwordless-auth
 tags: 
 series: 
 cover: 

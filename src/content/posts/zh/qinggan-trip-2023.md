@@ -1,6 +1,5 @@
 ---
 title: 青甘大环线
-slug: qinggan-trip-2023
 description: 
 series: 
 tags:

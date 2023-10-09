@@ -7,7 +7,6 @@ tags:
   - Python
   - Cache
   - ETag
-slug: tornado-auto-etag
 ---
 
 为了研究缓存看了 tornado `web.py` 里的 `finish` 函数

@@ -5,7 +5,6 @@ draft: false
 template: posts/page.html
 tags:
   - Thoughtworks
-slug: thoughtworks-one-month
 ---
 
 距离加入 Thoughtworks 已有一个月。

@@ -22,7 +22,6 @@ tags:
   - Security
   - In
 series: security
-slug: improving-your-code-review-process-with-semgrep
 ---
 
 In this post, I will show you how to set up Semgrep for your project, give examples of common code issues that it can detect, and provide best practices for using Semgrep in code review. By the end, you will have a better understanding of how Semgrep can improve your code review process and make your code more secure, reliable and maintainable.

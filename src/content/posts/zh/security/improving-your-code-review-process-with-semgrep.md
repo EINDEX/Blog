@@ -21,7 +21,6 @@ tags:
   - Security
   - In
 series: security
-slug: improving-your-code-review-process-with-semgrep
 ---
 
 在这篇文章中，我将向你展示如何为你的项目设置 Semgrep，给出它能检测到的常见代码问题的例子，并提供在代码审查中使用 Semgrep 的最佳实践。到最后，你会对 Semgrep 如何改善你的代码审查过程，使你的代码更加安全、可靠和可维护有更好的了解。

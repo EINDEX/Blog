@@ -17,7 +17,6 @@ tags:
   - Actions
   - JavaScript
 series: blog-enhance-plan
-slug: webmentions
 ---
 
 Recently I came across [Now, I'm in IndieWeb?](https://www.owenyoung.com/en/blog/indieweb/) and learned about webmentions. I found the concept very interesting and decided to join the webmentions community for my blog.

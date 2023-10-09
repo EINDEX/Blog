@@ -10,7 +10,6 @@ tags:
   - VE
   - Self-Hosted
   - Docker
-slug: my-homelab-introduce
 ---
 
 这篇文章将会介绍一下我的 HomeLab。

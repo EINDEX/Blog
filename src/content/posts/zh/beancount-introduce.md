@@ -6,7 +6,6 @@ template: posts/page.html
 tags:
   - Beancount
 series: algorithm
-slug: beancount-introduce
 ---
 
 本文简单介绍一下复式记账和 Beancount 的使用方法。

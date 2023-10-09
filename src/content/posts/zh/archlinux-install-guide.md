@@ -5,7 +5,6 @@ draft: false
 template: posts/page.html
 tags:
   - ArchLinux
-slug: archlinux-install-guide
 ---
 
 ArchLinux 是一个非常符合我个人哲学的操作系统，深得与我一样的大部分 Pythonista 之心(不好意思代表你们了)。

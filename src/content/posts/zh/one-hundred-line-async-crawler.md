@@ -7,7 +7,6 @@ tags:
   - Python
   - Crawler
   - Async
-slug: one-hundred-line-async-crawler
 ---
 
 一个优雅的爬虫需要一下这些东西：

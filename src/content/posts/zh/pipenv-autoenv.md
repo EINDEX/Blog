@@ -8,7 +8,6 @@ tags:
   - Environment
   - Pipenv
   - Autoenv
-slug: pipenv-autoenv
 ---
 
 Python 包管理一直都是一个问题，如今 3.6 推荐采用 Pipenv 出自 Requests 的大牛做所。配合上他写的 Autoenv 切换环境再也不是问题。

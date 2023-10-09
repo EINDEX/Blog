@@ -9,7 +9,6 @@ tags:
   - structure
   - Linear
 series: algorithm
-slug: liner-in-python
 ---
 
 本篇主要实现四种数据结构，分别是数组、堆栈、队列、链表。我不知道我为什么要用 Python 来干 C 干的事情，总之 Python 就是可以干。

@@ -6,7 +6,6 @@ latex: false
 template: posts/page.html
 tags:
   - Introspection
-slug: introspection
 ---
 
 ## 缘起

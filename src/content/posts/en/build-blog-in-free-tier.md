@@ -5,7 +5,6 @@ description: ""
 draft: true
 tags: 
 series: blog-enhance-plan
-slug: build-blog-in-free-tier
 ---
 
 This blog will share how to build a blog free without the domain.

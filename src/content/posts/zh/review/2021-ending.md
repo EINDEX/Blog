@@ -9,7 +9,6 @@ tags:
   - Annual
   - Summary
 series: review
-slug: 2021-ending
 ---
 
 2021 年就要过去了，分享一下我今年都干了些什么事请。
