@@ -7,7 +7,7 @@ import {getRealSlugByItem } from "@utils/slug";
 const { contents, lang } = Astro.props;
 ---
 
-<div class="feed">
+<div class="feed divide-y divide-gray-400 divide-dashed">
   {
     contents.map((item) => {
       let slot = <></>;
@@ -37,10 +37,6 @@ const { contents, lang } = Astro.props;
 
 <style lang="scss">
     .feed {
-      @apply flex flex-col gap-8 divide-y divide-green-100 w-full;
-
-      .feed-item {
-        @apply pt-4;
-      }
+      @apply flex flex-col gap-4 w-full first:mt-0;
     }
 </style>

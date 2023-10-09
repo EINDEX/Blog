@@ -25,6 +25,7 @@ export const ui = {
   en: {
     "common.posts": "Posts",
     "common.feed": "Feed",
+    "common.projects": "Projects",
     "common.archive": "Archive",
     "common.gallery": "Gallery",
     "common.thoughts": "Thoughts",
@@ -40,6 +41,7 @@ export const ui = {
   zh: {
     "common.posts": "博客",
     "common.feed": "Feed",
+    "common.projects": "项目",
     "common.archive": "归档",
     "common.gallery": "相册",
     "common.thoughts": "想法",
@@ -51,6 +53,5 @@ export const ui = {
     "series.review": "总结",
     "series.financial-independence": "财务自由",
     "series.algorithm": "算法",
-    
   },
 } as const;

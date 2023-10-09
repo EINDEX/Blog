@@ -7,9 +7,9 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const defaultLinks = [
-  { name: "posts", url: "/posts" },
+  { name: "archive", url: "/archive" },
   { name: "feed", url: "/feed" },
-  { name: "thoughts", url: "/thoughts" },
+  // { name: "thoughts", url: "/thoughts" },
   { name: "gallery", url: "/gallery" },
 ];
 const { links = defaultLinks, styles = {} } = Astro.props;

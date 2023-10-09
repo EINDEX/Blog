@@ -2,91 +2,53 @@
 import Layout from "@layouts/Layout.astro";
 import { tagSlug } from "@utils/slug";
 import { getAllByTag, getAllTags } from "@utils/tags";
-import Project from "@components/Project.astro";
-import { timeFormat } from "@utils/time";
 import _ from "lodash";
-import { getLinkViaLocale, getLastPartOfSlug } from "@utils/slug";
 import Breadcrumb from "@components/Breadcrumb.astro";
-import Thought from "@components/Thought.astro";
-import { getLangFromUrl, useTranslations } from "@i18n/utils";
-import A from "@components/webmentions/A.astro";
-import Author from "@components/Author.astro";
-import { Image } from "astro:assets";
+import { useTranslations } from "@i18n/utils";
+import Feed from "@components/feed/Feed.astro";
 
 export const prerender = true;
 
-
-
 export async function getStaticPaths() {
-    
-    const allTags = await getAllTags();
-    return allTags.map((tag) => {
+  const allTags = await getAllTags();
+  return allTags
+    .map((tag) => {
+      return {
+        params: { slug: tagSlug(tag), lang: "zh" },
+        props: { tag },
+      };
+    })
+    .concat(
+      allTags.map((tag) => {
         return {
-            params: { slug: tagSlug(tag), lang: 'zh' },
-            props: { tag },
+          params: { slug: tagSlug(tag), lang: "en" },
+          props: { tag },
         };
-    }).concat(
-    allTags.map((tag) => {
-        return {
-            params: { slug: tagSlug(tag), lang: 'en' },
-            props: { tag },
-        };
-    }))
+      })
+    );
 }
-const {lang, slug} = Astro.params;
+const { lang, slug } = Astro.params;
 const t = useTranslations(lang);
 const { tag } = Astro.props;
 const { posts, thoughts } = await getAllByTag(lang, slug);
-const groupedThoughts = _.groupBy(thoughts, (t) => timeFormat(t.data.date, lang));
 
-const contents = posts.concat(thoughts).sort((a,b) => {
-  return a.date - b.date
-})
+const contents = posts.concat(thoughts).sort((a, b) => {
+  return a.date - b.date;
+});
 ---
 
 <Layout title={tag}>
   <Breadcrumb
-  breadcrumb={[
-    {
-      url:  `/tags`,
-      name: "tags",
-    },
-  ]}
+    breadcrumb={[
+      {
+        url: `/tags`,
+        name: "tags",
+      },
+    ]}
   />
   <article>
     <h1>{t("common.tag")}{tag}</h1>
-    <div>{contents.map(item=>{
-      if(item.collection === "thoughts") {
-        return <Thought thought={item} slug={getLinkViaLocale(
-                      lang,
-                      `/thoughts/${getLastPartOfSlug(item.slug)}`
-                    )} />
-      }
-      if (item.collection === "posts") {
-        return (
-        <div>
-          <div class="meta">
-            <Author /> 
-            <time class="dt-published" datetime={item.data.updated.toISOString()}>{timeFormat(item.data.date, lang)}</time>
-          </div>
-          <div class="content">
-            <div class="link-card">
-              {item.data.cover && <Image class="image" alt={item.data.title} src={item.data.cover} width={192} height={144} />}
-              <div class="link-info">
-                <a href={getLinkViaLocale(
-                      lang,
-                      `/posts/${getLastPartOfSlug(item.slug)}`
-                    )} class="title">{item.data.title}</a>
-                <p class="description">{item.data.description}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      )
-      }
-      return <></>
-      
-    })}</div>
+    <Feed contents={contents} />
   </article>
 </Layout>
 
@@ -100,31 +62,6 @@ const contents = posts.concat(thoughts).sort((a,b) => {
 
     h2 {
       @apply text-2xl font-bold text-center my-4;
-    }
-
-    .meta {
-      @apply flex flex-row justify-between items-start;
-    }
-    .content {
-      @apply ml-12 -mt-4;
-    }
-    .link-card {
-      @apply flex flex-row gap-4 shadow rounded-lg my-4 h-36 overflow-hidden bg-slate-200 dark:bg-slate-700;
-      .image {
-        @apply w-48;
-      }
-
-      .link-info {
-        @apply flex flex-col gap-2 m-2; 
-      }
-
-      .title {
-        @apply font-bold;
-      }
-
-      .description {
-        @apply text-gray-500 text-sm;
-      }
     }
   }
 </style>

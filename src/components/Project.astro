@@ -1,13 +1,15 @@
 ---
 import Tags from "@components/Tags.astro";
-type project = {
+
+type Props = {
   name: string;
   logo: string;
   url: string;
-  labels: string[];
+  description: string;
+  githubLink?: string;
 };
 
-const { name, logo, url, labels } = Astro.props;
+const { name, logo, url, description, githubLink } = Astro.props;
 ---
 
 <div class="project">
@@ -20,25 +22,34 @@ const { name, logo, url, labels } = Astro.props;
       .replaceAll(" ", "-")}`}
   >
     <img src={logo} />
+  </a>
+  <a
+    class="content"
+    href={url}
+    target="_blank"
+    data-umami-event={`project-${name
+      .toLowerCase()
+      .trim()
+      .replaceAll(" ", "-")}`}
+  >
     <span class="name">{name}</span>
-    <Tags tags={labels} />
+    <span class="description">{description}</span>
   </a>
 </div>
 
 <style lang="scss">
   .project {
-    @apply flex flex-col rounded-lg shadow-xl overflow-hidden w-52 gap-2 pb-4;
-    background-color: var(--card-background-color);
-
-    a {
-      @apply text-center;
-    }
-
+    @apply flex flex-row rounded-lg shadow overflow-hidden w-80 gap-2 pb-4 bg-gray-200 dark:bg-gray-800;
+    // background-color: var(--card-background-color);
     img {
-      @apply w-52 h-52;
+      @apply w-12 h-12 rounded-full shadow m-4;
     }
-    .name {
-      @apply text-xl font-bold self-center;
+    a.content {
+      @apply flex flex-row text-center gap-2 my-4;
+
+      .name {
+        @apply font-semibold;
+      }
     }
   }
 </style>

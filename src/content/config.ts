@@ -1,57 +1,67 @@
 import { z, defineCollection } from "astro:content";
-import { rssSchema } from "@astrojs/rss";
 
-const blog = defineCollection({
-  schema: rssSchema,
-});
+const basicSchema = {
+  updated: z
+    .date()
+    .or(z.string().transform((str) => (str ? new Date(str) : null)))
+    .nullable()
+    .optional(),
+  description: z.string().nullable().optional(),
+  draft: z.boolean().nullable().optional().default(true),
+  pssoes: z.array(z.string()).optional().default([]),
+};
 
 const postSchema = z.object({
+  ...basicSchema,
   title: z.string(),
   date: z
     .date()
-    .or(z.string())
-    .transform((str) => new Date(str)),
-  updated: z
-    .date()
-    .or(z.string())
-    .optional()
-    .nullable()
-    .transform((str) => new Date(str)),
-  description: z.string().nullable().optional(),
+    .or(z.string().transform((str) => (str ? new Date(str) : null))),
+
   tags: z.array(z.string()).nullable().optional().default([]),
   series: z.string().nullable().optional(),
   katex: z.boolean().optional(),
-  draft: z.boolean().nullable().optional().default(true),
   cover: z.string().nullable().optional(),
-  pssoes: z.array(z.string()).optional().default([]),
 });
 
 const thoughtSchema = z.object({
-  title: z.string().optional(),
+  ...basicSchema,
   date: z
     .date()
     .or(z.string())
-    .transform((str) => new Date(str)),
-  updated: z
-    .date()
-    .or(z.string())
-    .optional()
-    .nullable()
-    .transform((str) => new Date(str)),
-  description: z.string().optional(),
-  draft: z.boolean().optional().default(true),
+    .transform((str) => (str ? new Date(str) : null)),
   tags: z.array(z.string()).nullable().optional().default([]),
-  pssoes: z.array(z.string()).optional().default([]),
   reply: z.string().optional(),
   repost: z.string().optional(),
 });
 
+const goalSchema = z.object({
+  ...basicSchema,
+  title: z.string(),
+  archived: z.boolean().nullable().optional().default(false),
+  archivedAt: z
+    .date()
+    .or(z.string())
+    .optional()
+    .nullable()
+    .transform((str) => new Date(str)),
+});
+
+const projectSchema = z.object({
+  ...basicSchema,
+  title: z.string(),
+  logo: z.string(),
+  url: z.string(),
+  githubLink: z.string().optional().nullable(),
+  isOpensource: z.boolean().optional().nullable().default(false),
+});
+
 const pageSchema = z.object({
+  ...basicSchema,
   title: z.string(),
 });
 
 const posts = defineCollection({
-  // type: "content",
   schema: postSchema,
 });
 
@@ -60,12 +70,21 @@ const pages = defineCollection({
 });
 
 const thoughts = defineCollection({
-  // type: "content",
   schema: thoughtSchema,
 });
 
+const goals = defineCollection({
+  schema: goalSchema,
+});
+
+const projects = defineCollection({
+  schema: projectSchema,
+});
+
 export const collections = {
-  posts: posts,
-  thoughts: thoughts,
-  pages: pages,
+  posts,
+  thoughts,
+  pages,
+  goals,
+  projects,
 };
