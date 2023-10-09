@@ -1,6 +1,6 @@
 ---
-title: "关于"
-draft: false
+title: 关于
+draft: true
 ---
 
 ## 我
