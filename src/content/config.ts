@@ -40,8 +40,10 @@ const thoughtSchema = z.object({
     .transform((str) => new Date(str)),
   description: z.string().optional(),
   draft: z.boolean().optional().default(true),
-  tags: z.array(z.string()).optional().default([]),
+  tags: z.array(z.string()).nullable().optional().default([]),
   pssoes: z.array(z.string()).optional().default([]),
+  reply: z.string().optional(),
+  repost: z.string().optional(),
 });
 
 const pageSchema = z.object({

@@ -29,7 +29,7 @@ export const getPostsByTag = async (
 ): Promise<any> => {
   const posts = await getPosts(locale);
   return posts.filter((post) => {
-    return haveTag(post.data.tags, tag);
+    return haveTag(post.data.tags || [], tag);
   });
 };
 
@@ -39,7 +39,7 @@ export const getThoughtsByTag = async (
 ): Promise<any> => {
   const thoughts = await getThoughts(locale);
   return thoughts.filter((thought) => {
-    return haveTag(thought.data.tags, tag);
+    return haveTag(thought.data.tags || [], tag);
   });
 };
 

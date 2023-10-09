@@ -26,7 +26,7 @@ export function remarkReadmore() {
 
 export function remarkMentions() {
   return function (tree, { data, value }) {
-    console.log(tree)
+    // console.log(tree)
 
   };
 }

@@ -5,25 +5,12 @@ import A from "@components/webmentions/A.astro";
 import Author from "@components/Author.astro";
 
 import { getLangFromUrl, useTranslations } from "@i18n/utils";
-import MarkdownIt from "markdown-it";
-import Contact from "./Contact.astro";
-const parser = new MarkdownIt();
+import CutContent from "./CutContent.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const { thought, slug, showDate = true, slugPage = false } = Astro.props;
-const { Content, remarkPluginFrontmatter } = await thought.render();
-
-let CutContent = null;
-
-const readmore = !slugPage && remarkPluginFrontmatter.cut !== undefined;
-if (readmore) {
-  CutContent = parser.render(
-    remarkPluginFrontmatter.cut +
-      ` [readmore](${getLinkViaLocale(lang, slug)})`
-  );
-}
 ---
 
 <article class="h-entry">
@@ -37,15 +24,7 @@ if (readmore) {
       ></time></a
     >
   </div>
-  <section
-    class="main title e-content prose dark:prose-invert"
-    set:html={CutContent}
-  >
-    {slugPage && <a class="u-bridgy-fed" href="https://fed.brid.gy/" />}
-
-    {!readmore && <Content components={{ a: A, link: A }} />}
-  </section>
-  <!-- <WMStatus slug={slug} /> -->
+  <CutContent item={thought} readmoreLink={"xxx"} />
 </article>
 
 <style lang="scss">
@@ -64,7 +43,7 @@ if (readmore) {
       }
     }
     section.main.e-content {
-      @apply list-disc max-w-full ml-10;
+      @apply list-disc max-w-full ml-12 -mt-4;
       color: var(--text-color);
       background-color: var(--bg-color);
     }

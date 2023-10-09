@@ -1,0 +1,32 @@
+---
+import MarkdownIt from "markdown-it";
+import type { CollectionEntry, CollectionKey } from "astro:content";
+import A from "@components/webmentions/A.astro";
+
+type Props = {
+  item: CollectionEntry<CollectionKey>;
+  readmoreLink: string;
+};
+
+const parser = new MarkdownIt();
+const { item, readmoreLink }: Props = Astro.props;
+const { Content, remarkPluginFrontmatter } = await item.render();
+
+const cutContent = parser.render(
+  remarkPluginFrontmatter.cut + ` [readmore](${readmoreLink})`
+);
+---
+
+{
+  remarkPluginFrontmatter.cut ? (
+    <section
+      class="main title e-content prose dark:prose-invert"
+      set:html={cutContent}
+    />
+  ) : (
+    <section class="main title e-content prose dark:prose-invert prose-p:first:mt-0">
+      <a class="u-bridgy-fed" href="https://fed.brid.gy/" />
+      <Content components={{ a: A, link: A }} />
+    </section>
+  )
+}

@@ -1,0 +1,51 @@
+---
+import { timeFormat } from "@utils/time";
+import { Image } from "astro:assets";
+
+type Props = { lang: string; published: Date; updated?: Date };
+
+const { lang, published, updated } = Astro.props;
+---
+
+<div class="feed-item">
+  <div class="meta">
+    <a class="author" href={"/"}
+      ><Image
+        class={"avatar u-photo"}
+        alt="EINDEX"
+        src="/images/new-avatar.jpeg"
+        height={48}
+        width={48}
+      />EINDEX</a
+    >
+    <time class="dt-published" datetime={published.toISOString()}>
+      {timeFormat(published, lang)}
+    </time>
+  </div>
+  <div class="content">
+    <slot />
+  </div>
+</div>
+
+<style lang="scss">
+  .feed-item {
+    @apply w-full;
+    .meta {
+      @apply flex flex-row gap-2 items-start justify-between;
+      .author {
+        @apply flex flex-row gap-2 items-start font-semibold;
+
+        .avatar {
+          @apply rounded-full;
+        }
+      }
+
+      time {
+        @apply text-gray-400 text-sm;
+      }
+    }
+    .content {
+      @apply ml-14 -mt-4;
+    }
+  }
+</style>

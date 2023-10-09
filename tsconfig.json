@@ -8,6 +8,7 @@
       "@layouts/*": ["src/layouts/*"],
       "@utils/*": ["src/utils/*"],
       "@i18n/*": ["src/i18n/*"],
+      "@": ["src/*"],
     }
   }
 }

@@ -1,0 +1,46 @@
+---
+import FeedItem from "./FeedItem.astro";
+import LinkItem from "./LinkItem.astro";
+import CutContent from "@components/CutContent.astro";
+import {getRealSlugByItem } from "@utils/slug";
+
+const { contents, lang } = Astro.props;
+---
+
+<div class="feed">
+  {
+    contents.map((item) => {
+      let slot = <></>;
+      if (item.collection === "posts") {
+        slot = (
+        <LinkItem
+          title={item.data.title}
+          description={item.data.description}
+          link={getRealSlugByItem(item)}
+          cover={item.data.cover}
+        />
+      );
+      }
+        else if (item.collection === "thoughts") {
+            slot = (
+            <CutContent item={item} readmoreLink={getRealSlugByItem(item)} />
+        );
+        }
+      return (
+        <FeedItem lang={lang} published={item.data.date}>
+          {slot}
+        </FeedItem>
+      );
+    })
+  }
+</div>
+
+<style lang="scss">
+    .feed {
+      @apply flex flex-col gap-8 divide-y divide-green-100 w-full;
+
+      .feed-item {
+        @apply pt-4;
+      }
+    }
+</style>

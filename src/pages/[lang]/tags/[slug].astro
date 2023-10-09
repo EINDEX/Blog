@@ -9,10 +9,13 @@ import { getLinkViaLocale, getLastPartOfSlug } from "@utils/slug";
 import Breadcrumb from "@components/Breadcrumb.astro";
 import Thought from "@components/Thought.astro";
 import { getLangFromUrl, useTranslations } from "@i18n/utils";
+import A from "@components/webmentions/A.astro";
+import Author from "@components/Author.astro";
+import { Image } from "astro:assets";
 
 export const prerender = true;
-const {lang} = Astro.params;
-const t = useTranslations(lang);
+
+
 
 export async function getStaticPaths() {
     
@@ -30,9 +33,15 @@ export async function getStaticPaths() {
         };
     }))
 }
+const {lang, slug} = Astro.params;
+const t = useTranslations(lang);
 const { tag } = Astro.props;
-const { posts, thoughts } = await getAllByTag(lang, tag);
+const { posts, thoughts } = await getAllByTag(lang, slug);
 const groupedThoughts = _.groupBy(thoughts, (t) => timeFormat(t.data.date, lang));
+
+const contents = posts.concat(thoughts).sort((a,b) => {
+  return a.date - b.date
+})
 ---
 
 <Layout title={tag}>
@@ -45,48 +54,39 @@ const groupedThoughts = _.groupBy(thoughts, (t) => timeFormat(t.data.date, lang)
   ]}
   />
   <article>
-    <h1>{tag}</h1>
-
-{posts.length === 0? <></>:
-  <section>
-    <h2>Posts</h2>
-    <div class="posts">
-      {
-          posts.map((post) => {
-            return (
-              <li>
-                <a href={getLinkViaLocale(lang, `/posts/${getLastPartOfSlug(post.slug)}`)}>
-                  {post.data.title}
-                </a>
-              </li>
-            );
-          })
-        }
-    </div>
-  </section>}
-  {thoughts.length === 0? <></>:
-    <section>
-      <h2>Thoughts</h2>
-      <div class="thoughts">
-        {
-          Object.keys(groupedThoughts).map((date) => (
-            <>
-              <div class="thoughts-in-day">
-                {groupedThoughts[date].map((t) => (
-                  <Thought
-                    thought={t}
-                    slug={getLinkViaLocale(
+    <h1>{t("common.tag")}{tag}</h1>
+    <div>{contents.map(item=>{
+      if(item.collection === "thoughts") {
+        return <Thought thought={item} slug={getLinkViaLocale(
                       lang,
-                      `/thoughts/${getLastPartOfSlug(t.slug)}`
-                    )}
-                  />
-                ))}
+                      `/thoughts/${getLastPartOfSlug(item.slug)}`
+                    )} />
+      }
+      if (item.collection === "posts") {
+        return (
+        <div>
+          <div class="meta">
+            <Author /> 
+            <time class="dt-published" datetime={item.data.updated.toISOString()}>{timeFormat(item.data.date, lang)}</time>
+          </div>
+          <div class="content">
+            <div class="link-card">
+              {item.data.cover && <Image class="image" alt={item.data.title} src={item.data.cover} width={192} height={144} />}
+              <div class="link-info">
+                <a href={getLinkViaLocale(
+                      lang,
+                      `/posts/${getLastPartOfSlug(item.slug)}`
+                    )} class="title">{item.data.title}</a>
+                <p class="description">{item.data.description}</p>
               </div>
-            </>
-          ))
-        }
-      </div>
-    </section>}
+            </div>
+          </div>
+        </div>
+      )
+      }
+      return <></>
+      
+    })}</div>
   </article>
 </Layout>
 
@@ -101,8 +101,30 @@ const groupedThoughts = _.groupBy(thoughts, (t) => timeFormat(t.data.date, lang)
     h2 {
       @apply text-2xl font-bold text-center my-4;
     }
-    .projects {
-      @apply flex flex-row flex-wrap gap-2 items-center justify-center;
+
+    .meta {
+      @apply flex flex-row justify-between items-start;
+    }
+    .content {
+      @apply ml-12 -mt-4;
+    }
+    .link-card {
+      @apply flex flex-row gap-4 shadow rounded-lg my-4 h-36 overflow-hidden bg-slate-200 dark:bg-slate-700;
+      .image {
+        @apply w-48;
+      }
+
+      .link-info {
+        @apply flex flex-col gap-2 m-2; 
+      }
+
+      .title {
+        @apply font-bold;
+      }
+
+      .description {
+        @apply text-gray-500 text-sm;
+      }
     }
   }
 </style>

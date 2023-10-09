@@ -24,6 +24,7 @@ export const defaultLang = "en";
 export const ui = {
   en: {
     "common.posts": "Posts",
+    "common.feed": "Feed",
     "common.archive": "Archive",
     "common.gallery": "Gallery",
     "common.thoughts": "Thoughts",
@@ -38,6 +39,7 @@ export const ui = {
   },
   zh: {
     "common.posts": "博客",
+    "common.feed": "Feed",
     "common.archive": "归档",
     "common.gallery": "相册",
     "common.thoughts": "想法",

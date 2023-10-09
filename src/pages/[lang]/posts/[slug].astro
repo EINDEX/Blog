@@ -62,11 +62,11 @@ const { Content, remarkPluginFrontmatter } = await post.render();
       ></a>
     </h1>
     <div class="post-meta">
-      <p class="p-summary">{post.data.description}</p>
       <div> 
         <Author />
         <time class="dt-published" datetime={post.data.date.toISOString()} >{timeFormat(post.data.date, lang)}</time>
       </div>
+      <p class="p-summary">{post.data.description}</p>
     </div>
     <hr/>
     <Tags tags={post.data.tags}></Tags>
@@ -93,6 +93,10 @@ const { Content, remarkPluginFrontmatter } = await post.render();
       @apply text-3xl font-bold text-center;
     }
 
+    .p-summary {
+      @apply ml-12 -mt-4;
+    }
+
     .post-meta {
       @apply flex flex-col gap-2;
       color: var(--text-color);
@@ -101,7 +105,7 @@ const { Content, remarkPluginFrontmatter } = await post.render();
         @apply text-right;
       }
       div {
-        @apply flex items-center justify-between;
+        @apply flex items-start justify-between;
       }
     }
     section.main {

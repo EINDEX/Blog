@@ -17,6 +17,7 @@ tags:
   - Actions
   - JavaScript
 series: blog-enhance-plan
+cover: https://img.eindex.me/img/0ec861d94c82a9e7fe57880e0f25a2dd.png
 ---
 
 > 本文通过 DeepL 翻译自 [Joining the Webmentions Community: A Beginner's Guide](/posts/webmentions)

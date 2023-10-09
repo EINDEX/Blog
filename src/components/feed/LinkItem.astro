@@ -1,0 +1,51 @@
+---
+import { Image } from "astro:assets";
+
+type Props = {
+  link: string;
+  title: string;
+  description?: string;
+  cover?: string;
+};
+
+const { cover, title, link, description } = Astro.props;
+console.log(link);
+---
+
+<div class="link-card" onclick={`window.location="${link}"`}>
+  {
+    cover ? (
+      <Image class="cover" alt={title} src={cover} width={192} height={128} />
+    ) : (
+      <div class="cover">
+        <span>Image</span>
+      </div>
+    )
+  }
+  <div class="link-info">
+    <a href={link} class="title">{title}</a>
+    <p class="description">{description}</p>
+  </div>
+</div>
+
+<style lang="scss">
+  .link-card {
+    @apply flex flex-row gap-4 shadow rounded-xl my-2 h-32 overflow-hidden bg-slate-200 dark:bg-gray-800 items-center;
+    .cover {
+      @apply w-48 h-32 bg-gray-100 dark:bg-gray-900 flex flex-col justify-center items-center;
+      min-width: 192px;
+    }
+
+    .link-info {
+      @apply flex flex-col gap-2 mx-2;
+    }
+
+    .title {
+      @apply font-bold;
+    }
+
+    .description {
+      @apply text-gray-500 text-sm;
+    }
+  }
+</style>

@@ -77,7 +77,8 @@ const { title, seo = {} } = Astro.props;
   </head>
   <body>
     <slot />
-    <Footer />
+    <div class="grow"></div>
+    <Footer class="footer" />
     <Umami />
     <Cloudflare />
     <script
@@ -86,3 +87,12 @@ const { title, seo = {} } = Astro.props;
     ></script>
   </body>
 </html>
+
+<style>
+  body {
+    @apply flex flex-col;
+  }
+  .footer {
+    @apply self-end;
+  }
+</style>
