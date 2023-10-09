@@ -1,10 +1,12 @@
 ---
-title: "编辑距离"
+title: 编辑距离
 date: 2018-05-11T14:21:13+08:00
-draft: true
-template: "posts/page.html"
-tags: [Editor Distence, Algorithm]
-
+draft: false
+template: posts/page.html
+tags:
+  - Editor
+  - Distence
+  - Algorithm
 series: algorithm
 ---
 
