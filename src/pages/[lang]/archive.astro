@@ -2,11 +2,10 @@
 import Layout from "@layouts/Layout.astro";
 import { getPosts } from "@utils/posts";
 import { getLastPartOfSlug, getLinkViaLocale } from "@utils/slug";
-import { timeFormat } from "@utils/time";
 
 import _ from "lodash";
 
-import { getLangFromUrl, useTranslations } from "@i18n/utils";
+import { useTranslations } from "@i18n/utils";
 
 export const prerender = true;
 
@@ -21,9 +20,7 @@ const t = useTranslations(lang);
 const locale = lang;
 
 const posts = await getPosts(lang);
-const groupedPosts = _.groupBy(posts, (post) =>
-  timeFormat(post.data.date, locale, false)
-);
+const groupedPosts = _.groupBy(posts, (post) => post.data.date.getFullYear());
 const sortedPostGroupKeys = Object.keys(groupedPosts).sort((a, b) => {
   return groupedPosts[a][0].data.date < groupedPosts[b][0].data.date ? 1 : -1;
 });
@@ -38,7 +35,7 @@ const sortedPostGroupKeys = Object.keys(groupedPosts).sort((a, b) => {
           sortedPostGroupKeys.map((month) => (
             <div class="posts-in-month">
               <h2>
-                {timeFormat(groupedPosts[month][0].data.date, locale, false)}
+                {groupedPosts[month][0].data.date.getFullYear()}
               </h2>
               <ul>
                 {groupedPosts[month].map((post) => (

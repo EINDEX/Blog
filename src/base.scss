@@ -53,3 +53,12 @@ body::-webkit-scrollbar-thumb {
 input {
   @apply rounded-lg shadow-lg px-2;
 }
+
+span.heimu {
+  @apply px-1 mx-1 rounded-sm;
+  color: black;
+  background-color: black;
+}
+span.heimu:hover {
+  color: white;
+}

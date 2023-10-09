@@ -31,14 +31,6 @@ const contents = posts
 ---
 
 <Layout title={"Feed"}>
-  <Breadcrumb
-    breadcrumb={[
-      {
-        url: `/tags`,
-        name: "tags",
-      },
-    ]}
-  />
   <article>
     <h1>{t("common.feed")}</h1>
     <Feed contents={contents} lang={lang} />

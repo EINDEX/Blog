@@ -1,17 +1,19 @@
 ---
 import "@fontsource-variable/bitter";
-import { getLinkViaLocale } from "@utils/slug";
+import { getLinkViaLocale, getLastPartOfSlug } from "@utils/slug";
 import { getLangFromUrl, useTranslations } from "@i18n/utils";
+import { getCollection, getEntries } from "astro:content";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const defaultLinks = [
-  { name: "archive", url: "/archive" },
-  { name: "feed", url: "/feed" },
-  // { name: "thoughts", url: "/thoughts" },
-  { name: "gallery", url: "/gallery" },
-];
+const pages = await getCollection("pages");
+// const entries = await getEntries(pages);
+
+const defaultLinks = pages
+  .filter((i) => i.data.location === "navbar" && i.id.startsWith(lang))
+  .sort((a, b) => a.data.order - b.data.order);
+
 const { links = defaultLinks, styles = {} } = Astro.props;
 ---
 
@@ -20,44 +22,23 @@ const { links = defaultLinks, styles = {} } = Astro.props;
     <img
       alt="EINDEX's Blog"
       loading="lazy"
-      src={"/images/avatar.webp"}
+      src={"/images/new-avatar.jpeg"}
       width={32}
       height={32}
     />
     <b>EINDEX</b>'s Blog
   </a>
-  <button
-    id="navbar-default"
-    data-collapse-toggle="navbar-default"
-    type="button"
-    class="navbar-toggle"
-    aria-controls="navbar-default"
-    aria-expanded="false"
-  >
-    <span class="sr-only">Open main menu</span>
-    <svg
-      class="w-6 h-6"
-      aria-hidden="true"
-      fill="currentColor"
-      viewBox="0 0 20 20"
-      xmlns="http://www.w3.org/2000/svg"
-      ><path
-        fill-rule="evenodd"
-        d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-        clip-rule="evenodd"></path></svg
-    >
-  </button>
-  <div class="menus sm:hidden" id="navbar-menus">
+  <div class="menus" id="navbar-menus">
     <ul>
       {
         links.map((link) => (
           <li>
             <a
-              data-umami-event={`Menu ${link.name}`}
-              data-umami-event-name={`${link.name}`}
-              href={getLinkViaLocale(lang, link.url)}
+              data-umami-event={`Menu ${getLastPartOfSlug(link.slug)}`}
+              data-umami-event-name={`${getLastPartOfSlug(link.slug)}`}
+              href={`/${link.slug}`}
             >
-              {t("common." + link.name)}
+              {link.data.title}
             </a>
           </li>
         ))
@@ -85,12 +66,8 @@ const { links = defaultLinks, styles = {} } = Astro.props;
       }
     }
 
-    .navbar-toggle {
-      @apply sm:inline-flex items-center p-1 text-sm text-gray-500 hidden dark:text-gray-400 dark:hover:bg-gray-700;
-    }
-
     #navbar-menus {
-      @apply flex gap-4 sm:hidden sm:w-full justify-center items-center text-center;
+      @apply flex gap-4 justify-center items-center text-center;
 
       language-selector {
         @apply hidden sm:inline-flex rounded-lg shadow-lg dark:bg-black;
@@ -98,7 +75,7 @@ const { links = defaultLinks, styles = {} } = Astro.props;
       }
 
       ul {
-        @apply flex sm:flex-col sm:text-center sm:w-full flex-row gap-4 sm:text-sm  border-0;
+        @apply flex flex-row gap-4 sm:text-sm  border-0;
 
         li {
           a {
