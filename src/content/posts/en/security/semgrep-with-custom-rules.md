@@ -3,7 +3,6 @@ title: Code Review with Semgrep Custom Rules
 date: 2022-12-14T14:14:56+08:00
 description: Use Semgrep for code review to detect issues and improve code quality.
 draft: false
-template: posts/page.html
 tags:
   - Code
   - review
@@ -24,7 +23,6 @@ tags:
   - Best
   - practices
 series: security
-slug: semgrep-with-custom-rules
 ---
 
 In this post, we will discuss how Semgrep can be integrated into your code review process. If you are unfamiliar with Semgrep, we recommend checking out our previous article on the topic, titled "[Improving Your Code Review Process With Semgrep](/posts/improving-your-code-review-process-with-semgrep)".
