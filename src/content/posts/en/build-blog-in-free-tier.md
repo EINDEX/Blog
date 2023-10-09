@@ -3,8 +3,9 @@ title: Build Blog in Free Tier
 date: 2023-01-03T10:11:30Z
 description: ""
 draft: true
-tags: []
+tags: 
 series: blog-enhance-plan
+slug: build-blog-in-free-tier
 ---
 
 This blog will share how to build a blog free without the domain.
