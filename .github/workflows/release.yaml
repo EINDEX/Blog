@@ -2,7 +2,6 @@ name: Build Blog
 
 on:
   push:
-    branches: [ main ]
     paths:
       - src/**
       - public/**
@@ -41,14 +40,15 @@ jobs:
     - name: build site
       run: yarn build
         
-    # - name: Publish to Cloudflare Pages
-    #   uses: cloudflare/pages-action@1
-    #   with:
-    #     apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-    #     accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-    #     projectName: blog
-    #     directory: dist
-    #     gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+    - name: Publish to Cloudflare Pages
+      uses: cloudflare/pages-action@1
+      with:
+        apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        projectName: blog
+        directory: dist
+        gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref_name }}
         
     # - run: sleep 60
 
