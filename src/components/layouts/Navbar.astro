@@ -3,6 +3,7 @@ import "@fontsource-variable/bitter";
 import { getLinkViaLocale, getLastPartOfSlug } from "@utils/slug";
 import { getLangFromUrl, useTranslations } from "@i18n/utils";
 import { getCollection, getEntries } from "astro:content";
+import {Image} from "astro:assets";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -19,7 +20,7 @@ const { links = defaultLinks, styles = {} } = Astro.props;
 
 <nav style={styles}>
   <a class="logo" href={getLinkViaLocale(lang, "/")}>
-    <img
+    <Image
       alt="EINDEX's Blog"
       loading="lazy"
       src={"/images/new-avatar.jpeg"}

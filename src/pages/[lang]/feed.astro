@@ -1,13 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import { timeFormat } from "@utils/time";
-import { getLinkViaLocale, getLastPartOfSlug } from "@utils/slug";
-import Breadcrumb from "@components/Breadcrumb.astro";
-import Thought from "@components/Thought.astro";
 import { useTranslations } from "@i18n/utils";
-import Author from "@components/Author.astro";
 import Feed from "@components/feed/Feed.astro";
-import { Image } from "astro:assets";
 import { getPosts, getThoughts } from "@utils/posts";
 
 export const prerender = true;
