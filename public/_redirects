@@ -1,4 +1,11 @@
 /cn/* /zh/:splat 301
+/posts/* /en/posts/:splat 301
+/thoughts/* /en/thoughts/:splat 301
+/gallery /en/gallery 301
+/feed.xml /en/feed.xml 301
+/404 /en/404 301
+/ /zh/ 302 Country=CN
+
 
 /.well-known/host-meta* https://fed.brid.gy/.well-known/host-meta:splat 302
 
