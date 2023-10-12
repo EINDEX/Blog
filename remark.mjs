@@ -10,6 +10,12 @@ export function remarkReadingTime() {
   };
 }
 
+export function remarkRawString() {
+  return function (tree, { data }) {
+    data.astro.frontmatter.rawString = toString(tree);
+  };
+}
+
 export function remarkReadmore() {
   return function (tree, { data, value }) {
     if (data.astro.frontmatter.words < 100) {
@@ -23,9 +29,6 @@ export function remarkReadmore() {
   };
 }
 
-
 export function remarkMentions() {
-  return function (tree, { data, value }) {
-
-  };
+  return function (tree, { data, value }) {};
 }

@@ -6,10 +6,11 @@ import A from "@components/webmentions/A.astro";
 type Props = {
   item: CollectionEntry<CollectionKey>;
   readmoreLink: string;
+  slugPage: boolean;
 };
 
 const parser = new MarkdownIt();
-const { item, readmoreLink }: Props = Astro.props;
+const { item, readmoreLink, slugPage }: Props = Astro.props;
 const { Content, remarkPluginFrontmatter } = await item.render();
 
 const cutContent = parser.render(
@@ -18,7 +19,7 @@ const cutContent = parser.render(
 ---
 
 {
-  remarkPluginFrontmatter.cut ? (
+  remarkPluginFrontmatter.cut && !slugPage ? (
     <section
       class="main title e-content prose dark:prose-invert"
       set:html={cutContent}

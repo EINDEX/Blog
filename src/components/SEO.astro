@@ -1,6 +1,7 @@
 ---
-import { getLinkViaLocale } from "@utils/slug";
 import { getLangFromUrl, useTranslations } from "@i18n/utils";
+import { cutString, titleForSeo } from "@utils/seo";
+import { SITE_NAME, DESCRIPTION_LENGTH } from "@utils/constants";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -18,12 +19,17 @@ type Props = {
     video?: string;
   };
 };
-const SITE_NAME = "EINDEX's Blog";
+
 const { seo }: Props = Astro.props;
 
 const url = Astro.url;
+seo.title = titleForSeo(seo.title, url.pathname);
+seo.description = cutString(seo.description, DESCRIPTION_LENGTH);
+
 const author = "EINDEX";
-const image = seo.image ? seo.image : "https://eindex.me/images/new-avatar.jpeg";
+const image = seo.image
+  ? seo.image
+  : "https://eindex.me/images/new-avatar.jpeg";
 const schema = {
   "@context": "https://schema.org",
   "@type": "NewsArticle",
@@ -61,5 +67,5 @@ const schema = {
   <meta name="og:image:alt" content={seo.title} />
   <meta name="twitter:image" content={image} />
   <meta name="twitter:image:alt" content={seo.title} />
-  <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 </head>

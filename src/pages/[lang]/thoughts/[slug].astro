@@ -7,9 +7,8 @@ import Comments from "@components/Comments.astro";
 import { getLastPartOfSlug, getLocaleFromSlug } from "@utils/slug";
 import Thought from "@components/Thought.astro";
 
-
 export const prerender = true;
-import { getLangFromUrl, useTranslations } from "@i18n/utils";
+import { useTranslations } from "@i18n/utils";
 
 export async function getStaticPaths() {
   const thoughts = await getThoughts();
@@ -23,19 +22,19 @@ export async function getStaticPaths() {
   });
 }
 
-type Props = CollectionEntry<`thoughts`>;
+type Props = { thought: CollectionEntry<`thoughts`> };
 const { slug, lang } = Astro.params;
 const t = useTranslations(lang);
 const { thought } = Astro.props;
-// const { Content, remarkPluginFrontmatter } = await thought.render();
+const { Content, remarkPluginFrontmatter } = await thought.render();
 ---
 
 <Layout
-  title={t("common.thoughts")}
+  title={remarkPluginFrontmatter.rawString}
   seo={{
-    title: t("common.thoughts"),
-    description: getSummary(lang, thought.body),
-    url: `/thoughts/${slug}`,
+    title: remarkPluginFrontmatter.rawString,
+    description: remarkPluginFrontmatter.rawString,
+    url: Astro.url.pathname,
     date: thought.data.date,
     updated: thought.data.updated,
     keywords: thought.data.tags,
@@ -50,9 +49,8 @@ const { thought } = Astro.props;
     ]}
   />
   <div class="thought-content">
-    <h1 class="series p-category">{t("common.thoughts")}</h1>
     <Thought thought={thought} slug={`/thoughts/${slug}`} slugPage={true} />
-    <Comments locale={lang} slug={`/thoughts/${slug}`} />
+    <!-- <Comments locale={lang} slug={`/thoughts/${slug}`} /> -->
   </div>
 </Layout>
 

@@ -10,6 +10,7 @@ import A from "@components/webmentions/A.astro";
 import Author from "@components/Author.astro";
 import { Image } from "astro:assets";
 import { useTranslations } from "@i18n/utils";
+import PageLayout from "@layouts/PageLayout.astro";
 
 export const prerender = true;
 
@@ -17,114 +18,74 @@ const { lang } = Astro.params;
 const t = useTranslations(lang);
 
 export async function getStaticPaths() {
-    const posts = await getPosts();
-    return posts.map((post) => {
-        const slug = getLastPartOfSlug(post.slug);
-        const locale = getLocaleFromSlug(post.id);
-        return {
-            params: { slug: slug, lang: locale},
-            props: { post },
-        };
-    });
+  const posts = await getPosts();
+  return posts.map((post) => {
+    const slug = getLastPartOfSlug(post.slug);
+    const locale = getLocaleFromSlug(post.id);
+    return {
+      params: { slug: slug, lang: locale },
+      props: { post },
+    };
+  });
 }
 
 const url = Astro.url;
 const { post } = Astro.props;
 const { Content, remarkPluginFrontmatter } = await post.render();
-
 ---
 
-
-<Layout title={post.data.title} seo={
-  {
-        title: post.data.title,
-        description: post.data.description || getSummary(lang, post.body),
-        image: post.data.cover,
-        url: url,
-        date: post.data.date,
-        updated: post.data.updated,
-        keywords: post.data.tags,
-      }
-}>
-<Breadcrumb
-  breadcrumb={[
-    {
-      url:  `/posts`,
-      name: "posts",
-    },
-  ]}
-  />
-  <article class="h-entry">
-    {post.data.cover ? <img class="u-photo" alt={post.data.title} src={post.data.cover} /> : <></>}
-    {post.data.section || <span class="series p-category">{t(post.data.section)}</span>}
-    <h1 class="title p-name">
-      {post.data.title}<a class="u-url" href={url}
-      ></a>
-    </h1>
+<PageLayout
+  title={post.data.title}
+  seo={{
+    title: post.data.title,
+    description: post.data.description || remarkPluginFrontmatter.rawString,
+    image: post.data.cover,
+    url: url,
+    date: post.data.date,
+    updated: post.data.updated,
+    keywords: post.data.tags,
+  }}
+  Content={Content}
+  cover={post.data.cover}
+  series={post.data.series}
+>
+  <div class="before-content" slot="before-content">
     <div class="post-meta">
-      <div> 
+      <div>
         <Author />
-        <time class="dt-published" datetime={post.data.date.toISOString()} >{timeFormat(post.data.date, lang)}</time>
+        <time class="dt-published" datetime={post.data.date.toISOString()}
+          >{timeFormat(post.data.date, lang)}</time
+        >
       </div>
       <p class="p-summary">{post.data.description}</p>
     </div>
-    <hr/>
-    <Tags tags={post.data.tags}></Tags>
-    <section
-      class="main e-content prose dark:prose-invert"
-    >
-      <a class="u-bridgy-fed" href="https://fed.brid.gy/"></a>
-      <Content class="raw" components={{ a: A, link: A, img: Image }} />
-    </section>
-    <!-- <WMStatus slug={url} /> -->
-  </article>
-  <Comments slug={url} />
-</Layout>
-
+    <hr />
+    <Tags tags={post.data.tags} />
+  </div>
+</PageLayout>
 
 <style lang="scss">
-  article {
-    @apply flex flex-col w-full gap-4;
-
-    img {
-      @apply w-full rounded-lg top-8 -z-10;
-    }
-    h1 {
-      @apply text-3xl font-bold text-center;
-    }
-
-    .p-summary {
-      @apply ml-12 -mt-4;
-    }
-
-    .post-meta {
-      @apply flex flex-col gap-2;
-      color: var(--text-color);
-
-      time {
-        @apply text-right;
-      }
-      div {
-        @apply flex items-start justify-between;
-      }
-    }
-    section.main {
-      @apply max-w-full;
-      color: var(--text-color);
-      background-color: var(--bg-color);
-    }
-
+  .before-content {
+    @apply flex flex-col gap-4;
   }
 
+  .p-summary {
+    @apply ml-12 -mt-4;
+  }
 
-</style>
+  .post-meta {
+    @apply flex flex-col gap-2;
+    color: var(--text-color);
 
-<style lang="scss" is:global>
-  section.main.e-content {
-    iframe {
-      @apply w-full;
+    hr {
+      @apply py-4;
+    }
+
+    time {
+      @apply text-right align-bottom;
+    }
+    div {
+      @apply flex items-center justify-between;
     }
   }
 </style>
-
-

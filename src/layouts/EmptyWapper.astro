@@ -12,6 +12,7 @@ import "@fontsource-variable/noto-sans-sc";
 import "@fontsource-variable/inter";
 import "@fontsource-variable/bitter";
 import { getLangFromUrl, useTranslations } from "@i18n/utils";
+import { titleForSeo } from "@utils/seo";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -22,7 +23,7 @@ export interface Props {
 }
 
 const { title, seo = {} } = Astro.props;
-
+const url = Astro.url;
 ---
 
 <!doctype html>
@@ -36,13 +37,12 @@ const { title, seo = {} } = Astro.props;
     <link rel="icon" href="/favicon.ico" />
 
     <meta name="generator" content={"Astro"} />
-    <title>{title}</title>
+    <title>{titleForSeo(title, url.pathname)}</title>
     <link
       rel="apple-touch-icon"
       href="/images/favicon-192.png"
       sizes="192x192"
     />
-    <meta name="description" content="EINDEX's Blog Site" />
     <meta name="theme-color" content="#323232" />
     <link rel="mask-icon" href="/maskable-icon.png" color="#323232" />
     <link rel="webmention" href="https://webmention.io/eindex.me/webmention" />

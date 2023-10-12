@@ -60,6 +60,7 @@ const pageSchema = z.object({
   title: z.string(),
   url: z.string().nullable().default(""),
   location: z.string().nullable().default("footer"),
+  order: z.number().nullable().default(0),
 });
 
 const posts = defineCollection({

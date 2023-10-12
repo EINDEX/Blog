@@ -1,14 +1,12 @@
 ---
 import { getLinkViaLocale } from "@utils/slug";
 import { timeFormat } from "@utils/time";
-import A from "@components/webmentions/A.astro";
 import Author from "@components/Author.astro";
 
-import { getLangFromUrl, useTranslations } from "@i18n/utils";
-import CutContent from "./CutContent.astro";
+import { getLangFromUrl } from "@i18n/utils";
+import CutContent from "./support/CutContent.astro";
 
 const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
 
 const { thought, slug, showDate = true, slugPage = false } = Astro.props;
 ---
@@ -24,22 +22,28 @@ const { thought, slug, showDate = true, slugPage = false } = Astro.props;
       ></time></a
     >
   </div>
-  <CutContent item={thought} readmoreLink={"xxx"} />
+  <div class="content">
+    <CutContent
+      item={thought}
+      readmoreLink={thought.data.slug}
+      slugPage={slugPage}
+    />
+  </div>
 </article>
 
 <style lang="scss">
   article {
-    @apply flex flex-col max-w-full;
+    @apply flex flex-col max-w-full mt-24 sm:mt-12;
     h1 {
       @apply text-3xl font-bold text-center;
     }
 
     .thought-meta {
-      @apply flex flex-row justify-between items-center gap-2;
+      @apply flex flex-row justify-between items-start gap-2;
       color: var(--text-color);
 
       time {
-        @apply text-sm;
+        @apply text-sm align-top;
       }
     }
     section.main.e-content {
@@ -48,13 +52,8 @@ const { thought, slug, showDate = true, slugPage = false } = Astro.props;
       background-color: var(--bg-color);
     }
 
-    .labels {
-      @apply flex flex-row flex-wrap text-sm gap-2 justify-center;
-
-      .tag {
-        @apply rounded-sm px-2 bg-gray-300 dark:bg-gray-700;
-        background-color: var(--label-background-color);
-      }
+    .content {
+      @apply ml-12;
     }
   }
 </style>
