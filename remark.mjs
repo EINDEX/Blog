@@ -29,7 +29,7 @@ export function remarkReadmore() {
   };
 }
 
-export function remarkMentions() {
+export function remarkContentProcress() {
   const links = []
   const images = []
   const looping = (node) => {
@@ -46,7 +46,7 @@ export function remarkMentions() {
   }
   return function (tree, { data, value }) {
     looping(tree)
-    // console.log(links)
-    console.log(images)
+    data.astro.frontmatter.links = links
+    data.astro.frontmatter.images = links
   };
 }
