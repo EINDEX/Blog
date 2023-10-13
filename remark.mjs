@@ -30,5 +30,23 @@ export function remarkReadmore() {
 }
 
 export function remarkMentions() {
-  return function (tree, { data, value }) {};
+  const links = []
+  const images = []
+  const looping = (node) => {
+    // console.log(node)
+    if (node.type === "link" ) {
+      links.push({url: node.url, title: toString(node.children)})
+    }
+    if (node.type === "image") {
+      images.push({alt: node.alt, url: node.url})
+    }
+    if (node.children) {
+      node.children.forEach(item => looping(item));
+    }
+  }
+  return function (tree, { data, value }) {
+    looping(tree)
+    // console.log(links)
+    console.log(images)
+  };
 }

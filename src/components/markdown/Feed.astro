@@ -1,6 +1,7 @@
 ---
 import { getLangFromUrl } from "@i18n/utils";
 import { getPosts, getThoughts } from "@utils/posts";
+import FeedList from "@components/feed/FeedList.astro";
 
 const url = Astro.url;
 const lang = getLangFromUrl(url);
@@ -14,4 +15,4 @@ const contents = posts
   .reverse();
 ---
 
-<Feed contents={contents} lang={lang} />
+<FeedList contents={contents} lang={lang} />

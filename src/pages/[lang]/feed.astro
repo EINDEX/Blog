@@ -1,0 +1,39 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { useTranslations } from "@i18n/utils";
+import FeedList from "@components/feed/FeedList.astro";
+import { getPosts, getThoughts } from "@utils/posts";
+import PageLayout from "@layouts/PageLayout.astro";
+import { getEntry } from "astro:content";
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  return [{ params: { lang: "en" } }, { params: { lang: "zh" } }];
+}
+
+const { lang } = Astro.params;
+const t = useTranslations(lang);
+
+const thoughts = await getThoughts(lang);
+const posts = await getPosts(lang);
+// console.log(thoughts, posts)
+const contents = posts
+  .concat(thoughts)
+  .sort((a, b) => {
+    return a.data.date - b.data.date;
+  })
+  .reverse();
+
+const entry = await getEntry("pages", "en/feed");
+---
+
+<PageLayout
+  title={entry.data.title}
+  seo={{
+    title: entry.data.title,
+    description: entry.data.description,
+  }}
+>
+  <FeedList slot="before-content" contents={contents} lang={lang} />
+</PageLayout>

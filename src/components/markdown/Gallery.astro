@@ -1,5 +1,4 @@
 ---
-
 const resp = await fetch("https://img.eindex.me/pic/pic_list.json");
 const images = await resp.json();
 ---
@@ -19,14 +18,13 @@ const images = await resp.json();
 </div>
 
 <style lang="scss">
-    .gallery {
-      @apply columns-4 md:columns-3 sm:columns-2 self-center;
-      // max-width: 1280px;
-      min-width: calc(min(100vw, 1280px));
-  
-      .image {
-        @apply rounded-lg shadow-lg mb-4;
-      }
+  .gallery {
+    @apply mx-2 mt-12 columns-4 md:columns-3 sm:columns-2 self-center;
+    // max-width: 1280px;
+    min-width: calc(min(100vw, 1254px));
+
+    .image {
+      @apply rounded-lg shadow-lg mb-4;
     }
-  </style>
-  
+  }
+</style>

@@ -1,3 +1,4 @@
+import { getCollection, getEntries } from "astro:content";
 import { getAllProjects, getPosts, getThoughts } from "./posts";
 import { tagSlug } from "./slug";
 
@@ -54,3 +55,12 @@ export const getAllByTag = async (
     thoughts,
   };
 };
+
+export const getAllTag = async (lang: string) => {
+  const tagsInContent = getAllTags(lang);
+  console.log(tagsInContent)
+  const collection = await getCollection("i18n", (item) => {
+    return item.id.startsWith("tag");
+  })
+  return collection;
+}

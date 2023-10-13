@@ -28,6 +28,7 @@ export async function getStaticPaths() {
     };
   });
 }
+const defaultComponents = { a: A, link: A, img: Image };
 
 const url = Astro.url;
 const { post } = Astro.props;
@@ -45,7 +46,6 @@ const { Content, remarkPluginFrontmatter } = await post.render();
     updated: post.data.updated,
     keywords: post.data.tags,
   }}
-  Content={Content}
   cover={post.data.cover}
   series={post.data.series}
 >
@@ -62,6 +62,10 @@ const { Content, remarkPluginFrontmatter } = await post.render();
     <hr />
     <Tags tags={post.data.tags} />
   </div>
+
+  <a class="u-bridgy-fed" href="https://fed.brid.gy/"></a>
+  <Content components={{ ...defaultComponents }} />
+
 </PageLayout>
 
 <style lang="scss">

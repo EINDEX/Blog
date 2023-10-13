@@ -1,0 +1,15 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import Gallery from "@components/markdown/Gallery.astro";
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  return [{ params: { lang: "en" } }, { params: { lang: "zh" } }];
+}
+
+---
+
+<PageLayout title={"Gallery"}>
+  <Gallery slot="before-content" />
+</PageLayout>

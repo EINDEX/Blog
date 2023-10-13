@@ -38,6 +38,6 @@ const { Content } = await page.render();
     title: page.data.title,
     description: page.data.description,
   }}
-  Content={Content}
-  components={{ PostArchive, Projects, Feed, Gallery }}
-/>
+>
+  <Content components={{ PostArchive, Projects, Feed, Gallery }} />
+</PageLayout>

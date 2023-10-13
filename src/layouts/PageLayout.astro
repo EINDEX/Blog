@@ -20,11 +20,8 @@ const url = Astro.url;
     <!-- {series || <span class="series p-category">{t(series)}</span>} -->
     <h1 class="title p-name"><a class="u-url" href={url}>{title}</a></h1>
     <slot name="before-content" />
-    <section
-      class="main e-content"
-    >
-      <a class="u-bridgy-fed" href="https://fed.brid.gy/"></a>
-      <Content class="raw" components={{...defaultComponents,...components}} />
+    <section  class="main e-content">
+      <slot />
     </section>
   </article>
   <slot name="footer" />
@@ -37,7 +34,6 @@ const url = Astro.url;
     img {
       @apply rounded-lg sm:mt-0 mt-10 self-center;
       min-width: calc(min( 100vw, 768px));
-    //   max-width: 768px;
     }
 
     h1 {

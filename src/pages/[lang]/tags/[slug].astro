@@ -5,7 +5,7 @@ import { getAllByTag, getAllTags } from "@utils/tags";
 import _ from "lodash";
 import Breadcrumb from "@components/Breadcrumb.astro";
 import { useTranslations } from "@i18n/utils";
-import Feed from "@components/feed/Feed.astro";
+import FeedList from "@components/feed/FeedList.astro";
 
 export const prerender = true;
 
@@ -48,7 +48,7 @@ const contents = posts.concat(thoughts).sort((a, b) => {
   />
   <article>
     <h1>{t("common.tag")}{tag}</h1>
-    <Feed contents={contents} />
+    <FeedList contents={contents} />
   </article>
 </Layout>
 

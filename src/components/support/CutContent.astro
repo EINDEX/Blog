@@ -21,13 +21,19 @@ const cutContent = parser.render(
 {
   remarkPluginFrontmatter.cut && !slugPage ? (
     <section
-      class="main title e-content prose dark:prose-invert"
+      class="prose dark:prose-invert prose-p:first:mt-0 prose-p:first:pt-0"
       set:html={cutContent}
     />
   ) : (
-    <section class="main title e-content prose dark:prose-invert prose-p:first:mt-0">
+    <section class="prose dark:prose-invert prose-p:first:mt-0 prose-p:first:pt-0">
       <a class="u-bridgy-fed" href="https://fed.brid.gy/" />
       <Content components={{ a: A, link: A }} />
     </section>
   )
 }
+
+<style lang="scss">
+  section {
+    @apply w-full max-w-full;
+  }
+</style>
