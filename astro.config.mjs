@@ -5,7 +5,12 @@ import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
-import { remarkReadingTime, remarkReadmore, remarkMentions, remarkRawString } from "./remark.mjs";
+import {
+  remarkReadingTime,
+  remarkReadmore,
+  remarkMentions,
+  remarkRawString,
+} from "./remark.mjs";
 import cloudflare from "@astrojs/cloudflare";
 
 export default defineConfig({
@@ -17,7 +22,14 @@ export default defineConfig({
       theme: "dracula",
       wrap: true,
     },
-    remarkPlugins: [remarkMath, remarkToc, remarkReadingTime, remarkReadmore, remarkMentions, remarkRawString],
+    remarkPlugins: [
+      remarkMath,
+      remarkToc,
+      remarkReadingTime,
+      remarkReadmore,
+      remarkMentions,
+      remarkRawString,
+    ],
     rehypePlugins: [rehypeKatex],
     gfm: true,
   },

@@ -1,0 +1,40 @@
+---
+import _ from "lodash";
+
+import { getPosts } from "@utils/posts";
+import { getLastPartOfSlug, getLinkViaLocale } from "@utils/slug";
+import { getLangFromUrl } from "@i18n/utils";
+
+const url = Astro.url;
+const lang = getLangFromUrl(url);
+const posts = await getPosts(lang);
+const groupedPosts = _.groupBy(posts, (post) => post.data.date.getFullYear());
+const sortedPostGroupKeys = Object.keys(groupedPosts).sort((a, b) => {
+  return groupedPosts[a][0].data.date < groupedPosts[b][0].data.date ? 1 : -1;
+});
+---
+
+<div class="posts">
+  {
+    sortedPostGroupKeys.map((month) => (
+      <div class="posts-in-month">
+        <h2>{groupedPosts[month][0].data.date.getFullYear()}</h2>
+        <ul>
+          {groupedPosts[month].map((post) => (
+            <li>
+              <a
+                class="post"
+                href={getLinkViaLocale(
+                  lang,
+                  `/posts/${getLastPartOfSlug(post.slug)}`
+                )}
+              >
+                {post.data.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))
+  }
+</div>

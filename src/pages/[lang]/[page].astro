@@ -1,0 +1,43 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import { getLastPartOfSlug, getLocaleFromSlug } from "@utils/slug";
+import PageLayout from "@layouts/PageLayout.astro";
+import PostArchive from "@components/markdown/PostArchive.astro";
+import Projects from "@components/markdown/Projects.astro";
+import Feed from "@components/markdown/Feed.astro";
+import Gallery from "@components/markdown/Gallery.astro";
+
+export const getStaticPaths = async () => {
+  const pages = await getCollection("pages");
+  return pages
+    .filter((page) => page.data.url === null)
+    .map((page) => {
+      return {
+        params: {
+          lang: getLocaleFromSlug(page.slug),
+          page: getLastPartOfSlug(page.slug),
+        },
+        props: {
+          page,
+        },
+      };
+    });
+};
+
+const page = await getEntry(
+  "pages",
+  `${Astro.params.lang}/${Astro.params.page}`
+);
+
+const { Content } = await page.render();
+---
+
+<PageLayout
+  title={page.data.title}
+  seo={{
+    title: page.data.title,
+    description: page.data.description,
+  }}
+  Content={Content}
+  components={{ PostArchive, Projects, Feed, Gallery }}
+/>

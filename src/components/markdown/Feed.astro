@@ -1,0 +1,17 @@
+---
+import { getLangFromUrl } from "@i18n/utils";
+import { getPosts, getThoughts } from "@utils/posts";
+
+const url = Astro.url;
+const lang = getLangFromUrl(url);
+const thoughts = await getThoughts(lang);
+const posts = await getPosts(lang);
+const contents = posts
+  .concat(thoughts)
+  .sort((a, b) => {
+    return a.data.date - b.data.date;
+  })
+  .reverse();
+---
+
+<Feed contents={contents} lang={lang} />
