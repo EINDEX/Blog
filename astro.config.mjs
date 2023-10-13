@@ -22,7 +22,7 @@ export default defineConfig({
     gfm: true,
   },
   integrations: [
-    // sitemap(),
+    sitemap(),
     tailwind({ config: { applyBaseStyles: false } }),
     mdx(),
   ],
