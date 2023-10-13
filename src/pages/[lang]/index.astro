@@ -5,6 +5,7 @@ import Profile from "@components/Profile.astro";
 import Contact from "@components/Contact.astro";
 import { getLinkViaLocale } from "@utils/slug";
 import { getAllProjects } from "@utils/posts";
+import Layout from "@layouts/Layout.astro";
 
 export const prerender = true;
 
@@ -21,7 +22,7 @@ const images = await resp.json();
 const showImages = images.slice(0, 7);
 ---
 
-<EmptyWapper
+<Layout
   title="EINDEX's Blog"
   seo={{
     title: "EINDEX's Blog",
@@ -31,7 +32,6 @@ const showImages = images.slice(0, 7);
     url: getLinkViaLocale(locale, "/"),
   }}
 >
-  <Navbar styles={{ position: "absolute", top: 0 }} />
   <main>
     <section class="profile">
       <Profile />
@@ -78,22 +78,14 @@ const showImages = images.slice(0, 7);
       <Contact />
     </section>
   </main>
-</EmptyWapper>
+</Layout>
 
 <style lang="scss">
-  body {
-    min-height: 100vh;
-    place-items: center;
-    width: 100%;
-  }
-
   main {
-    @apply flex flex-col w-full h-full gap-8 px-4;
+    @apply flex flex-col w-full h-full gap-8 px-4 mt-32 max-w-5xl;
 
     .profile {
-      @apply py-0 my-0;
-      height: 100vh;
-      max-height: 700px;
+      @apply my-32;
     }
 
     @media screen and (min-height: 768px) {
@@ -103,7 +95,7 @@ const showImages = images.slice(0, 7);
     }
 
     section {
-      @apply flex flex-col py-4 justify-center items-center gap-4 h-3/4 mt-8;
+      @apply flex flex-col py-4 justify-items-center items-center gap-4 h-3/4 mt-8;
 
       height: fit-content;
 
@@ -111,15 +103,13 @@ const showImages = images.slice(0, 7);
         @apply self-center justify-center text-6xl italic;
       }
 
-      .projects {
-        @apply flex flex-row flex-wrap justify-center items-center gap-8 pt-8;
-      }
-
       .gallery {
-        @apply max-w-fit overscroll-x-contain -mx-4 h-96 overflow-x-auto lg:overscroll-x-none lg:max-w-full lg:overflow-x-visible;
+        @apply max-w-fit overscroll-x-contain -mx-4 h-96 overflow-x-auto lg:overscroll-x-none lg:max-w-full lg:overflow-x-visible self-center;
+        min-width: 100vw;
 
         div {
-          @apply flex flex-row w-fit h-96 flex-nowrap justify-center items-center gap-8 overflow-visible;
+          @apply flex flex-row w-fit h-96 flex-nowrap justify-center self-center items-center gap-8 overflow-visible;
+          min-width: 100vw;
           img {
             @apply rounded-xl shadow-lg;
           }

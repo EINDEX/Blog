@@ -5,6 +5,7 @@ import Navbar from "@components/layouts/Navbar.astro";
 import {useTranslations } from "@i18n/utils";
 import { getAllProjects } from "@utils/posts";
 import Project from "@components/Project.astro";
+import Layout from "@layouts/Layout.astro";
 
 export const prerender = true;
 
@@ -18,7 +19,7 @@ const t = useTranslations(lang);
 const projects = await getAllProjects(lang);
 ---
 
-<EmptyWapper
+<Layout
   title={t("common.projects")}
   seo={{
     title: t("common.projects"),
@@ -28,7 +29,6 @@ const projects = await getAllProjects(lang);
     image: ``,
   }}
 >
-  <Navbar />
   <main>
     <h1>{t("common.projects")}</h1>
     <div class="projects">
@@ -44,7 +44,7 @@ const projects = await getAllProjects(lang);
         }
       </div>
   </main>
-</EmptyWapper>
+</Layout>
 
 <style lang="scss">
   main {
@@ -56,5 +56,6 @@ const projects = await getAllProjects(lang);
   }
   .projects {
     @apply grid grid-cols-3 justify-items-center md:grid-cols-2 lg:grid-cols-3 gap-8;
+    min-width: 1440px;
   }
 </style>

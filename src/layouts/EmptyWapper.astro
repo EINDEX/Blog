@@ -55,13 +55,13 @@ const url = Astro.url;
     />
     <SEO seo={seo} />
     <GA4 />
-    <Webpushier />
+    <!-- <Webpushier /> -->
     <link rel="stylesheet" href="/katex.min.css" crossorigin="anonymous" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.11.0/tabler-icons.min.css"
     />
-    <GoogleAdsHead />
+    <!-- <GoogleAdsHead /> -->
     { lang === "zh" ?   <style is:global>
       :root {
         --font-sans: "Noto Sans SC Variable", sans,  system-ui;
@@ -77,14 +77,8 @@ const url = Astro.url;
   </head>
   <body>
     <slot />
-    <div class="grow"></div>
-    <Footer class="footer" />
     <Umami />
     <Cloudflare />
-    <script
-      is:inline
-      src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"
-    ></script>
   </body>
 </html>
 
