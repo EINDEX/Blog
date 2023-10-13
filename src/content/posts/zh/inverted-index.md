@@ -4,9 +4,8 @@ date: 2019-08-27T12:31:56+08:00
 draft: false
 template: posts/page.html
 tags:
-  - Index
-  - Search
-  - Engine
+  - index
+  - search-engine
 series: algorithm
 ---
 

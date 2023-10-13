@@ -4,9 +4,9 @@ date: 2019-09-07T12:17:25+08:00
 draft: false
 template: posts/page.html
 tags:
-  - Python
-  - Crawler
-  - Async
+  - python
+  - crawler
+  - async
 ---
 
 一个优雅的爬虫需要一下这些东西：

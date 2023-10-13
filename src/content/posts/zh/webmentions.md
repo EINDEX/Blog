@@ -4,18 +4,12 @@ date: 2022-11-06T17:44:50+08:00
 updated: 2022-12-05T23:48:50+08:00
 description: 了解如何加入 Webmentions 社区，提高你的博客与其他网站及其用户的互动性和参与度。
 tags:
-  - Webmentions
-  - Community
-  - Beginner's
-  - Guide
-  - Indie
-  - Web
-  - Microformats2
-  - Engagement
-  - Connectivity
-  - Github
-  - Actions
-  - JavaScript
+  - webmentions
+  - beginner-guide
+  - indie-web
+  - microformats2
+  - github-actions
+  - javascript
 series: blog-enhance-plan
 ---
 

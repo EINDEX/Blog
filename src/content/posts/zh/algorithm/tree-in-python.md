@@ -4,7 +4,7 @@ date: 2018-04-08T14:30:44+08:00
 draft: false
 template: posts/page.html
 tags:
-  - Python
+  - python
 series: algorithm
 ---
 

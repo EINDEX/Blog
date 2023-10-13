@@ -4,18 +4,12 @@ date: 2022-11-06T17:44:50+08:00
 updated: 2022-12-05T23:48:50+08:00
 description: " A protocol to notify webpages about links, likes, or comments. Enables better communication on the internet."
 tags:
-  - Webmentions
-  - Community
-  - Beginner's
-  - Guide
-  - Indie
-  - Web
-  - Microformats2
-  - Engagement
-  - Connectivity
-  - Github
-  - Actions
-  - JavaScript
+  - webmentions
+  - beginner-guide
+  - indie-web
+  - microformats2
+  - github-actions
+  - javascript
 series: blog-enhance-plan
 draft: false
 ---

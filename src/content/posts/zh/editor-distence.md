@@ -6,7 +6,6 @@ template: posts/page.html
 tags:
   - Editor
   - Distence
-  - Algorithm
 series: algorithm
 ---
 

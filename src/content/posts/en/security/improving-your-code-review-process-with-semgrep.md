@@ -6,19 +6,17 @@ draft: false
 cover: https://img.eindex.me/img/0ec861d94c82a9e7fe57880e0f25a2dd.png
 template: posts/page.html
 tags:
-  - Semgrep
-  - Static
-  - Analysis
-  - Best
-  - Practices
-  - SAST
-  - Security
-  - DevOps
-  - DevSecOps
-  - CI
+  - semgrep
+  - sast
+  - best-practices
+  - static-analysis
+  - security
+  - devops
+  - devsecops
+  - ci
   - code-review
   - build-security-in
-series: security
+series: infosec
 ---
 In this post, I will show you how to set up Semgrep for your project, give examples of common code issues that it can detect, and provide best practices for using Semgrep in code review. By the end, you will have a better understanding of how Semgrep can improve your code review process and make your code more secure, reliable and maintainable.
 

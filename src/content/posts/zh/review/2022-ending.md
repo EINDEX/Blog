@@ -5,9 +5,7 @@ draft: false
 latex: false
 template: posts/page.html
 tags:
-  - Ending
-  - Annual
-  - Summary
+  - annual-summary
 series: review
 ---
 

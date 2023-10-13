@@ -4,8 +4,7 @@ date: 2019-09-02T23:28:58+08:00
 author:
   - George Orwell
 tags:
-  - After
-  - Reading
+  - after-reading
 ---
 
 这本书看了很久了，下面这句话一直环绕在我脑中，始终不能忘记。

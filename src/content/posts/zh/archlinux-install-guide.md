@@ -4,7 +4,7 @@ date: 2017-10-05T14:24:21+08:00
 draft: false
 template: posts/page.html
 tags:
-  - ArchLinux
+  - archlinux
 ---
 
 ArchLinux 是一个非常符合我个人哲学的操作系统，深得与我一样的大部分 Pythonista 之心(不好意思代表你们了)。
@@ -207,16 +207,4 @@ reboot
 
 ---
 
-那么系统安装就告一段落了，如果还是不理解可以看下面的这段视频。（配音很尴尬。。）
-
-<embed
-  height="415"
-  width="544"
-  quality="high"
-  allowfullscreen="true"
-  type="application/x-shockwave-flash"
-  src="//static.hdslb.com/miniloader.swf"
-  flashvars="aid=12933746&page=1"
-  pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"
-></embed>
-## 未完待续 下次将会更新 ArchLinux 安装的 GUI 部分
+那么系统安装就告一段落了。

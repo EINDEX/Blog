@@ -4,9 +4,8 @@ date: 2019-04-24T14:20:03+08:00
 draft: false
 template: posts/page.html
 tags:
-  - Python
-  - Cache
-  - ETag
+  - python
+  - cache
 ---
 
 为了研究缓存看了 tornado `web.py` 里的 `finish` 函数

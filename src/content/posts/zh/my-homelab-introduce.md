@@ -5,11 +5,10 @@ updated: 2023-01-03T17:40:23+08:00
 draft: false
 latex: false
 tags:
-  - K3S
-  - Proxmox
-  - VE
-  - Self-Hosted
-  - Docker
+  - k3s
+  - pve
+  - docker
+series: self-hosted
 ---
 
 这篇文章将会介绍一下我的 HomeLab。

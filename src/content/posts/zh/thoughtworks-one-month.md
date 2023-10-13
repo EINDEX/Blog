@@ -4,7 +4,7 @@ date: 2017-10-05T14:34:54+08:00
 draft: false
 template: posts/page.html
 tags:
-  - Thoughtworks
+  - thoughtworks
 ---
 
 距离加入 Thoughtworks 已有一个月。

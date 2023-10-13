@@ -5,7 +5,7 @@ draft: false
 latex: false
 template: posts/page.html
 tags:
-  - Introspection
+  - introspection
 ---
 
 ## 缘起

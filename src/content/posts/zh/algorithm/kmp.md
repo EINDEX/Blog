@@ -4,8 +4,8 @@ date: 2018-05-11T14:32:26+08:00
 draft: false
 template: posts/page.html
 tags:
-  - KMP
-  - Python
+  - kmp
+  - python
 series: algorithm
 ---
 

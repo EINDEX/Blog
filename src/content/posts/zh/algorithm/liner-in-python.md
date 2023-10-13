@@ -4,10 +4,8 @@ date: 2017-10-05T14:33:39+08:00
 draft: false
 template: posts/page.html
 tags:
-  - Python
-  - Data
-  - structure
-  - Linear
+  - python
+  - data-structures
 series: algorithm
 ---
 
