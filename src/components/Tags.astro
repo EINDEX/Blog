@@ -34,7 +34,7 @@ for (const tag of realTags) {
       return (
         <a
           class="tag p-category"
-          href={getLinkViaLocale(lang, `/tags/${tag.slug}`)}
+          href={`/${lang}/tags/${tag.slug}/`}
         >
           {tag.data[lang]}
         </a>

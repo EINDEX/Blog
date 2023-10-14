@@ -57,7 +57,7 @@ export const remarkTagFounder = (
       ...whitespace,
       {
         type: "link",
-        url: `/${lang}/tags/${slugify(username, { lower: true })}`,
+        url: `/${lang}/tags/${slugify(username, { lower: true })}/`,
         children: [
           { type: "text", value: value.trim() }, // Trim the username here
         ],
