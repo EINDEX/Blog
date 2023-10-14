@@ -1,4 +1,4 @@
-import { z, defineCollection } from "astro:content";
+import { z, defineCollection, reference } from "astro:content";
 
 const basicSchema = {
   updated: z
@@ -19,7 +19,7 @@ const postSchema = z.object({
     .date()
     .or(z.string().transform((str) => (str ? new Date(str) : null))),
   tags: z.array(z.string()).nullable().optional().default([]),
-  series: z.string().nullable().optional(),
+  // series: reference("tags").nullable().optional(),
   katex: z.boolean().optional(),
   cover: z.string().nullable().optional(),
 });
@@ -63,6 +63,11 @@ const pageSchema = z.object({
   order: z.number().nullable().default(0),
 });
 
+const tagSchema = z.object({
+  zh: z.string().nullable().optional(),
+  en: z.string().nullable().optional(),
+});
+
 const posts = defineCollection({
   schema: postSchema,
 });
@@ -83,10 +88,15 @@ const projects = defineCollection({
   schema: projectSchema,
 });
 
+const tags = defineCollection({
+  schema: tagSchema,
+});
+
 export const collections = {
   posts,
   thoughts,
   pages,
   goals,
   projects,
+  tags,
 };

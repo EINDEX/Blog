@@ -1,16 +1,21 @@
 import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
-import remarkToc from "remark-toc";
-import rehypeKatex from "rehype-katex";
-import remarkMath from "remark-math";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
+
+import remarkHint from "remark-hint";
+import remarkToc from "remark-toc";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+import { rehypeAccessibleEmojis } from "rehype-accessible-emojis";
 import {
   remarkReadingTime,
   remarkReadmore,
-  remarkMentions,
+  remarkContentProcesser,
   remarkRawString,
+  remarkTagFounder,
 } from "./remark.mjs";
+import slugify from "slugify";
 import cloudflare from "@astrojs/cloudflare";
 
 export default defineConfig({
@@ -25,12 +30,14 @@ export default defineConfig({
     remarkPlugins: [
       remarkMath,
       remarkToc,
+      remarkHint,
       remarkReadingTime,
+      [remarkTagFounder, { usernameLink: (username) => `/tags/${username}` }],
+      remarkContentProcesser,
       remarkReadmore,
-      remarkMentions,
       remarkRawString,
     ],
-    rehypePlugins: [rehypeKatex],
+    rehypePlugins: [rehypeKatex, rehypeAccessibleEmojis],
     gfm: true,
   },
   integrations: [
@@ -39,6 +46,7 @@ export default defineConfig({
     mdx(),
   ],
   strictNullChecks: true,
+  allowJS: true,
 
   output: "server",
   adapter: cloudflare({

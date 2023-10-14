@@ -1,23 +1,41 @@
 ---
-import { tagSlug } from "@utils/slug";
 import { getLinkViaLocale } from "@utils/slug";
-import { getLangFromUrl, useTranslations } from "@i18n/utils";
+import { getLangFromUrl } from "@i18n/utils";
+import { getEntry } from "astro:content";
+import slugify from "slugify";
 
 const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
 
 const { tags } = Astro.props;
+
+const actualTags = [];
+tags.map((tag) => tag.trim().replace(/^#/, ""));
+
+for (const tag of tags) {
+  const tagEntry = await getEntry("tags", tag);
+  if (tagEntry) {
+    actualTags.push(tagEntry);
+  } else {
+    actualTags.push({
+      slug: slugify(tag, { lower: true }),
+      data: {
+        en: tag,
+        zh: tag,
+      },
+    });
+  }
+}
 ---
 
 <div class="labels">
   {
-    (tags || []).map((tag) => {
+    (actualTags || []).map((tag) => {
       return (
         <a
           class="tag p-category"
-          href={getLinkViaLocale(lang, `/tags/${tagSlug(tag)}`)}
+          href={getLinkViaLocale(lang, `/tags/${tag.slug}`)}
         >
-          {tag}
+          {tag.data[lang]}
         </a>
       );
     })
@@ -29,7 +47,7 @@ const { tags } = Astro.props;
     @apply flex flex-row flex-wrap text-sm gap-2 justify-center;
 
     .tag {
-      @apply rounded-sm px-2 bg-gray-300 dark:bg-gray-700;
+      @apply rounded-sm px-2 bg-gray-300 dark:bg-gray-700 no-underline;
       background-color: var(--label-background-color);
     }
   }

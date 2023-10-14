@@ -1,5 +1,4 @@
-import { getCollection, getEntries } from "astro:content";
-import { getAllProjects, getPosts, getThoughts } from "./posts";
+import { getPosts, getThoughts, sortViaUpdated } from "./posts";
 import { tagSlug } from "./slug";
 
 export const getAllTags = async (locale?: string): Promise<string[]> => {
@@ -9,11 +8,16 @@ export const getAllTags = async (locale?: string): Promise<string[]> => {
   const postTags = posts.reduce((acc, post) => {
     return [...acc, ...(post.data.tags || [])];
   }, []);
-  const thoughtTags = thoughts.reduce((acc, thought) => {
-    return [...acc, ...(thought.data.tags || [])];
-  }, []);
 
-  const allTags = [...new Set([...postTags, ...thoughtTags])];
+  const thoughtTags = [];
+  for (const thought of thoughts) {
+    const { remarkPluginFrontmatter } = await thought.render();
+    thoughtTags.push(...(remarkPluginFrontmatter.tags || []));
+  }
+
+  const allTags = [...new Set([...postTags, ...thoughtTags])].map((tag) =>
+    tag.trim().replace("^#", "")
+  );
   return allTags;
 };
 
@@ -39,9 +43,15 @@ export const getThoughtsByTag = async (
   tag: string
 ): Promise<any> => {
   const thoughts = await getThoughts(locale);
-  return thoughts.filter((thought) => {
-    return haveTag(thought.data.tags || [], tag);
-  });
+  const thoughtsWhichHaveTag = [];
+  for (const thought of thoughts) {
+    const { remarkPluginFrontmatter } = await thought.render();
+    if (haveTag(remarkPluginFrontmatter.tags || [], tag)) {
+      thoughtsWhichHaveTag.push(thought);
+    }
+  }
+
+  return thoughtsWhichHaveTag;
 };
 
 export const getAllByTag = async (
@@ -50,17 +60,8 @@ export const getAllByTag = async (
 ): Promise<any> => {
   const posts = await getPostsByTag(locale, tag);
   const thoughts = await getThoughtsByTag(locale, tag);
-  return {
-    posts,
-    thoughts,
-  };
-};
 
-export const getAllTag = async (lang: string) => {
-  const tagsInContent = getAllTags(lang);
-  console.log(tagsInContent)
-  const collection = await getCollection("i18n", (item) => {
-    return item.id.startsWith("tag");
-  })
-  return collection;
-}
+  const contents = posts.concat(thoughts);
+  contents.sort((a, b) => sortViaUpdated(a, b, false));
+  return contents;
+};

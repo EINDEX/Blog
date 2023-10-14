@@ -1,6 +1,4 @@
 ---
-import Layout from "@layouts/Layout.astro";
-import { useTranslations } from "@i18n/utils";
 import FeedList from "@components/feed/FeedList.astro";
 import { getPosts, getThoughts } from "@utils/posts";
 import PageLayout from "@layouts/PageLayout.astro";
@@ -13,11 +11,9 @@ export async function getStaticPaths() {
 }
 
 const { lang } = Astro.params;
-const t = useTranslations(lang);
 
 const thoughts = await getThoughts(lang);
 const posts = await getPosts(lang);
-// console.log(thoughts, posts)
 const contents = posts
   .concat(thoughts)
   .sort((a, b) => {

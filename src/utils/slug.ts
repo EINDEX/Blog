@@ -1,3 +1,5 @@
+
+import slugify from "slugify";
 import type { CollectionEntry, CollectionKey } from "astro:content";
 
 export function getLastPartOfSlug(slug: string): string {
@@ -16,7 +18,7 @@ export function getLinkViaLocale(locale: string, slug: string): string {
 }
 
 export const tagSlug = (tag: string) => {
-  return tag.toLowerCase().replace(/ /g, "-").replace(/s$/g, "");
+  return slugify(tag, {lower: true});
 };
 
 export function getRealSlugByItem(

@@ -7,6 +7,8 @@ import Projects from "@components/markdown/Projects.astro";
 import Feed from "@components/markdown/Feed.astro";
 import Gallery from "@components/markdown/Gallery.astro";
 
+export const prerender = true;
+
 export const getStaticPaths = async () => {
   const pages = await getCollection("pages");
   return pages

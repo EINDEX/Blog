@@ -1,11 +1,9 @@
 ---
-import Layout from "@layouts/Layout.astro";
 import _ from "lodash";
 import Tags from "@components/Tags.astro";
-import { getAllTag, getAllTags } from "@utils/tags";
+import { getAllTags } from "@utils/tags";
 
-import { getLangFromUrl, useTranslations } from "@i18n/utils";
-
+import PageLayout from "@layouts/PageLayout.astro";
 
 export const prerender = true;
 
@@ -15,12 +13,10 @@ export function getStaticPaths() {
 
 const { lang } = Astro.params;
 
-const t = useTranslations(lang);
 const allTags = await getAllTags(lang);
-const allTheTags = await getAllTag(lang);
 ---
 
-<Layout
+<PageLayout
   title="Tags"
   seo={{
     title: "Tags",
@@ -29,34 +25,5 @@ const allTheTags = await getAllTag(lang);
     url: "/tags",
   }}
 >
-  <h1>Tags</h1>
-  <div class="tags">
-    <Tags tags={allTags} />
-  </div>
-</Layout>
-
-<style lang="scss">
-  .thoughts {
-    @apply w-full flex flex-col gap-4 px-4 divide-y divide-gray-200;
-
-    .thoughts-in-day {
-      @apply flex flex-col gap-4 pt-4;
-
-      article {
-        @apply flex flex-col gap-2  ml-4;
-
-        p {
-          a {
-            @apply underline;
-          }
-        }
-        a {
-          @apply self-end no-underline;
-        }
-      }
-    }
-    a {
-      @apply underline;
-    }
-  }
-</style>
+  <Tags tags={allTags} />
+</PageLayout>

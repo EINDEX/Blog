@@ -36,7 +36,9 @@ export async function getThoughts(
       flag && (data.draft !== true || import.meta.env.MODE === "development")
     );
   });
-  return thoughts.sort((a, b) => sortViaUpdated(a, b, false));
+
+  thoughts.sort((a, b) => sortViaUpdated(a, b, false))
+  return thoughts;
 }
 
 type project = {

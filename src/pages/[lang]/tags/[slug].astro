@@ -6,12 +6,14 @@ import _ from "lodash";
 import Breadcrumb from "@components/Breadcrumb.astro";
 import { useTranslations } from "@i18n/utils";
 import FeedList from "@components/feed/FeedList.astro";
+import { getEntry } from "astro:content";
 
 export const prerender = true;
 
 export async function getStaticPaths() {
-  const allTags = await getAllTags();
-  return allTags
+  const zhTags = await getAllTags("zh");
+  const enTags = await getAllTags("en");
+  return zhTags
     .map((tag) => {
       return {
         params: { slug: tagSlug(tag), lang: "zh" },
@@ -19,7 +21,7 @@ export async function getStaticPaths() {
       };
     })
     .concat(
-      allTags.map((tag) => {
+      enTags.map((tag) => {
         return {
           params: { slug: tagSlug(tag), lang: "en" },
           props: { tag },
@@ -27,17 +29,20 @@ export async function getStaticPaths() {
       })
     );
 }
-const { lang, slug } = Astro.params;
-const t = useTranslations(lang);
-const { tag } = Astro.props;
-const { posts, thoughts } = await getAllByTag(lang, slug);
 
-const contents = posts.concat(thoughts).sort((a, b) => {
-  return a.date - b.date;
-});
+const { lang, slug } = Astro.params;
+const { tag } = Astro.props;
+const t = useTranslations(lang);
+
+const tagEntry = await getEntry("tags", slug);
+const actualTag = tagEntry
+  ? tagEntry
+  : { slug: slug, data: { zh: tag, en: tag } };
+
+const contents = await getAllByTag(lang, actualTag.slug);
 ---
 
-<Layout title={tag}>
+<Layout title={actualTag.data[lang]}>
   <Breadcrumb
     breadcrumb={[
       {
@@ -47,7 +52,7 @@ const contents = posts.concat(thoughts).sort((a, b) => {
     ]}
   />
   <article>
-    <h1>{t("common.tag")}{tag}</h1>
+    <h1>{t("common.tag")}{actualTag.data[lang]}</h1>
     <FeedList contents={contents} />
   </article>
 </Layout>
