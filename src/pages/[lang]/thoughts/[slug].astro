@@ -50,8 +50,6 @@ const { Content, remarkPluginFrontmatter } = await thought.render();
   />
   <div class="thought-content">
     <Thought thought={thought} slug={`/thoughts/${slug}`} slugPage={true} />
-    {thought.data.tags}
-    <!-- <Comments locale={lang} slug={`/thoughts/${slug}`} /> -->
   </div>
 </Layout>
 
@@ -61,6 +59,6 @@ const { Content, remarkPluginFrontmatter } = await thought.render();
   }
 
   .thought-content {
-    @apply max-w-xl self-center;
+    @apply self-center;
   }
 </style>
