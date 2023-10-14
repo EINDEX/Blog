@@ -9,9 +9,10 @@ const lang = getLangFromUrl(Astro.url);
 const { tags } = Astro.props;
 
 const actualTags = [];
-tags.map((tag) => tag.trim().replace(/^#/, ""));
 
-for (const tag of tags) {
+const realTags = (tags || []).map((tag) => tag.trim().replace(/^#/, ""));
+
+for (const tag of realTags) {
   const tagEntry = await getEntry("tags", tag);
   if (tagEntry) {
     actualTags.push(tagEntry);

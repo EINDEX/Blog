@@ -1,21 +1,16 @@
 ---
 import { getLastPartOfSlug, getLocaleFromSlug } from "@utils/slug";
-import Layout from "@layouts/Layout.astro";
-import { getPosts, getSummary } from "@utils/posts";
+import { getPosts } from "@utils/posts";
 import { timeFormat } from "@utils/time";
-import Breadcrumb from "@components/Breadcrumb.astro";
-import Comments from "@components/Comments.astro";
 import Tags from "@components/Tags.astro";
 import A from "@components/webmentions/A.astro";
 import Author from "@components/Author.astro";
 import { Image } from "astro:assets";
-import { useTranslations } from "@i18n/utils";
 import PageLayout from "@layouts/PageLayout.astro";
 
 export const prerender = true;
 
 const { lang } = Astro.params;
-const t = useTranslations(lang);
 
 export async function getStaticPaths() {
   const posts = await getPosts();
