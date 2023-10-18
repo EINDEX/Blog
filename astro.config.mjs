@@ -32,7 +32,7 @@ export default defineConfig({
       remarkToc,
       remarkHint,
       remarkReadingTime,
-      [remarkTagFounder, { usernameLink: (username) => `/tags/${username}` }],
+      remarkTagFounder,
       remarkContentProcesser,
       remarkReadmore,
       remarkRawString,

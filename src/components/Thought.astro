@@ -9,6 +9,8 @@ import CutContent from "./support/CutContent.astro";
 const lang = getLangFromUrl(Astro.url);
 
 const { thought, slug, showDate = true, slugPage = false } = Astro.props;
+
+thought.data.updated = thought.data.updated ? thought.data.updated : thought.data.date;
 ---
 
 <article class="h-entry">
