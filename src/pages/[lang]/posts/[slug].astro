@@ -2,7 +2,6 @@
 import { getLastPartOfSlug, getLocaleFromSlug } from "@utils/slug";
 import { getPosts } from "@utils/posts";
 import { timeFormat } from "@utils/time";
-import Tags from "@components/Tags.astro";
 import A from "@components/webmentions/A.astro";
 import Author from "@components/Author.astro";
 import { Image } from "astro:assets";
@@ -55,7 +54,6 @@ const { Content, remarkPluginFrontmatter } = await post.render();
       <p class="p-summary">{post.data.description}</p>
     </div>
     <hr />
-    <Tags tags={post.data.tags} />
   </div>
 
   <a class="u-bridgy-fed" href="https://fed.brid.gy/"></a>

@@ -7,6 +7,7 @@ const { title, cover, series, seo = {}, breadcrumb = [], Content, components={} 
 
 import A from "@components/webmentions/A.astro";
 import { Image } from "astro:assets";
+import Comments from "@components/Comments.astro";
 
 const url = Astro.url;
 
@@ -25,6 +26,7 @@ const url = Astro.url;
     </section>
   </article>
   <slot name="footer" />
+  <Comments title={title} id={url.pathname} />
 </Layout>
 
 <style lang="scss">
@@ -37,7 +39,7 @@ const url = Astro.url;
     }
 
     h1 {
-      @apply text-5xl font-bold text-center md:text-4xl sm:text-2xl;
+      @apply text-5xl font-bold text-left md:text-4xl sm:text-3xl;
     }
 
     section.main {

@@ -30,11 +30,7 @@ export default defineConfig({
     remarkPlugins: [
       remarkMath,
       remarkToc,
-      remarkHint,
       remarkReadingTime,
-      remarkTagFounder,
-      remarkContentProcesser,
-      remarkReadmore,
       remarkRawString,
     ],
     rehypePlugins: [rehypeKatex, rehypeAccessibleEmojis],

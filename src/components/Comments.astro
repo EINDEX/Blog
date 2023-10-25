@@ -1,35 +1,30 @@
 ---
 // import Giscus from "@giscus/react";
-import WMComments from "./webmentions/WMComments.astro";
+// import WMComments from "./webmentions/WMComments.astro";
 
 import { getLangFromUrl, useTranslations } from "@i18n/utils";
 
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+const url = Astro.url;
+const lang = getLangFromUrl(url);
 
-const { slug } = Astro.props;
+const { title, id } = Astro.props;
+
 ---
 
 <hr />
 <div class="comments">
-  <h2>Comments</h2>
-  <WMComments slug={slug} />
-  <!-- <Giscus
-    client:load
-    id="comments"
-    repo="eindex/blog"
-    repoId="R_kgDOGWb6Yg"
-    category="General"
-    categoryId="DIC_kwDOGWb6Ys4CAKn-"
-    mapping="specific"
-    term={slug}
-    reactionsEnabled="1"
-    emitMetadata="1"
-    inputPosition="top"
-    theme="preferred_color_scheme"
-    lang={locale == "zh" ? "zh-CN" : locale}
-    loading="lazy"
-  /> -->
+  <!-- <h2>Comments</h2>
+  <div id="cusdis_thread"
+  data-host="https://cusdis.com"
+  data-app-id="529aa4d2-95b8-400a-88e5-a09f9aa150fe"
+  data-page-id={id}
+  data-page-url={url}
+  data-page-title={title}
+  data-theme="auto"
+></div>
+{ lang === "zh" && <script defer src="https://cusdis.com/js/widget/lang/zh-cn.js"></script>}
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script> -->
+
 </div>
 
 <style lang="scss">
@@ -37,9 +32,14 @@ const { slug } = Astro.props;
     @apply my-8;
   }
   .comments {
-    @apply flex flex-col;
+    @apply flex flex-col dark:text-gray-200;
   }
+
+  #cusdis_thread {
+    @apply m-4
+  }
+
   h2 {
-    @apply text-2xl;
+    @apply text-2xl mb-12;
   }
 </style>

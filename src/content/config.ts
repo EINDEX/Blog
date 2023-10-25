@@ -18,8 +18,7 @@ const postSchema = z.object({
   date: z
     .date()
     .or(z.string().transform((str) => (str ? new Date(str) : null))),
-  tags: z.array(z.string()).nullable().optional().default([]),
-  // series: reference("tags").nullable().optional(),
+  keywords: z.array(z.string()).nullable().optional().default([]),
   katex: z.boolean().optional(),
   cover: z.string().nullable().optional(),
 });
@@ -52,10 +51,6 @@ const pageSchema = z.object({
   order: z.number().nullable().default(0),
 });
 
-const tagSchema = z.object({
-  zh: z.string().nullable().optional(),
-  en: z.string().nullable().optional(),
-});
 
 const posts = defineCollection({
   schema: postSchema,
@@ -73,14 +68,10 @@ const projects = defineCollection({
   schema: projectSchema,
 });
 
-const tags = defineCollection({
-  schema: tagSchema,
-});
 
 export const collections = {
   posts,
   pages,
   goals,
   projects,
-  tags,
 };
