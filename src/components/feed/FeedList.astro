@@ -1,7 +1,6 @@
 ---
 import FeedItem from "./FeedItem.astro";
 import LinkItem from "./LinkItem.astro";
-import CutContent from "@components/support/CutContent.astro";
 import {getRealSlugByItem } from "@utils/slug";
 
 const { contents, lang } = Astro.props;
@@ -21,11 +20,6 @@ const { contents, lang } = Astro.props;
         />
       );
       }
-        else if (item.collection === "thoughts") {
-            slot = (
-            <CutContent item={item} readmoreLink={getRealSlugByItem(item)} slugPage={false} />
-        );
-        }
       return (
         <FeedItem lang={lang} published={item.data.date}>
           {slot}

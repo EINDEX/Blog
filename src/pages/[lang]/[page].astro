@@ -4,7 +4,6 @@ import { getLastPartOfSlug, getLocaleFromSlug } from "@utils/slug";
 import PageLayout from "@layouts/PageLayout.astro";
 import PostArchive from "@components/markdown/PostArchive.astro";
 import Projects from "@components/markdown/Projects.astro";
-import Feed from "@components/markdown/Feed.astro";
 import Gallery from "@components/markdown/Gallery.astro";
 
 export const prerender = true;
@@ -41,5 +40,5 @@ const { Content } = await page.render();
     description: page.data.description,
   }}
 >
-  <Content components={{ PostArchive, Projects, Feed, Gallery }} />
+  <Content components={{ PostArchive, Projects, Gallery }} />
 </PageLayout>

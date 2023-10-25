@@ -24,17 +24,6 @@ const postSchema = z.object({
   cover: z.string().nullable().optional(),
 });
 
-const thoughtSchema = z.object({
-  ...basicSchema,
-  date: z
-    .date()
-    .or(z.string().transform((str) => (str ? new Date(str) : null))),
-  tags: z.array(z.string()).nullable().optional().default([]),
-  images: z.array(z.string()).nullable().optional().default([]),
-  reply: z.string().optional(),
-  repost: z.string().optional(),
-});
-
 const goalSchema = z.object({
   ...basicSchema,
   title: z.string(),
@@ -76,10 +65,6 @@ const pages = defineCollection({
   schema: pageSchema,
 });
 
-const thoughts = defineCollection({
-  schema: thoughtSchema,
-});
-
 const goals = defineCollection({
   schema: goalSchema,
 });
@@ -94,7 +79,6 @@ const tags = defineCollection({
 
 export const collections = {
   posts,
-  thoughts,
   pages,
   goals,
   projects,
