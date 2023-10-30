@@ -15,7 +15,7 @@ tags:
   - best-practices
 series: infosec
 ---
-在本文中，我们将讨论如何将 Semgrep 集成到您的代码审查流程中。如果您对 Semgrep 不熟悉，我们建议您查看我们关于该主题的先前文章，标题为“[使用 Semgrep 改善代码审查流程](/posts/zh/improving-your-code-review-process-with-semgrep)”。
+在本文中，我们将讨论如何将 Semgrep 集成到您的代码审查流程中。如果您对 Semgrep 不熟悉，我们建议您查看我们关于该主题的先前文章，标题为“[使用 Semgrep 改善代码审查流程](/zh/posts/improving-your-code-review-process-with-semgrep/)”。
 
 ## 代码审查和 Semgrep
 
