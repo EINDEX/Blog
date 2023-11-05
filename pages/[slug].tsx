@@ -17,9 +17,9 @@ export default function HomePage(
   );
 }
 
-export const getStaticProps = async ({ params }) => {
+export const getStaticProps = async ({ params, locale }) => {
   const tinaProps = await client.queries.contentQuery({
-    relativePath: `${params.filename}.md`,
+    relativePath: `${locale}/${params.slug}.md`,
   });
   const props = {
     ...tinaProps,
@@ -30,12 +30,25 @@ export const getStaticProps = async ({ params }) => {
   };
 };
 
-export const getStaticPaths = async () => {
-  const pagesListData = await client.queries.pageConnection();
+
+export const getStaticPaths = async ({ locales }) => {
+  const postsListData = await client.queries.pageConnection();
+  const paths = [];
+  const posts = await postsListData.data;
+  posts.pageConnection.edges.map((post) => {
+    locales.map((locale) => {
+      paths.push(
+        {
+          params: {
+            slug: post.node._sys.filename,
+          },
+          locale,
+        }
+      )
+    })
+  })
   return {
-    paths: pagesListData.data.pageConnection?.edges?.map((page) => ({
-      params: { filename: page?.node?._sys.filename },
-    })),
-    fallback: false,
+    paths,
+    fallback: "blocking",
   };
 };

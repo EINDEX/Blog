@@ -70,17 +70,9 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
           <h4 className="select-none text-lg font-bold tracking-tight my-4 transition duration-150 ease-out transform">
             <Link
               href="/"
-              className="flex gap-1 items-center whitespace-nowrap tracking-[.002em]"
+              className="flex gap-2 items-center whitespace-nowrap tracking-[.002em]"
             >
-              <Icon
-                tinaField={tinaField(data, "icon")}
-                parentColor={data.color}
-                data={{
-                  name: data.icon.name,
-                  color: data.icon.color,
-                  style: data.icon.style,
-                }}
-              />
+              <img className="w-12 h-12 rounded-full bg-gray-700"  src={data.avatar}/>
               <span data-tina-field={tinaField(data, "name")}>{data.name}</span>
             </Link>
           </h4>

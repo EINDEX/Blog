@@ -16,7 +16,11 @@ const Global: Collection = {
       label: "Header",
       name: "header",
       fields: [
-        iconSchema as any,
+        {
+          type: "image",
+          label: "Avatar",
+          name: "avatar",
+        },
         {
           type: "string",
           label: "Name",

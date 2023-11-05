@@ -8,6 +8,10 @@ module.exports = {
 
     return config;
   },
+  i18n: {
+    locales: ["en", "zh"],
+    defaultLocale: "en",
+  },
   async rewrites() {
     return [
       {

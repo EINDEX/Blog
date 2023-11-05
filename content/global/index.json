@@ -1,24 +1,12 @@
 {
   "header": {
-    "icon": {
-      "name": "Tina",
-      "color": "orange",
-      "style": "float"
-    },
-    "name": "Tina Starter",
+    "avatar": "/uploads/_b963baf1-5772-4e43-984f-cbc4c129a549 (1).png",
+    "name": "EINDEX's Blog",
     "color": "default",
     "nav": [
       {
-        "href": "",
-        "label": "Home"
-      },
-      {
-        "href": "about",
-        "label": "About"
-      },
-      {
-        "href": "posts",
-        "label": "Blog"
+        "href": "archive",
+        "label": "Archive"
       }
     ]
   },

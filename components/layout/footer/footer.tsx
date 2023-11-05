@@ -6,6 +6,7 @@ import { Container } from "../../util/container";
 import { RawRenderer } from "./rawRenderer";
 import { useTheme } from "..";
 import { Icon } from "../../util/icon";
+import { avatar } from "@nextui-org/react";
 
 export const Footer = ({ data, icon, rawData }) => {
   const theme = useTheme();
@@ -50,7 +51,7 @@ export const Footer = ({ data, icon, rawData }) => {
             href="/"
             className="group mx-2 flex items-center font-bold tracking-tight text-gray-400 dark:text-gray-300 opacity-50 hover:opacity-100 transition duration-150 ease-out whitespace-nowrap"
           >
-            <Icon
+            {/* <Icon
               parentColor={data.color}
               data={{
                 name: icon.name,
@@ -58,7 +59,8 @@ export const Footer = ({ data, icon, rawData }) => {
                 style: icon.style,
               }}
               className="inline-block h-10 w-auto group-hover:text-orange-500"
-            />
+            /> */}
+            <img className="h-32 w-32 rounded-full" src={icon} loading="lazy" width={64}  />
           </Link>
           <div className="flex gap-4">
             {data.social && data.social.facebook && (
@@ -68,11 +70,10 @@ export const Footer = ({ data, icon, rawData }) => {
                 target="_blank"
               >
                 <FaFacebookF
-                  className={`${socialIconClasses} ${
-                    socialIconColorClasses[
-                      data.color === "primary" ? "primary" : theme.color
+                  className={`${socialIconClasses} ${socialIconColorClasses[
+                    data.color === "primary" ? "primary" : theme.color
                     ]
-                  }`}
+                    }`}
                 />
               </a>
             )}
@@ -83,11 +84,10 @@ export const Footer = ({ data, icon, rawData }) => {
                 target="_blank"
               >
                 <FaTwitter
-                  className={`${socialIconClasses} ${
-                    socialIconColorClasses[
-                      data.color === "primary" ? "primary" : theme.color
+                  className={`${socialIconClasses} ${socialIconColorClasses[
+                    data.color === "primary" ? "primary" : theme.color
                     ]
-                  }`}
+                    }`}
                 />
               </a>
             )}
@@ -98,11 +98,10 @@ export const Footer = ({ data, icon, rawData }) => {
                 target="_blank"
               >
                 <AiFillInstagram
-                  className={`${socialIconClasses} ${
-                    socialIconColorClasses[
-                      data.color === "primary" ? "primary" : theme.color
+                  className={`${socialIconClasses} ${socialIconColorClasses[
+                    data.color === "primary" ? "primary" : theme.color
                     ]
-                  }`}
+                    }`}
                 />
               </a>
             )}
@@ -113,21 +112,18 @@ export const Footer = ({ data, icon, rawData }) => {
                 target="_blank"
               >
                 <FaGithub
-                  className={`${socialIconClasses} ${
-                    socialIconColorClasses[
-                      data.color === "primary" ? "primary" : theme.color
+                  className={`${socialIconClasses} ${socialIconColorClasses[
+                    data.color === "primary" ? "primary" : theme.color
                     ]
-                  }`}
+                    }`}
                 />
               </a>
             )}
           </div>
-          <RawRenderer parentColor={data.color} rawData={rawData} />
         </div>
         <div
-          className={`absolute h-1 bg-gradient-to-r from-transparent ${
-            data.color === "primary" ? `via-white` : `via-black dark:via-white`
-          } to-transparent top-0 left-4 right-4 opacity-5`}
+          className={`absolute h-1 bg-gradient-to-r from-transparent ${data.color === "primary" ? `via-white` : `via-black dark:via-white`
+            } to-transparent top-0 left-4 right-4 opacity-5`}
         ></div>
       </Container>
     </footer>
